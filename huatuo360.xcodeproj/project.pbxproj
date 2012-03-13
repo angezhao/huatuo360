@@ -1,0 +1,385 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0DECF5D4150C94EB00824D1C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DECF5D3150C94EB00824D1C /* UIKit.framework */; };
+		0DECF5D6150C94EB00824D1C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DECF5D5150C94EB00824D1C /* Foundation.framework */; };
+		0DECF5D8150C94EB00824D1C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DECF5D7150C94EB00824D1C /* CoreGraphics.framework */; };
+		0DECF5DE150C94EB00824D1C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0DECF5DC150C94EB00824D1C /* InfoPlist.strings */; };
+		0DECF5E0150C94EB00824D1C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DECF5DF150C94EB00824D1C /* main.m */; };
+		0DECF5E4150C94EB00824D1C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DECF5E3150C94EB00824D1C /* AppDelegate.m */; };
+		0DECF635150C9CAB00824D1C /* homepage.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DECF631150C9CAB00824D1C /* homepage.png */; };
+		0DECF636150C9CAB00824D1C /* homepage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DECF632150C9CAB00824D1C /* homepage@2x.png */; };
+		0DECF637150C9CAB00824D1C /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DECF633150C9CAB00824D1C /* info.png */; };
+		0DECF638150C9CAB00824D1C /* info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DECF634150C9CAB00824D1C /* info@2x.png */; };
+		0DECF651150C9D0F00824D1C /* HomepageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DECF64F150C9D0F00824D1C /* HomepageViewController.m */; };
+		0DECF652150C9D0F00824D1C /* HomepageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DECF650150C9D0F00824D1C /* HomepageViewController.xib */; };
+		0DECF656150C9D2400824D1C /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DECF654150C9D2400824D1C /* InfoViewController.m */; };
+		0DECF657150C9D2400824D1C /* InfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DECF655150C9D2400824D1C /* InfoViewController.xib */; };
+		0DECF65B150C9E5F00824D1C /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DECF659150C9E5F00824D1C /* MoreViewController.m */; };
+		0DECF65C150C9E5F00824D1C /* MoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DECF65A150C9E5F00824D1C /* MoreViewController.xib */; };
+		0DECF660150C9E7000824D1C /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DECF65E150C9E7000824D1C /* UserViewController.m */; };
+		0DECF661150C9E7000824D1C /* UserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DECF65F150C9E7000824D1C /* UserViewController.xib */; };
+		0DECF666150C9F2300824D1C /* more.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DECF662150C9F2300824D1C /* more.png */; };
+		0DECF667150C9F2300824D1C /* more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DECF663150C9F2300824D1C /* more@2x.png */; };
+		0DECF668150C9F2300824D1C /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DECF664150C9F2300824D1C /* user.png */; };
+		0DECF669150C9F2300824D1C /* user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DECF665150C9F2300824D1C /* user@2x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0DECF5CF150C94EB00824D1C /* huatuo360.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = huatuo360.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0DECF5D3150C94EB00824D1C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		0DECF5D5150C94EB00824D1C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		0DECF5D7150C94EB00824D1C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		0DECF5DB150C94EB00824D1C /* huatuo360-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "huatuo360-Info.plist"; sourceTree = "<group>"; };
+		0DECF5DD150C94EB00824D1C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0DECF5DF150C94EB00824D1C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0DECF5E1150C94EB00824D1C /* huatuo360-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "huatuo360-Prefix.pch"; sourceTree = "<group>"; };
+		0DECF5E2150C94EB00824D1C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		0DECF5E3150C94EB00824D1C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		0DECF631150C9CAB00824D1C /* homepage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homepage.png; sourceTree = "<group>"; };
+		0DECF632150C9CAB00824D1C /* homepage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "homepage@2x.png"; sourceTree = "<group>"; };
+		0DECF633150C9CAB00824D1C /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info.png; sourceTree = "<group>"; };
+		0DECF634150C9CAB00824D1C /* info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info@2x.png"; sourceTree = "<group>"; };
+		0DECF64E150C9D0F00824D1C /* HomepageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomepageViewController.h; sourceTree = "<group>"; };
+		0DECF64F150C9D0F00824D1C /* HomepageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomepageViewController.m; sourceTree = "<group>"; };
+		0DECF650150C9D0F00824D1C /* HomepageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomepageViewController.xib; sourceTree = "<group>"; };
+		0DECF653150C9D2400824D1C /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
+		0DECF654150C9D2400824D1C /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
+		0DECF655150C9D2400824D1C /* InfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoViewController.xib; sourceTree = "<group>"; };
+		0DECF658150C9E5F00824D1C /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
+		0DECF659150C9E5F00824D1C /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
+		0DECF65A150C9E5F00824D1C /* MoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreViewController.xib; sourceTree = "<group>"; };
+		0DECF65D150C9E7000824D1C /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
+		0DECF65E150C9E7000824D1C /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = "<group>"; };
+		0DECF65F150C9E7000824D1C /* UserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserViewController.xib; sourceTree = "<group>"; };
+		0DECF662150C9F2300824D1C /* more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = more.png; sourceTree = "<group>"; };
+		0DECF663150C9F2300824D1C /* more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more@2x.png"; sourceTree = "<group>"; };
+		0DECF664150C9F2300824D1C /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
+		0DECF665150C9F2300824D1C /* user@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user@2x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0DECF5CC150C94EB00824D1C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0DECF5D4150C94EB00824D1C /* UIKit.framework in Frameworks */,
+				0DECF5D6150C94EB00824D1C /* Foundation.framework in Frameworks */,
+				0DECF5D8150C94EB00824D1C /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0DECF5C4150C94EB00824D1C = {
+			isa = PBXGroup;
+			children = (
+				0DECF5D9150C94EB00824D1C /* huatuo360 */,
+				0DECF5D2150C94EB00824D1C /* Frameworks */,
+				0DECF5D0150C94EB00824D1C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0DECF5D0150C94EB00824D1C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0DECF5CF150C94EB00824D1C /* huatuo360.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0DECF5D2150C94EB00824D1C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0DECF5D3150C94EB00824D1C /* UIKit.framework */,
+				0DECF5D5150C94EB00824D1C /* Foundation.framework */,
+				0DECF5D7150C94EB00824D1C /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0DECF5D9150C94EB00824D1C /* huatuo360 */ = {
+			isa = PBXGroup;
+			children = (
+				0DECF645150C9CEB00824D1C /* Views */,
+				0DECF630150C9CAB00824D1C /* Resources */,
+				0DECF5E2150C94EB00824D1C /* AppDelegate.h */,
+				0DECF5E3150C94EB00824D1C /* AppDelegate.m */,
+				0DECF5DA150C94EB00824D1C /* Supporting Files */,
+			);
+			path = huatuo360;
+			sourceTree = "<group>";
+		};
+		0DECF5DA150C94EB00824D1C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0DECF5DB150C94EB00824D1C /* huatuo360-Info.plist */,
+				0DECF5DC150C94EB00824D1C /* InfoPlist.strings */,
+				0DECF5DF150C94EB00824D1C /* main.m */,
+				0DECF5E1150C94EB00824D1C /* huatuo360-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0DECF630150C9CAB00824D1C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0DECF662150C9F2300824D1C /* more.png */,
+				0DECF663150C9F2300824D1C /* more@2x.png */,
+				0DECF664150C9F2300824D1C /* user.png */,
+				0DECF665150C9F2300824D1C /* user@2x.png */,
+				0DECF631150C9CAB00824D1C /* homepage.png */,
+				0DECF632150C9CAB00824D1C /* homepage@2x.png */,
+				0DECF633150C9CAB00824D1C /* info.png */,
+				0DECF634150C9CAB00824D1C /* info@2x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		0DECF645150C9CEB00824D1C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0DECF646150C9CEB00824D1C /* Homepage */,
+				0DECF647150C9CEB00824D1C /* Info */,
+				0DECF648150C9CEB00824D1C /* More */,
+				0DECF649150C9CEB00824D1C /* User */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0DECF646150C9CEB00824D1C /* Homepage */ = {
+			isa = PBXGroup;
+			children = (
+				0DECF64E150C9D0F00824D1C /* HomepageViewController.h */,
+				0DECF64F150C9D0F00824D1C /* HomepageViewController.m */,
+				0DECF650150C9D0F00824D1C /* HomepageViewController.xib */,
+			);
+			path = Homepage;
+			sourceTree = "<group>";
+		};
+		0DECF647150C9CEB00824D1C /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				0DECF653150C9D2400824D1C /* InfoViewController.h */,
+				0DECF654150C9D2400824D1C /* InfoViewController.m */,
+				0DECF655150C9D2400824D1C /* InfoViewController.xib */,
+			);
+			path = Info;
+			sourceTree = "<group>";
+		};
+		0DECF648150C9CEB00824D1C /* More */ = {
+			isa = PBXGroup;
+			children = (
+				0DECF658150C9E5F00824D1C /* MoreViewController.h */,
+				0DECF659150C9E5F00824D1C /* MoreViewController.m */,
+				0DECF65A150C9E5F00824D1C /* MoreViewController.xib */,
+			);
+			path = More;
+			sourceTree = "<group>";
+		};
+		0DECF649150C9CEB00824D1C /* User */ = {
+			isa = PBXGroup;
+			children = (
+				0DECF65D150C9E7000824D1C /* UserViewController.h */,
+				0DECF65E150C9E7000824D1C /* UserViewController.m */,
+				0DECF65F150C9E7000824D1C /* UserViewController.xib */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0DECF5CE150C94EB00824D1C /* huatuo360 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0DECF5FB150C94EB00824D1C /* Build configuration list for PBXNativeTarget "huatuo360" */;
+			buildPhases = (
+				0DECF5CB150C94EB00824D1C /* Sources */,
+				0DECF5CC150C94EB00824D1C /* Frameworks */,
+				0DECF5CD150C94EB00824D1C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = huatuo360;
+			productName = huatuo360;
+			productReference = 0DECF5CF150C94EB00824D1C /* huatuo360.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0DECF5C6150C94EB00824D1C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 0DECF5C9150C94EB00824D1C /* Build configuration list for PBXProject "huatuo360" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 0DECF5C4150C94EB00824D1C;
+			productRefGroup = 0DECF5D0150C94EB00824D1C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0DECF5CE150C94EB00824D1C /* huatuo360 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0DECF5CD150C94EB00824D1C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0DECF5DE150C94EB00824D1C /* InfoPlist.strings in Resources */,
+				0DECF635150C9CAB00824D1C /* homepage.png in Resources */,
+				0DECF636150C9CAB00824D1C /* homepage@2x.png in Resources */,
+				0DECF637150C9CAB00824D1C /* info.png in Resources */,
+				0DECF638150C9CAB00824D1C /* info@2x.png in Resources */,
+				0DECF652150C9D0F00824D1C /* HomepageViewController.xib in Resources */,
+				0DECF657150C9D2400824D1C /* InfoViewController.xib in Resources */,
+				0DECF65C150C9E5F00824D1C /* MoreViewController.xib in Resources */,
+				0DECF661150C9E7000824D1C /* UserViewController.xib in Resources */,
+				0DECF666150C9F2300824D1C /* more.png in Resources */,
+				0DECF667150C9F2300824D1C /* more@2x.png in Resources */,
+				0DECF668150C9F2300824D1C /* user.png in Resources */,
+				0DECF669150C9F2300824D1C /* user@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0DECF5CB150C94EB00824D1C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0DECF5E0150C94EB00824D1C /* main.m in Sources */,
+				0DECF5E4150C94EB00824D1C /* AppDelegate.m in Sources */,
+				0DECF651150C9D0F00824D1C /* HomepageViewController.m in Sources */,
+				0DECF656150C9D2400824D1C /* InfoViewController.m in Sources */,
+				0DECF65B150C9E5F00824D1C /* MoreViewController.m in Sources */,
+				0DECF660150C9E7000824D1C /* UserViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		0DECF5DC150C94EB00824D1C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0DECF5DD150C94EB00824D1C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0DECF5F9150C94EB00824D1C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		0DECF5FA150C94EB00824D1C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0DECF5FC150C94EB00824D1C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "huatuo360/huatuo360-Prefix.pch";
+				INFOPLIST_FILE = "huatuo360/huatuo360-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		0DECF5FD150C94EB00824D1C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "huatuo360/huatuo360-Prefix.pch";
+				INFOPLIST_FILE = "huatuo360/huatuo360-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0DECF5C9150C94EB00824D1C /* Build configuration list for PBXProject "huatuo360" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0DECF5F9150C94EB00824D1C /* Debug */,
+				0DECF5FA150C94EB00824D1C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0DECF5FB150C94EB00824D1C /* Build configuration list for PBXNativeTarget "huatuo360" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0DECF5FC150C94EB00824D1C /* Debug */,
+				0DECF5FD150C94EB00824D1C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0DECF5C6150C94EB00824D1C /* Project object */;
+}
