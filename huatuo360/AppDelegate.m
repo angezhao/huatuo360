@@ -11,7 +11,7 @@
 #import "HomepageViewController.h"
 #import "InfoViewController.h"
 #import "MoreViewController.h"
-#import "UserViewController.h"
+#import "UserNavViewController.h"
 
 @implementation AppDelegate
 
@@ -24,7 +24,7 @@
     // Override point for customization after application launch.
     UIViewController *viewController1 = [[HomepageViewController alloc] initWithNibName:@"HomepageViewController" bundle:nil];
     UIViewController *viewController2 = [[InfoViewController alloc] initWithNibName:@"InfoViewController" bundle:nil];
-    UIViewController *viewController3 = [[UserViewController alloc] initWithNibName:@"UserViewController" bundle:nil];
+    UIViewController *viewController3 = [[UserNavViewController alloc] init];
     UIViewController *viewController4 = [[MoreViewController alloc] initWithNibName:@"MoreViewController" bundle:nil];
     self.tabBarController = [[UITabBarController alloc] init];
     self.tabBarController.viewControllers = [NSArray arrayWithObjects:viewController1, viewController2, viewController3, viewController4, nil];

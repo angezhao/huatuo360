@@ -1,31 +1,36 @@
 //
-//  InfoViewController.m
+//  UserViewController.m
 //  huatuo360
 //
 //  Created by Alpha Wong on 12-3-11.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
-#import "InfoViewController.h"
-@interface InfoViewController ()
+#import "UserNavViewController.h"
+#import "LoginViewController.h"
+
+@interface UserNavViewController ()
 
 @end
 
-@implementation InfoViewController
+@implementation UserNavViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)init
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super init];
     if (self) {
         // Custom initialization
-        self.title = NSLocalizedString(@"Info", @"Infomation");
-        self.tabBarItem.image = [UIImage imageNamed:@"info"]; 
+        self.title = NSLocalizedString(@"User", @"User");
+        self.tabBarItem.image = [UIImage imageNamed:@"user"];
+//        self.navigationController
     }
     return self;
 }
 
 - (void)viewDidLoad
 {
+    LoginViewController* loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+    self.viewControllers = [[NSArray alloc]initWithObjects:loginViewController, nil];
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D6DDCD7150FAE2F001BD397 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6DDCD6150FAE2F001BD397 /* QuartzCore.framework */; };
+		0D708A9A1515A77A007EA936 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D708A981515A77A007EA936 /* LoginViewController.m */; };
+		0D708A9B1515A77A007EA936 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D708A991515A77A007EA936 /* LoginViewController.xib */; };
+		0D708A9F1515A78B007EA936 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D708A9D1515A78B007EA936 /* RegisterViewController.m */; };
+		0D708AA01515A78B007EA936 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D708A9E1515A78B007EA936 /* RegisterViewController.xib */; };
 		0DECF5D4150C94EB00824D1C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DECF5D3150C94EB00824D1C /* UIKit.framework */; };
 		0DECF5D6150C94EB00824D1C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DECF5D5150C94EB00824D1C /* Foundation.framework */; };
 		0DECF5D8150C94EB00824D1C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DECF5D7150C94EB00824D1C /* CoreGraphics.framework */; };
@@ -23,8 +28,8 @@
 		0DECF657150C9D2400824D1C /* InfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DECF655150C9D2400824D1C /* InfoViewController.xib */; };
 		0DECF65B150C9E5F00824D1C /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DECF659150C9E5F00824D1C /* MoreViewController.m */; };
 		0DECF65C150C9E5F00824D1C /* MoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DECF65A150C9E5F00824D1C /* MoreViewController.xib */; };
-		0DECF660150C9E7000824D1C /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DECF65E150C9E7000824D1C /* UserViewController.m */; };
-		0DECF661150C9E7000824D1C /* UserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DECF65F150C9E7000824D1C /* UserViewController.xib */; };
+		0DECF660150C9E7000824D1C /* UserNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DECF65E150C9E7000824D1C /* UserNavViewController.m */; };
+		0DECF661150C9E7000824D1C /* UserNavViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DECF65F150C9E7000824D1C /* UserNavViewController.xib */; };
 		0DECF666150C9F2300824D1C /* more.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DECF662150C9F2300824D1C /* more.png */; };
 		0DECF667150C9F2300824D1C /* more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DECF663150C9F2300824D1C /* more@2x.png */; };
 		0DECF668150C9F2300824D1C /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DECF664150C9F2300824D1C /* user.png */; };
@@ -32,6 +37,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D6DDCD6150FAE2F001BD397 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		0D708A971515A77A007EA936 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		0D708A981515A77A007EA936 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		0D708A991515A77A007EA936 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		0D708A9C1515A78B007EA936 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		0D708A9D1515A78B007EA936 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		0D708A9E1515A78B007EA936 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		0DECF5CF150C94EB00824D1C /* huatuo360.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = huatuo360.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DECF5D3150C94EB00824D1C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0DECF5D5150C94EB00824D1C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -55,9 +67,9 @@
 		0DECF658150C9E5F00824D1C /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
 		0DECF659150C9E5F00824D1C /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
 		0DECF65A150C9E5F00824D1C /* MoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreViewController.xib; sourceTree = "<group>"; };
-		0DECF65D150C9E7000824D1C /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
-		0DECF65E150C9E7000824D1C /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = "<group>"; };
-		0DECF65F150C9E7000824D1C /* UserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserViewController.xib; sourceTree = "<group>"; };
+		0DECF65D150C9E7000824D1C /* UserNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserNavViewController.h; sourceTree = "<group>"; };
+		0DECF65E150C9E7000824D1C /* UserNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserNavViewController.m; sourceTree = "<group>"; };
+		0DECF65F150C9E7000824D1C /* UserNavViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserNavViewController.xib; sourceTree = "<group>"; };
 		0DECF662150C9F2300824D1C /* more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = more.png; sourceTree = "<group>"; };
 		0DECF663150C9F2300824D1C /* more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more@2x.png"; sourceTree = "<group>"; };
 		0DECF664150C9F2300824D1C /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
@@ -69,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D6DDCD7150FAE2F001BD397 /* QuartzCore.framework in Frameworks */,
 				0DECF5D4150C94EB00824D1C /* UIKit.framework in Frameworks */,
 				0DECF5D6150C94EB00824D1C /* Foundation.framework in Frameworks */,
 				0DECF5D8150C94EB00824D1C /* CoreGraphics.framework in Frameworks */,
@@ -81,6 +94,7 @@
 		0DECF5C4150C94EB00824D1C = {
 			isa = PBXGroup;
 			children = (
+				0D6DDCD6150FAE2F001BD397 /* QuartzCore.framework */,
 				0DECF5D9150C94EB00824D1C /* huatuo360 */,
 				0DECF5D2150C94EB00824D1C /* Frameworks */,
 				0DECF5D0150C94EB00824D1C /* Products */,
@@ -187,9 +201,15 @@
 		0DECF649150C9CEB00824D1C /* User */ = {
 			isa = PBXGroup;
 			children = (
-				0DECF65D150C9E7000824D1C /* UserViewController.h */,
-				0DECF65E150C9E7000824D1C /* UserViewController.m */,
-				0DECF65F150C9E7000824D1C /* UserViewController.xib */,
+				0DECF65D150C9E7000824D1C /* UserNavViewController.h */,
+				0DECF65E150C9E7000824D1C /* UserNavViewController.m */,
+				0DECF65F150C9E7000824D1C /* UserNavViewController.xib */,
+				0D708A971515A77A007EA936 /* LoginViewController.h */,
+				0D708A981515A77A007EA936 /* LoginViewController.m */,
+				0D708A991515A77A007EA936 /* LoginViewController.xib */,
+				0D708A9C1515A78B007EA936 /* RegisterViewController.h */,
+				0D708A9D1515A78B007EA936 /* RegisterViewController.m */,
+				0D708A9E1515A78B007EA936 /* RegisterViewController.xib */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -252,11 +272,13 @@
 				0DECF652150C9D0F00824D1C /* HomepageViewController.xib in Resources */,
 				0DECF657150C9D2400824D1C /* InfoViewController.xib in Resources */,
 				0DECF65C150C9E5F00824D1C /* MoreViewController.xib in Resources */,
-				0DECF661150C9E7000824D1C /* UserViewController.xib in Resources */,
+				0DECF661150C9E7000824D1C /* UserNavViewController.xib in Resources */,
 				0DECF666150C9F2300824D1C /* more.png in Resources */,
 				0DECF667150C9F2300824D1C /* more@2x.png in Resources */,
 				0DECF668150C9F2300824D1C /* user.png in Resources */,
 				0DECF669150C9F2300824D1C /* user@2x.png in Resources */,
+				0D708A9B1515A77A007EA936 /* LoginViewController.xib in Resources */,
+				0D708AA01515A78B007EA936 /* RegisterViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,7 +294,9 @@
 				0DECF651150C9D0F00824D1C /* HomepageViewController.m in Sources */,
 				0DECF656150C9D2400824D1C /* InfoViewController.m in Sources */,
 				0DECF65B150C9E5F00824D1C /* MoreViewController.m in Sources */,
-				0DECF660150C9E7000824D1C /* UserViewController.m in Sources */,
+				0DECF660150C9E7000824D1C /* UserNavViewController.m in Sources */,
+				0D708A9A1515A77A007EA936 /* LoginViewController.m in Sources */,
+				0D708A9F1515A78B007EA936 /* RegisterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +402,7 @@
 				0DECF5FD150C94EB00824D1C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
