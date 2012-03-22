@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0D6DDCD7150FAE2F001BD397 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6DDCD6150FAE2F001BD397 /* QuartzCore.framework */; };
+		0D6FC3FC151A3E8800C8E4D5 /* ListVIew.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D6FC3FB151A3E8800C8E4D5 /* ListVIew.xib */; };
+		0D6FC3FF151A3F2400C8E4D5 /* HospitalListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6FC3FE151A3F2300C8E4D5 /* HospitalListViewController.m */; };
+		0D6FC402151A4CDF00C8E4D5 /* DoctorListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6FC401151A4CDF00C8E4D5 /* DoctorListViewController.m */; };
+		0D6FC405151A56A300C8E4D5 /* ListViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6FC404151A56A300C8E4D5 /* ListViewController1.m */; };
 		0D708A9A1515A77A007EA936 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D708A981515A77A007EA936 /* LoginViewController.m */; };
 		0D708A9B1515A77A007EA936 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D708A991515A77A007EA936 /* LoginViewController.xib */; };
 		0D708A9F1515A78B007EA936 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D708A9D1515A78B007EA936 /* RegisterViewController.m */; };
@@ -24,12 +28,10 @@
 		0DECF638150C9CAB00824D1C /* info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DECF634150C9CAB00824D1C /* info@2x.png */; };
 		0DECF651150C9D0F00824D1C /* HomepageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DECF64F150C9D0F00824D1C /* HomepageViewController.m */; };
 		0DECF652150C9D0F00824D1C /* HomepageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DECF650150C9D0F00824D1C /* HomepageViewController.xib */; };
-		0DECF656150C9D2400824D1C /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DECF654150C9D2400824D1C /* InfoViewController.m */; };
-		0DECF657150C9D2400824D1C /* InfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DECF655150C9D2400824D1C /* InfoViewController.xib */; };
+		0DECF656150C9D2400824D1C /* InfoNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DECF654150C9D2400824D1C /* InfoNavViewController.m */; };
 		0DECF65B150C9E5F00824D1C /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DECF659150C9E5F00824D1C /* MoreViewController.m */; };
 		0DECF65C150C9E5F00824D1C /* MoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DECF65A150C9E5F00824D1C /* MoreViewController.xib */; };
 		0DECF660150C9E7000824D1C /* UserNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DECF65E150C9E7000824D1C /* UserNavViewController.m */; };
-		0DECF661150C9E7000824D1C /* UserNavViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DECF65F150C9E7000824D1C /* UserNavViewController.xib */; };
 		0DECF666150C9F2300824D1C /* more.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DECF662150C9F2300824D1C /* more.png */; };
 		0DECF667150C9F2300824D1C /* more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DECF663150C9F2300824D1C /* more@2x.png */; };
 		0DECF668150C9F2300824D1C /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DECF664150C9F2300824D1C /* user.png */; };
@@ -38,6 +40,13 @@
 
 /* Begin PBXFileReference section */
 		0D6DDCD6150FAE2F001BD397 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		0D6FC3FB151A3E8800C8E4D5 /* ListVIew.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListVIew.xib; sourceTree = "<group>"; };
+		0D6FC3FD151A3F2300C8E4D5 /* HospitalListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HospitalListViewController.h; sourceTree = "<group>"; };
+		0D6FC3FE151A3F2300C8E4D5 /* HospitalListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HospitalListViewController.m; sourceTree = "<group>"; };
+		0D6FC400151A4CDF00C8E4D5 /* DoctorListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorListViewController.h; sourceTree = "<group>"; };
+		0D6FC401151A4CDF00C8E4D5 /* DoctorListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorListViewController.m; sourceTree = "<group>"; };
+		0D6FC403151A56A300C8E4D5 /* ListViewController1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController1.h; sourceTree = "<group>"; };
+		0D6FC404151A56A300C8E4D5 /* ListViewController1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController1.m; sourceTree = "<group>"; };
 		0D708A971515A77A007EA936 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		0D708A981515A77A007EA936 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		0D708A991515A77A007EA936 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -61,15 +70,13 @@
 		0DECF64E150C9D0F00824D1C /* HomepageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomepageViewController.h; sourceTree = "<group>"; };
 		0DECF64F150C9D0F00824D1C /* HomepageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomepageViewController.m; sourceTree = "<group>"; };
 		0DECF650150C9D0F00824D1C /* HomepageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomepageViewController.xib; sourceTree = "<group>"; };
-		0DECF653150C9D2400824D1C /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
-		0DECF654150C9D2400824D1C /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
-		0DECF655150C9D2400824D1C /* InfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoViewController.xib; sourceTree = "<group>"; };
+		0DECF653150C9D2400824D1C /* InfoNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoNavViewController.h; sourceTree = "<group>"; };
+		0DECF654150C9D2400824D1C /* InfoNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoNavViewController.m; sourceTree = "<group>"; };
 		0DECF658150C9E5F00824D1C /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
 		0DECF659150C9E5F00824D1C /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
 		0DECF65A150C9E5F00824D1C /* MoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreViewController.xib; sourceTree = "<group>"; };
 		0DECF65D150C9E7000824D1C /* UserNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserNavViewController.h; sourceTree = "<group>"; };
 		0DECF65E150C9E7000824D1C /* UserNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserNavViewController.m; sourceTree = "<group>"; };
-		0DECF65F150C9E7000824D1C /* UserNavViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserNavViewController.xib; sourceTree = "<group>"; };
 		0DECF662150C9F2300824D1C /* more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = more.png; sourceTree = "<group>"; };
 		0DECF663150C9F2300824D1C /* more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more@2x.png"; sourceTree = "<group>"; };
 		0DECF664150C9F2300824D1C /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
@@ -181,9 +188,15 @@
 		0DECF647150C9CEB00824D1C /* Info */ = {
 			isa = PBXGroup;
 			children = (
-				0DECF653150C9D2400824D1C /* InfoViewController.h */,
-				0DECF654150C9D2400824D1C /* InfoViewController.m */,
-				0DECF655150C9D2400824D1C /* InfoViewController.xib */,
+				0DECF653150C9D2400824D1C /* InfoNavViewController.h */,
+				0DECF654150C9D2400824D1C /* InfoNavViewController.m */,
+				0D6FC3FB151A3E8800C8E4D5 /* ListVIew.xib */,
+				0D6FC3FD151A3F2300C8E4D5 /* HospitalListViewController.h */,
+				0D6FC3FE151A3F2300C8E4D5 /* HospitalListViewController.m */,
+				0D6FC400151A4CDF00C8E4D5 /* DoctorListViewController.h */,
+				0D6FC401151A4CDF00C8E4D5 /* DoctorListViewController.m */,
+				0D6FC403151A56A300C8E4D5 /* ListViewController1.h */,
+				0D6FC404151A56A300C8E4D5 /* ListViewController1.m */,
 			);
 			path = Info;
 			sourceTree = "<group>";
@@ -203,7 +216,6 @@
 			children = (
 				0DECF65D150C9E7000824D1C /* UserNavViewController.h */,
 				0DECF65E150C9E7000824D1C /* UserNavViewController.m */,
-				0DECF65F150C9E7000824D1C /* UserNavViewController.xib */,
 				0D708A971515A77A007EA936 /* LoginViewController.h */,
 				0D708A981515A77A007EA936 /* LoginViewController.m */,
 				0D708A991515A77A007EA936 /* LoginViewController.xib */,
@@ -270,15 +282,14 @@
 				0DECF637150C9CAB00824D1C /* info.png in Resources */,
 				0DECF638150C9CAB00824D1C /* info@2x.png in Resources */,
 				0DECF652150C9D0F00824D1C /* HomepageViewController.xib in Resources */,
-				0DECF657150C9D2400824D1C /* InfoViewController.xib in Resources */,
 				0DECF65C150C9E5F00824D1C /* MoreViewController.xib in Resources */,
-				0DECF661150C9E7000824D1C /* UserNavViewController.xib in Resources */,
 				0DECF666150C9F2300824D1C /* more.png in Resources */,
 				0DECF667150C9F2300824D1C /* more@2x.png in Resources */,
 				0DECF668150C9F2300824D1C /* user.png in Resources */,
 				0DECF669150C9F2300824D1C /* user@2x.png in Resources */,
 				0D708A9B1515A77A007EA936 /* LoginViewController.xib in Resources */,
 				0D708AA01515A78B007EA936 /* RegisterViewController.xib in Resources */,
+				0D6FC3FC151A3E8800C8E4D5 /* ListVIew.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,11 +303,14 @@
 				0DECF5E0150C94EB00824D1C /* main.m in Sources */,
 				0DECF5E4150C94EB00824D1C /* AppDelegate.m in Sources */,
 				0DECF651150C9D0F00824D1C /* HomepageViewController.m in Sources */,
-				0DECF656150C9D2400824D1C /* InfoViewController.m in Sources */,
+				0DECF656150C9D2400824D1C /* InfoNavViewController.m in Sources */,
 				0DECF65B150C9E5F00824D1C /* MoreViewController.m in Sources */,
 				0DECF660150C9E7000824D1C /* UserNavViewController.m in Sources */,
 				0D708A9A1515A77A007EA936 /* LoginViewController.m in Sources */,
 				0D708A9F1515A78B007EA936 /* RegisterViewController.m in Sources */,
+				0D6FC3FF151A3F2400C8E4D5 /* HospitalListViewController.m in Sources */,
+				0D6FC402151A4CDF00C8E4D5 /* DoctorListViewController.m in Sources */,
+				0D6FC405151A56A300C8E4D5 /* ListViewController1.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

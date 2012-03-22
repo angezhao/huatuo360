@@ -70,7 +70,6 @@
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 90, 25)];
     label.textAlignment = UITextAlignmentRight;
     label.font = [UIFont boldSystemFontOfSize:16];
-    //    label.font = [UIFont  fontWithName:@"黑体"  size:16];
     label.backgroundColor = [UIColor clearColor];
     [cell.contentView addSubview:label];
     
@@ -107,7 +106,6 @@
             textField.returnKeyType = UIReturnKeyDone;
             break;
     }
-    int a = [textfields count];
     [textfields addObject:textField];
 //    [textfields replaceObjectAtIndex:row withObject:textField];
     return cell;
@@ -126,6 +124,10 @@
     return YES;
 }
 
+- (IBAction)registerButtonPressed:(id)sender
+{
+    
+}
 //- (void)textFieldDidEndEditing:(UITextField *)textField
 //{
 //    [inputTexts replaceObjectAtIndex:textField.tag withObject:textField.text];

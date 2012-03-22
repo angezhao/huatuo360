@@ -17,6 +17,6 @@
     
 }
 //@property (nonatomic, retain)IBOutlet UISearchBar* searchBar;
-@property (nonatomic, retain)NSArray* listData;
-@property (nonatomic, retain)NSArray* searchBarHolders;
+//@property (nonatomic, retain)NSArray* listData;
+//@property (nonatomic, retain)NSArray* searchBarHolders;
 @end

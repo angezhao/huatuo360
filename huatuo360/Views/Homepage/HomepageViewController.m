@@ -9,9 +9,8 @@
 #import "HomepageViewController.h"
 
 @implementation HomepageViewController
-@synthesize listData;
 //@synthesize searchBar;
-@synthesize searchBarHolders;
+//@synthesize searchBarHolders;
 const static int ILLNESS = 0;
 const static int HOSPITAL = 1;
 const static int DOCTOR = 2;

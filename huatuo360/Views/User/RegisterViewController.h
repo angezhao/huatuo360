@@ -14,4 +14,5 @@
 }
 
 @property NSMutableArray *textfields;
+- (IBAction)registerButtonPressed:(id)sender;
 @end

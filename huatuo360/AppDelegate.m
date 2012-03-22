@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 
 #import "HomepageViewController.h"
-#import "InfoViewController.h"
+#import "InfoNavViewController.h"
 #import "MoreViewController.h"
 #import "UserNavViewController.h"
 
@@ -23,7 +23,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     UIViewController *viewController1 = [[HomepageViewController alloc] initWithNibName:@"HomepageViewController" bundle:nil];
-    UIViewController *viewController2 = [[InfoViewController alloc] initWithNibName:@"InfoViewController" bundle:nil];
+    UIViewController *viewController2 = [[InfoNavViewController alloc] init];
     UIViewController *viewController3 = [[UserNavViewController alloc] init];
     UIViewController *viewController4 = [[MoreViewController alloc] initWithNibName:@"MoreViewController" bundle:nil];
     self.tabBarController = [[UITabBarController alloc] init];
