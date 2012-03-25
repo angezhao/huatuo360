@@ -13,6 +13,8 @@
 #import "MoreViewController.h"
 #import "UserNavViewController.h"
 
+#import "AsiObjectManager.h"
+
 @implementation AppDelegate
 
 @synthesize window = _window;
@@ -20,6 +22,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    AsiObjectManager* manager = [AsiObjectManager initManager];
+    NSLog(@"I am your RKObjectManager singleton: %@", manager);
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     UIViewController *viewController1 = [[HomepageViewController alloc] initWithNibName:@"HomepageViewController" bundle:nil];
