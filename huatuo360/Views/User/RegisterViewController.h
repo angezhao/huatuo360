@@ -10,9 +10,9 @@
 
 @interface RegisterViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 {
-    NSMutableArray *textfields;
+    NSMutableArray *__unsafe_unretained textfields;
 }
 
-@property NSMutableArray *textfields;
+@property (unsafe_unretained) NSMutableArray *textfields;
 - (IBAction)registerButtonPressed:(id)sender;
 @end

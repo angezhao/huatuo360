@@ -10,9 +10,9 @@
 
 @interface LoginViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
-@property (nonatomic, retain) UITextField *textFieldBeingEdited;
+@property (nonatomic) UITextField *textFieldBeingEdited;
 -(IBAction)loginButtonPressed:(id)sender;
 -(IBAction)registerButtonPressed:(id)sender;
-@property UITextField *nameTextfield;
-@property UITextField *pwTextfield;
+@property (unsafe_unretained) UITextField *nameTextfield;
+@property (unsafe_unretained) UITextField *pwTextfield;
 @end

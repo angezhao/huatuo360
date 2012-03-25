@@ -7,13 +7,11 @@
 //
 
 #import "DoctorListViewController.h"
-#import "ASIHTTPRequest.h"
+#import "Constants.h"
 
-@interface DoctorListViewController ()
-
-@end
 
 @implementation DoctorListViewController
+extern NSString* const _departmentList;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,7 +42,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	NSMutableDictionary *urlParam = [NSMutableDictionary dictionaryWithCapacity:10];
+    [urlParam setObject:_departmentList forKey:@"interfaceName"];
+    [[AsiObjectManager sharedManager] setDelegate:self];
+    [[AsiObjectManager sharedManager] requestData:urlParam];
+}
+
+- (void)loadData:(NSDictionary *)data
+{
+    NSLog(@"%@", data);
 }
 
 - (void)viewDidUnload
@@ -93,16 +99,7 @@
 ////	[tableView setContentInset:UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 0.0f)];
 ////	[UIView commitAnimations];
 //    [tableView reloadData];
-    ASIHTTPRequest*request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:@"http://www.huatuo360.com/m/getDepartmentList.php"]];
-    [request setDelegate:self];
-    [request startSynchronous];
-}
-
--(void)requestFinished:(ASIHTTPRequest *)request
-{
-    [request  setResponseEncoding:(NSUTF8StringEncoding)];
-    NSString*responseString=[request responseString];
-    NSLog(@"%@", responseString);
+    
 }
 
 @end
