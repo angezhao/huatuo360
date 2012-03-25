@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ListViewController1.h"
-@interface DoctorListViewController : ListViewController1
+#import "ASIHTTPRequestDelegate.h"
+@interface DoctorListViewController : ListViewController1<ASIHTTPRequestDelegate>
 
 @end

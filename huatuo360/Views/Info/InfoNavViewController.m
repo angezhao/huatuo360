@@ -30,12 +30,17 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+//    HospitalListViewController* hospitalListVC = [[HospitalListViewController alloc] initWithNibName:@"ListView" bundle:nil];
+//    self.viewControllers = [[NSArray alloc]initWithObjects:hospitalListVC, nil];}
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     HospitalListViewController* hospitalListVC = [[HospitalListViewController alloc] initWithNibName:@"ListView" bundle:nil];
-//    DoctorListViewController* doctorListVC = [[DoctorListViewController alloc] initWithNibName:@"ListView" bundle:nil];
+    //    DoctorListViewController* doctorListVC = [[DoctorListViewController alloc] initWithNibName:@"ListView" bundle:nil];
     self.viewControllers = [[NSArray alloc]initWithObjects:hospitalListVC, nil];
-//    LoginViewController* loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-//    self.viewControllers = [[NSArray alloc]initWithObjects:loginViewController, nil];
-//    [self.navigationController pushViewController:hospitalListVC animated:true];
+    
 }
 
 - (void)viewDidUnload

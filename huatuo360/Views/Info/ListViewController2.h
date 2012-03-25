@@ -1,5 +1,5 @@
 //
-//  ListViewController1.h
+//  ListViewController2.h
 //  huatuo360
 //
 //  Created by Alpha Wong on 12-3-22.
@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ListViewController1 : UIViewController<UITableViewDelegate, UITableViewDataSource>
+@interface ListViewController2 : UIViewController<UITableViewDelegate, UITableViewDataSource>
 {
     NSArray* listData;
 }
+
 
 @end

@@ -49,25 +49,34 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
                              ListTableIdentifier];
+    NSUInteger row = [indexPath row];
+    UILabel *nameLabel;
+    UILabel *introLabel;
     if (cell == nil)
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier: ListTableIdentifier];
-    }    
+        
+        nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 2, 270, 25)]; 
+        nameLabel.tag = 99;   
+        nameLabel.font = [UIFont boldSystemFontOfSize:18];
+        nameLabel.backgroundColor = [UIColor clearColor];
+        [cell.contentView addSubview:nameLabel];
+        
+        introLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 20, 270, 25)];
+        introLabel.tag = 100;
+        introLabel.font = [UIFont boldSystemFontOfSize:12];
+        introLabel.backgroundColor = [UIColor clearColor];
+        [cell.contentView addSubview:introLabel];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+    else {
+        nameLabel = (UILabel*)[cell viewWithTag:99];
+        introLabel = (UILabel*)[cell viewWithTag:100];
+    }
     
-    NSUInteger row = [indexPath row];
-    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 2, 270, 25)];    
-    nameLabel.font = [UIFont boldSystemFontOfSize:18];
-    nameLabel.backgroundColor = [UIColor clearColor];
     nameLabel.text = [listData objectAtIndex:row];
-    [cell.contentView addSubview:nameLabel];
-    
-    UILabel *introLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 20, 270, 25)];
-    introLabel.font = [UIFont boldSystemFontOfSize:12];
-    introLabel.backgroundColor = [UIColor clearColor];
     introLabel.text = @"很长的介绍很长的介绍很长的介绍很长的介绍很长的介绍很长的介绍";
-    [cell.contentView addSubview:introLabel];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
     
