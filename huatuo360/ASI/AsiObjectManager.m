@@ -3,11 +3,12 @@
 //#import "Constants.h"
 
 static AsiObjectManager* sharedManager = nil;
+static SBJsonParser *parser = nil;
+static NSError *error;  
 
 @implementation AsiObjectManager
 @synthesize delegate;
-static ASIHTTPRequest* request = nil;
-static SBJsonParser *parser = nil;  
+static ASIHTTPRequest* request = nil; 
 
 extern NSString* const _baseUrl;
 
@@ -22,15 +23,36 @@ extern NSString* const _baseUrl;
 - (void)requestFinished:(ASIHTTPRequest *)retrequest {   
     [request  setResponseEncoding:(NSUTF8StringEncoding)];
     NSString* responseString=[retrequest responseString];
-    NSLog(@"%@", responseString);
-    NSDictionary *jsonDic = [parser objectWithData:[responseString dataUsingEncoding:NSUTF8StringEncoding]];  
-	[delegate loadData:jsonDic];
+    //NSLog(@"%@", responseString);
+    NSDictionary *jsonDict = [parser objectWithData:[responseString dataUsingEncoding:NSUTF8StringEncoding]];  
+    NSNumber *status = [jsonDict objectForKey:@"status"];
+    NSLog(@"%@",status); 
+    if ([status intValue] == 0) {
+        error = [[NSError alloc] initWithDomain:@"requestFailed" code:[status integerValue] userInfo:nil];
+        [delegate requestFailed:error];
+    }
+
+    //NSArray *myArray = [jsonDic objectForKey:@"data"];
+    //for (NSDictionary *dict in myArray) {
+    //    NSArray *keys;
+    //    int i, count;
+    //    id key, value;
+    //    keys = [dict allKeys];
+    //    count = [keys count];
+    //    for (i = 0; i < count; i++)
+    //    {
+    //        key = [keys objectAtIndex: i];
+    //        value = [dict objectForKey: key];
+    //        NSLog (@"Key: %@ for value: %@", key, value);
+    //    }
+    //}
+    [delegate loadData:jsonDict];
 }
 
 - (void)requestFailed:(ASIHTTPRequest *)retrequest {    
-	NSError *error = [retrequest error]; 
+	error = [retrequest error]; 
     NSLog(@"%@", error);
-	
+    [delegate requestFailed:error];
 }
 
 + (AsiObjectManager*)sharedManager {

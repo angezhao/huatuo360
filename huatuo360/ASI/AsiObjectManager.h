@@ -4,6 +4,7 @@
 @protocol AsiObjectDelegate <NSObject> 
 @optional
 - (void) loadData:(NSDictionary*)data;
+- (void) requestFailed:(NSError*)error;
 @end
 
 @interface AsiObjectManager: NSObject<NSObject> {

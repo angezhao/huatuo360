@@ -50,7 +50,25 @@ extern NSString* const _departmentList;
 
 - (void)loadData:(NSDictionary *)data
 {
-    NSLog(@"%@", data);
+    //NSLog(@"%@", data); 
+    NSArray *myArray = [data objectForKey:@"data"];   
+    for (NSDictionary *dict in myArray) {
+        NSArray *keys;
+        int i, count;
+        id key, value;
+        keys = [dict allKeys];
+        count = [keys count];
+        for (i = 0; i < count; i++)
+        {
+            key = [keys objectAtIndex: i];
+            value = [dict objectForKey: key];
+            NSLog (@"Key: %@ for value: %@", key, value);
+        }
+    }
+}
+
+- (void) requestFailed:(NSError*)error{
+    
 }
 
 - (void)viewDidUnload
