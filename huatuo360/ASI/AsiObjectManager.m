@@ -23,8 +23,9 @@ extern NSString* const _baseUrl;
 - (void)requestFinished:(ASIHTTPRequest *)retrequest {   
     [request  setResponseEncoding:(NSUTF8StringEncoding)];
     NSString* responseString=[retrequest responseString];
-    //NSLog(@"%@", responseString);
+    NSLog(@"%@", responseString);
     NSDictionary *jsonDict = [parser objectWithData:[responseString dataUsingEncoding:NSUTF8StringEncoding]];  
+    NSLog(@"%@", jsonDict);
     NSNumber *status = [jsonDict objectForKey:@"status"];
     NSLog(@"%@",status); 
     if ([status intValue] == 0) {
@@ -32,20 +33,34 @@ extern NSString* const _baseUrl;
         [delegate requestFailed:error];
     }
 
-    //NSArray *myArray = [jsonDic objectForKey:@"data"];
-    //for (NSDictionary *dict in myArray) {
-    //    NSArray *keys;
-    //    int i, count;
-    //    id key, value;
-    //    keys = [dict allKeys];
-    //    count = [keys count];
-    //    for (i = 0; i < count; i++)
-    //    {
-    //        key = [keys objectAtIndex: i];
-    //        value = [dict objectForKey: key];
-    //        NSLog (@"Key: %@ for value: %@", key, value);
-    //    }
-    //}
+    //NSString *test = @"{\"data\":{\"212\":\"你好\",\"213\":\"你好\"},\"total\":31}";
+    //NSString *test = @"{\"data\":[\"评论1\",\"评论2\",\"评论3\"]}";
+    //NSDictionary *jsonDic = [parser objectWithData:[test dataUsingEncoding:NSUTF8StringEncoding]];  
+    //NSLog(@"%@",jsonDic); 
+    
+    /*
+    //NSString *test = @"{\"data\":{\"212\":\"你好\",\"213\":\"你好\"},\"total\":31}";
+    NSDictionary *dict = [jsonDic objectForKey:@"data"];
+    NSLog(@"%@",dict); 
+    NSArray *keys;
+    id key, value;
+    keys = [dict allKeys];
+    for (int i = 0; i < [keys count]; i++)
+    {
+        key = [keys objectAtIndex: i];
+        value = [dict objectForKey: key];
+        NSLog (@"Key: %@ for value: %@", key, value);
+    }
+    */
+    
+    /*
+    //NSString *test = @"{\"data\":[\"评论1\",\"评论2\",\"评论3\"]}";
+    NSArray *myArray = [jsonDic objectForKey:@"data"];
+    NSLog(@"%@",myArray); 
+    for (NSString *dict in myArray) {
+        NSLog (@"dict: %@", dict);
+    }
+    */
     [delegate loadData:jsonDict];
 }
 
