@@ -28,6 +28,7 @@
 		0D708A9B1515A77A007EA936 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D708A991515A77A007EA936 /* LoginViewController.xib */; };
 		0D708A9F1515A78B007EA936 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D708A9D1515A78B007EA936 /* RegisterViewController.m */; };
 		0D708AA01515A78B007EA936 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D708A9E1515A78B007EA936 /* RegisterViewController.xib */; };
+		0D7123601520C3E6006420C2 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D71235F1520C3E5006420C2 /* Constants.m */; };
 		0D724FFF151B78BA00830C90 /* ListViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D724FFE151B78BA00830C90 /* ListViewController2.m */; };
 		0D7433E8151E5BAE009119A9 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D743391151E5BAE009119A9 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0D7433E9151E5BAE009119A9 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D743394151E5BAE009119A9 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -122,6 +123,7 @@
 		0D708A9C1515A78B007EA936 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		0D708A9D1515A78B007EA936 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		0D708A9E1515A78B007EA936 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
+		0D71235F1520C3E5006420C2 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		0D724FFD151B78BA00830C90 /* ListViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController2.h; sourceTree = "<group>"; };
 		0D724FFE151B78BA00830C90 /* ListViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController2.m; sourceTree = "<group>"; };
 		0D743390151E5BAE009119A9 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
@@ -430,6 +432,7 @@
 			children = (
 				0D6FA651151F5EE800DC57B5 /* SBJson */,
 				B77C554F151EF6CB009F0613 /* Constants.h */,
+				0D71235F1520C3E5006420C2 /* Constants.m */,
 				0D74338E151E5BAE009119A9 /* ASI */,
 				0DECF645150C9CEB00824D1C /* Views */,
 				0DECF630150C9CAB00824D1C /* Resources */,
@@ -653,6 +656,7 @@
 				0D6FA676151F5EE800DC57B5 /* SBJsonTokeniser.m in Sources */,
 				0D6FA677151F5EE800DC57B5 /* SBJsonUTF8Stream.m in Sources */,
 				0D6FA678151F5EE800DC57B5 /* SBJsonWriter.m in Sources */,
+				0D7123601520C3E6006420C2 /* Constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
