@@ -11,6 +11,7 @@
 
 
 @implementation DoctorListViewController
+@synthesize params;
 extern NSString* const _departmentList;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -18,56 +19,36 @@ extern NSString* const _departmentList;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        listData = [[NSMutableArray alloc]initWithObjects: 
-                    @"医生1",
-                    @"医生2",
-                    @"医生3",
-                    @"医生4",
-                    @"医生5",
-                    @"医生6",
-                    @"医生7",
-                    @"医生8",
-                    @"医生9",
-                    @"医生10",
-                    @"医生11", nil];
-        
         self.title = @"华佗360";
         UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
         backItem.title = @"返回";
         [self.navigationItem setBackBarButtonItem:backItem];
+        firstAppear = true;
     }
     return self;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if(firstAppear)
+    {
+        firstAppear = false;
+        [[AsiObjectManager sharedManager] setDelegate:self];
+        [[AsiObjectManager sharedManager] requestData:params];
+    }
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	NSMutableDictionary *urlParam = [NSMutableDictionary dictionaryWithCapacity:10];
-    //[urlParam setObject:_departmentList forKey:@"interfaceName"];
-    //[urlParam setObject:@"220" forKey:@"hospid"];
-    [urlParam setObject:_hospitalList forKey:@"interfaceName"];
-    [urlParam setObject:@"中山大学" forKey:@"hospital"];
-    [[AsiObjectManager sharedManager] setDelegate:self];
-    [[AsiObjectManager sharedManager] requestData:urlParam];
 }
 
 - (void)loadData:(NSDictionary *)data
 {
-    //NSLog(@"%@", data); 
-    NSArray *myArray = [data objectForKey:@"data"];   
-    for (NSDictionary *dict in myArray) {
-        NSArray *keys;
-        int i, count;
-        id key, value;
-        keys = [dict allKeys];
-        count = [keys count];
-        for (i = 0; i < count; i++)
-        {
-            key = [keys objectAtIndex: i];
-            value = [dict objectForKey: key];
-            NSLog (@"Key: %@ for value: %@", key, value);
-        }
-    }
+    total = (int)[data objectForKey:@"total"];
+    [listData addObjectsFromArray:[data objectForKey:@"data"]];
+    [self.listView reloadData]; 
 }
 
 - (void) requestFailed:(NSError*)error{
@@ -87,40 +68,10 @@ extern NSString* const _departmentList;
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return @"医院医生排名";
+    return self.tableTitle;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    [tableView deselectRowAtIndexPath:indexPath animated:NO]; 
-//    listData = [[NSArray alloc]initWithObjects: 
-//                @"医生1",
-//                @"医生2",
-//                @"医生3",
-//                @"医生4",
-//                @"医生5",
-//                @"医生6",
-//                @"医生7",
-//                @"医生8",
-//                @"医生9",
-//                @"医生10",                    
-//                @"医生11",
-//                @"医生12",
-//                @"医生13",
-//                @"医生14",
-//                @"医生5",
-//                @"医生6",
-//                @"医生7",
-//                @"医生8",
-//                @"医生9",
-//                @"医生10",
-//                @"医生   5 ", nil];
-//    //    [tableView setContentInset:UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 0.0f)];	
-////    [UIView beginAnimations:nil context:NULL];
-////	[UIView setAnimationDuration:.3];
-////	[tableView setContentInset:UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 0.0f)];
-////	[UIView commitAnimations];
-//    [tableView reloadData];
-    
 }
 
 @end

@@ -8,6 +8,7 @@
 
 #import "HospitalListViewController.h"
 #import "DoctorListViewController.h"
+#import "Constants.h"
 
 @interface HospitalListViewController ()
 
@@ -21,7 +22,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization        
-        listData = [NSMutableArray arrayWithCapacity:0];
         
         self.title = @"华佗360";
         UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
@@ -61,14 +61,7 @@
     NSLog(@"%@", data);
     total = (int)[data objectForKey:@"total"];
     [listData addObjectsFromArray:[data objectForKey:@"data"]];
-    [self.listView reloadData];
-    
-////    NSDictionary* a = 
-//    for (NSDictionary* item in l) 
-//    {
-//        [listData addObject:@""];
-//    }
-    
+    [self.listView reloadData];    
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -77,8 +70,14 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    DoctorListViewController* doctorListVC = [[DoctorListViewController alloc] initWithNibName:@"ListView" bundle:nil];
-    [self.navigationController pushViewController:doctorListVC animated:true];
+    NSMutableDictionary *itemData = [listData objectAtIndex:[indexPath row]];
+    NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
+    [tmp setObject:_doctorList forKey:@"interfaceName"];
+    [tmp setObject:@"1" forKey:@"page"];
+    [tmp setObject:[itemData objectForKey:@"id"] forKey:@"hospid"];
+    DoctorListViewController* dlvc = [[DoctorListViewController alloc] initWithNibName:@"ListView" bundle:nil];
+    dlvc.params = tmp;
+    [self.navigationController pushViewController:dlvc animated:true];
     [tableView deselectRowAtIndexPath:indexPath animated:NO]; 
 }
 

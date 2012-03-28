@@ -11,6 +11,7 @@
 @interface ListViewController1 : UIViewController<UITableViewDelegate, UITableViewDataSource>
 {
     NSMutableArray* listData;
+    int total;
 }
 //@property (nonatomic, retain)IBOutlet UISearchBar* searchBar;
 @property (nonatomic, strong)IBOutlet UITableView* listView;

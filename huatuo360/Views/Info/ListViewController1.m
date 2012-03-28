@@ -19,6 +19,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        listData = [NSMutableArray arrayWithCapacity:0];
     }
     return self;
 }

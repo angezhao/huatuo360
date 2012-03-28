@@ -41,12 +41,14 @@
 //    self.viewControllers = [[NSArray alloc]initWithObjects:hospitalListVC, nil];
     if(nil == infoViewToShow)
     {
-        
+        if(self.viewControllers == nil || [self.viewControllers count] == 0)
+        {
+        }
     }
     else 
     {
-        if(self.viewControllers == nil || [self.viewControllers count] == 0)
-            self.viewControllers = [[NSArray alloc]initWithObjects:infoViewToShow, nil];
+        self.viewControllers = [[NSArray alloc]initWithObjects:infoViewToShow, nil];
+        infoViewToShow = nil;
     }
     
 }
