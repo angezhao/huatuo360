@@ -19,7 +19,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        listData = [NSMutableArray arrayWithCapacity:0];
+        listData = nil;//[NSMutableArray arrayWithCapacity:0];
         page = 1;
     }
     return self;
@@ -44,11 +44,16 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if(nil == listData)
+        return 0;
+    
     int showCount = [listData count];
-    if(showCount < total)
+    if(showCount < total || total == 0)
         return showCount + 1;
     else 
         return showCount;
+    
+//    return [listData count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -69,7 +74,10 @@
 //        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 //        btn.backgroundColor = [UIColor clearColor];
 //        [cell.contentView addSubview:btn];
-        cell.textLabel.text = @"显示下10条";
+        if (total == 0) 
+            cell.textLabel.text = @"没有数据";
+        else
+            cell.textLabel.text = @"显示下10条";
         cell.textLabel.textAlignment = UITextAlignmentCenter;
         return cell;
     }
@@ -106,6 +114,14 @@
     introLabel.text = [self getIntroByIndex:row];    
     return cell;
     
+}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+//    int row = [indexPath row];
+    if(total == 0)
+        return nil;
+    return indexPath;
 }
 
 - (NSString*)getTitleByIndex:(int)index

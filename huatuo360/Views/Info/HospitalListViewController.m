@@ -59,7 +59,10 @@
 - (void)loadData:(NSDictionary *)data
 {
     NSLog(@"%@", data);
-    total = (int)[data objectForKey:@"total"];
+    total = [[data objectForKey:@"total"]integerValue];
+    NSLog(@"%i", total);
+    if(nil == listData)
+        listData = [NSMutableArray arrayWithCapacity:0];
     [listData addObjectsFromArray:[data objectForKey:@"data"]];
     [self.listView reloadData];    
 }
@@ -80,8 +83,10 @@
     [tmp setObject:_doctorList forKey:@"interfaceName"];
     [tmp setObject:@"1" forKey:@"page"];
     [tmp setObject:[itemData objectForKey:@"id"] forKey:@"hospid"];
+    [tmp setObject:@"221" forKey:@"deptid"];
     DoctorListViewController* dlvc = [[DoctorListViewController alloc] initWithNibName:@"ListView" bundle:nil];
     dlvc.params = tmp;
+    dlvc.tableTitle = [[NSString alloc]initWithFormat:@"%@的医生", [itemData objectForKey:@"name"]];
     [self.navigationController pushViewController:dlvc animated:true];
     [tableView deselectRowAtIndexPath:indexPath animated:NO]; 
 }
