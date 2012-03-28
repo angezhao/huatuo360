@@ -80,6 +80,7 @@
 		0DECF668150C9F2300824D1C /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DECF664150C9F2300824D1C /* user.png */; };
 		0DECF669150C9F2300824D1C /* user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DECF665150C9F2300824D1C /* user@2x.png */; };
 		B77C554E151EF660009F0613 /* AsiObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B77C554D151EF660009F0613 /* AsiObjectManager.m */; };
+		B783B44B152373750089AAFD /* DepartmentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B783B44A152373750089AAFD /* DepartmentListViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -214,6 +215,8 @@
 		B77C554C151EF660009F0613 /* AsiObjectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsiObjectManager.h; sourceTree = "<group>"; };
 		B77C554D151EF660009F0613 /* AsiObjectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsiObjectManager.m; sourceTree = "<group>"; };
 		B77C554F151EF6CB009F0613 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		B783B449152373740089AAFD /* DepartmentListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartmentListViewController.h; sourceTree = "<group>"; };
+		B783B44A152373750089AAFD /* DepartmentListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartmentListViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -499,6 +502,8 @@
 				0D6FC3FD151A3F2300C8E4D5 /* HospitalListViewController.h */,
 				0D6FC3FE151A3F2300C8E4D5 /* HospitalListViewController.m */,
 				0D6FC400151A4CDF00C8E4D5 /* DoctorListViewController.h */,
+				B783B449152373740089AAFD /* DepartmentListViewController.h */,
+				B783B44A152373750089AAFD /* DepartmentListViewController.m */,
 				0D6FC401151A4CDF00C8E4D5 /* DoctorListViewController.m */,
 				0D6FC403151A56A300C8E4D5 /* ListViewController1.h */,
 				0D6FC404151A56A300C8E4D5 /* ListViewController1.m */,
@@ -657,6 +662,7 @@
 				0D6FA677151F5EE800DC57B5 /* SBJsonUTF8Stream.m in Sources */,
 				0D6FA678151F5EE800DC57B5 /* SBJsonWriter.m in Sources */,
 				0D7123601520C3E6006420C2 /* Constants.m in Sources */,
+				B783B44B152373750089AAFD /* DepartmentListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

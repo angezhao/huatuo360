@@ -11,6 +11,8 @@
 @interface ListViewController2 : UIViewController<UITableViewDelegate, UITableViewDataSource>
 {
     NSArray* listData;
+    int total;
+    int page;
 }
 
 @property (nonatomic, strong)IBOutlet UITableView* listView;

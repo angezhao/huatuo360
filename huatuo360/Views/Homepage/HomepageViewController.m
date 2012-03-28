@@ -134,8 +134,21 @@ const static int DOCTOR = 2;
     switch ([indexPath row]) 
     {
         case 0:
+            {
+                NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
+                [params setObject:_hospitalList forKey:@"interfaceName"];
+                [params setObject:@"1" forKey:@"page"];
+                HospitalListViewController* hlvc = [[HospitalListViewController alloc]initWithNibName:@"ListView" bundle:nil];
+                hlvc.params = params;
+                hlvc.tableTitle = @"医院排行";
+                infoViewToShow = hlvc;
+                [self.tabBarController setSelectedIndex:1];
+            }  
             break;
-            
+        case 3:
+        {
+        }  
+            break;
         default:
             break;
     }
