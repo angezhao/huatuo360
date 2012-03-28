@@ -74,4 +74,15 @@ extern NSString* const _departmentList;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
+- (NSString*)getTitleByIndex:(int)index
+{
+    return @"医生名字";
+}
+
+- (NSString*)getIntroByIndex:(int)index
+{
+    return @"医生介绍";
+}
+
+
 @end
