@@ -18,7 +18,7 @@ extern NSString* const _departmentList;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        listData = [[NSArray alloc]initWithObjects: 
+        listData = [[NSMutableArray alloc]initWithObjects: 
                     @"医生1",
                     @"医生2",
                     @"医生3",

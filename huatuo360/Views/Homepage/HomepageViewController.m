@@ -7,6 +7,8 @@
 //
 
 #import "HomepageViewController.h"
+#import "HospitalListViewController.h"
+#import "Constants.h"
 
 @implementation HomepageViewController
 //@synthesize searchBar;
@@ -14,7 +16,6 @@
 const static int ILLNESS = 0;
 const static int HOSPITAL = 1;
 const static int DOCTOR = 2;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -61,9 +62,28 @@ const static int DOCTOR = 2;
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    [self.tabBarController setSelectedIndex:3];
+//    [self.tabBarController setSelectedIndex:3];
 	[searchBar setShowsCancelButton:NO animated:true];
     [searchBar resignFirstResponder];
+    
+    switch (searchType) {
+        case HOSPITAL:
+            {
+                NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
+                [params setObject:_hospitalList forKey:@"interfaceName"];
+                [params setObject:@"1" forKey:@"page"];
+                [params setObject:searchBar.text forKey:@"hospital"];
+                HospitalListViewController* hlvc = [[HospitalListViewController alloc]initWithNibName:@"ListView" bundle:nil];
+                hlvc.params = params;
+                hlvc.tableTitle = [[NSString alloc]initWithFormat:@"搜索\"%@\"的医院结果", searchBar.text];                infoViewToShow = hlvc;
+                [self.tabBarController setSelectedIndex:1];
+            }
+            
+            break;
+            
+        default:
+            break;
+    }
 }
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
@@ -111,6 +131,14 @@ const static int DOCTOR = 2;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 //    [searchBar resignFirstResponder];
+    switch ([indexPath row]) 
+    {
+        case 0:
+            break;
+            
+        default:
+            break;
+    }
     [self.tabBarController setSelectedIndex:1];
 }
 @end

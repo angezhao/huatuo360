@@ -13,5 +13,8 @@
     NSArray* listData;
 }
 
+@property (nonatomic, strong)IBOutlet UITableView* listView;
+@property (nonatomic, strong)NSString* tableTitle;
+- (NSString*)getTitleByIndex:(int)index;
 
 @end

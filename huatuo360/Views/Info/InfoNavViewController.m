@@ -7,8 +7,7 @@
 //
 
 #import "InfoNavViewController.h"
-#import "HospitalListViewController.h"
-#import "DoctorListViewController.h"
+#import "Constants.h"
 @interface InfoNavViewController ()
 
 @end
@@ -37,9 +36,18 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    HospitalListViewController* hospitalListVC = [[HospitalListViewController alloc] initWithNibName:@"ListView" bundle:nil];
-    //    DoctorListViewController* doctorListVC = [[DoctorListViewController alloc] initWithNibName:@"ListView" bundle:nil];
-    self.viewControllers = [[NSArray alloc]initWithObjects:hospitalListVC, nil];
+//    HospitalListViewController* hospitalListVC = [[HospitalListViewController alloc] initWithNibName:@"ListView" bundle:nil];
+//    //    DoctorListViewController* doctorListVC = [[DoctorListViewController alloc] initWithNibName:@"ListView" bundle:nil];
+//    self.viewControllers = [[NSArray alloc]initWithObjects:hospitalListVC, nil];
+    if(nil == infoViewToShow)
+    {
+        
+    }
+    else 
+    {
+        if(self.viewControllers == nil || [self.viewControllers count] == 0)
+            self.viewControllers = [[NSArray alloc]initWithObjects:infoViewToShow, nil];
+    }
     
 }
 

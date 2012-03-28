@@ -13,6 +13,8 @@
 @end
 
 @implementation ListViewController1
+@synthesize listView;
+@synthesize tableTitle;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -50,18 +52,18 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
                              ListTableIdentifier];
     NSUInteger row = [indexPath row];
-    UILabel *nameLabel;
+    UILabel *titleLabel;
     UILabel *introLabel;
     if (cell == nil)
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier: ListTableIdentifier];
         
-        nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 2, 270, 25)]; 
-        nameLabel.tag = 99;   
-        nameLabel.font = [UIFont boldSystemFontOfSize:18];
-        nameLabel.backgroundColor = [UIColor clearColor];
-        [cell.contentView addSubview:nameLabel];
+        titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 2, 270, 25)]; 
+        titleLabel.tag = 99;   
+        titleLabel.font = [UIFont boldSystemFontOfSize:18];
+        titleLabel.backgroundColor = [UIColor clearColor];
+        [cell.contentView addSubview:titleLabel];
         
         introLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 20, 270, 25)];
         introLabel.tag = 100;
@@ -71,15 +73,29 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     else {
-        nameLabel = (UILabel*)[cell viewWithTag:99];
+        titleLabel = (UILabel*)[cell viewWithTag:99];
         introLabel = (UILabel*)[cell viewWithTag:100];
     }
-    
-    nameLabel.text = [listData objectAtIndex:row];
-    introLabel.text = @"很长的介绍很长的介绍很长的介绍很长的介绍很长的介绍很长的介绍";
-    
+    titleLabel.text = [self getTitleByIndex:row];
+    introLabel.text = [self getIntroByIndex:row];    
     return cell;
     
+}
+
+- (NSString*)getTitleByIndex:(int)index
+{
+    @throw [NSException exceptionWithName:@"panic"
+                                   reason:@"this method must be override"
+                                 userInfo:nil];
+    return @"";
+}
+
+- (NSString*)getIntroByIndex:(int)index
+{
+    @throw [NSException exceptionWithName:@"panic"
+                                   reason:@"this method must be override"
+                                 userInfo:nil];
+    return @"";
 }
 
 //- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

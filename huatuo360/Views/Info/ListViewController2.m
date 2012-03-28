@@ -13,7 +13,8 @@
 @end
 
 @implementation ListViewController2
-
+@synthesize listView;
+@synthesize tableTitle;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -58,12 +59,20 @@
     }
     
     NSUInteger row = [indexPath row];
-    cell.textLabel.text = [listData objectAtIndex:row];
+    cell.textLabel.text = [self getTitleByIndex:row];
     cell.textLabel.font = [UIFont boldSystemFontOfSize:16];
     cell.textLabel.textAlignment = UITextAlignmentCenter;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;    
+}
+
+- (NSString*)getTitleByIndex:(int)index
+{
+    @throw [NSException exceptionWithName:@"panic"
+                                   reason:@"this method must be override"
+                                 userInfo:nil];
+    return @"";
 }
 
 @end
