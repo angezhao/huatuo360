@@ -1,6 +1,6 @@
 #import "AsiObjectManager.h"
 #import "SBJson.h"
-//#import "Constants.h"
+#import "Constants.h"
 
 static AsiObjectManager* sharedManager = nil;
 static SBJsonParser *parser = nil;
@@ -13,7 +13,21 @@ static ASIHTTPRequest* request = nil;
 extern NSString* const _baseUrl;
 
 - (void)requestData:(NSMutableDictionary*)urlParam { 
-    NSString *url = [NSString stringWithFormat:@"%@%@", _baseUrl,[urlParam objectForKey:(@"interfaceName")]];  
+    NSString *url = nil;
+    NSString *param = [NSString stringWithFormat:@"%@%i",@"perpage=",perpage];
+    NSLog(@"param=%@",param); 
+    NSLog(@"urlParam=%@",urlParam); 
+    for (NSString *key in urlParam)
+    {
+        if([key isEqual:@"interfaceName"])
+            url = [NSString stringWithFormat:@"%@%@", _baseUrl,[urlParam objectForKey: key]];
+        else
+            param = [NSString stringWithFormat:@"%@&%@=%@", param, key, [urlParam objectForKey: key]]; 
+    }
+    url = [NSString stringWithFormat:@"%@%@", url, param]; 
+    NSLog(@"url=%@",url); 
+    url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];  
+    NSLog(@"url=%@",url); 
     request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
     [request setDelegate:self];
     [request startAsynchronous]; 

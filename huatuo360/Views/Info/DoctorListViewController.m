@@ -43,7 +43,10 @@ extern NSString* const _departmentList;
 {
     [super viewDidLoad];
 	NSMutableDictionary *urlParam = [NSMutableDictionary dictionaryWithCapacity:10];
-    [urlParam setObject:_departmentList forKey:@"interfaceName"];
+    //[urlParam setObject:_departmentList forKey:@"interfaceName"];
+    //[urlParam setObject:@"220" forKey:@"hospid"];
+    [urlParam setObject:_hospitalList forKey:@"interfaceName"];
+    [urlParam setObject:@"中山大学" forKey:@"hospital"];
     [[AsiObjectManager sharedManager] setDelegate:self];
     [[AsiObjectManager sharedManager] requestData:urlParam];
 }
