@@ -70,7 +70,12 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSMutableDictionary *itemData = [listData objectAtIndex:[indexPath row]];
+    int row = [indexPath row];
+    if (row == [listData count]) {
+        [self nextPage];
+        return;
+    }
+    NSMutableDictionary *itemData = [listData objectAtIndex:row];
     NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
     [tmp setObject:_doctorList forKey:@"interfaceName"];
     [tmp setObject:@"1" forKey:@"page"];
@@ -94,4 +99,12 @@
 //    return NSstring all    [itemData objectForKey:@"level"] + @" " + [itemData objectForKey:@"addr"];
 }
 
+- (void)nextPage
+{
+    NSString *pageText = [[NSString alloc]initWithFormat:@"%i", ++page];
+    [params setObject:pageText forKey:@"page"];
+    
+    [[AsiObjectManager sharedManager] setDelegate:self];
+    [[AsiObjectManager sharedManager] requestData:params];
+}
 @end

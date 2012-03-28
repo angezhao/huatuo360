@@ -20,6 +20,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         listData = [NSMutableArray arrayWithCapacity:0];
+        page = 1;
     }
     return self;
 }
@@ -43,18 +44,42 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [listData count];
+    int showCount = [listData count];
+    if(showCount < total)
+        return showCount + 1;
+    else 
+        return showCount;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSUInteger row = [indexPath row];
+    //下一页按钮
+    if (row == [listData count]) 
+    {
+        static NSString *NextPageIdentifier = @"NextPageIdentifier";    
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NextPageIdentifier];
+        if (cell == nil)
+        {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                          reuseIdentifier: NextPageIdentifier];
+        }
+//        UIButton* btn = [[UIButton alloc]initWithFrame:CGRectMake(10, 5, 270, 25)];
+//        [btn setTitle:@"显示下10条" forState:UIControlStateNormal];
+//        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//        btn.backgroundColor = [UIColor clearColor];
+//        [cell.contentView addSubview:btn];
+        cell.textLabel.text = @"显示下10条";
+        cell.textLabel.textAlignment = UITextAlignmentCenter;
+        return cell;
+    }
+    
+    UILabel *titleLabel;
+    UILabel *introLabel;
     static NSString *ListTableIdentifier = @"ListTableIdentifier";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
                              ListTableIdentifier];
-    NSUInteger row = [indexPath row];
-    UILabel *titleLabel;
-    UILabel *introLabel;
     if (cell == nil)
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault

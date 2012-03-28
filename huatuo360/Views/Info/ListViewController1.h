@@ -12,6 +12,7 @@
 {
     NSMutableArray* listData;
     int total;
+    int page;
 }
 //@property (nonatomic, retain)IBOutlet UISearchBar* searchBar;
 @property (nonatomic, strong)IBOutlet UITableView* listView;
