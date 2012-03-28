@@ -46,7 +46,9 @@ extern NSString* const _departmentList;
 
 - (void)loadData:(NSDictionary *)data
 {
-    total = (int)[data objectForKey:@"total"];
+    total = [[data objectForKey:@"total"]integerValue];
+    if(nil == listData)
+        listData = [[NSMutableArray alloc]initWithCapacity:0];
     [listData addObjectsFromArray:[data objectForKey:@"data"]];
     [self.listView reloadData]; 
 }
@@ -71,18 +73,32 @@ extern NSString* const _departmentList;
     return self.tableTitle;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{    
+    int row = [indexPath row];
+    if (row == [listData count]) {
+        [self nextPage];
+        return;
+    }
 }
 
 - (NSString*)getTitleByIndex:(int)index
 {
-    return @"医生名字";
+    return [[listData objectAtIndex:index] objectForKey:@"name"];
 }
 
 - (NSString*)getIntroByIndex:(int)index
 {
-    return @"医生介绍";
+    return [[listData objectAtIndex:index] objectForKey:@"info"];
 }
 
+- (void)nextPage
+{
+    NSString *pageText = [[NSString alloc]initWithFormat:@"%i", ++page];
+    [params setObject:pageText forKey:@"page"];
+    
+    [[AsiObjectManager sharedManager] setDelegate:self];
+    [[AsiObjectManager sharedManager] requestData:params];
+}
 
 @end
