@@ -9,7 +9,6 @@
 #import "DoctorListViewController.h"
 #import "Constants.h"
 
-
 @implementation DoctorListViewController
 @synthesize params;
 extern NSString* const _departmentList;

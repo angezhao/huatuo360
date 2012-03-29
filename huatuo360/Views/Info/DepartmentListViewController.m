@@ -10,10 +10,6 @@
 #import "HospitalListViewController.h"
 #import "Constants.h"
 
-@interface DepartmentListViewController ()
-
-@end
-
 @implementation DepartmentListViewController
 @synthesize params;
 
@@ -84,6 +80,7 @@
         [self nextPage];
         return;
     }
+    //要判断入口事医院排行还是医生排行来决定请求那个接口
     NSMutableDictionary *itemData = [listData objectAtIndex:row];
     NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
     [tmp setObject:_hospitalList forKey:@"interfaceName"];
