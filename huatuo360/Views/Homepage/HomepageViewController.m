@@ -8,6 +8,7 @@
 
 #import "HomepageViewController.h"
 #import "HospitalListViewController.h"
+#import "DepartmentListViewController.h"
 #import "Constants.h"
 
 @implementation HomepageViewController
@@ -145,9 +146,17 @@ const static int DOCTOR = 2;
                 [self.tabBarController setSelectedIndex:1];
             }  
             break;
-        case 3:
-        {
-        }  
+        case 1:
+            {
+                NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
+                [params setObject:_departmentList forKey:@"interfaceName"];
+                [params setObject:@"1" forKey:@"page"];
+                DepartmentListViewController* dlvc = [[DepartmentListViewController alloc]initWithNibName:@"ListView" bundle:nil];
+                dlvc.params = params;
+                dlvc.tableTitle = @"科室排行";
+                infoViewToShow = dlvc;
+                [self.tabBarController setSelectedIndex:1];
+            }  
             break;
         default:
             break;

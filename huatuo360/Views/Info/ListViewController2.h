@@ -10,7 +10,7 @@
 
 @interface ListViewController2 : UIViewController<UITableViewDelegate, UITableViewDataSource>
 {
-    NSArray* listData;
+    NSMutableArray* listData;
     int total;
     int page;
 }
