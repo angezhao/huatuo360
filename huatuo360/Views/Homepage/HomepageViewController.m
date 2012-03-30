@@ -10,12 +10,13 @@
 #import "HospitalListViewController.h"
 #import "DepartmentListViewController.h"
 #import "DiseaseListViewController.h"
+#import "DoctorListViewController.h"
 #import "Constants.h"
 
 @implementation HomepageViewController
 //@synthesize searchBar;
 //@synthesize searchBarHolders;
-const static int ILLNESS = 0;
+const static int DISEASE = 0;
 const static int HOSPITAL = 1;
 const static int DOCTOR = 2;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -69,6 +70,20 @@ const static int DOCTOR = 2;
     [searchBar resignFirstResponder];
     
     switch (searchType) {
+        case DISEASE:
+            {
+                NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
+                [params setObject:_diseaseList forKey:@"interfaceName"];
+                [params setObject:@"1" forKey:@"page"];
+                [params setObject:searchBar.text forKey:@"disease"];
+                DiseaseListViewController* dlvc = [[DiseaseListViewController alloc]initWithNibName:@"ListView" bundle:nil];
+                dlvc.params = params;
+                dlvc.tableTitle = [[NSString alloc]initWithFormat:@"搜索\"%@\"的导医结果", searchBar.text];                
+                infoViewToShow = dlvc;
+                [self.tabBarController setSelectedIndex:1];
+            }
+            
+            break;
         case HOSPITAL:
             {
                 NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
@@ -77,12 +92,26 @@ const static int DOCTOR = 2;
                 [params setObject:searchBar.text forKey:@"hospital"];
                 HospitalListViewController* hlvc = [[HospitalListViewController alloc]initWithNibName:@"ListView" bundle:nil];
                 hlvc.params = params;
-                hlvc.tableTitle = [[NSString alloc]initWithFormat:@"搜索\"%@\"的医院结果", searchBar.text];                infoViewToShow = hlvc;
+                hlvc.tableTitle = [[NSString alloc]initWithFormat:@"搜索\"%@\"的医院结果", searchBar.text];                
+                infoViewToShow = hlvc;
                 [self.tabBarController setSelectedIndex:1];
             }
             
             break;
+        case DOCTOR:
+            {
+                NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
+                [params setObject:_doctorList forKey:@"interfaceName"];
+                [params setObject:@"1" forKey:@"page"];
+                [params setObject:searchBar.text forKey:@"doctor"];
+                DoctorListViewController* dlvc = [[DoctorListViewController alloc]initWithNibName:@"ListView" bundle:nil];
+                dlvc.params = params;
+                dlvc.tableTitle = [[NSString alloc]initWithFormat:@"搜索\"%@\"的医生结果", searchBar.text];                
+                infoViewToShow = dlvc;
+                [self.tabBarController setSelectedIndex:1];
+            }
             
+            break;     
         default:
             break;
     }

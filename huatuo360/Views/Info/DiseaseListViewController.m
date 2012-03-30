@@ -95,7 +95,9 @@ extern NSString* const _departmentList;
 
 - (NSString*)getTitleByIndex:(int)index
 {
-    return [[listData objectAtIndex:index] objectForKey:@"name"];
+    NSDictionary* itemData = [listData objectAtIndex:index];
+    NSString *info = [[NSString alloc]initWithFormat:@"%@（%@）", [itemData objectForKey:@"name"],[itemData objectForKey:@"department"]];
+    return info;
 }
 
 - (void)nextPage
