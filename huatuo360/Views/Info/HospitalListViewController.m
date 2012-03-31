@@ -83,9 +83,14 @@
     [tmp setObject:_doctorList forKey:@"interfaceName"];
     [tmp setObject:@"1" forKey:@"page"];
     [tmp setObject:[itemData objectForKey:@"id"] forKey:@"hospid"];
+    if([params objectForKey:@"deptid"])
+        [tmp setObject:[params objectForKey:@"deptid"] forKey:@"deptid"];
     DoctorListViewController* dlvc = [[DoctorListViewController alloc] initWithNibName:@"ListView" bundle:nil];
     dlvc.params = tmp;
-    dlvc.tableTitle = [[NSString alloc]initWithFormat:@"%@的医生", [itemData objectForKey:@"name"]];
+    if([params objectForKey:@"_name"])
+        dlvc.tableTitle = [[NSString alloc]initWithFormat:@"%@%@的医生", [itemData objectForKey:@"name"], [params objectForKey:@"_name"]];
+    else
+        dlvc.tableTitle = [[NSString alloc]initWithFormat:@"%@的医生", [itemData objectForKey:@"name"]];
     [self.navigationController pushViewController:dlvc animated:true];
     [tableView deselectRowAtIndexPath:indexPath animated:NO]; 
 }

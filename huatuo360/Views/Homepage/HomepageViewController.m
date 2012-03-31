@@ -181,6 +181,7 @@ const static int DOCTOR = 2;
                 NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
                 [params setObject:_departmentList forKey:@"interfaceName"];
                 [params setObject:@"1" forKey:@"page"];
+                [params setObject:@"1" forKey:@"_hospital"];
                 DepartmentListViewController* dlvc = [[DepartmentListViewController alloc]initWithNibName:@"ListView" bundle:nil];
                 dlvc.params = params;
                 dlvc.tableTitle = @"科室排行";
@@ -193,6 +194,7 @@ const static int DOCTOR = 2;
                 NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
                 [params setObject:_departmentList forKey:@"interfaceName"];
                 [params setObject:@"1" forKey:@"page"];
+                [params setObject:@"1" forKey:@"_doctor"];
                 DepartmentListViewController* dlvc = [[DepartmentListViewController alloc]initWithNibName:@"ListView" bundle:nil];
                 dlvc.params = params;
                 dlvc.tableTitle = @"科室排行";
@@ -205,6 +207,7 @@ const static int DOCTOR = 2;
                 NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
                 [params setObject:_diseaseList forKey:@"interfaceName"];
                 [params setObject:@"1" forKey:@"page"];
+                [params setObject:@"1" forKey:@"_hospital"];
                 DiseaseListViewController* dlvc = [[DiseaseListViewController alloc]initWithNibName:@"ListView" bundle:nil];
                 dlvc.params = params;
                 dlvc.tableTitle = @"常见疾病";
@@ -213,16 +216,17 @@ const static int DOCTOR = 2;
             }  
             break;
         case 4:
-        {
-            NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
-            [params setObject:_diseaseList forKey:@"interfaceName"];
-            [params setObject:@"1" forKey:@"page"];
-            DiseaseListViewController* dlvc = [[DiseaseListViewController alloc]initWithNibName:@"ListView" bundle:nil];
-            dlvc.params = params;
-            dlvc.tableTitle = @"常见疾病";
-            infoViewToShow = dlvc;
-            [self.tabBarController setSelectedIndex:1];
-        }  
+            {
+                NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
+                [params setObject:_diseaseList forKey:@"interfaceName"];
+                [params setObject:@"1" forKey:@"page"];
+                [params setObject:@"1" forKey:@"_doctor"];
+                DiseaseListViewController* dlvc = [[DiseaseListViewController alloc]initWithNibName:@"ListView" bundle:nil];
+                dlvc.params = params;
+                dlvc.tableTitle = @"常见疾病";
+                infoViewToShow = dlvc;
+                [self.tabBarController setSelectedIndex:1];
+            }  
             break;
         default:
             break;

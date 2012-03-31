@@ -10,15 +10,16 @@ static NSError *error;
 @synthesize delegate;
 static ASIHTTPRequest* request = nil; 
 
-extern NSString* const _baseUrl;
-
 - (void)requestData:(NSMutableDictionary*)urlParam { 
     NSString *url = nil;
     NSString *param = [NSString stringWithFormat:@"%@%i",@"perpage=",perpage];
+    //还要处理地区
     NSLog(@"param=%@",param); 
     NSLog(@"urlParam=%@",urlParam); 
     for (NSString *key in urlParam)
     {
+        if([key hasPrefix:@"_"])//过滤附加参数
+            continue;
         if([key isEqual:@"interfaceName"])
             url = [NSString stringWithFormat:@"%@%@", _baseUrl,[urlParam objectForKey: key]];
         else

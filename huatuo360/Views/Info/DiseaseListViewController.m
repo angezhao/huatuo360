@@ -8,11 +8,12 @@
 
 #import "DiseaseListViewController.h"
 #import "HospitalListViewController.h"
+#import "DoctorListViewController.h"
+#import "FixListViewController.h"
 #import "Constants.h"
 
 @implementation DiseaseListViewController
 @synthesize params;
-extern NSString* const _departmentList;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -80,16 +81,31 @@ extern NSString* const _departmentList;
         [self nextPage];
         return;
     }
-    //要判断入口事医院排行还是医生排行来决定请求那个接口
+    //要判断入口是医院排行还是医生排行来决定请求那个接口－出口3个：医生列表，医院列表，固定页
     NSMutableDictionary *itemData = [listData objectAtIndex:row];
     NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
-    [tmp setObject:_hospitalList forKey:@"interfaceName"];
-    [tmp setObject:@"1" forKey:@"page"];
     [tmp setObject:[itemData objectForKey:@"id"] forKey:@"deptid"];
-    HospitalListViewController* dlvc = [[HospitalListViewController alloc] initWithNibName:@"ListView" bundle:nil];
-    dlvc.params = tmp;
-    dlvc.tableTitle = [[NSString alloc]initWithFormat:@"%@的医院排行", [itemData objectForKey:@"name"]];
-    [self.navigationController pushViewController:dlvc animated:true];
+    if([params objectForKey:@"_hospital"]){
+        [tmp setObject:_hospitalList forKey:@"interfaceName"];
+        [tmp setObject:@"1" forKey:@"page"];
+        HospitalListViewController* hlvc = [[HospitalListViewController alloc] initWithNibName:@"ListView" bundle:nil];
+        hlvc.params = tmp;
+        hlvc.tableTitle = @"常见疾病";
+        [self.navigationController pushViewController:hlvc animated:true];
+    }else if([params objectForKey:@"_doctor"]){
+        [tmp setObject:_doctorList forKey:@"interfaceName"];
+        [tmp setObject:@"1" forKey:@"page"];
+        DoctorListViewController* dlvc = [[DoctorListViewController alloc] initWithNibName:@"ListView" bundle:nil];
+        dlvc.params = tmp;
+        dlvc.tableTitle = @"常见疾病";
+        [self.navigationController pushViewController:dlvc animated:true];
+    }else {
+        //[tmp setObject:[itemData objectForKey:@"name"] forKey:@"name"];
+        FixListViewController* flvc = [[FixListViewController alloc] initWithNibName:@"ListView" bundle:nil];
+        flvc.params = tmp;
+        flvc.tableTitle = [[NSString alloc]initWithFormat:@"%@", [itemData objectForKey:@"name"]];
+        [self.navigationController pushViewController:flvc animated:true];
+    }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 

@@ -80,6 +80,7 @@
 		0DECF668150C9F2300824D1C /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DECF664150C9F2300824D1C /* user.png */; };
 		0DECF669150C9F2300824D1C /* user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DECF665150C9F2300824D1C /* user@2x.png */; };
 		B77C554E151EF660009F0613 /* AsiObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B77C554D151EF660009F0613 /* AsiObjectManager.m */; };
+		B77CD72615260DFA00D238CD /* FixListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B77CD72515260DFA00D238CD /* FixListViewController.m */; };
 		B783B44B152373750089AAFD /* DepartmentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B783B44A152373750089AAFD /* DepartmentListViewController.m */; };
 		B783B459152375A40089AAFD /* CommentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B783B458152375A40089AAFD /* CommentListViewController.m */; };
 		B783B45C152375CE0089AAFD /* DiseaseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B783B45B152375CE0089AAFD /* DiseaseListViewController.m */; };
@@ -217,6 +218,8 @@
 		B77C554C151EF660009F0613 /* AsiObjectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsiObjectManager.h; sourceTree = "<group>"; };
 		B77C554D151EF660009F0613 /* AsiObjectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsiObjectManager.m; sourceTree = "<group>"; };
 		B77C554F151EF6CB009F0613 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		B77CD72415260DFA00D238CD /* FixListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FixListViewController.h; sourceTree = "<group>"; };
+		B77CD72515260DFA00D238CD /* FixListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FixListViewController.m; sourceTree = "<group>"; };
 		B783B449152373740089AAFD /* DepartmentListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartmentListViewController.h; sourceTree = "<group>"; };
 		B783B44A152373750089AAFD /* DepartmentListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartmentListViewController.m; sourceTree = "<group>"; };
 		B783B457152375A30089AAFD /* CommentListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentListViewController.h; sourceTree = "<group>"; };
@@ -512,6 +515,8 @@
 				B783B457152375A30089AAFD /* CommentListViewController.h */,
 				B783B45A152375CE0089AAFD /* DiseaseListViewController.h */,
 				B783B45B152375CE0089AAFD /* DiseaseListViewController.m */,
+				B77CD72415260DFA00D238CD /* FixListViewController.h */,
+				B77CD72515260DFA00D238CD /* FixListViewController.m */,
 				B783B458152375A40089AAFD /* CommentListViewController.m */,
 				B783B44A152373750089AAFD /* DepartmentListViewController.m */,
 				0D6FC401151A4CDF00C8E4D5 /* DoctorListViewController.m */,
@@ -675,6 +680,7 @@
 				B783B44B152373750089AAFD /* DepartmentListViewController.m in Sources */,
 				B783B459152375A40089AAFD /* CommentListViewController.m in Sources */,
 				B783B45C152375CE0089AAFD /* DiseaseListViewController.m in Sources */,
+				B77CD72615260DFA00D238CD /* FixListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

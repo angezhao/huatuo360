@@ -11,7 +11,6 @@
 
 @implementation DoctorListViewController
 @synthesize params;
-extern NSString* const _departmentList;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -79,6 +78,17 @@ extern NSString* const _departmentList;
         [self nextPage];
         return;
     }
+    
+    NSMutableDictionary *itemData = [listData objectAtIndex:row];
+    NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
+    [tmp setObject:_doctor forKey:@"interfaceName"];
+    [tmp setObject:@"1" forKey:@"page"];
+    [tmp setObject:[itemData objectForKey:@"id"] forKey:@"id"];
+    //DoctorListViewController* dlvc = [[DoctorListViewController alloc] initWithNibName:@"ListView" bundle:nil];
+    //dlvc.params = tmp;
+    //dlvc.tableTitle = [[NSString alloc]initWithFormat:@"%@医生", [itemData objectForKey:@"name"]];
+    //[self.navigationController pushViewController:dlvc animated:true];
+    //[tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 - (NSString*)getTitleByIndex:(int)index
