@@ -14,10 +14,6 @@
 @end
 
 @implementation LoginViewController
-@synthesize textFieldBeingEdited;
-@synthesize nameTextfield;
-@synthesize pwTextfield;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -110,7 +106,7 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    self.textFieldBeingEdited = textField;
+    textFieldBeingEdited = textField;
 }
 
 //- (void)textFieldDidEndEditing:(UITextField *)textField

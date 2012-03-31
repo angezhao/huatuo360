@@ -15,9 +15,9 @@
 @implementation DiseaseListViewController
 @synthesize params;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)init
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super init];
     if (self) {
         // Custom initialization
         self.title = @"华佗360";
@@ -88,20 +88,20 @@
     if([params objectForKey:@"_hospital"]){
         [tmp setObject:_hospitalList forKey:@"interfaceName"];
         [tmp setObject:@"1" forKey:@"page"];
-        HospitalListViewController* hlvc = [[HospitalListViewController alloc] initWithNibName:@"ListView" bundle:nil];
+        HospitalListViewController* hlvc = [[HospitalListViewController alloc]init];
         hlvc.params = tmp;
         hlvc.tableTitle = @"常见疾病";
         [self.navigationController pushViewController:hlvc animated:true];
     }else if([params objectForKey:@"_doctor"]){
         [tmp setObject:_doctorList forKey:@"interfaceName"];
         [tmp setObject:@"1" forKey:@"page"];
-        DoctorListViewController* dlvc = [[DoctorListViewController alloc] initWithNibName:@"ListView" bundle:nil];
+        DoctorListViewController* dlvc = [[DoctorListViewController alloc]init];
         dlvc.params = tmp;
         dlvc.tableTitle = @"常见疾病";
         [self.navigationController pushViewController:dlvc animated:true];
     }else {
         //[tmp setObject:[itemData objectForKey:@"name"] forKey:@"name"];
-        FixListViewController* flvc = [[FixListViewController alloc] initWithNibName:@"ListView" bundle:nil];
+        FixListViewController* flvc = [[FixListViewController alloc]init];
         flvc.params = tmp;
         flvc.tableTitle = [[NSString alloc]initWithFormat:@"%@", [itemData objectForKey:@"name"]];
         [self.navigationController pushViewController:flvc animated:true];

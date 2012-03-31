@@ -17,12 +17,11 @@
 @implementation HospitalListViewController
 @synthesize params;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)init
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super init];
     if (self) {
-        // Custom initialization        
-        
+        // Custom initialization                
         self.title = @"华佗360";
         UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
         backItem.title = @"返回";
@@ -85,7 +84,7 @@
     [tmp setObject:[itemData objectForKey:@"id"] forKey:@"hospid"];
     if([params objectForKey:@"deptid"])
         [tmp setObject:[params objectForKey:@"deptid"] forKey:@"deptid"];
-    DoctorListViewController* dlvc = [[DoctorListViewController alloc] initWithNibName:@"ListView" bundle:nil];
+    DoctorListViewController* dlvc = [[DoctorListViewController alloc]init];
     dlvc.params = tmp;
     if([params objectForKey:@"_name"])
         dlvc.tableTitle = [[NSString alloc]initWithFormat:@"%@%@的医生", [itemData objectForKey:@"name"], [params objectForKey:@"_name"]];

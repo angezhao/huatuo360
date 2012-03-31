@@ -15,9 +15,9 @@
 @implementation ListViewController2
 @synthesize listView;
 @synthesize tableTitle;
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)init
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithNibName:@"ListViewController2" bundle:nil];
     if (self) {
         listData = [NSMutableArray arrayWithCapacity:0];
         page = 1;
@@ -84,7 +84,7 @@
                                       reuseIdentifier: SimpleTableIdentifier];
         
         cell.textLabel.font = [UIFont boldSystemFontOfSize:16];
-        cell.textLabel.textAlignment = UITextAlignmentCenter;
+        cell.textLabel.textAlignment = UITextAlignmentLeft;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     cell.textLabel.text = [self getTitleByIndex:row]; 

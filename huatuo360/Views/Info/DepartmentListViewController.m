@@ -14,9 +14,9 @@
 @implementation DepartmentListViewController
 @synthesize params;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)init
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super init];
     if (self) {
         // Custom initialization
         self.title = @"华佗360";
@@ -89,13 +89,13 @@
     [tmp setObject:[itemData objectForKey:@"name"] forKey:@"_name"];//设置附加参数
     if([params objectForKey:@"_hospital"]){
         [tmp setObject:_hospitalList forKey:@"interfaceName"];
-        HospitalListViewController* hlvc = [[HospitalListViewController alloc] initWithNibName:@"ListView" bundle:nil];
+        HospitalListViewController* hlvc = [[HospitalListViewController alloc] init];
         hlvc.params = tmp;
         hlvc.tableTitle = [[NSString alloc]initWithFormat:@"%@医院排行", [itemData objectForKey:@"name"]];
         [self.navigationController pushViewController:hlvc animated:true];
     }else if([params objectForKey:@"_doctor"]){
         [tmp setObject:_doctorList forKey:@"interfaceName"];
-        DoctorListViewController* dlvc = [[DoctorListViewController alloc] initWithNibName:@"ListView" bundle:nil];
+        DoctorListViewController* dlvc = [[DoctorListViewController alloc] init];
         dlvc.params = tmp;
         dlvc.tableTitle = [[NSString alloc]initWithFormat:@"%@医生排行", [itemData objectForKey:@"name"]];
         [self.navigationController pushViewController:dlvc animated:true];

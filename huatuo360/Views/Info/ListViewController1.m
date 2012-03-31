@@ -15,9 +15,9 @@
 @implementation ListViewController1
 @synthesize listView;
 @synthesize tableTitle;
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)init
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithNibName:@"ListViewController1" bundle:nil];
     if (self) {
         listData = nil;//[NSMutableArray arrayWithCapacity:0];
         page = 1;
@@ -141,7 +141,7 @@
 }
 
 //- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    DoctorListViewController* doctorListVC = [[DoctorListViewController alloc] initWithNibName:@"ListView" bundle:nil];
+//    DoctorListViewController* doctorListVC = [[DoctorListViewController alloc] init];
 //    [self.navigationController pushViewController:doctorListVC animated:true];
 //    [tableView deselectRowAtIndexPath:indexPath animated:NO]; 
 //}

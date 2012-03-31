@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface LoginViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
+{
+    UITextField *nameTextfield;
+    UITextField *pwTextfield;
+    UITextField *textFieldBeingEdited;
+}
 
-@property (nonatomic) UITextField *textFieldBeingEdited;
 -(IBAction)loginButtonPressed:(id)sender;
 -(IBAction)registerButtonPressed:(id)sender;
-@property (unsafe_unretained) UITextField *nameTextfield;
-@property (unsafe_unretained) UITextField *pwTextfield;
 @end

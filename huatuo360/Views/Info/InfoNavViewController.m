@@ -8,6 +8,7 @@
 
 #import "InfoNavViewController.h"
 #import "Constants.h"
+#import "HospitalListViewController.h"
 @interface InfoNavViewController ()
 
 @end
@@ -29,20 +30,22 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-//    HospitalListViewController* hospitalListVC = [[HospitalListViewController alloc] initWithNibName:@"ListView" bundle:nil];
-//    self.viewControllers = [[NSArray alloc]initWithObjects:hospitalListVC, nil];}
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-//    HospitalListViewController* hospitalListVC = [[HospitalListViewController alloc] initWithNibName:@"ListView" bundle:nil];
-//    //    DoctorListViewController* doctorListVC = [[DoctorListViewController alloc] initWithNibName:@"ListView" bundle:nil];
-//    self.viewControllers = [[NSArray alloc]initWithObjects:hospitalListVC, nil];
     if(nil == infoViewToShow)
     {
         if(self.viewControllers == nil || [self.viewControllers count] == 0)
-        {
+        {               
+            NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
+            [params setObject:_hospitalList forKey:@"interfaceName"];
+            [params setObject:@"1" forKey:@"page"];
+            HospitalListViewController* hlvc = [[HospitalListViewController alloc]init];
+            hlvc.params = params;
+            hlvc.tableTitle = @"医院排行";
+            self.viewControllers = [[NSArray alloc]initWithObjects:hlvc, nil];
         }
     }
     else 

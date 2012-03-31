@@ -14,15 +14,13 @@
 
 @implementation RegisterViewController
 
-@synthesize textfields;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
         self.navigationItem.title = @"华佗360";
-        self.textfields = [NSMutableArray arrayWithCapacity:4];
+        textfields = [NSMutableArray arrayWithCapacity:4];
     }
     return self;
 }
