@@ -70,6 +70,10 @@
     [self.listView reloadData];    
 }
 
+- (void) requestFailed:(NSError*)error{
+    
+}
+
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     return self.tableTitle;
@@ -113,7 +117,6 @@
 {
     NSString *pageText = [[NSString alloc]initWithFormat:@"%i", ++page];
     [params setObject:pageText forKey:@"page"];
-    
     [[AsiObjectManager sharedManager] setDelegate:self];
     [[AsiObjectManager sharedManager] requestData:params];
 }
