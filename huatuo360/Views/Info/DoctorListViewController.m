@@ -8,6 +8,7 @@
 
 #import "DoctorListViewController.h"
 #import "Constants.h"
+#import "DoctorDetailVC.h"
 
 @implementation DoctorListViewController
 @synthesize params;
@@ -80,10 +81,17 @@
     }
     
     NSMutableDictionary *itemData = [listData objectAtIndex:row];
-    NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
-    [tmp setObject:_doctor forKey:@"interfaceName"];
-    [tmp setObject:@"1" forKey:@"page"];
-    [tmp setObject:[itemData objectForKey:@"id"] forKey:@"id"];
+//    NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
+//    [tmp setObject:_doctor forKey:@"interfaceName"];
+//    [tmp setObject:@"1" forKey:@"page"];
+//    [tmp setObject:[itemData objectForKey:@"id"] forKey:@"id"];
+    
+    NSString* doctorId = [itemData objectForKey:@"id"];
+    NSString* doctorName = [itemData objectForKey:@"name"];
+    
+    DoctorDetailVC* ddvc = [[DoctorDetailVC alloc]initWithDoctorId:doctorId dname:doctorName];
+    [self.navigationController pushViewController:ddvc animated:true];
+    [tableView deselectRowAtIndexPath:indexPath animated:NO]; 
 }
 
 - (NSString*)getTitleByIndex:(int)index
