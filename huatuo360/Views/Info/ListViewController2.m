@@ -7,6 +7,7 @@
 //
 
 #import "ListViewController2.h"
+#import "Constants.h"
 
 @interface ListViewController2 ()
 
@@ -69,7 +70,10 @@
         //        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         //        btn.backgroundColor = [UIColor clearColor];
         //        [cell.contentView addSubview:btn];
-        cell.textLabel.text = @"显示下10条";
+        if (total == 0) 
+            cell.textLabel.text = @"没有数据";
+        else
+            cell.textLabel.text = [[NSString alloc]initWithFormat:@"显示下%i条", perpage];
         cell.textLabel.textAlignment = UITextAlignmentCenter;
         return cell;
     }

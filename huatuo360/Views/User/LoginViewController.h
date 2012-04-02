@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AsiObjectManager.h"
 
-@interface LoginViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
+@interface LoginViewController : UIViewController<AsiObjectDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 {
     UITextField *nameTextfield;
     UITextField *pwTextfield;

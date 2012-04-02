@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
+#import "Constants.h"
 
 @interface LoginViewController ()
 
@@ -137,12 +138,29 @@
 
 -(IBAction)loginButtonPressed:(id)sender
 {
-    
+    userId = userId = [[NSString alloc]initWithString:[nameTextfield text]];
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
+    [params setObject:_login forKey:@"interfaceName"];
+    [params setObject:[nameTextfield text] forKey:@"userId"];
+    [params setObject:[pwTextfield text] forKey:@"password"];
+    [[AsiObjectManager sharedManager] setDelegate:self];
+    [[AsiObjectManager sharedManager] requestData:params];
 }
 
 -(IBAction)registerButtonPressed:(id)sender
 {
     RegisterViewController* regViewController = [[RegisterViewController alloc]initWithNibName:@"RegisterViewController" bundle:nil];
     [self.navigationController pushViewController:regViewController animated:true];
+}
+
+- (void)loadData:(NSDictionary *)data
+{
+    //登陆成功
+    isLogin = true;
+}
+
+- (void) requestFailed:(NSError*)error{
+    //登陆失败
+    isLogin = false;
 }
 @end

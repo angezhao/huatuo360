@@ -108,7 +108,6 @@
 {
     NSString *pageText = [[NSString alloc]initWithFormat:@"%i", ++page];
     [params setObject:pageText forKey:@"page"];
-    
     [[AsiObjectManager sharedManager] setDelegate:self];
     [[AsiObjectManager sharedManager] requestData:params];
 }

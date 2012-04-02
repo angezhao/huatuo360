@@ -20,3 +20,5 @@ extern NSString* const _diseaseList;
 
 //全局变量
 extern UIViewController *infoViewToShow;
+extern NSString* userId;
+extern Boolean isLogin;

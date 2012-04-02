@@ -7,6 +7,7 @@
 //
 
 #import "ListViewController1.h"
+#import "Constants.h"
 
 @interface ListViewController1 ()
 
@@ -77,7 +78,7 @@
         if (total == 0) 
             cell.textLabel.text = @"没有数据";
         else
-            cell.textLabel.text = @"显示下10条";
+            cell.textLabel.text = [[NSString alloc]initWithFormat:@"显示下%i条", perpage];
         cell.textLabel.textAlignment = UITextAlignmentCenter;
         return cell;
     }

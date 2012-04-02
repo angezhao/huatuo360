@@ -7,6 +7,7 @@
 //
 
 #import "RegisterViewController.h"
+#import "Constants.h"
 
 @interface RegisterViewController ()
 
@@ -124,7 +125,25 @@
 
 - (IBAction)registerButtonPressed:(id)sender
 {
-    
+    userId = [[NSString alloc]initWithString:[[textfields objectAtIndex:0] text]];
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
+    [params setObject:_regist forKey:@"interfaceName"];
+    [params setObject:[[textfields objectAtIndex:0] text] forKey:@"userId"];
+    [params setObject:[[textfields objectAtIndex:1] text] forKey:@"password"];
+    [params setObject:[[textfields objectAtIndex:3] text] forKey:@"email"];
+    [[AsiObjectManager sharedManager] setDelegate:self];
+    [[AsiObjectManager sharedManager] requestData:params];
+}
+
+- (void)loadData:(NSDictionary *)data
+{
+    //注册成功
+    isLogin = true;
+}
+
+- (void) requestFailed:(NSError*)error{
+    //注册失败
+    isLogin = false;
 }
 //- (void)textFieldDidEndEditing:(UITextField *)textField
 //{

@@ -43,9 +43,11 @@ static ASIHTTPRequest* request = nil;
     NSLog(@"%@", jsonDict);
     NSNumber *status = [jsonDict objectForKey:@"status"];
     NSLog(@"%@",status); 
-    if ([status intValue] == 0) {
+    if ([status intValue] != 1) {
         error = [[NSError alloc] initWithDomain:@"requestFailed" code:[status integerValue] userInfo:nil];
         [delegate requestFailed:error];
+    }else {
+        [delegate loadData:jsonDict];
     }
 
     //NSString *test = @"{\"data\":{\"212\":\"你好\",\"213\":\"你好\"},\"total\":31}";
@@ -76,7 +78,6 @@ static ASIHTTPRequest* request = nil;
         NSLog (@"dict: %@", dict);
     }
     */
-    [delegate loadData:jsonDict];
 }
 
 - (void)requestFailed:(ASIHTTPRequest *)retrequest {    
