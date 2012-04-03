@@ -1,7 +1,7 @@
 //
 //  DoctorDetailVC.h
 //  huatuo360
-//
+//  医生详情
 //  Created by Alpha Wong on 12-3-29.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
@@ -16,6 +16,10 @@
     NSDictionary* doctorData;
     NSArray* labels;
     NSArray* texts;
+    NSArray* infoKeys;
+    
+    NSArray* thesis;
+    Boolean showAllThesis;
 }
 @property (nonatomic, strong)IBOutlet UITableView* detailView;
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D4A7F3E152AFD56003BAC85 /* disease.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0D4A7F3D152AFD56003BAC85 /* disease.plist */; };
 		0D6DDCD7150FAE2F001BD397 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6DDCD6150FAE2F001BD397 /* QuartzCore.framework */; };
 		0D6F25AA15276ED3001A3A92 /* ListViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6F25A815276ED3001A3A92 /* ListViewController1.m */; };
 		0D6F25AB15276ED3001A3A92 /* ListViewController1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D6F25A915276ED3001A3A92 /* ListViewController1.xib */; };
@@ -27,6 +28,7 @@
 		0D6FA678151F5EE800DC57B5 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6FA66C151F5EE800DC57B5 /* SBJsonWriter.m */; };
 		0D6FC3FF151A3F2400C8E4D5 /* HospitalListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6FC3FE151A3F2300C8E4D5 /* HospitalListViewController.m */; };
 		0D6FC402151A4CDF00C8E4D5 /* DoctorListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6FC401151A4CDF00C8E4D5 /* DoctorListViewController.m */; };
+		0D6FC999152AF58400A77E44 /* DropDownList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6FC998152AF58400A77E44 /* DropDownList.m */; };
 		0D708A9A1515A77A007EA936 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D708A981515A77A007EA936 /* LoginViewController.m */; };
 		0D708A9B1515A77A007EA936 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D708A991515A77A007EA936 /* LoginViewController.xib */; };
 		0D708A9F1515A78B007EA936 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D708A9D1515A78B007EA936 /* RegisterViewController.m */; };
@@ -91,6 +93,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D4A7F3D152AFD56003BAC85 /* disease.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = disease.plist; sourceTree = "<group>"; };
 		0D6DDCD6150FAE2F001BD397 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0D6F25A715276ED3001A3A92 /* ListViewController1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController1.h; sourceTree = "<group>"; };
 		0D6F25A815276ED3001A3A92 /* ListViewController1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController1.m; sourceTree = "<group>"; };
@@ -129,6 +132,8 @@
 		0D6FC3FE151A3F2300C8E4D5 /* HospitalListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HospitalListViewController.m; sourceTree = "<group>"; };
 		0D6FC400151A4CDF00C8E4D5 /* DoctorListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorListViewController.h; sourceTree = "<group>"; };
 		0D6FC401151A4CDF00C8E4D5 /* DoctorListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorListViewController.m; sourceTree = "<group>"; };
+		0D6FC997152AF58400A77E44 /* DropDownList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownList.h; sourceTree = "<group>"; };
+		0D6FC998152AF58400A77E44 /* DropDownList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDownList.m; sourceTree = "<group>"; };
 		0D708A971515A77A007EA936 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		0D708A981515A77A007EA936 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		0D708A991515A77A007EA936 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -487,6 +492,7 @@
 				0DECF632150C9CAB00824D1C /* homepage@2x.png */,
 				0DECF633150C9CAB00824D1C /* info.png */,
 				0DECF634150C9CAB00824D1C /* info@2x.png */,
+				0D4A7F3D152AFD56003BAC85 /* disease.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -508,6 +514,8 @@
 				0DECF64E150C9D0F00824D1C /* HomepageViewController.h */,
 				0DECF64F150C9D0F00824D1C /* HomepageViewController.m */,
 				0DECF650150C9D0F00824D1C /* HomepageViewController.xib */,
+				0D6FC997152AF58400A77E44 /* DropDownList.h */,
+				0D6FC998152AF58400A77E44 /* DropDownList.m */,
 			);
 			path = Homepage;
 			sourceTree = "<group>";
@@ -635,6 +643,7 @@
 				0D6F25B015276EEC001A3A92 /* ListViewController2.xib in Resources */,
 				0D6F25B2152773B5001A3A92 /* Entitlement.plist in Resources */,
 				0DB6928C15277BBD00FD7F98 /* DoctorDetailVC.xib in Resources */,
+				0D4A7F3E152AFD56003BAC85 /* disease.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -699,6 +708,7 @@
 				0D6F25AA15276ED3001A3A92 /* ListViewController1.m in Sources */,
 				0D6F25AF15276EEC001A3A92 /* ListViewController2.m in Sources */,
 				0DB6928B15277BBD00FD7F98 /* DoctorDetailVC.m in Sources */,
+				0D6FC999152AF58400A77E44 /* DropDownList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

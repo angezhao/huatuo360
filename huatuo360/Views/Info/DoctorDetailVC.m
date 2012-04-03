@@ -8,24 +8,13 @@
 
 #import "DoctorDetailVC.h"
 #import "Constants.h"
-
 @interface DoctorDetailVC ()
 
 @end
 
 @implementation DoctorDetailVC
 @synthesize detailView;
-
-//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-//{
-//    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-//    if (self) {
-//        // Custom initialization
-//        labels = [[NSArray alloc]initWithObjects:@"职称：", @"擅长疾病：", @"所属科室：", @"所属医院：", nil];
-//        NSLog(@"%@", labels);
-//    }
-//    return self;
-//}
+#define INIT_SHOW_THESIS_COUNT 10
 
 - (id)initWithDoctorId:(NSString*)did dname:(NSString*)dname
 {
@@ -35,14 +24,28 @@
         doctorId = did;
         doctorName = dname;
         labels = [[NSArray alloc]initWithObjects:@"职称：", @"擅长疾病：", @"所属科室：", @"所属医院：", nil];
+        infoKeys = [[NSArray alloc]initWithObjects:@"title", @"goodDisease", @"department", @"hospital", nil];
+        showAllThesis = FALSE;
+        //评论按钮
+        UIBarButtonItem *btnComment  = [[UIBarButtonItem alloc] initWithTitle:@"评论" style:UITabBarSystemItemContacts target:self action:@selector(showCommentView)];
+        btnComment.title = @"评论";
+        [self.navigationItem setRightBarButtonItem:btnComment];
+        
     }
     return self;
+}
+
+- (void)showCommentView
+{
+    NSLog(@"评论");
 }
 
 - (void)loadData:(NSDictionary *)data
 {
     doctorData = data;
-//    [detailView reloadSections:<#(NSIndexSet *)#> withRowAnimation:<#(UITableViewRowAnimation)#>];
+    thesis = [doctorData objectForKey:@"thesis"];
+    showAllThesis = [thesis count] <= INIT_SHOW_THESIS_COUNT;
+    [detailView reloadData];
 }
 
 - (void)viewDidLoad
@@ -78,7 +81,7 @@
     switch(section)
     {
     case 0:
-        title = doctorName;
+            title = [[NSString alloc]initWithFormat:@"%@ 医生", doctorName];
         break;
         
     case 1:
@@ -93,9 +96,39 @@
     return title;
 }
 
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //评论条数大于0时评论栏可以选择
+    int section = [indexPath section];
+    int row = [indexPath row];
+    if(section == 0 && row == 4 
+       && [[doctorData objectForKey:@"comment"] intValue] > 0 )
+    {
+        return indexPath;
+    }
+    //显示全部论文
+    else if(section == 2 && !showAllThesis && row == INIT_SHOW_THESIS_COUNT)
+    {
+        return indexPath;
+    }
+    return nil;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {    
-//    int row = [indexPath row];
+    int section = [indexPath section];
+    int row = [indexPath row];
+    if(section == 0 && row == 4)
+    {
+        //查看评论
+    }
+    else if(section == 2 && !showAllThesis && row == INIT_SHOW_THESIS_COUNT)
+    {
+        //显示所有论文
+        showAllThesis = TRUE;
+        [tableView reloadData];
+    }
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -105,9 +138,33 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if(section == 0)
-        return 5;
-    return 1;
+    if(nil == doctorData)
+        return 0;
+    
+    int count;
+    switch (section) 
+    {
+        case 0:
+            count = 5;
+            break;
+            
+        case 1:
+            count = 1;
+            break;
+            
+        case 2:
+            if(nil == thesis)
+                count = 0;
+            else 
+            {
+                if(showAllThesis)
+                    count = [thesis count];
+                else 
+                    count = INIT_SHOW_THESIS_COUNT + 1;
+            }
+            break;
+    }
+    return count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -119,12 +176,49 @@
         case 0:
             cell = [self infoCellForRow:row];
             break;
-            
-        default:
-            cell = [self infoCellForRow:4];
+        case 1:
+            cell = [self introCellForRow:row];
+            break;
+        case 2:
+            cell = [self thesisCellForRow:row];
             break;
     }
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    float height = 44;
+    int row = [indexPath row];
+    if(doctorData == nil || row == 4)
+        return height;
+    switch ([indexPath section]) 
+    {
+        case 0://信息contentText];
+            height = [self cellHeightForText:[doctorData objectForKey:[infoKeys objectAtIndex:row]]
+                                      margin:0 
+                                       width:CELL_RIGHT_CONTENT_WIDTH 
+                                    fontsize:INFO_FONT_SIZE];
+            break;
+            
+        case 1://介绍
+            height = [self cellHeightForText:[doctorData objectForKey:@"info"]
+                                    margin:12 
+                                    width:CELL_CONTENT_WIDTH 
+                                    fontsize:INTRO_FONT_SIZE];
+            break;
+            
+        case 2://论文
+            if(showAllThesis || row != (INIT_SHOW_THESIS_COUNT + 1))//不是显示全部
+            {
+                height = [self cellHeightForText:[thesis objectAtIndex:row]
+                                    margin:0 
+                                    width:CELL_CONTENT_WIDTH 
+                                    fontsize:INTRO_FONT_SIZE];
+            }
+            break;
+    }
+    return height;
 }
 
 - (UITableViewCell *)infoCellForRow:(int)row
@@ -141,57 +235,140 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                           reuseIdentifier: SimpleTableIdentifier];
             
-            cell.textLabel.font = [UIFont boldSystemFontOfSize:16];
-            NSString* countText = [doctorData objectForKey:@"comment"];
-            cell.textLabel.text = [[NSString alloc]initWithFormat:@"评论(%@条)", countText];
-            if([countText intValue] > 0)
+            cell.textLabel.font = [UIFont boldSystemFontOfSize:INFO_FONT_SIZE];
+            int count = [[doctorData objectForKey:@"comment"] intValue];
+            cell.textLabel.text = [[NSString alloc]initWithFormat:@"评论(%i条)", count];
+            if(count > 0)
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
     }
     else 
     {
-        UILabel *label;
-        UILabel *text;
+        UILabel *titleLabel;
+        UILabel *contentLabel;
         static NSString *InfoIdentifier = @"InfoIdentifier";
         cell = [detailView dequeueReusableCellWithIdentifier:InfoIdentifier];
+        UIFont* textfont = [UIFont systemFontOfSize:INFO_FONT_SIZE];
         if (cell == nil)
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                           reuseIdentifier: InfoIdentifier];
             
-            label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 90, 25)]; 
-            label.tag = 99;   
-            label.font = [UIFont boldSystemFontOfSize:16];
-            label.textAlignment = UITextAlignmentRight;
-            label.backgroundColor = [UIColor clearColor];
-            [cell.contentView addSubview:label];
+            titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, 90, 25)]; 
+            titleLabel.tag = 99;   
+            titleLabel.font = [UIFont boldSystemFontOfSize:INFO_FONT_SIZE];
+            titleLabel.textAlignment = UITextAlignmentRight;
+            titleLabel.backgroundColor = [UIColor clearColor];
+            [cell.contentView addSubview:titleLabel];
             
-            text = [[UILabel alloc] initWithFrame:CGRectMake(100, 10, 200, 25)];
-            text.tag = 100;
-            text.font = [UIFont boldSystemFontOfSize:16];
-            text.backgroundColor = [UIColor clearColor];
-            [cell.contentView addSubview:text];
+            contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(85, 10, 210, 1000)];
+//            contentLabel = cell.textLabel;
+            
+            contentLabel.tag = 100;
+            contentLabel.font = textfont;
+            contentLabel.textAlignment = UITextAlignmentLeft;
+            contentLabel.backgroundColor = [UIColor clearColor];
+            [contentLabel setLineBreakMode:UILineBreakModeWordWrap];
+            [contentLabel setMinimumFontSize:INTRO_FONT_SIZE];
+            [contentLabel setNumberOfLines:0];
+            [cell.contentView addSubview:contentLabel];        
         }
-        else {
-            label = (UILabel*)[cell viewWithTag:99];
-            text = (UILabel*)[cell viewWithTag:100];
-        }
-        label.text = [labels objectAtIndex:row];
-        NSLog(@"%@", label.text);
-        text.text = @"txt";//[texts objectAtIndex:row];
+        else 
+        {
+            contentLabel = (UILabel*)[cell viewWithTag:99];
+            contentLabel = (UILabel*)[cell viewWithTag:100];
+        }  
+        
+        NSString* contentText = [doctorData objectForKey:[infoKeys objectAtIndex:row]];                        
+        CGSize constraint = CGSizeMake(CELL_RIGHT_CONTENT_WIDTH, 20000.0f);        
+        CGSize size = [contentText sizeWithFont:textfont constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+        [contentLabel setFrame:CGRectMake(85, 1, 210, MAX(size.height, 44.0f))];
+        titleLabel.text = [labels objectAtIndex:row];
+        contentLabel.text = contentText;
+//        NSLog(@"fff%@", contentLabel.text);
     }
     return cell;
 }
 
 - (UITableViewCell *)introCellForRow:(int)row
 {
-    UITableViewCell* cell = nil;
+    static NSString *IntroIdentifier = @"IntroIdentifier";    
+    UILabel* label;
+    UITableViewCell *cell = [detailView dequeueReusableCellWithIdentifier:IntroIdentifier];
+    if (cell == nil)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                      reuseIdentifier: IntroIdentifier];
+        label = cell.textLabel;
+        [label setLineBreakMode:UILineBreakModeWordWrap];
+        [label setMinimumFontSize:INTRO_FONT_SIZE];
+        [label setNumberOfLines:0];
+        [label setFont:[UIFont systemFontOfSize:INTRO_FONT_SIZE]];
+//        [label setTag:1];
+    }
+    
+    NSString *text = [doctorData objectForKey:@"info"];
+    
+    CGSize constraint = CGSizeMake(CELL_CONTENT_WIDTH, 20000.0f);
+    
+    CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:INTRO_FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+    
+//    if (!label)
+//        label = (UILabel*)[cell viewWithTag:1];
+    label = cell.textLabel;
+    
+    [label setText:text];
+    [label setFrame:CGRectMake(0, 0, CELL_CONTENT_WIDTH, MAX(size.height, 44.0f))];
     return cell;
+}
+
+- (float)cellHeightForText:(NSString*)text margin:(float)margin width:(float)width fontsize:(int)fontsize
+{    
+    CGSize constraint = CGSizeMake(width - (margin * 2), 20000.0f);
+    
+    CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:fontsize] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+    
+    CGFloat height = MAX(size.height, 44.0f);
+    
+    return height + (margin * 2);
 }
 
 - (UITableViewCell *)thesisCellForRow:(int)row
 {
-    UITableViewCell* cell = nil;
+    static NSString *ThesisIdentifier = @"ThesisIdentifier";    
+    UILabel* label;
+    UITableViewCell *cell = [detailView dequeueReusableCellWithIdentifier:ThesisIdentifier];
+    if (cell == nil)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                      reuseIdentifier: ThesisIdentifier];
+        label = cell.textLabel;
+        [label setLineBreakMode:UILineBreakModeWordWrap];
+        [label setMinimumFontSize:INTRO_FONT_SIZE];
+        [label setNumberOfLines:0];
+        [label setFont:[UIFont systemFontOfSize:INTRO_FONT_SIZE]];
+        //        [label setTag:1];
+    }
+    label = cell.textLabel;
+    NSLog(@"row%i", row);
+    
+    NSString *text;
+    if(!showAllThesis && row == INIT_SHOW_THESIS_COUNT)
+    {
+        text = @"显示全部论文";
+        label.textAlignment = UITextAlignmentCenter;
+    }
+    else 
+    {
+        text = [thesis objectAtIndex:row];
+        label.textAlignment = UITextAlignmentLeft;
+    }
+    
+    CGSize constraint = CGSizeMake(CELL_CONTENT_WIDTH, 20000.0f);
+    
+    CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:INTRO_FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+    [label setText:text];
+    [label setFrame:CGRectMake(0, 0, CELL_CONTENT_WIDTH, MAX(size.height, 44.0f))];
     return cell;
 }
 @end

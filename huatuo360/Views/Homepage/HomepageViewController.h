@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@class DropDownList;
 
 @interface HomepageViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
 {
@@ -14,9 +15,10 @@
     int searchType;
 //    UISearchBar* searchBar;
     NSArray *searchBarHolders;
+    DropDownList* ddList;
     
 }
-//@property (nonatomic, retain)IBOutlet UISearchBar* searchBar;
+@property (nonatomic, retain)IBOutlet UISearchBar* searchBarRef;
 //@property (nonatomic, retain)NSArray* listData;
 //@property (nonatomic, retain)NSArray* searchBarHolders;
 @end

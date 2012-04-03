@@ -20,7 +20,7 @@
 {
     self = [super initWithNibName:@"ListViewController2" bundle:nil];
     if (self) {
-        listData = [NSMutableArray arrayWithCapacity:0];
+        listData = nil;
         page = 1;
     }
     return self;
@@ -45,8 +45,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if(nil == listData)
+        return 0;
+    
     int showCount = [listData count];
-    if(showCount < total)
+    if(showCount < total || total == 0)
         return showCount + 1;
     else 
         return showCount;

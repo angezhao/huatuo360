@@ -12,9 +12,10 @@
 #import "DiseaseListViewController.h"
 #import "DoctorListViewController.h"
 #import "Constants.h"
+#import "DropDownList.h"
 
 @implementation HomepageViewController
-//@synthesize searchBar;
+@synthesize searchBarRef;
 //@synthesize searchBarHolders;
 const static int DISEASE = 0;
 const static int HOSPITAL = 1;
@@ -42,6 +43,11 @@ const static int DOCTOR = 2;
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    ddList = [[DropDownList alloc] initWithStyle:UITableViewStylePlain];
+    ddList.delegate = searchBarRef;
+    [self.view addSubview:ddList.view];
+//    [ddList setHidden:YES];
 }
 
 - (void)viewDidUnload
@@ -49,6 +55,14 @@ const static int DOCTOR = 2;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [searchBarRef resignFirstResponder];
+    [ddList setHidden:NO];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *) searchBar
@@ -61,6 +75,8 @@ const static int DOCTOR = 2;
 {
     searchType = selectedScope;
     searchBar.placeholder = [searchBarHolders objectAtIndex:searchType];
+    if (searchType != DISEASE) 
+        [ddList setHidden:NO];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
@@ -78,7 +94,7 @@ const static int DOCTOR = 2;
                 [params setObject:searchBar.text forKey:@"disease"];
                 DiseaseListViewController* dlvc = [[DiseaseListViewController alloc]init];
                 dlvc.params = params;
-                dlvc.tableTitle = [[NSString alloc]initWithFormat:@"搜索\"%@\"的导医结果", searchBar.text];                
+                dlvc.tableTitle = [[NSString alloc]initWithFormat:@"搜索\"%@\"的导医结果\n可能的疾病", searchBar.text];                
                 infoViewToShow = dlvc;
                 [self.tabBarController setSelectedIndex:1];
             }
@@ -122,11 +138,23 @@ const static int DOCTOR = 2;
 	[searchBar setShowsCancelButton:YES animated:true];
 }
 
--(IBAction)switchSearchTab:(id)sender
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    searchType = [sender selectedSegmentIndex];
-    [sender setPlaceholder:[searchBarHolders objectAtIndex:searchType]];
+    if (searchType == DISEASE && [searchText length] != 0) 
+    {
+		[ddList update:searchText];
+	}
+	else 
+    {
+		[ddList setHidden:YES];
+	}
 }
+
+//-(IBAction)switchSearchTab:(id)sender
+//{
+//    searchType = [sender selectedSegmentIndex];
+//    [sender setPlaceholder:[searchBarHolders objectAtIndex:searchType]];
+//}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -161,7 +189,6 @@ const static int DOCTOR = 2;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    [searchBar resignFirstResponder];
     switch ([indexPath row]) 
     {
         case 0:
@@ -232,6 +259,8 @@ const static int DOCTOR = 2;
             break;
     }
     [self.tabBarController setSelectedIndex:1];
-    [tableView deselectRowAtIndexPath:indexPath animated:NO]; 
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    [searchBarRef resignFirstResponder];
+    [ddList setHidden:NO];
 }
 @end

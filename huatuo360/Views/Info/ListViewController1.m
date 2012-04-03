@@ -102,7 +102,7 @@
         
         introLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 20, 270, 25)];
         introLabel.tag = 100;
-        introLabel.font = [UIFont boldSystemFontOfSize:12];
+        introLabel.font = [UIFont systemFontOfSize:12];
         introLabel.backgroundColor = [UIColor clearColor];
         [cell.contentView addSubview:introLabel];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
