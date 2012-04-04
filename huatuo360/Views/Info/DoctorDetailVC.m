@@ -28,7 +28,6 @@
         showAllThesis = FALSE;
         //评论按钮
         UIBarButtonItem *btnComment  = [[UIBarButtonItem alloc] initWithTitle:@"评论" style:UITabBarSystemItemContacts target:self action:@selector(showCommentView)];
-        btnComment.title = @"评论";
         [self.navigationItem setRightBarButtonItem:btnComment];
         
     }
