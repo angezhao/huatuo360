@@ -104,7 +104,7 @@ extern NSString* const _departmentList;
                 dlvc.params = tmp;
                 dlvc.tableTitle = @"医生排行";
                 infoViewToShow = dlvc;
-                [self.tabBarController setSelectedIndex:1];
+                [self.navigationController pushViewController:dlvc animated:true];
             }  
             break;
         case 1:
@@ -117,7 +117,8 @@ extern NSString* const _departmentList;
                 hlvc.params = tmp;
                 hlvc.tableTitle = @"医院排行";
                 infoViewToShow = hlvc;
-                [self.tabBarController setSelectedIndex:1];
+                [self.navigationController pushViewController:hlvc animated:true];
+
             }  
             break;
         default:

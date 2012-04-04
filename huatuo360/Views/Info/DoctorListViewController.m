@@ -9,6 +9,7 @@
 #import "DoctorListViewController.h"
 #import "Constants.h"
 #import "DoctorDetailVC.h"
+#import "HospitalDetailVC.h"
 
 @implementation DoctorListViewController
 @synthesize params;
@@ -23,11 +24,6 @@
         backItem.title = @"返回";
         [self.navigationItem setBackBarButtonItem:backItem];
         firstAppear = true;
-        if([params objectForKey:@"hospid"]){//从医院列表过来的医生列表
-            //评论按钮
-            UIBarButtonItem *btnComment  = [[UIBarButtonItem alloc] initWithTitle:@"医院详情" style:UITabBarSystemItemContacts target:self action:@selector(showCommentView)];
-            [self.navigationItem setRightBarButtonItem:btnComment];
-        }
     }
     return self;
 }
@@ -40,7 +36,22 @@
         firstAppear = false;
         [[AsiObjectManager sharedManager] setDelegate:self];
         [[AsiObjectManager sharedManager] requestData:params];
+        NSLog(@"params=%@",params); 
+        if([params objectForKey:@"hospid"]){//从医院列表过来的医生列表
+            //医院详情按钮
+            UIBarButtonItem *btnComment  = [[UIBarButtonItem alloc] initWithTitle:@"医院详情" style:UITabBarSystemItemContacts target:self action:@selector(showCommentView)];
+            [self.navigationItem setRightBarButtonItem:btnComment];
+        }
     }
+}
+
+- (void)showCommentView
+{
+    //NSLog(@"医院详情");
+    NSString* hospitalId = [params objectForKey:@"hospid"];
+    NSString* hospitalName = [params objectForKey:@"_name"];
+    HospitalDetailVC* hdvc = [[HospitalDetailVC alloc]initWithHospId:hospitalId hname:hospitalName];
+    [self.navigationController pushViewController:hdvc animated:true];; 
 }
 
 - (void)viewDidLoad

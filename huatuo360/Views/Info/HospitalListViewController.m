@@ -86,6 +86,7 @@
     [tmp setObject:_doctorList forKey:@"interfaceName"];
     [tmp setObject:@"1" forKey:@"page"];
     [tmp setObject:[itemData objectForKey:@"id"] forKey:@"hospid"];
+    [tmp setObject:[itemData objectForKey:@"name"] forKey:@"_name"];//医院名字
     if([params objectForKey:@"deptid"])
         [tmp setObject:[params objectForKey:@"deptid"] forKey:@"deptid"];
     DoctorListViewController* dlvc = [[DoctorListViewController alloc]init];

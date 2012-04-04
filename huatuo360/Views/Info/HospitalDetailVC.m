@@ -1,32 +1,31 @@
 //
-//  DoctorDetailVC.m
+//  HospitalDetailVC.m
 //  huatuo360
 //
-//  Created by Alpha Wong on 12-3-29.
+//  Created by Zhao Ange on 12-4-4.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
-#import "DoctorDetailVC.h"
+#import "HospitalDetailVC.h"
 #import "CommentListViewController.h"
 #import "Constants.h"
-@interface DoctorDetailVC ()
+
+@interface HospitalDetailVC ()
 
 @end
 
-@implementation DoctorDetailVC
+@implementation HospitalDetailVC
 @synthesize detailView;
-#define INIT_SHOW_THESIS_COUNT 3
 
-- (id)initWithDoctorId:(NSString*)did dname:(NSString*)dname
+- (id)initWithHospId:(NSString*)hid hname:(NSString*)hname
 {
     self = [super initWithNibName:@"DoctorDetailVC" bundle:nil];
     if (self) {
         // Custom initialization
-        doctorId = did;
-        doctorName = dname;
-        labels = [[NSArray alloc]initWithObjects:@"职称：", @"擅长疾病：", @"所属科室：", @"所属医院：", nil];
-        infoKeys = [[NSArray alloc]initWithObjects:@"title", @"goodDisease", @"department", @"hospital", nil];
-        showAllThesis = FALSE;
+        hospitalId = hid;
+        hospitalName = hname;
+        labels = [[NSArray alloc]initWithObjects:@"医院等级：", @"联系地址：", @"联系电话：", nil];
+        infoKeys = [[NSArray alloc]initWithObjects:@"level", @"address", @"tel", nil];
         //评论按钮
         UIBarButtonItem *btnComment  = [[UIBarButtonItem alloc] initWithTitle:@"评论" style:UITabBarSystemItemContacts target:self action:@selector(showCommentView)];
         [self.navigationItem setRightBarButtonItem:btnComment];
@@ -42,10 +41,12 @@
 
 - (void)loadData:(NSDictionary *)data
 {
-    doctorData = data;
-    thesis = [doctorData objectForKey:@"thesis"];
-    showAllThesis = [thesis count] <= INIT_SHOW_THESIS_COUNT;
+    hospitalData = data;
     [detailView reloadData];
+}
+
+- (void) requestFailed:(NSError*)error{
+    
 }
 
 - (void)viewDidLoad
@@ -58,8 +59,8 @@
 {
     [super viewWillAppear:animated];
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:0];
-    [params setObject:_doctor forKey:@"interfaceName"];
-    [params setObject:doctorId forKey:@"id"];
+    [params setObject:_hospital forKey:@"interfaceName"];
+    [params setObject:hospitalId forKey:@"id"];
     [[AsiObjectManager sharedManager] setDelegate:self];
     [[AsiObjectManager sharedManager] requestData:params];
 }
@@ -75,22 +76,26 @@
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     NSString* title;
     switch(section)
     {
-    case 0:
-            title = [[NSString alloc]initWithFormat:@"%@ 医生", doctorName];
-        break;
-        
-    case 1:
-        title = @"医生介绍";
-        break;
-        
-    case 2:
-        title = @"发表论文";
-        break;
+        case 0:
+            title = hospitalName;
+            break;
+            
+        case 1:
+            title = @"医院科室";
+            break;
+            
+        case 2:
+            title = @"医院介绍";
+            break;
+        case 3:
+            title = @"特色专科";
+            break;
     }
     
     return title;
@@ -101,13 +106,8 @@
     //评论条数大于0时评论栏可以选择
     int section = [indexPath section];
     int row = [indexPath row];
-    if(section == 0 && row == 4 
-       && [[doctorData objectForKey:@"comment"] intValue] > 0 )
-    {
-        return indexPath;
-    }
-    //显示全部论文
-    else if(section == 2 && !showAllThesis && row == INIT_SHOW_THESIS_COUNT)
+    if(section == 0 && row == 3 
+       && [[hospitalData objectForKey:@"comment"] intValue] > 0 )
     {
         return indexPath;
     }
@@ -118,43 +118,37 @@
 {    
     int section = [indexPath section];
     int row = [indexPath row];
-    if(section == 0 && row == 4)
+    if(section == 0 && row == 3)
     {
         //查看评论
         NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
         [tmp setObject:_commentList forKey:@"interfaceName"];
         [tmp setObject:@"1" forKey:@"page"];
-        [tmp setObject:doctorId forKey:@"doctorid"];
+        [tmp setObject:hospitalId forKey:@"hospid"];
         CommentListViewController* clvc = [[CommentListViewController alloc]init];
         clvc.params = tmp;
-        clvc.tableTitle = [[NSString alloc]initWithFormat:@"%@医生", doctorName];
+        clvc.tableTitle = [[NSString alloc]initWithFormat:@"%@医院", hospitalName];
         infoViewToShow = clvc;
         [self.navigationController pushViewController:clvc animated:true];
-    }
-    else if(section == 2 && !showAllThesis && row == INIT_SHOW_THESIS_COUNT)
-    {
-        //显示所有论文
-        showAllThesis = TRUE;
-        [tableView reloadData];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if(nil == doctorData)
+    if(nil == hospitalData)
         return 0;
     
     int count;
     switch (section) 
     {
         case 0:
-            count = 5;
+            count = 4;
             break;
             
         case 1:
@@ -162,15 +156,11 @@
             break;
             
         case 2:
-            if(nil == thesis)
-                count = 0;
-            else 
-            {
-                if(showAllThesis)
-                    count = [thesis count];
-                else 
-                    count = INIT_SHOW_THESIS_COUNT + 1;
-            }
+            count = 1;
+            break;
+            
+        case 3:
+            count = 1;
             break;
     }
     return count;
@@ -189,7 +179,10 @@
             cell = [self introCellForRow:row];
             break;
         case 2:
-            cell = [self thesisCellForRow:row];
+            cell = [self introCellForRow:row];
+            break;
+        case 3:
+            cell = [self introCellForRow:row];
             break;
     }
     return cell;
@@ -199,32 +192,47 @@
 {
     float height = 44;
     int row = [indexPath row];
-    if(doctorData == nil || row == 4)
+    if(hospitalData == nil || row == 3)
         return height;
     switch ([indexPath section]) 
     {
         case 0://信息contentText];
-            height = [self cellHeightForText:[doctorData objectForKey:[infoKeys objectAtIndex:row]]
+            height = [self cellHeightForText:[hospitalData objectForKey:[infoKeys objectAtIndex:row]]
                                       margin:0 
                                        width:CELL_RIGHT_CONTENT_WIDTH 
                                     fontsize:INFO_FONT_SIZE];
             break;
             
-        case 1://介绍
-            height = [self cellHeightForText:[doctorData objectForKey:@"info"]
-                                    margin:12 
-                                    width:CELL_CONTENT_WIDTH 
+        case 1://医院科室
+            {
+                NSArray *myArray = [hospitalData objectForKey:@"departments"];
+                NSLog(@"%@",myArray); 
+                NSString* departments = nil;
+                for (NSString *department in myArray) {
+                    if(departments == nil)
+                        departments = department;
+                    else
+                        departments = [NSString stringWithFormat:@"%@ %@", departments, department]; 
+                }
+                height = [self cellHeightForText:departments
+                                          margin:12 
+                                           width:CELL_CONTENT_WIDTH 
+                                        fontsize:INTRO_FONT_SIZE];
+            }
+            break;
+             
+        case 2://医院介绍
+            height = [self cellHeightForText:[hospitalData objectForKey:@"info"]
+                                      margin:12 
+                                       width:CELL_CONTENT_WIDTH 
                                     fontsize:INTRO_FONT_SIZE];
             break;
-            
-        case 2://论文
-            if(showAllThesis || row != (INIT_SHOW_THESIS_COUNT + 1))//不是显示全部
-            {
-                height = [self cellHeightForText:[thesis objectAtIndex:row]
-                                    margin:0 
-                                    width:CELL_CONTENT_WIDTH 
+        
+        case 3://特色专科
+            height = [self cellHeightForText:[hospitalData objectForKey:@"specialty"]
+                                        margin:12 
+                                        width:CELL_CONTENT_WIDTH 
                                     fontsize:INTRO_FONT_SIZE];
-            }
             break;
     }
     return height;
@@ -234,7 +242,7 @@
 {
     UITableViewCell *cell;
     
-    if(row == 4)
+    if(row == 3)
     {
         static NSString *SimpleTableIdentifier = @"SimpleTableIdentifier";
         
@@ -245,7 +253,7 @@
                                           reuseIdentifier: SimpleTableIdentifier];
             
             cell.textLabel.font = [UIFont boldSystemFontOfSize:INFO_FONT_SIZE];
-            int count = [[doctorData objectForKey:@"comment"] intValue];
+            int count = [[hospitalData objectForKey:@"comment"] intValue];
             cell.textLabel.text = [[NSString alloc]initWithFormat:@"评论(%i条)", count];
             if(count > 0)
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -271,7 +279,7 @@
             [cell.contentView addSubview:titleLabel];
             
             contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(85, 10, 210, 1000)];
-//            contentLabel = cell.textLabel;
+            //            contentLabel = cell.textLabel;
             
             contentLabel.tag = 100;
             contentLabel.font = textfont;
@@ -288,13 +296,13 @@
             contentLabel = (UILabel*)[cell viewWithTag:100];
         }  
         
-        NSString* contentText = [doctorData objectForKey:[infoKeys objectAtIndex:row]];                        
+        NSString* contentText = [hospitalData objectForKey:[infoKeys objectAtIndex:row]];                        
         CGSize constraint = CGSizeMake(CELL_RIGHT_CONTENT_WIDTH, 20000.0f);        
         CGSize size = [contentText sizeWithFont:textfont constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
         [contentLabel setFrame:CGRectMake(85, 1, 210, MAX(size.height, 44.0f))];
         titleLabel.text = [labels objectAtIndex:row];
         contentLabel.text = contentText;
-//        NSLog(@"fff%@", contentLabel.text);
+        //        NSLog(@"fff%@", contentLabel.text);
     }
     return cell;
 }
@@ -313,17 +321,17 @@
         [label setMinimumFontSize:INTRO_FONT_SIZE];
         [label setNumberOfLines:0];
         [label setFont:[UIFont systemFontOfSize:INTRO_FONT_SIZE]];
-//        [label setTag:1];
+        //        [label setTag:1];
     }
     
-    NSString *text = [doctorData objectForKey:@"info"];
+    NSString *text = [hospitalData objectForKey:@"info"];
     
     CGSize constraint = CGSizeMake(CELL_CONTENT_WIDTH, 20000.0f);
     
     CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:INTRO_FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
     
-//    if (!label)
-//        label = (UILabel*)[cell viewWithTag:1];
+    //    if (!label)
+    //        label = (UILabel*)[cell viewWithTag:1];
     label = cell.textLabel;
     
     [label setText:text];
@@ -342,42 +350,4 @@
     return height + (margin * 2);
 }
 
-- (UITableViewCell *)thesisCellForRow:(int)row
-{
-    static NSString *ThesisIdentifier = @"ThesisIdentifier";    
-    UILabel* label;
-    UITableViewCell *cell = [detailView dequeueReusableCellWithIdentifier:ThesisIdentifier];
-    if (cell == nil)
-    {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                      reuseIdentifier: ThesisIdentifier];
-        label = cell.textLabel;
-        [label setLineBreakMode:UILineBreakModeWordWrap];
-        [label setMinimumFontSize:INTRO_FONT_SIZE];
-        [label setNumberOfLines:0];
-        [label setFont:[UIFont systemFontOfSize:INTRO_FONT_SIZE]];
-        //        [label setTag:1];
-    }
-    label = cell.textLabel;
-    NSLog(@"row%i", row);
-    
-    NSString *text;
-    if(!showAllThesis && row == INIT_SHOW_THESIS_COUNT)
-    {
-        text = @"显示全部论文";
-        label.textAlignment = UITextAlignmentCenter;
-    }
-    else 
-    {
-        text = [thesis objectAtIndex:row];
-        label.textAlignment = UITextAlignmentLeft;
-    }
-    
-    CGSize constraint = CGSizeMake(CELL_CONTENT_WIDTH, 20000.0f);
-    
-    CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:INTRO_FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
-    [label setText:text];
-    [label setFrame:CGRectMake(0, 0, CELL_CONTENT_WIDTH, MAX(size.height, 44.0f))];
-    return cell;
-}
 @end
