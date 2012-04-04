@@ -17,7 +17,7 @@
 {
     self = [super init];
     if (self) {
-        // Custom initialization
+        // Custom initialization test
         self.title = @"华佗360";
         UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
         backItem.title = @"返回";
