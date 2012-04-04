@@ -23,6 +23,11 @@
         backItem.title = @"返回";
         [self.navigationItem setBackBarButtonItem:backItem];
         firstAppear = true;
+        if([params objectForKey:@"hospid"]){//从医院列表过来的医生列表
+            //评论按钮
+            UIBarButtonItem *btnComment  = [[UIBarButtonItem alloc] initWithTitle:@"医院详情" style:UITabBarSystemItemContacts target:self action:@selector(showCommentView)];
+            [self.navigationItem setRightBarButtonItem:btnComment];
+        }
     }
     return self;
 }
