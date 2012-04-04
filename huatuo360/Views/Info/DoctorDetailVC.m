@@ -34,7 +34,7 @@
     return self;
 }
 
-- (void)showCommentView
+- (void)showCommentView 
 {
     NSLog(@"评论");
 }
