@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AsiObjectManager.h"
 
 @interface ListViewController2 : UIViewController<UITableViewDelegate, UITableViewDataSource>
 {
     NSMutableArray* listData;
     int total;
     int page;
+    AsiObjectManager* manager;
 }
 
 @property (nonatomic, strong)IBOutlet UITableView* listView;

@@ -7,7 +7,6 @@
 //
 
 #import "ListViewController2.h"
-#import "AsiObjectManager.h"
 
 @interface CommentListViewController : ListViewController2<AsiObjectDelegate>
 {

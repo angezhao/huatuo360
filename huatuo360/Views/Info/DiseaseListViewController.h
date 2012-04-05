@@ -7,7 +7,6 @@
 //
 #import <UIKit/UIKit.h>
 #import "ListViewController2.h"
-#import "AsiObjectManager.h"
 
 @interface DiseaseListViewController : ListViewController2<AsiObjectDelegate>
 {

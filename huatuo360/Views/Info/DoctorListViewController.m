@@ -34,8 +34,9 @@
     if(firstAppear)
     {
         firstAppear = false;
-        [[AsiObjectManager sharedManager] setDelegate:self];
-        [[AsiObjectManager sharedManager] requestData:params];
+        manager = [AsiObjectManager alloc];
+        [manager setDelegate:self];
+        [manager requestData:params];
         NSLog(@"params=%@",params); 
         if([params objectForKey:@"hospid"]){//从医院列表过来的医生列表
             //医院详情按钮
@@ -124,8 +125,7 @@
 {
     NSString *pageText = [[NSString alloc]initWithFormat:@"%i", ++page];
     [params setObject:pageText forKey:@"page"];
-    [[AsiObjectManager sharedManager] setDelegate:self];
-    [[AsiObjectManager sharedManager] requestData:params];
+    [manager requestData:params];
 }
 
 @end

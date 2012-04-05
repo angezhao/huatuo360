@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ListViewController1.h"
-#import "AsiObjectManager.h"
+
 @interface DoctorListViewController : ListViewController1<AsiObjectDelegate>
 {
     Boolean firstAppear;

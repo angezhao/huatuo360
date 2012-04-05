@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "ListViewController2.h"
-#import "AsiObjectManager.h"
 
 @interface FixListViewController : ListViewController2<AsiObjectDelegate>
 {

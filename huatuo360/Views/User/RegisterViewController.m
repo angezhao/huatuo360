@@ -131,8 +131,9 @@
     [params setObject:[[textfields objectAtIndex:0] text] forKey:@"userId"];
     [params setObject:[[textfields objectAtIndex:1] text] forKey:@"password"];
     [params setObject:[[textfields objectAtIndex:3] text] forKey:@"email"];
-    [[AsiObjectManager sharedManager] setDelegate:self];
-    [[AsiObjectManager sharedManager] requestData:params];
+    manager = [AsiObjectManager alloc];
+    [manager setDelegate:self];
+    [manager requestData:params];
 }
 
 - (void)loadData:(NSDictionary *)data

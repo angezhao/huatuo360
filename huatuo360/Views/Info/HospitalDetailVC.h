@@ -17,6 +17,7 @@
     NSArray* labels;
     NSArray* texts;
     NSArray* infoKeys;
+    AsiObjectManager* manager;
 }
 
 @property (nonatomic, strong)IBOutlet UITableView* detailView;

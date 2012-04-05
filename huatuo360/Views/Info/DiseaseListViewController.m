@@ -35,8 +35,9 @@
     if(firstAppear)
     {
         firstAppear = false;
-        [[AsiObjectManager sharedManager] setDelegate:self];
-        [[AsiObjectManager sharedManager] requestData:params];
+        manager = [AsiObjectManager alloc];
+        [manager setDelegate:self];
+        [manager requestData:params];
     }
 }
 
@@ -120,7 +121,6 @@
 {
     NSString *pageText = [[NSString alloc]initWithFormat:@"%i", ++page];
     [params setObject:pageText forKey:@"page"];
-    [[AsiObjectManager sharedManager] setDelegate:self];
-    [[AsiObjectManager sharedManager] requestData:params];
+    [manager requestData:params];
 }
 @end

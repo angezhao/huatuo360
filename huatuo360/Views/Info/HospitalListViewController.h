@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "ListViewController1.h"
-#import "AsiObjectManager.h"
 
 @interface HospitalListViewController : ListViewController1<AsiObjectDelegate>
 {
     Boolean firstAppear;
 }
+
 @property (nonatomic, strong)NSMutableDictionary* params;
 @end

@@ -61,8 +61,9 @@
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:0];
     [params setObject:_hospital forKey:@"interfaceName"];
     [params setObject:hospitalId forKey:@"id"];
-    [[AsiObjectManager sharedManager] setDelegate:self];
-    [[AsiObjectManager sharedManager] requestData:params];
+    manager = [AsiObjectManager alloc];
+    [manager setDelegate:self];
+    [manager requestData:params];
 }
 
 - (void)viewDidUnload
