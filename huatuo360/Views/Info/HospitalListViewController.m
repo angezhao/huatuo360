@@ -88,7 +88,9 @@
     [tmp setObject:@"1" forKey:@"page"];
     [tmp setObject:[itemData objectForKey:@"id"] forKey:@"hospid"];
     [tmp setObject:[itemData objectForKey:@"name"] forKey:@"_name"];//医院名字
-    if([params objectForKey:@"deptid"])
+    if([params objectForKey:@"_diseaseid"])//疾病id
+        [tmp setObject:[params objectForKey:@"_diseaseid"] forKey:@"diseaseid"];
+    if([params objectForKey:@"deptid"] && ![params objectForKey:@"_diseaseid"])//科室id
         [tmp setObject:[params objectForKey:@"deptid"] forKey:@"deptid"];
     DoctorListViewController* dlvc = [[DoctorListViewController alloc]init];
     dlvc.params = tmp;

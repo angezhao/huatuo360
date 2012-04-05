@@ -137,7 +137,10 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 4;
+    if([hospitalData objectForKey:@"specialty"])
+        return 4;
+    else 
+        return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -177,13 +180,13 @@
             cell = [self infoCellForRow:row];
             break;
         case 1:
-            cell = [self introCellForRow:row];
+            cell = [self introCellForSection:section];
             break;
         case 2:
-            cell = [self introCellForRow:row];
+            cell = [self introCellForSection:section];
             break;
         case 3:
-            cell = [self introCellForRow:row];
+            cell = [self introCellForSection:section];
             break;
     }
     return cell;
@@ -198,16 +201,24 @@
     switch ([indexPath section]) 
     {
         case 0://信息contentText];
-            height = [self cellHeightForText:[hospitalData objectForKey:[infoKeys objectAtIndex:row]]
-                                      margin:0 
-                                       width:CELL_RIGHT_CONTENT_WIDTH 
-                                    fontsize:INFO_FONT_SIZE];
+            //处理联系电话
+            {
+                if(row == 2)
+                    height = [self cellHeightForText:[[hospitalData objectForKey:[infoKeys objectAtIndex:row]] stringByReplacingOccurrencesOfString:@"," withString:@"\n"]
+                                              margin:0 
+                                               width:CELL_RIGHT_CONTENT_WIDTH 
+                                                          fontsize:INFO_FONT_SIZE];
+                else
+                    height = [self cellHeightForText:[hospitalData objectForKey:[infoKeys objectAtIndex:row]]
+                                          margin:0 
+                                           width:CELL_RIGHT_CONTENT_WIDTH 
+                                        fontsize:INFO_FONT_SIZE];
+            }
             break;
             
         case 1://医院科室
             {
                 NSArray *myArray = [hospitalData objectForKey:@"departments"];
-                NSLog(@"%@",myArray); 
                 NSString* departments = nil;
                 for (NSString *department in myArray) {
                     if(departments == nil)
@@ -297,7 +308,12 @@
             contentLabel = (UILabel*)[cell viewWithTag:100];
         }  
         
-        NSString* contentText = [hospitalData objectForKey:[infoKeys objectAtIndex:row]];                        
+        NSString* contentText = nil;
+        if(row == 2)
+            contentText = [[hospitalData objectForKey:[infoKeys objectAtIndex:row]] stringByReplacingOccurrencesOfString:@"," withString:@"\n"];
+        else
+            contentText = [hospitalData objectForKey:[infoKeys objectAtIndex:row]];   
+                              
         CGSize constraint = CGSizeMake(CELL_RIGHT_CONTENT_WIDTH, 20000.0f);        
         CGSize size = [contentText sizeWithFont:textfont constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
         [contentLabel setFrame:CGRectMake(85, 1, 210, MAX(size.height, 44.0f))];
@@ -308,7 +324,7 @@
     return cell;
 }
 
-- (UITableViewCell *)introCellForRow:(int)row
+- (UITableViewCell *)introCellForSection:(int)section
 {
     static NSString *IntroIdentifier = @"IntroIdentifier";    
     UILabel* label;
@@ -325,7 +341,29 @@
         //        [label setTag:1];
     }
     
-    NSString *text = [hospitalData objectForKey:@"info"];
+    NSString *text = nil;
+    switch (section) {
+        case 1:
+            {
+                NSArray *myArray = [hospitalData objectForKey:@"departments"];
+                NSString* departments = nil;
+                for (NSString *department in myArray) {
+                    if(departments == nil)
+                        departments = department;
+                    else
+                        departments = [NSString stringWithFormat:@"%@ %@", departments, department]; 
+                }
+                text = departments;
+            }
+            break;
+        case 2:
+            text = [hospitalData objectForKey:@"info"];
+            break;
+        case 3:
+            text = [hospitalData objectForKey:@"specialty"];
+            break;
+    }
+
     
     CGSize constraint = CGSizeMake(CELL_CONTENT_WIDTH, 20000.0f);
     
