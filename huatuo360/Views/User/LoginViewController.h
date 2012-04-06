@@ -14,6 +14,7 @@
     UITextField *nameTextfield;
     UITextField *pwTextfield;
     UITextField *textFieldBeingEdited;
+    AsiObjectManager* manager;
 }
 
 -(IBAction)loginButtonPressed:(id)sender;

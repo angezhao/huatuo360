@@ -15,6 +15,7 @@
 #import "UserNavViewController.h"
 
 #import "AsiObjectManager.h"
+#import "Constants.h"
 
 #import "CityListVC.h"
 
@@ -25,9 +26,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
-    AsiObjectManager* manager = [AsiObjectManager initManager];
-    NSLog(@"I am your RKObjectManager singleton: %@", manager);
+    //init departmentlist数据
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
+    [params setObject:_departmentList forKey:@"interfaceName"];
+    AsiObjectManager* manager = [AsiObjectManager alloc];
+    NSDictionary* data = [manager syncRequestData:params];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.    

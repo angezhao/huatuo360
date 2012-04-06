@@ -13,18 +13,6 @@
 @property ( nonatomic) id<AsiObjectDelegate> delegate;
 
 - (void)requestData:(NSMutableDictionary*)urlParam;
-
-+ (AsiObjectManager*)sharedManager;
-
-
-+ (void)setSharedManager:(AsiObjectManager*)manager;
-
-/// @name Initializing an Object Manager
-
-/**
- Create and initialize a new object manager. If this is the first instance created
- it will be set as the shared instance
- */
-+ (AsiObjectManager*)initManager;
+- (NSDictionary*)syncRequestData:(NSMutableDictionary*)urlParam;
 
 @end

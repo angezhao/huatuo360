@@ -99,12 +99,12 @@ extern NSString* const _departmentList;
                 NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
                 [tmp setObject:_doctorList forKey:@"interfaceName"];
                 [tmp setObject:@"1" forKey:@"page"];
-                [tmp setObject:[params objectForKey:@"deptid"] forKey:@"deptid"];
+                [tmp setObject:[params objectForKey:@"diseaseid"] forKey:@"diseaseid"];
                 DoctorListViewController* dlvc = [[DoctorListViewController alloc]init];
                 dlvc.params = tmp;
                 dlvc.tableTitle = @"医生排行";
                 infoViewToShow = dlvc;
-                [self.tabBarController setSelectedIndex:1];
+                [self.navigationController pushViewController:dlvc animated:true];
             }  
             break;
         case 1:
@@ -112,12 +112,14 @@ extern NSString* const _departmentList;
                 NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
                 [tmp setObject:_hospitalList forKey:@"interfaceName"];
                 [tmp setObject:@"1" forKey:@"page"];
-                [tmp setObject:[params objectForKey:@"deptid"] forKey:@"deptid"];
+                [tmp setObject:[params objectForKey:@"diseaseid"] forKey:@"deptid"];
+                [tmp setObject:[params objectForKey:@"diseaseid"] forKey:@"_diseaseid"];
                 HospitalListViewController* hlvc = [[HospitalListViewController alloc]init];
                 hlvc.params = tmp;
                 hlvc.tableTitle = @"医院排行";
                 infoViewToShow = hlvc;
-                [self.tabBarController setSelectedIndex:1];
+                [self.navigationController pushViewController:hlvc animated:true];
+
             }  
             break;
         default:

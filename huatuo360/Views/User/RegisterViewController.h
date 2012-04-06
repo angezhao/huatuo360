@@ -12,6 +12,7 @@
 @interface RegisterViewController : UIViewController<AsiObjectDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 {
     NSMutableArray *textfields;
+    AsiObjectManager* manager;
 }
 
 - (IBAction)registerButtonPressed:(id)sender;

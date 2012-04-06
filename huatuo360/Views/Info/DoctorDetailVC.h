@@ -20,6 +20,7 @@
     
     NSArray* thesis;
     Boolean showAllThesis;
+    AsiObjectManager* manager;
 }
 @property (nonatomic, strong)IBOutlet UITableView* detailView;
 

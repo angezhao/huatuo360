@@ -2,15 +2,32 @@
 #import "SBJson.h"
 #import "Constants.h"
 
-static AsiObjectManager* sharedManager = nil;
-static SBJsonParser *parser = nil;
-static NSError *error;  
-
 @implementation AsiObjectManager
 @synthesize delegate;
-static ASIHTTPRequest* request = nil; 
 
 - (void)requestData:(NSMutableDictionary*)urlParam { 
+    //增加网络链接状态判断是否需要请求
+    NSString *url = [self getUrl:urlParam];
+    ASIHTTPRequest* request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+    [request setDelegate:self];
+    [request startAsynchronous];
+}   
+
+- (NSDictionary*)syncRequestData:(NSMutableDictionary*)urlParam {
+    //增加网络链接状态判断是否需要请求
+    NSString *url = [self getUrl:urlParam];
+    ASIHTTPRequest* request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+    [request startSynchronous]; 
+    [request  setResponseEncoding:(NSUTF8StringEncoding)];
+    NSString *responseString = [request responseString];
+    NSLog(@"%@", responseString);
+    SBJsonParser *parser = [[SBJsonParser alloc] init];
+    NSDictionary *jsonDict = [parser objectWithData:[responseString dataUsingEncoding:NSUTF8StringEncoding]];  
+    NSLog(@"%@", jsonDict);
+    return jsonDict;
+}
+
+-(NSString*)getUrl:(NSMutableDictionary*)urlParam{
     NSString *url = nil;
     NSString *param = [NSString stringWithFormat:@"%@%i",@"perpage=",perpage];
     //还要处理地区
@@ -29,22 +46,21 @@ static ASIHTTPRequest* request = nil;
     NSLog(@"url=%@",url); 
     url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];  
     NSLog(@"url=%@",url); 
-    request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
-    [request setDelegate:self];
-    [request startAsynchronous]; 
+    return url;
+}
 
-}   
-
-- (void)requestFinished:(ASIHTTPRequest *)retrequest {   
+- (void)requestFinished:(ASIHTTPRequest *)request {   
     [request  setResponseEncoding:(NSUTF8StringEncoding)];
-    NSString* responseString=[retrequest responseString];
+    NSString* responseString=[request responseString];
     NSLog(@"%@", responseString);
+    SBJsonParser *parser = [[SBJsonParser alloc] init];
     NSDictionary *jsonDict = [parser objectWithData:[responseString dataUsingEncoding:NSUTF8StringEncoding]];  
     NSLog(@"%@", jsonDict);
     NSNumber *status = [jsonDict objectForKey:@"status"];
     NSLog(@"%@",status); 
+    //判断异常delegate是否为空
     if ([status intValue] != 1) {
-        error = [[NSError alloc] initWithDomain:@"requestFailed" code:[status integerValue] userInfo:nil];
+        NSError *error = [[NSError alloc] initWithDomain:@"requestFailed" code:[status integerValue] userInfo:nil];
         [delegate requestFailed:error];
     }else {
         [delegate loadData:jsonDict];
@@ -80,27 +96,10 @@ static ASIHTTPRequest* request = nil;
     */
 }
 
-- (void)requestFailed:(ASIHTTPRequest *)retrequest {    
-	error = [retrequest error]; 
+- (void)requestFailed:(ASIHTTPRequest *)request {    
+	NSError *error = [request error]; 
     NSLog(@"%@", error);
     [delegate requestFailed:error];
-}
-
-+ (AsiObjectManager*)sharedManager {
-	return sharedManager;
-}
-
-+ (void)setSharedManager:(AsiObjectManager*)manager {
-    sharedManager = manager;
-}
-
-+ (AsiObjectManager*)initManager {
-    parser = [[SBJsonParser alloc] init];
-    AsiObjectManager* manager = [AsiObjectManager alloc];
-	if (nil == sharedManager) {
-		[AsiObjectManager setSharedManager:manager];
-	}
-	return manager;
 }
 
 @end

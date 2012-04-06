@@ -143,8 +143,9 @@
     [params setObject:_login forKey:@"interfaceName"];
     [params setObject:[nameTextfield text] forKey:@"userId"];
     [params setObject:[pwTextfield text] forKey:@"password"];
-    [[AsiObjectManager sharedManager] setDelegate:self];
-    [[AsiObjectManager sharedManager] requestData:params];
+    manager = [AsiObjectManager alloc];
+    [manager setDelegate:self];
+    [manager requestData:params];
 }
 
 -(IBAction)registerButtonPressed:(id)sender

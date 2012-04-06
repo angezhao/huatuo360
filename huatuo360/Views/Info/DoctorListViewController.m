@@ -9,6 +9,7 @@
 #import "DoctorListViewController.h"
 #import "Constants.h"
 #import "DoctorDetailVC.h"
+#import "HospitalDetailVC.h"
 
 @implementation DoctorListViewController
 @synthesize params;
@@ -33,9 +34,25 @@
     if(firstAppear)
     {
         firstAppear = false;
-        [[AsiObjectManager sharedManager] setDelegate:self];
-        [[AsiObjectManager sharedManager] requestData:params];
+        manager = [AsiObjectManager alloc];
+        [manager setDelegate:self];
+        [manager requestData:params];
+        NSLog(@"params=%@",params); 
+        if([params objectForKey:@"hospid"]){//从医院列表过来的医生列表
+            //医院详情按钮
+            UIBarButtonItem *btnComment  = [[UIBarButtonItem alloc] initWithTitle:@"医院详情" style:UITabBarSystemItemContacts target:self action:@selector(showCommentView)];
+            [self.navigationItem setRightBarButtonItem:btnComment];
+        }
     }
+}
+
+- (void)showCommentView
+{
+    //NSLog(@"医院详情");
+    NSString* hospitalId = [params objectForKey:@"hospid"];
+    NSString* hospitalName = [params objectForKey:@"_name"];
+    HospitalDetailVC* hdvc = [[HospitalDetailVC alloc]initWithHospId:hospitalId hname:hospitalName];
+    [self.navigationController pushViewController:hdvc animated:true];; 
 }
 
 - (void)viewDidLoad
@@ -108,8 +125,7 @@
 {
     NSString *pageText = [[NSString alloc]initWithFormat:@"%i", ++page];
     [params setObject:pageText forKey:@"page"];
-    [[AsiObjectManager sharedManager] setDelegate:self];
-    [[AsiObjectManager sharedManager] requestData:params];
+    [manager requestData:params];
 }
 
 @end

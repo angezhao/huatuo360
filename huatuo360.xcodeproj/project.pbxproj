@@ -94,6 +94,8 @@
 		B783B44B152373750089AAFD /* DepartmentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B783B44A152373750089AAFD /* DepartmentListViewController.m */; };
 		B783B459152375A40089AAFD /* CommentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B783B458152375A40089AAFD /* CommentListViewController.m */; };
 		B783B45C152375CE0089AAFD /* DiseaseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B783B45B152375CE0089AAFD /* DiseaseListViewController.m */; };
+		B78500EA152C2F4600FDB045 /* HospitalDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B78500E8152C2F4500FDB045 /* HospitalDetailVC.m */; };
+		B78500EB152C2F4600FDB045 /* HospitalDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B78500E9152C2F4500FDB045 /* HospitalDetailVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -250,6 +252,9 @@
 		B783B458152375A40089AAFD /* CommentListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentListViewController.m; sourceTree = "<group>"; };
 		B783B45A152375CE0089AAFD /* DiseaseListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiseaseListViewController.h; sourceTree = "<group>"; };
 		B783B45B152375CE0089AAFD /* DiseaseListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiseaseListViewController.m; sourceTree = "<group>"; };
+		B78500E7152C2F4500FDB045 /* HospitalDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HospitalDetailVC.h; sourceTree = "<group>"; };
+		B78500E8152C2F4500FDB045 /* HospitalDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HospitalDetailVC.m; sourceTree = "<group>"; };
+		B78500E9152C2F4500FDB045 /* HospitalDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HospitalDetailVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -547,14 +552,17 @@
 				0D6FC401151A4CDF00C8E4D5 /* DoctorListViewController.m */,
 				B783B449152373740089AAFD /* DepartmentListViewController.h */,
 				B783B44A152373750089AAFD /* DepartmentListViewController.m */,
-				B783B457152375A30089AAFD /* CommentListViewController.h */,
 				B783B458152375A40089AAFD /* CommentListViewController.m */,
 				B783B45A152375CE0089AAFD /* DiseaseListViewController.h */,
 				B783B45B152375CE0089AAFD /* DiseaseListViewController.m */,
 				B77CD72415260DFA00D238CD /* FixListViewController.h */,
 				B77CD72515260DFA00D238CD /* FixListViewController.m */,
+				B78500E7152C2F4500FDB045 /* HospitalDetailVC.h */,
+				B78500E8152C2F4500FDB045 /* HospitalDetailVC.m */,
+				B78500E9152C2F4500FDB045 /* HospitalDetailVC.xib */,
 				0D6F25A715276ED3001A3A92 /* ListViewController1.h */,
 				0D6F25A815276ED3001A3A92 /* ListViewController1.m */,
+				B783B457152375A30089AAFD /* CommentListViewController.h */,
 				0D6F25A915276ED3001A3A92 /* ListViewController1.xib */,
 				0D6F25AC15276EEB001A3A92 /* ListViewController2.h */,
 				0D6F25AD15276EEB001A3A92 /* ListViewController2.m */,

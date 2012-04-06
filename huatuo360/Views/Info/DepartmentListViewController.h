@@ -7,7 +7,6 @@
 //
 #import <UIKit/UIKit.h>
 #import "ListViewController2.h"
-#import "AsiObjectManager.h"
 
 @interface DepartmentListViewController : ListViewController2<AsiObjectDelegate>
 {

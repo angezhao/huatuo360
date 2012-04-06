@@ -8,7 +8,7 @@
 
 #import "ListViewController2.h"
 
-@interface CommentListViewController : ListViewController2
+@interface CommentListViewController : ListViewController2<AsiObjectDelegate>
 {
     Boolean firstAppear;
 }

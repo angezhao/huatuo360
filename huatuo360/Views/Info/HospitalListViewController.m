@@ -38,8 +38,9 @@
     if(firstAppear)
     {
         firstAppear = false;
-        [[AsiObjectManager sharedManager] setDelegate:self];
-        [[AsiObjectManager sharedManager] requestData:params];
+        manager = [AsiObjectManager alloc];
+        [manager setDelegate:self];
+        [manager requestData:params];
     }
 }
 
@@ -86,7 +87,10 @@
     [tmp setObject:_doctorList forKey:@"interfaceName"];
     [tmp setObject:@"1" forKey:@"page"];
     [tmp setObject:[itemData objectForKey:@"id"] forKey:@"hospid"];
-    if([params objectForKey:@"deptid"])
+    [tmp setObject:[itemData objectForKey:@"name"] forKey:@"_name"];//医院名字
+    if([params objectForKey:@"_diseaseid"])//疾病id
+        [tmp setObject:[params objectForKey:@"_diseaseid"] forKey:@"diseaseid"];
+    if([params objectForKey:@"deptid"] && ![params objectForKey:@"_diseaseid"])//科室id
         [tmp setObject:[params objectForKey:@"deptid"] forKey:@"deptid"];
     DoctorListViewController* dlvc = [[DoctorListViewController alloc]init];
     dlvc.params = tmp;
@@ -115,7 +119,6 @@
 {
     NSString *pageText = [[NSString alloc]initWithFormat:@"%i", ++page];
     [params setObject:pageText forKey:@"page"];
-    [[AsiObjectManager sharedManager] setDelegate:self];
-    [[AsiObjectManager sharedManager] requestData:params];
+    [manager requestData:params];
 }
 @end
