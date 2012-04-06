@@ -34,6 +34,9 @@
 		0D708A9F1515A78B007EA936 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D708A9D1515A78B007EA936 /* RegisterViewController.m */; };
 		0D708AA01515A78B007EA936 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D708A9E1515A78B007EA936 /* RegisterViewController.xib */; };
 		0D7123601520C3E6006420C2 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D71235F1520C3E5006420C2 /* Constants.m */; };
+		0D7136DE152F1E5800AC115E /* HomePageNavVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7136DD152F1E5800AC115E /* HomePageNavVC.m */; };
+		0D73A630152C3AE70077666D /* CityListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D73A62E152C3AE70077666D /* CityListVC.m */; };
+		0D73A631152C3AE70077666D /* CityListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D73A62F152C3AE70077666D /* CityListVC.xib */; };
 		0D7433E8151E5BAE009119A9 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D743391151E5BAE009119A9 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0D7433E9151E5BAE009119A9 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D743394151E5BAE009119A9 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0D7433EA151E5BAE009119A9 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D743396151E5BAE009119A9 /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -63,6 +66,7 @@
 		0D743443151E5CB6009119A9 /* ASIS3Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D743434151E5CB6009119A9 /* ASIS3Request.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0D743444151E5CB6009119A9 /* ASIS3ServiceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D743436151E5CB6009119A9 /* ASIS3ServiceRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0D743446151E5DA3009119A9 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D743445151E5DA3009119A9 /* CFNetwork.framework */; };
+		0D74B992152DEE510063E9B0 /* cities.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0D74B991152DEE510063E9B0 /* cities.plist */; };
 		0DB6928B15277BBD00FD7F98 /* DoctorDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB6928915277BBD00FD7F98 /* DoctorDetailVC.m */; };
 		0DB6928C15277BBD00FD7F98 /* DoctorDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DB6928A15277BBD00FD7F98 /* DoctorDetailVC.xib */; };
 		0DECF5D4150C94EB00824D1C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DECF5D3150C94EB00824D1C /* UIKit.framework */; };
@@ -141,6 +145,11 @@
 		0D708A9D1515A78B007EA936 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		0D708A9E1515A78B007EA936 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		0D71235F1520C3E5006420C2 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		0D7136DC152F1E5800AC115E /* HomePageNavVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageNavVC.h; sourceTree = "<group>"; };
+		0D7136DD152F1E5800AC115E /* HomePageNavVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageNavVC.m; sourceTree = "<group>"; };
+		0D73A62D152C3AE70077666D /* CityListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityListVC.h; sourceTree = "<group>"; };
+		0D73A62E152C3AE70077666D /* CityListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityListVC.m; sourceTree = "<group>"; };
+		0D73A62F152C3AE70077666D /* CityListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CityListVC.xib; sourceTree = "<group>"; };
 		0D743390151E5BAE009119A9 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		0D743391151E5BAE009119A9 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		0D743392151E5BAE009119A9 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -198,6 +207,7 @@
 		0D743435151E5CB6009119A9 /* ASIS3ServiceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIS3ServiceRequest.h; sourceTree = "<group>"; };
 		0D743436151E5CB6009119A9 /* ASIS3ServiceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIS3ServiceRequest.m; sourceTree = "<group>"; };
 		0D743445151E5DA3009119A9 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		0D74B991152DEE510063E9B0 /* cities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = cities.plist; sourceTree = "<group>"; };
 		0DB6928815277BBD00FD7F98 /* DoctorDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorDetailVC.h; sourceTree = "<group>"; };
 		0DB6928915277BBD00FD7F98 /* DoctorDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorDetailVC.m; sourceTree = "<group>"; };
 		0DB6928A15277BBD00FD7F98 /* DoctorDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoctorDetailVC.xib; sourceTree = "<group>"; };
@@ -484,6 +494,7 @@
 		0DECF630150C9CAB00824D1C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0D74B991152DEE510063E9B0 /* cities.plist */,
 				0DECF662150C9F2300824D1C /* more.png */,
 				0DECF663150C9F2300824D1C /* more@2x.png */,
 				0DECF664150C9F2300824D1C /* user.png */,
@@ -516,6 +527,11 @@
 				0DECF650150C9D0F00824D1C /* HomepageViewController.xib */,
 				0D6FC997152AF58400A77E44 /* DropDownList.h */,
 				0D6FC998152AF58400A77E44 /* DropDownList.m */,
+				0D73A62D152C3AE70077666D /* CityListVC.h */,
+				0D73A62E152C3AE70077666D /* CityListVC.m */,
+				0D73A62F152C3AE70077666D /* CityListVC.xib */,
+				0D7136DC152F1E5800AC115E /* HomePageNavVC.h */,
+				0D7136DD152F1E5800AC115E /* HomePageNavVC.m */,
 			);
 			path = Homepage;
 			sourceTree = "<group>";
@@ -644,6 +660,8 @@
 				0D6F25B2152773B5001A3A92 /* Entitlement.plist in Resources */,
 				0DB6928C15277BBD00FD7F98 /* DoctorDetailVC.xib in Resources */,
 				0D4A7F3E152AFD56003BAC85 /* disease.plist in Resources */,
+				0D73A631152C3AE70077666D /* CityListVC.xib in Resources */,
+				0D74B992152DEE510063E9B0 /* cities.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -709,6 +727,8 @@
 				0D6F25AF15276EEC001A3A92 /* ListViewController2.m in Sources */,
 				0DB6928B15277BBD00FD7F98 /* DoctorDetailVC.m in Sources */,
 				0D6FC999152AF58400A77E44 /* DropDownList.m in Sources */,
+				0D73A630152C3AE70077666D /* CityListVC.m in Sources */,
+				0D7136DE152F1E5800AC115E /* HomePageNavVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -780,8 +800,9 @@
 				GCC_PREFIX_HEADER = "huatuo360/huatuo360-Prefix.pch";
 				"HEADER_SEARCH_PATHS[arch=*]" = "${SDK_DIR}/usr/include/libxml2";
 				INFOPLIST_FILE = "huatuo360/huatuo360-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -795,8 +816,9 @@
 				GCC_PREFIX_HEADER = "huatuo360/huatuo360-Prefix.pch";
 				"HEADER_SEARCH_PATHS[arch=*]" = "${SDK_DIR}/usr/include/libxml2";
 				INFOPLIST_FILE = "huatuo360/huatuo360-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

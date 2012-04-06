@@ -13,9 +13,10 @@
 #import "DoctorListViewController.h"
 #import "Constants.h"
 #import "DropDownList.h"
+#import "CityListVC.h"
 
 @implementation HomepageViewController
-@synthesize searchBarRef;
+@synthesize searchBarRef, btnCity;
 //@synthesize searchBarHolders;
 const static int DISEASE = 0;
 const static int HOSPITAL = 1;
@@ -25,8 +26,13 @@ const static int DOCTOR = 2;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.title = NSLocalizedString(@"Homepage", @"Homepage");
-        self.tabBarItem.image = [UIImage imageNamed:@"homepage"];
+        self.title = @"华佗360";
+        UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
+        backItem.title = @"返回";
+        [self.navigationItem setBackBarButtonItem:backItem];
+        //城市按钮
+        btnCity  = [[UIBarButtonItem alloc] initWithTitle:@"全国" style:UITabBarSystemItemContacts target:self action:@selector(showCityList)];
+        [self.navigationItem setRightBarButtonItem:btnCity];
         
         listData = [[NSArray alloc]initWithObjects: 
                     @"医院综合排名",
@@ -34,7 +40,7 @@ const static int DOCTOR = 2;
                     @"各科室医生排名",
                     @"常见疾病医院排名",
                     @"常见疾病医生排名", nil];
-        searchBarHolders = [[NSArray alloc]initWithObjects:@"搜索病症", @"搜索医院", @"搜索医生", nil];
+        searchBarHolders = [[NSArray alloc]initWithObjects:@"搜索病症", @"搜索医院", @"搜索医生", nil]; 
     }
     return self;
 }
@@ -43,7 +49,8 @@ const static int DOCTOR = 2;
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+    //读取持久化的数据赋值城市按钮的名字
+    btnCity.title = @"全国";
     ddList = [[DropDownList alloc] initWithStyle:UITableViewStylePlain];
     ddList.delegate = searchBarRef;
     [self.view addSubview:ddList.view];
@@ -57,12 +64,18 @@ const static int DOCTOR = 2;
     // e.g. self.myOutlet = nil;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [ddList setHidden:YES];
+}
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     
     [searchBarRef resignFirstResponder];
-    [ddList setHidden:NO];
+    [searchBarRef setShowsCancelButton:NO animated:true];
+    [ddList setHidden:YES];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *) searchBar
@@ -76,7 +89,7 @@ const static int DOCTOR = 2;
     searchType = selectedScope;
     searchBar.placeholder = [searchBarHolders objectAtIndex:searchType];
     if (searchType != DISEASE) 
-        [ddList setHidden:NO];
+        [ddList setHidden:YES];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
@@ -149,12 +162,6 @@ const static int DOCTOR = 2;
 		[ddList setHidden:YES];
 	}
 }
-
-//-(IBAction)switchSearchTab:(id)sender
-//{
-//    searchType = [sender selectedSegmentIndex];
-//    [sender setPlaceholder:[searchBarHolders objectAtIndex:searchType]];
-//}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -261,6 +268,28 @@ const static int DOCTOR = 2;
     [self.tabBarController setSelectedIndex:1];
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     [searchBarRef resignFirstResponder];
-    [ddList setHidden:NO];
+    [searchBarRef setShowsCancelButton:NO animated:true];
+    [ddList setHidden:YES];
+}
+
+- (void)showCityList
+{
+    NSLog(@"Show City List");
+    if(nil == cityListVC)
+    {
+        cityListVC = [[CityListVC alloc]init];
+        [cityListVC setDelegate:self];
+    }
+    [self.navigationController pushViewController:cityListVC animated:YES];
+}
+
+- (void) selectCity:(NSString*)cityId cityName:(NSString*)cityName
+{
+//    cityListVC.view.window.rootViewController = rootViewController;
+    if (cityName != nil) 
+    {
+        btnCity.title = cityName;
+    }
+    cityListVC = nil;
 }
 @end
