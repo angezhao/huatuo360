@@ -78,7 +78,8 @@
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
+    if (cell == nil) 
+    {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.textLabel.font = [UIFont systemFontOfSize:14];
     }
@@ -95,7 +96,7 @@
 	NSInteger height = hidden ? 0 : 30 * MIN(5, [resultList count]);
 	[UIView beginAnimations:nil context:nil];
 	[UIView setAnimationDuration:0.3f];
-    [self.view setFrame:CGRectMake(30, 80, 220, height)];
+    [self.view setFrame:CGRectMake(30, 33, 220, height)];
 	[UIView commitAnimations];
 }
 

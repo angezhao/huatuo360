@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 
+#import "HomePageNavVC.h"
 #import "HomepageViewController.h"
 #import "InfoNavViewController.h"
 #import "MoreViewController.h"
@@ -15,6 +16,8 @@
 
 #import "AsiObjectManager.h"
 #import "Constants.h"
+
+#import "CityListVC.h"
 
 @implementation AppDelegate
 
@@ -30,13 +33,16 @@
     NSDictionary* data = [manager syncRequestData:params];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    UIViewController *viewController1 = [[HomepageViewController alloc] initWithNibName:@"HomepageViewController" bundle:nil];
+    // Override point for customization after application launch.    
+    HomePageNavVC *viewController1 = [[HomePageNavVC alloc] init];
+//    UIViewController *viewController1 = [[HomepageViewController alloc] initWithNibName:@"HomepageViewController" bundle:nil];
     UIViewController *viewController2 = [[InfoNavViewController alloc] init];
     UIViewController *viewController3 = [[UserNavViewController alloc] init];
     UIViewController *viewController4 = [[MoreViewController alloc] initWithNibName:@"MoreViewController" bundle:nil];
+    
     self.tabBarController = [[UITabBarController alloc] init];
     self.tabBarController.viewControllers = [NSArray arrayWithObjects:viewController1, viewController2, viewController3, viewController4, nil];
+    
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
     return YES;
