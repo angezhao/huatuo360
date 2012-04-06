@@ -670,6 +670,7 @@
 				0D4A7F3E152AFD56003BAC85 /* disease.plist in Resources */,
 				0D73A631152C3AE70077666D /* CityListVC.xib in Resources */,
 				0D74B992152DEE510063E9B0 /* cities.plist in Resources */,
+				B78500EB152C2F4600FDB045 /* HospitalDetailVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -737,6 +738,7 @@
 				0D6FC999152AF58400A77E44 /* DropDownList.m in Sources */,
 				0D73A630152C3AE70077666D /* CityListVC.m in Sources */,
 				0D7136DE152F1E5800AC115E /* HomePageNavVC.m in Sources */,
+				B78500EA152C2F4600FDB045 /* HospitalDetailVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
