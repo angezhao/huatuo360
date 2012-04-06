@@ -13,6 +13,10 @@
 
 - (void)requestData:(NSMutableDictionary*)urlParam { 
     //增加网络链接状态判断是否需要请求
+    if (![self connectedToNetwork]) {
+        NSLog(@"conect fail");
+        return;
+    } 
     NSString *url = [self getUrl:urlParam];
     ASIHTTPRequest* request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
     [request setDelegate:self];
@@ -21,6 +25,10 @@
 
 - (NSDictionary*)syncRequestData:(NSMutableDictionary*)urlParam {
     //增加网络链接状态判断是否需要请求
+    if (![self connectedToNetwork]) {
+        NSLog(@"conect fail");
+        return nil;
+    } 
     NSString *url = [self getUrl:urlParam];
     ASIHTTPRequest* request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
     [request startSynchronous]; 
@@ -30,13 +38,19 @@
     SBJsonParser *parser = [[SBJsonParser alloc] init];
     NSDictionary *jsonDict = [parser objectWithData:[responseString dataUsingEncoding:NSUTF8StringEncoding]];  
     NSLog(@"%@", jsonDict);
-    return jsonDict;
+    NSNumber *status = [jsonDict objectForKey:@"status"];
+    NSLog(@"%@",status); 
+    if ([status intValue] == 1 && [jsonDict objectForKey:@"data"]) {
+        return [jsonDict objectForKey:@"data"];
+    }    
+    return nil;
 }
 
 -(NSString*)getUrl:(NSMutableDictionary*)urlParam{
     NSString *url = nil;
-    NSString *param = [NSString stringWithFormat:@"%@%i",@"perpage=",perpage];
-    //还要处理地区
+    NSString *param = [NSString stringWithFormat:@"%@=%i",@"perpage", perpage];
+    if(![gcityId isEqualToString:@""])
+        param = [NSString stringWithFormat:@"%@&%@=%@", param, @"city", gcityId]; 
     NSLog(@"param=%@",param); 
     NSLog(@"urlParam=%@",urlParam); 
     for (NSString *key in urlParam)
@@ -134,44 +148,5 @@
     BOOL needsConnection = flags & kSCNetworkFlagsConnectionRequired;
     return (isReachable && !needsConnection) ? YES : NO;
 }
-
-//call like:
--(void) start {
-    if (![self connectedToNetwork]) {
-        NSLog(@"conect fail");
-    } else {
-        //do something 
-    }
-}
-
-/*
-+ (BOOL)isNetWork
-{
-    BOOL reachability;
-    Reachability *reach = [Reachability reachabilityWithHostName:@"192.168.3.1"];
-    switch ([reach currentReachabilityStatus]) {
-        case NotReachable:
-            //无网络连接
-            reachability = NO;
-            return reachability;
-            break;
-        case ReachableViaWWAN:
-            //使用3g网络
-            reachability = YES;
-            return reachability;
-            break;
-        case ReachableViaWiFi:
-            //使用wifi
-            reachability = YES;
-            return reachability;
-            break;
-            
-        default:
-            break;
-    }
-    
-    return reachability;
-}
- */
 
 @end

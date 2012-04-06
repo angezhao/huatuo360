@@ -31,7 +31,7 @@ const static int DOCTOR = 2;
         backItem.title = @"返回";
         [self.navigationItem setBackBarButtonItem:backItem];
         //城市按钮
-        btnCity  = [[UIBarButtonItem alloc] initWithTitle:@"全国" style:UITabBarSystemItemContacts target:self action:@selector(showCityList)];
+        btnCity  = [[UIBarButtonItem alloc] initWithTitle:gcityName style:UITabBarSystemItemContacts target:self action:@selector(showCityList)];
         [self.navigationItem setRightBarButtonItem:btnCity];
         
         listData = [[NSArray alloc]initWithObjects: 
@@ -289,6 +289,8 @@ const static int DOCTOR = 2;
     if (cityName != nil) 
     {
         btnCity.title = cityName;
+        gcityId = cityId;
+        gcityName = cityName;
     }
     cityListVC = nil;
 }

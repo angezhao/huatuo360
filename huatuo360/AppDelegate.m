@@ -24,13 +24,30 @@
 @synthesize window = _window;
 @synthesize tabBarController = _tabBarController;
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (void) initConfigData {
+    //init cityid and userid
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"data" ofType:@"plist"];
+    NSDictionary* data = [[NSDictionary alloc] initWithContentsOfFile:path];
+    gcityId = [data objectForKey:@"cityid"];
+    if([gcityId isEqualToString:@""])
+        gcityId = @"2001";
+    gcityName = [data objectForKey:@"cityname"];
+    if([gcityName isEqualToString:@""])
+        gcityName = @"北京";
+    userId = [data objectForKey:@"userid"];
+    if(![userId isEqualToString:@""])
+        isLogin = true;
+    
     //init departmentlist数据
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
     [params setObject:_departmentList forKey:@"interfaceName"];
     AsiObjectManager* manager = [AsiObjectManager alloc];
-    NSDictionary* data = [manager syncRequestData:params];
+    departments = [manager syncRequestData:params];
+}
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    [self initConfigData];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.    
@@ -73,7 +90,16 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    //保存变量数据cityid,cityname,userid
+    NSMutableDictionary* saveData = [NSMutableDictionary dictionaryWithCapacity:0];
+    [saveData setObject:_diseaseList forKey:@"interfaceName"];
+    [saveData setObject:gcityId forKey:@"cityid"];
+    [saveData setObject:gcityName forKey:@"cityname"];
+    [saveData setObject:userId forKey:@"userid"];
+    NSString* savePath = [[NSBundle mainBundle] pathForResource:@"data" ofType:@"plist"];
+    [NSKeyedArchiver archiveRootObject:saveData toFile:savePath];
 }
+
 
 /*
 // Optional UITabBarControllerDelegate method.
