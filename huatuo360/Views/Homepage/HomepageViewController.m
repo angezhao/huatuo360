@@ -54,7 +54,8 @@ const static int DOCTOR = 2;
     btnCity.title = @"全国";
     ddList = [[DropDownList alloc] initWithStyle:UITableViewStylePlain];
     ddList.delegate = searchBarRef;
-    [self.view addSubview:ddList.view];
+    [ddList setParent:self.view];
+//    [self.view addSubview:ddList.view];
 //    [ddList setHidden:YES];
 }
 
@@ -67,7 +68,7 @@ const static int DOCTOR = 2;
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [ddList setHidden:YES];
+//    [ddList setHidden:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -82,6 +83,7 @@ const static int DOCTOR = 2;
 - (void)searchBarCancelButtonClicked:(UISearchBar *) searchBar
 {
     [searchBar resignFirstResponder];
+    [ddList setHidden:YES];
 	[searchBar setShowsCancelButton:NO animated:true];
 }
 

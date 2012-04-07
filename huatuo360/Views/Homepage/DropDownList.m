@@ -29,6 +29,11 @@
     return self;
 }
 
+- (void)setParent:(UIView*)container
+{
+    parent = container;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -93,11 +98,17 @@
 
 - (void)setHidden:(BOOL)hidden 
 {
+    if(!hidden) 
+        [parent addSubview:self.view];
+    
 	NSInteger height = hidden ? 0 : 30 * MIN(5, [resultList count]);
 	[UIView beginAnimations:nil context:nil];
 	[UIView setAnimationDuration:0.3f];
     [self.view setFrame:CGRectMake(30, 33, 220, height)];
 	[UIView commitAnimations];
+    
+    if(hidden)
+        [self.view removeFromSuperview];
 }
 
 - (void)update:(NSString*)filter

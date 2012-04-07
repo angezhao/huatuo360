@@ -2,7 +2,7 @@
 #import "ASIHTTPRequest.h"
 
 @protocol AsiObjectDelegate <NSObject> 
-@optional
+@required
 - (void) loadData:(NSDictionary*)data;
 - (void) requestFailed:(NSError*)error;
 @end

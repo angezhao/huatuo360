@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ListViewController2.h"
 
-@interface FixListViewController : ListViewController2<AsiObjectDelegate>
+@interface FixListViewController : ListViewController2//<AsiObjectDelegate>
 {
     Boolean firstAppear;
 }
