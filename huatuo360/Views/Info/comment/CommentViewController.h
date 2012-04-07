@@ -10,6 +10,7 @@
 
 @interface CommentViewController : UIViewController<UITextViewDelegate>
 {
+    //是否推荐
     Boolean bRecommend;
 }
 //评论内容
