@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AsiObjectManager.h"
 
 @interface CommentViewController : UIViewController<UITextViewDelegate>
 {
     //是否推荐
     Boolean bRecommend;
+    AsiObjectManager* manager;
 }
+@property (nonatomic, strong)NSMutableDictionary* params;
 //评论内容
 @property (nonatomic, strong)IBOutlet UITextView *tvComment;
 //子类赋值 XX医生（医院)
