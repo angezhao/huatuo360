@@ -699,6 +699,7 @@
 				0D9A9A1A152F367000D62421 /* rbDown.png in Resources */,
 				0D9A9A1C152F367000D62421 /* rbNormal.png in Resources */,
 				0D06CABB152F3F5D00FA35FE /* CommentViewController.xib in Resources */,
+				B783C60B152F39B000678CA9 /* data.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
