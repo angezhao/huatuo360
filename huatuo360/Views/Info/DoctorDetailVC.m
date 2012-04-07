@@ -40,9 +40,9 @@
 
 - (void)showCommentView
 {
-    NSLog(@"评论");
-    CommentViewController* cvc = [[CommentViewController alloc]init];
-    [self.navigationController pushViewController:cvc animated:TRUE];
+//    NSLog(@"评论");
+//    CommentViewController* cvc = [[CommentViewController alloc]init];
+//    [self.navigationController pushViewController:cvc animated:TRUE];
 }
 
 - (void)loadData:(NSDictionary *)data
