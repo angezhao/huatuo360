@@ -7,6 +7,7 @@
 //
 
 #import "CommentListViewController.h"
+#import "CommentViewController.h"
 #import "Constants.h"
 
 @interface CommentListViewController ()
@@ -34,7 +35,17 @@
 
 - (void)showCommentView
 {
-    NSLog(@"评论");
+    //NSLog(@"评论");
+    //要判断是否已经登陆
+    NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
+    [tmp setObject:self.tableTitle forKey:@"_name"];
+    if([params objectForKey:@"hospid"])
+        [tmp setObject:[params objectForKey:@"hospid"] forKey:@"hospid"];
+    else
+        [tmp setObject:[params objectForKey:@"doctorid"] forKey:@"doctorId"];
+    CommentViewController* cvc = [[CommentViewController alloc]init];
+    cvc.params = tmp;
+    [self.navigationController pushViewController:cvc animated:TRUE];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -90,9 +101,7 @@
 
 - (NSString*)getTitleByIndex:(int)index
 {
-    NSDictionary* itemData = [listData objectAtIndex:index];
-    NSString *info = [[NSString alloc]initWithFormat:@"%@（%@）", [itemData objectForKey:@"name"],[itemData objectForKey:@"department"]];
-    return info;
+   return [listData objectAtIndex:index];
 }
 
 - (void)nextPage

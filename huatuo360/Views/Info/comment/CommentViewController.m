@@ -8,6 +8,7 @@
 
 #import "CommentViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "Constants.h"
 
 @interface CommentViewController ()
 
@@ -15,6 +16,7 @@
 
 @implementation CommentViewController
 @synthesize  btnRecommendSelected,btnNotRecommendSelected,btnRecommendNormal,btnNotRecommendNormal,tvComment,btnEndEdit,lbPlaceHolder,lbTitle,lbImpression;
+@synthesize params;
 
 - (id)init
 {
@@ -22,7 +24,7 @@
     if (self) {
         // Custom initialization
         bRecommend = TRUE;
-        self.title = @"华佗360";
+        self.title = @"返回";
     }
     return self;
 }
@@ -42,6 +44,15 @@
     lbPlaceHolder.enabled = FALSE;
     lbPlaceHolder.text = @"输入评论";
     btnEndEdit.hidden = TRUE;
+    [params setObject:userId forKey:@"userId"];
+    [params setObject:_comment forKey:@"interfaceName"];
+    if([params objectForKey:@"hospid"]){
+        lbTitle.text = [NSString stringWithFormat:@"%@", [params objectForKey:@"_name"]];
+        lbImpression.text = @"这个医院给你的印象：";
+    }else {
+        lbTitle.text = [NSString stringWithFormat:@"%@ 医生", [params objectForKey:@"_name"]];
+        lbImpression.text = @"这位医生给你的印象：";
+    }
 }
 
 
@@ -78,6 +89,24 @@
 
 - (IBAction)announce:(id)sender
 {
+    //impression=1(0推荐与否)&evaluation=评价&userId=用户id
+    if(bRecommend)
+        [params setObject:@"1" forKey:@"impression"];
+    else 
+        [params setObject:@"0" forKey:@"impression"];
+    [params setObject:[tvComment text] forKey:@"evaluation"];
+    manager = [AsiObjectManager alloc];
+    [manager setDelegate:self];
+    [manager requestData:params];
+}
+
+- (void)loadData:(NSDictionary *)data
+{
+    NSLog(@"%@", data);   
+}
+
+- (void) requestFailed:(NSError*)error{
+    
 }
 
 - (IBAction)recommend:(id)sender

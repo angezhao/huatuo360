@@ -40,9 +40,14 @@
 
 - (void)showCommentView
 {
-//    NSLog(@"评论");
-//    CommentViewController* cvc = [[CommentViewController alloc]init];
-//    [self.navigationController pushViewController:cvc animated:TRUE];
+    //NSLog(@"评论");
+    //要判断是否已经登陆
+    NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
+    [tmp setObject:doctorName forKey:@"_name"];
+    [tmp setObject:doctorId forKey:@"doctorId"];
+    CommentViewController* cvc = [[CommentViewController alloc]init];
+    cvc.params = tmp;
+    [self.navigationController pushViewController:cvc animated:TRUE];
 }
 
 - (void)loadData:(NSDictionary *)data
