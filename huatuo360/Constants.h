@@ -22,6 +22,9 @@ extern NSString* const _diseaseList;
 extern UIViewController *infoViewToShow;
 extern NSString* userId;
 extern Boolean isLogin;
+extern NSString* gcityId;
+extern NSString* gcityName;
+extern NSDictionary *departments;
 
 //UITableView常量
 #define INTRO_FONT_SIZE 14.0f

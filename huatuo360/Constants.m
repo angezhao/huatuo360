@@ -45,3 +45,6 @@ NSString* const _diseaseList = @"getDiseaseList.php?";
 UIViewController* infoViewToShow = nil;
 NSString* userId;
 Boolean isLogin = false;
+NSString* gcityId;
+NSString* gcityName;
+NSDictionary *departments;

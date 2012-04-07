@@ -2,11 +2,21 @@
 #import "SBJson.h"
 #import "Constants.h"
 
+#import <sys/socket.h>
+#import <netinet/in.h>
+#import <arpa/inet.h>
+#import <netdb.h>
+#import <SystemConfiguration/SCNetworkReachability.h>
+
 @implementation AsiObjectManager
 @synthesize delegate;
 
 - (void)requestData:(NSMutableDictionary*)urlParam { 
     //增加网络链接状态判断是否需要请求
+    if (![self connectedToNetwork]) {
+        NSLog(@"conect fail");
+        return;
+    } 
     NSString *url = [self getUrl:urlParam];
     ASIHTTPRequest* request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
     [request setDelegate:self];
@@ -15,6 +25,10 @@
 
 - (NSDictionary*)syncRequestData:(NSMutableDictionary*)urlParam {
     //增加网络链接状态判断是否需要请求
+    if (![self connectedToNetwork]) {
+        NSLog(@"conect fail");
+        return nil;
+    } 
     NSString *url = [self getUrl:urlParam];
     ASIHTTPRequest* request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
     [request startSynchronous]; 
@@ -24,13 +38,19 @@
     SBJsonParser *parser = [[SBJsonParser alloc] init];
     NSDictionary *jsonDict = [parser objectWithData:[responseString dataUsingEncoding:NSUTF8StringEncoding]];  
     NSLog(@"%@", jsonDict);
-    return jsonDict;
+    NSNumber *status = [jsonDict objectForKey:@"status"];
+    NSLog(@"%@",status); 
+    if ([status intValue] == 1 && [jsonDict objectForKey:@"data"]) {
+        return [jsonDict objectForKey:@"data"];
+    }    
+    return nil;
 }
 
 -(NSString*)getUrl:(NSMutableDictionary*)urlParam{
     NSString *url = nil;
-    NSString *param = [NSString stringWithFormat:@"%@%i",@"perpage=",perpage];
-    //还要处理地区
+    NSString *param = [NSString stringWithFormat:@"%@=%i",@"perpage", perpage];
+    if(![gcityId isEqualToString:@""])
+        param = [NSString stringWithFormat:@"%@&%@=%@", param, @"city", gcityId]; 
     NSLog(@"param=%@",param); 
     NSLog(@"urlParam=%@",urlParam); 
     for (NSString *key in urlParam)
@@ -100,6 +120,33 @@
 	NSError *error = [request error]; 
     NSLog(@"%@", error);
     [delegate requestFailed:error];
+}
+
+
+//Snip, you know we're in the implementation...
+- (BOOL) connectedToNetwork
+{
+    // Create zero addy
+    struct sockaddr_in zeroAddress;
+    bzero(&zeroAddress, sizeof(zeroAddress));
+    zeroAddress.sin_len = sizeof(zeroAddress);
+    zeroAddress.sin_family = AF_INET;
+    
+    // Recover reachability flags
+    SCNetworkReachabilityRef defaultRouteReachability = SCNetworkReachabilityCreateWithAddress(NULL, (struct sockaddr *)&zeroAddress);
+    SCNetworkReachabilityFlags flags;
+    
+    BOOL didRetrieveFlags = SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags);
+    CFRelease(defaultRouteReachability);
+    
+    if (!didRetrieveFlags)
+    {
+        return NO;
+    }
+    
+    BOOL isReachable = flags & kSCNetworkFlagsReachable;
+    BOOL needsConnection = flags & kSCNetworkFlagsConnectionRequired;
+    return (isReachable && !needsConnection) ? YES : NO;
 }
 
 @end

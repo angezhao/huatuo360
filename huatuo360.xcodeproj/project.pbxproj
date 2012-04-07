@@ -98,6 +98,7 @@
 		B783B44B152373750089AAFD /* DepartmentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B783B44A152373750089AAFD /* DepartmentListViewController.m */; };
 		B783B459152375A40089AAFD /* CommentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B783B458152375A40089AAFD /* CommentListViewController.m */; };
 		B783B45C152375CE0089AAFD /* DiseaseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B783B45B152375CE0089AAFD /* DiseaseListViewController.m */; };
+		B783C60B152F39B000678CA9 /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = B783C60A152F39B000678CA9 /* data.plist */; };
 		B78500EA152C2F4600FDB045 /* HospitalDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B78500E8152C2F4500FDB045 /* HospitalDetailVC.m */; };
 		B78500EB152C2F4600FDB045 /* HospitalDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B78500E9152C2F4500FDB045 /* HospitalDetailVC.xib */; };
 /* End PBXBuildFile section */
@@ -261,6 +262,7 @@
 		B783B458152375A40089AAFD /* CommentListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentListViewController.m; sourceTree = "<group>"; };
 		B783B45A152375CE0089AAFD /* DiseaseListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiseaseListViewController.h; sourceTree = "<group>"; };
 		B783B45B152375CE0089AAFD /* DiseaseListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiseaseListViewController.m; sourceTree = "<group>"; };
+		B783C60A152F39B000678CA9 /* data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = data.plist; sourceTree = "<group>"; };
 		B78500E7152C2F4500FDB045 /* HospitalDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HospitalDetailVC.h; sourceTree = "<group>"; };
 		B78500E8152C2F4500FDB045 /* HospitalDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HospitalDetailVC.m; sourceTree = "<group>"; };
 		B78500E9152C2F4500FDB045 /* HospitalDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HospitalDetailVC.xib; sourceTree = "<group>"; };
@@ -521,6 +523,7 @@
 				0D9A9A17152F367000D62421 /* rbDown.png */,
 				0D9A9A19152F367000D62421 /* rbNormal.png */,
 				0D74B991152DEE510063E9B0 /* cities.plist */,
+				B783C60A152F39B000678CA9 /* data.plist */,
 				0DECF662150C9F2300824D1C /* more.png */,
 				0DECF663150C9F2300824D1C /* more@2x.png */,
 				0DECF664150C9F2300824D1C /* user.png */,
