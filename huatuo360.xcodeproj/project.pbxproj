@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D06CABA152F3F5D00FA35FE /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D06CAB8152F3F5D00FA35FE /* CommentViewController.m */; };
+		0D06CABB152F3F5D00FA35FE /* CommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D06CAB9152F3F5D00FA35FE /* CommentViewController.xib */; };
 		0D4A7F3E152AFD56003BAC85 /* disease.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0D4A7F3D152AFD56003BAC85 /* disease.plist */; };
 		0D6DDCD7150FAE2F001BD397 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6DDCD6150FAE2F001BD397 /* QuartzCore.framework */; };
 		0D6F25AA15276ED3001A3A92 /* ListViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6F25A815276ED3001A3A92 /* ListViewController1.m */; };
@@ -67,6 +69,8 @@
 		0D743444151E5CB6009119A9 /* ASIS3ServiceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D743436151E5CB6009119A9 /* ASIS3ServiceRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0D743446151E5DA3009119A9 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D743445151E5DA3009119A9 /* CFNetwork.framework */; };
 		0D74B992152DEE510063E9B0 /* cities.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0D74B991152DEE510063E9B0 /* cities.plist */; };
+		0D9A9A1A152F367000D62421 /* rbDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9A9A17152F367000D62421 /* rbDown.png */; };
+		0D9A9A1C152F367000D62421 /* rbNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9A9A19152F367000D62421 /* rbNormal.png */; };
 		0DB6928B15277BBD00FD7F98 /* DoctorDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB6928915277BBD00FD7F98 /* DoctorDetailVC.m */; };
 		0DB6928C15277BBD00FD7F98 /* DoctorDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DB6928A15277BBD00FD7F98 /* DoctorDetailVC.xib */; };
 		0DECF5D4150C94EB00824D1C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DECF5D3150C94EB00824D1C /* UIKit.framework */; };
@@ -99,6 +103,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D06CAB7152F3F5D00FA35FE /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
+		0D06CAB8152F3F5D00FA35FE /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
+		0D06CAB9152F3F5D00FA35FE /* CommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentViewController.xib; sourceTree = "<group>"; };
 		0D4A7F3D152AFD56003BAC85 /* disease.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = disease.plist; sourceTree = "<group>"; };
 		0D6DDCD6150FAE2F001BD397 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0D6F25A715276ED3001A3A92 /* ListViewController1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController1.h; sourceTree = "<group>"; };
@@ -210,6 +217,8 @@
 		0D743436151E5CB6009119A9 /* ASIS3ServiceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIS3ServiceRequest.m; sourceTree = "<group>"; };
 		0D743445151E5DA3009119A9 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		0D74B991152DEE510063E9B0 /* cities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = cities.plist; sourceTree = "<group>"; };
+		0D9A9A17152F367000D62421 /* rbDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rbDown.png; sourceTree = "<group>"; };
+		0D9A9A19152F367000D62421 /* rbNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rbNormal.png; sourceTree = "<group>"; };
 		0DB6928815277BBD00FD7F98 /* DoctorDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorDetailVC.h; sourceTree = "<group>"; };
 		0DB6928915277BBD00FD7F98 /* DoctorDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorDetailVC.m; sourceTree = "<group>"; };
 		0DB6928A15277BBD00FD7F98 /* DoctorDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoctorDetailVC.xib; sourceTree = "<group>"; };
@@ -277,6 +286,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D06CAB6152F3F4600FA35FE /* comment */ = {
+			isa = PBXGroup;
+			children = (
+				0D06CAB7152F3F5D00FA35FE /* CommentViewController.h */,
+				0D06CAB8152F3F5D00FA35FE /* CommentViewController.m */,
+				0D06CAB9152F3F5D00FA35FE /* CommentViewController.xib */,
+			);
+			path = comment;
+			sourceTree = "<group>";
+		};
 		0D6FA651151F5EE800DC57B5 /* SBJson */ = {
 			isa = PBXGroup;
 			children = (
@@ -499,6 +518,8 @@
 		0DECF630150C9CAB00824D1C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0D9A9A17152F367000D62421 /* rbDown.png */,
+				0D9A9A19152F367000D62421 /* rbNormal.png */,
 				0D74B991152DEE510063E9B0 /* cities.plist */,
 				0DECF662150C9F2300824D1C /* more.png */,
 				0DECF663150C9F2300824D1C /* more@2x.png */,
@@ -544,6 +565,7 @@
 		0DECF647150C9CEB00824D1C /* Info */ = {
 			isa = PBXGroup;
 			children = (
+				0D06CAB6152F3F4600FA35FE /* comment */,
 				0DECF653150C9D2400824D1C /* InfoNavViewController.h */,
 				0DECF654150C9D2400824D1C /* InfoNavViewController.m */,
 				0D6FC3FD151A3F2300C8E4D5 /* HospitalListViewController.h */,
@@ -671,6 +693,9 @@
 				0D73A631152C3AE70077666D /* CityListVC.xib in Resources */,
 				0D74B992152DEE510063E9B0 /* cities.plist in Resources */,
 				B78500EB152C2F4600FDB045 /* HospitalDetailVC.xib in Resources */,
+				0D9A9A1A152F367000D62421 /* rbDown.png in Resources */,
+				0D9A9A1C152F367000D62421 /* rbNormal.png in Resources */,
+				0D06CABB152F3F5D00FA35FE /* CommentViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -739,6 +764,7 @@
 				0D73A630152C3AE70077666D /* CityListVC.m in Sources */,
 				0D7136DE152F1E5800AC115E /* HomePageNavVC.m in Sources */,
 				B78500EA152C2F4600FDB045 /* HospitalDetailVC.m in Sources */,
+				0D06CABA152F3F5D00FA35FE /* CommentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

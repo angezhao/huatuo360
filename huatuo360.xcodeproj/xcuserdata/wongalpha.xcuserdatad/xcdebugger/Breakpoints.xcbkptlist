@@ -21,12 +21,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "huatuo360/Views/Info/DoctorDetailVC.m"
-         timestampString = "355168335.305889"
+         timestampString = "355417088.060198"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "191"
-         endingLineNumber = "191"
-         landmarkName = "-tableView:heightForRowAtIndexPath:"
+         startingLineNumber = "196"
+         endingLineNumber = "196"
+         landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -34,11 +34,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "huatuo360/Views/Info/DoctorDetailVC.m"
-         timestampString = "355168335.305889"
+         timestampString = "355417088.060198"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "290"
-         endingLineNumber = "290"
+         startingLineNumber = "295"
+         endingLineNumber = "295"
          landmarkName = "-infoCellForRow:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -47,13 +47,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "huatuo360/Views/Info/DoctorDetailVC.m"
-         timestampString = "355168335.305889"
+         timestampString = "355417088.060198"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "198"
-         endingLineNumber = "198"
-         landmarkName = "-tableView:heightForRowAtIndexPath:"
-         landmarkType = "5">
+         startingLineNumber = "203"
+         endingLineNumber = "203"
+         landmarkName = "@implementation DoctorDetailVC"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"

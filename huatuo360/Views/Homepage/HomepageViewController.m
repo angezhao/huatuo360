@@ -14,6 +14,7 @@
 #import "Constants.h"
 #import "DropDownList.h"
 #import "CityListVC.h"
+#import "CommentViewController.h"
 
 @implementation HomepageViewController
 @synthesize searchBarRef, btnCity;
@@ -274,7 +275,6 @@ const static int DOCTOR = 2;
 
 - (void)showCityList
 {
-    NSLog(@"Show City List");
     if(nil == cityListVC)
     {
         cityListVC = [[CityListVC alloc]init];
@@ -285,7 +285,6 @@ const static int DOCTOR = 2;
 
 - (void) selectCity:(NSString*)cityId cityName:(NSString*)cityName
 {
-//    cityListVC.view.window.rootViewController = rootViewController;
     if (cityName != nil) 
     {
         btnCity.title = cityName;

@@ -21,7 +21,8 @@
 {
     self = [super initWithNibName:@"DoctorDetailVC" bundle:nil];
     if (self) {
-        // Custom initialization
+        // Custom initialization           
+        self.title = @"华佗360";
         hospitalId = hid;
         hospitalName = hname;
         labels = [[NSArray alloc]initWithObjects:@"医院等级：", @"联系地址：", @"联系电话：", nil];

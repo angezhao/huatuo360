@@ -9,6 +9,8 @@
 #import "DoctorDetailVC.h"
 #import "CommentListViewController.h"
 #import "Constants.h"
+#import "CommentViewController.h"
+
 @interface DoctorDetailVC ()
 
 @end
@@ -21,7 +23,8 @@
 {
     self = [super initWithNibName:@"DoctorDetailVC" bundle:nil];
     if (self) {
-        // Custom initialization
+        // Custom initialization           
+        self.title = @"华佗360";
         doctorId = did;
         doctorName = dname;
         labels = [[NSArray alloc]initWithObjects:@"职称：", @"擅长疾病：", @"所属科室：", @"所属医院：", nil];
@@ -38,6 +41,8 @@
 - (void)showCommentView
 {
     NSLog(@"评论");
+    CommentViewController* cvc = [[CommentViewController alloc]init];
+    [self.navigationController pushViewController:cvc animated:TRUE];
 }
 
 - (void)loadData:(NSDictionary *)data

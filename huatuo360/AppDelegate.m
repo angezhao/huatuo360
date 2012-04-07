@@ -27,10 +27,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     //init departmentlist数据
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
-    [params setObject:_departmentList forKey:@"interfaceName"];
-    AsiObjectManager* manager = [AsiObjectManager alloc];
-    NSDictionary* data = [manager syncRequestData:params];
+//    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
+//    [params setObject:_departmentList forKey:@"interfaceName"];
+//    AsiObjectManager* manager = [AsiObjectManager alloc];
+//    NSDictionary* data = [manager syncRequestData:params];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.    

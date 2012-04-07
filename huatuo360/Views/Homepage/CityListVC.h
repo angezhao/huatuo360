@@ -28,6 +28,5 @@
 @property (nonatomic, strong) IBOutlet UITableView *table;
 @property (nonatomic, strong) IBOutlet UISearchBar *search;
 
-- (IBAction)returnToHomepage:(id)sender;
 - (void) setDelegate:(id)del;
 @end
