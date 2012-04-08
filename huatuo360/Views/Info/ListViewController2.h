@@ -14,6 +14,7 @@
     NSMutableArray* listData;
     int total;
     int page;
+    Boolean displayerNext;
     AsiObjectManager* manager;
 }
 

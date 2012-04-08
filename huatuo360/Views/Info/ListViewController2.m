@@ -22,6 +22,8 @@
     if (self) {
         listData = nil;
         page = 1;
+        //默认显示下级菜单
+        displayerNext = true;
     }
     return self;
 }
@@ -92,7 +94,8 @@
         
         cell.textLabel.font = [UIFont boldSystemFontOfSize:16];
         cell.textLabel.textAlignment = UITextAlignmentLeft;
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        if(displayerNext)
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     cell.textLabel.text = [self getTitleByIndex:row]; 
     
