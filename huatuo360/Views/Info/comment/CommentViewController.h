@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AsiObjectManager.h"
 
-@interface CommentViewController : UIViewController<UITextViewDelegate, AsiObjectDelegate>
+@interface CommentViewController : UIViewController<UITextViewDelegate,AsiObjectDelegate>
 {
     //是否推荐
     Boolean bRecommend;
