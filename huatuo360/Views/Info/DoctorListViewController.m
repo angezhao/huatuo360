@@ -40,9 +40,10 @@
         NSLog(@"params=%@",params); 
         if([params objectForKey:@"hospid"]){//从医院列表过来的医生列表
             //医院详情按钮
-            UIBarButtonItem *btnComment  = [[UIBarButtonItem alloc] initWithTitle:@"医院详情" style:UITabBarSystemItemContacts target:self action:@selector(showCommentView)];
-            [self.navigationItem setRightBarButtonItem:btnComment];
+            btnDetail  = [[UIBarButtonItem alloc] initWithTitle:@"医院详情" style:UITabBarSystemItemContacts target:self action:@selector(showCommentView)];
+            [self.navigationItem setRightBarButtonItem:btnDetail];
         }
+        [btnDetail setEnabled:FALSE];
     }
 }
 
@@ -67,10 +68,12 @@
         listData = [[NSMutableArray alloc]initWithCapacity:0];
     [listData addObjectsFromArray:[data objectForKey:@"data"]];
     [self.listView reloadData]; 
+    [btnDetail setEnabled:TRUE];
 }
 
-- (void) requestFailed:(NSError*)error{
-    
+- (void) requestFailed:(NSError*)error
+{
+    [btnDetail setEnabled:TRUE];
 }
 
 - (void)viewDidUnload

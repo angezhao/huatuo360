@@ -12,6 +12,7 @@
 @interface DoctorListViewController : ListViewController1<AsiObjectDelegate>
 {
     Boolean firstAppear;
+    UIBarButtonItem *btnDetail;
 }
 @property (nonatomic, strong)NSMutableDictionary* params;
 

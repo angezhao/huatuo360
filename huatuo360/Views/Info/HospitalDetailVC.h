@@ -18,6 +18,9 @@
     NSArray* texts;
     NSArray* infoKeys;
     AsiObjectManager* manager;
+    
+    Boolean needRequest;
+    UIBarButtonItem *btnComment;
 }
 
 @property (nonatomic, strong)IBOutlet UITableView* detailView;

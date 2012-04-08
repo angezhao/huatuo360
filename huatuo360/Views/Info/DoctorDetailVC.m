@@ -25,15 +25,18 @@
     if (self) {
         // Custom initialization           
         self.title = @"华佗360";
+        UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
+        backItem.title = @"返回";
+        [self.navigationItem setBackBarButtonItem:backItem];
         doctorId = did;
         doctorName = dname;
         labels = [[NSArray alloc]initWithObjects:@"职称：", @"擅长疾病：", @"所属科室：", @"所属医院：", nil];
         infoKeys = [[NSArray alloc]initWithObjects:@"title", @"goodDisease", @"department", @"hospital", nil];
         showAllThesis = FALSE;
         //评论按钮
-        UIBarButtonItem *btnComment  = [[UIBarButtonItem alloc] initWithTitle:@"评论" style:UITabBarSystemItemContacts target:self action:@selector(showCommentView)];
+        btnComment = [[UIBarButtonItem alloc] initWithTitle:@"评论" style:UITabBarSystemItemContacts target:self action:@selector(showCommentView)];
         [self.navigationItem setRightBarButtonItem:btnComment];
-        
+        needRequest = TRUE;
     }
     return self;
 }
@@ -56,11 +59,12 @@
     thesis = [doctorData objectForKey:@"thesis"];
     showAllThesis = [thesis count] <= INIT_SHOW_THESIS_COUNT;
     [detailView reloadData];
+    btnComment.enabled = TRUE;
 }
 
 - (void)requestFailed:(NSError *)error
 {
-    
+    btnComment.enabled = TRUE;
 }
 
 - (void)viewDidLoad
@@ -72,12 +76,18 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:0];
-    [params setObject:_doctor forKey:@"interfaceName"];
-    [params setObject:doctorId forKey:@"id"];
-    manager = [AsiObjectManager alloc];
-    [manager setDelegate:self];
-    [manager requestData:params];
+    if(needRequest)
+    {
+        NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:0];
+        [params setObject:_doctor forKey:@"interfaceName"];
+        [params setObject:doctorId forKey:@"id"];
+        manager = [AsiObjectManager alloc];
+        [manager setDelegate:self];
+        [manager requestData:params];
+        needRequest = FALSE;
+        //阻止数据为请求下来就点击评论按钮
+        btnComment.enabled = FALSE;
+    }
 }
 
 - (void)viewDidUnload

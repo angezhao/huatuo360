@@ -24,7 +24,7 @@
     if (self) {
         // Custom initialization
         bRecommend = TRUE;
-        self.title = @"返回";
+        self.title = @"华佗360";
     }
     return self;
 }

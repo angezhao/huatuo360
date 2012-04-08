@@ -24,14 +24,18 @@
     if (self) {
         // Custom initialization           
         self.title = @"华佗360";
+        UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
+        backItem.title = @"返回";
+        [self.navigationItem setBackBarButtonItem:backItem];
         hospitalId = hid;
         hospitalName = hname;
         labels = [[NSArray alloc]initWithObjects:@"医院等级：", @"联系地址：", @"联系电话：", nil];
         infoKeys = [[NSArray alloc]initWithObjects:@"level", @"address", @"tel", nil];
         //评论按钮
-        UIBarButtonItem *btnComment  = [[UIBarButtonItem alloc] initWithTitle:@"评论" style:UITabBarSystemItemContacts target:self action:@selector(showCommentView)];
+        btnComment  = [[UIBarButtonItem alloc] initWithTitle:@"评论" style:UITabBarSystemItemContacts target:self action:@selector(showCommentView)];
         [self.navigationItem setRightBarButtonItem:btnComment];
         
+        needRequest = TRUE;        
     }
     return self;
 }
@@ -52,10 +56,12 @@
 {
     hospitalData = data;
     [detailView reloadData];
+    btnComment.enabled = TRUE;
 }
 
-- (void) requestFailed:(NSError*)error{
-    
+- (void) requestFailed:(NSError*)error
+{
+    btnComment.enabled = TRUE;
 }
 
 - (void)viewDidLoad
@@ -67,12 +73,16 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:0];
-    [params setObject:_hospital forKey:@"interfaceName"];
-    [params setObject:hospitalId forKey:@"id"];
-    manager = [AsiObjectManager alloc];
-    [manager setDelegate:self];
-    [manager requestData:params];
+    if(needRequest)
+    {
+        NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:0];
+        [params setObject:_hospital forKey:@"interfaceName"];
+        [params setObject:hospitalId forKey:@"id"];
+        manager = [AsiObjectManager alloc];
+        [manager setDelegate:self];
+        [manager requestData:params];
+        needRequest = FALSE;
+    }
 }
 
 - (void)viewDidUnload
