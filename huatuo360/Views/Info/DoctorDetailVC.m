@@ -58,6 +58,11 @@
     [detailView reloadData];
 }
 
+- (void)requestFailed:(NSError *)error
+{
+    
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

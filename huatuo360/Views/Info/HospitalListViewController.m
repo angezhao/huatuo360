@@ -9,6 +9,7 @@
 #import "HospitalListViewController.h"
 #import "DoctorListViewController.h"
 #import "Constants.h"
+#import "HUDManger.h"
 
 @interface HospitalListViewController ()
 
@@ -41,6 +42,7 @@
         manager = [AsiObjectManager alloc];
         [manager setDelegate:self];
         [manager requestData:params];
+//        [HUDManger showHUD:self.view token:@"H"];
     }
 }
 
@@ -58,6 +60,7 @@
 
 - (void)loadData:(NSDictionary *)data
 {
+//    [HUDManger hideHUD:@"H"];
     NSLog(@"%@", data);
     total = [[data objectForKey:@"total"]integerValue];
     NSLog(@"%i", total);
@@ -67,8 +70,9 @@
     [self.listView reloadData];    
 }
 
-- (void) requestFailed:(NSError*)error{
-
+- (void) requestFailed:(NSError*)error
+{
+//    [HUDManger hideHUD:@"H"];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section

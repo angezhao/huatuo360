@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "huatuo360/Views/Info/DoctorDetailVC.m"
-         timestampString = "355417088.060198"
+         timestampString = "355518438.083307"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "196"
-         endingLineNumber = "196"
+         startingLineNumber = "201"
+         endingLineNumber = "201"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -34,11 +34,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "huatuo360/Views/Info/DoctorDetailVC.m"
-         timestampString = "355417088.060198"
+         timestampString = "355518438.083307"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "295"
-         endingLineNumber = "295"
+         startingLineNumber = "300"
+         endingLineNumber = "300"
          landmarkName = "-infoCellForRow:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -47,11 +47,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "huatuo360/Views/Info/DoctorDetailVC.m"
-         timestampString = "355417088.060198"
+         timestampString = "355518438.083307"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "203"
-         endingLineNumber = "203"
+         startingLineNumber = "208"
+         endingLineNumber = "208"
          landmarkName = "@implementation DoctorDetailVC"
          landmarkType = "3">
       </FileBreakpoint>
@@ -105,6 +105,19 @@
          startingLineNumber = "152"
          endingLineNumber = "152"
          landmarkName = "-getNameForSection:row:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "huatuo360/Views/Homepage/DropDownList.m"
+         timestampString = "355518962.346374"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "21"
+         endingLineNumber = "21"
+         landmarkName = "-initWithStyle:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

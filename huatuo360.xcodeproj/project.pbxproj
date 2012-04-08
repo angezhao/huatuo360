@@ -93,6 +93,8 @@
 		0DECF667150C9F2300824D1C /* more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DECF663150C9F2300824D1C /* more@2x.png */; };
 		0DECF668150C9F2300824D1C /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DECF664150C9F2300824D1C /* user.png */; };
 		0DECF669150C9F2300824D1C /* user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DECF665150C9F2300824D1C /* user@2x.png */; };
+		0DF27B35153089F700D9103E /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF27B34153089F700D9103E /* MBProgressHUD.m */; };
+		0DF27B4E15308CBF00D9103E /* HUDManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF27B4D15308CBF00D9103E /* HUDManger.m */; };
 		B77C554E151EF660009F0613 /* AsiObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B77C554D151EF660009F0613 /* AsiObjectManager.m */; };
 		B77CD72615260DFA00D238CD /* FixListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B77CD72515260DFA00D238CD /* FixListViewController.m */; };
 		B783B44B152373750089AAFD /* DepartmentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B783B44A152373750089AAFD /* DepartmentListViewController.m */; };
@@ -251,6 +253,10 @@
 		0DECF663150C9F2300824D1C /* more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more@2x.png"; sourceTree = "<group>"; };
 		0DECF664150C9F2300824D1C /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
 		0DECF665150C9F2300824D1C /* user@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user@2x.png"; sourceTree = "<group>"; };
+		0DF27B33153089F700D9103E /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		0DF27B34153089F700D9103E /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		0DF27B4C15308CBF00D9103E /* HUDManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDManger.h; sourceTree = "<group>"; };
+		0DF27B4D15308CBF00D9103E /* HUDManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUDManger.m; sourceTree = "<group>"; };
 		B77C554C151EF660009F0613 /* AsiObjectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsiObjectManager.h; sourceTree = "<group>"; };
 		B77C554D151EF660009F0613 /* AsiObjectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsiObjectManager.m; sourceTree = "<group>"; };
 		B77C554F151EF6CB009F0613 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -492,6 +498,7 @@
 		0DECF5D9150C94EB00824D1C /* huatuo360 */ = {
 			isa = PBXGroup;
 			children = (
+				0DF27B32153089F700D9103E /* Utility */,
 				0D6F25B1152773B5001A3A92 /* Entitlement.plist */,
 				0D6FA651151F5EE800DC57B5 /* SBJson */,
 				B77C554F151EF6CB009F0613 /* Constants.h */,
@@ -622,6 +629,17 @@
 				0D708A9E1515A78B007EA936 /* RegisterViewController.xib */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		0DF27B32153089F700D9103E /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				0DF27B33153089F700D9103E /* MBProgressHUD.h */,
+				0DF27B34153089F700D9103E /* MBProgressHUD.m */,
+				0DF27B4C15308CBF00D9103E /* HUDManger.h */,
+				0DF27B4D15308CBF00D9103E /* HUDManger.m */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -769,6 +787,8 @@
 				0D7136DE152F1E5800AC115E /* HomePageNavVC.m in Sources */,
 				B78500EA152C2F4600FDB045 /* HospitalDetailVC.m in Sources */,
 				0D06CABA152F3F5D00FA35FE /* CommentViewController.m in Sources */,
+				0DF27B35153089F700D9103E /* MBProgressHUD.m in Sources */,
+				0DF27B4E15308CBF00D9103E /* HUDManger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -806,7 +826,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -824,7 +844,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

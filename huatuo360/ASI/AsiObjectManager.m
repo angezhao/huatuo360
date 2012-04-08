@@ -8,6 +8,8 @@
 #import <netdb.h>
 #import <SystemConfiguration/SCNetworkReachability.h>
 
+#import "HUDManger.h"
+
 @implementation AsiObjectManager
 @synthesize delegate;
 
@@ -21,6 +23,12 @@
     ASIHTTPRequest* request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
     [request setDelegate:self];
     [request startAsynchronous];
+    
+    if([[delegate class] isSubclassOfClass:[UIViewController class]]) 
+    {
+        UIViewController* vc = (UIViewController*)delegate;
+        [HUDManger showHUD:vc.view token:url];
+    }
 }   
 
 - (NSDictionary*)syncRequestData:(NSMutableDictionary*)urlParam {
@@ -85,6 +93,9 @@
     }else {
         [delegate loadData:jsonDict];
     }
+    
+//    NSLog(@"%@", request.originalURL.absoluteString);
+    [HUDManger hideHUD:request.originalURL.absoluteString];
 
     //NSString *test = @"{\"data\":{\"212\":\"你好\",\"213\":\"你好\"},\"total\":31}";
     //NSString *test = @"{\"data\":[\"评论1\",\"评论2\",\"评论3\"]}";
@@ -116,10 +127,12 @@
     */
 }
 
-- (void)requestFailed:(ASIHTTPRequest *)request {    
+- (void)requestFailed:(ASIHTTPRequest *)request {  
+    [HUDManger hideHUD:request.originalURL.absoluteString];  
 	NSError *error = [request error]; 
     NSLog(@"%@", error);
     [delegate requestFailed:error];
+//    request.url.
 }
 
 

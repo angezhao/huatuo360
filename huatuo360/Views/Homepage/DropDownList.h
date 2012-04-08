@@ -12,9 +12,11 @@
 {
     NSMutableArray* resultList;
     NSArray* srcList;
+    UIView* parent;
 }
 
 - (void)setHidden:(BOOL)hidden;
+- (void)setParent:(UIView*)container;
 - (void)update:(NSString*)filter;
 @property (nonatomic, strong)UISearchBar* delegate;
 @end
