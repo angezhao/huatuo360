@@ -47,7 +47,7 @@
     //要判断是否已经登陆
     NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
     [tmp setObject:doctorName forKey:@"_name"];
-    [tmp setObject:doctorId forKey:@"doctorId"];
+    [tmp setObject:doctorId forKey:@"doctorid"];
     CommentViewController* cvc = [[CommentViewController alloc]init];
     cvc.params = tmp;
     [self.navigationController pushViewController:cvc animated:TRUE];
@@ -148,8 +148,6 @@
     {
         //查看评论
         NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
-        [tmp setObject:_commentList forKey:@"interfaceName"];
-        [tmp setObject:@"1" forKey:@"page"];
         [tmp setObject:doctorId forKey:@"doctorid"];
         CommentListViewController* clvc = [[CommentListViewController alloc]init];
         clvc.params = tmp;

@@ -16,6 +16,7 @@
 @implementation ListViewController2
 @synthesize listView;
 @synthesize tableTitle;
+@synthesize params;
 - (id)init
 {
     self = [super initWithNibName:@"ListViewController2" bundle:nil];

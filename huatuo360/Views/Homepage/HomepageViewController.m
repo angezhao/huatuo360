@@ -105,8 +105,6 @@ const static int DOCTOR = 2;
         case DISEASE:
             {
                 NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
-                [params setObject:_diseaseList forKey:@"interfaceName"];
-                [params setObject:@"1" forKey:@"page"];
                 [params setObject:searchBar.text forKey:@"disease"];
                 DiseaseListViewController* dlvc = [[DiseaseListViewController alloc]init];
                 dlvc.params = params;
@@ -119,8 +117,6 @@ const static int DOCTOR = 2;
         case HOSPITAL:
             {
                 NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
-                [params setObject:_hospitalList forKey:@"interfaceName"];
-                [params setObject:@"1" forKey:@"page"];
                 [params setObject:searchBar.text forKey:@"hospital"];
                 HospitalListViewController* hlvc = [[HospitalListViewController alloc]init];
                 hlvc.params = params;
@@ -133,8 +129,6 @@ const static int DOCTOR = 2;
         case DOCTOR:
             {
                 NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
-                [params setObject:_doctorList forKey:@"interfaceName"];
-                [params setObject:@"1" forKey:@"page"];
                 [params setObject:searchBar.text forKey:@"doctor"];
                 DoctorListViewController* dlvc = [[DoctorListViewController alloc]init];
                 dlvc.params = params;
@@ -204,8 +198,6 @@ const static int DOCTOR = 2;
         case 0:
             {
                 NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
-                [params setObject:_hospitalList forKey:@"interfaceName"];
-                [params setObject:@"1" forKey:@"page"];
                 HospitalListViewController* hlvc = [[HospitalListViewController alloc]init];
                 hlvc.params = params;
                 hlvc.tableTitle = @"医院排行";
@@ -216,8 +208,6 @@ const static int DOCTOR = 2;
         case 1:
             {
                 NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
-                [params setObject:_departmentList forKey:@"interfaceName"];
-                [params setObject:@"1" forKey:@"page"];
                 [params setObject:@"1" forKey:@"_hospital"];
                 DepartmentListViewController* dlvc = [[DepartmentListViewController alloc]init];
                 dlvc.params = params;
@@ -229,8 +219,6 @@ const static int DOCTOR = 2;
         case 2:
             {
                 NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
-                [params setObject:_departmentList forKey:@"interfaceName"];
-                [params setObject:@"1" forKey:@"page"];
                 [params setObject:@"1" forKey:@"_doctor"];
                 DepartmentListViewController* dlvc = [[DepartmentListViewController alloc]init];
                 dlvc.params = params;
@@ -242,8 +230,6 @@ const static int DOCTOR = 2;
         case 3:
             {
                 NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
-                [params setObject:_diseaseList forKey:@"interfaceName"];
-                [params setObject:@"1" forKey:@"page"];
                 [params setObject:@"1" forKey:@"_hospital"];
                 DiseaseListViewController* dlvc = [[DiseaseListViewController alloc]init];
                 dlvc.params = params;
@@ -255,8 +241,6 @@ const static int DOCTOR = 2;
         case 4:
             {
                 NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
-                [params setObject:_diseaseList forKey:@"interfaceName"];
-                [params setObject:@"1" forKey:@"page"];
                 [params setObject:@"1" forKey:@"_doctor"];
                 DiseaseListViewController* dlvc = [[DiseaseListViewController alloc]init];
                 dlvc.params = params;

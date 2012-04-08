@@ -35,6 +35,8 @@
     if(firstAppear)
     {
         firstAppear = false;
+        [params setObject:_diseaseList forKey:@"interfaceName"];
+        [params setObject:@"1" forKey:@"page"];
         manager = [AsiObjectManager alloc];
         [manager setDelegate:self];
         [manager requestData:params];
@@ -86,25 +88,20 @@
     NSMutableDictionary *itemData = [listData objectAtIndex:row];
     NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
     if([params objectForKey:@"_hospital"]){
-        [tmp setObject:_hospitalList forKey:@"interfaceName"];
         [tmp setObject:[itemData objectForKey:@"id"] forKey:@"deptid"];
         [tmp setObject:[itemData objectForKey:@"id"] forKey:@"_diseaseid"];
-        [tmp setObject:@"1" forKey:@"page"];
         HospitalListViewController* hlvc = [[HospitalListViewController alloc]init];
         hlvc.params = tmp;
         hlvc.tableTitle = @"常见疾病";
         [self.navigationController pushViewController:hlvc animated:true];
     }else if([params objectForKey:@"_doctor"]){
-        [tmp setObject:_doctorList forKey:@"interfaceName"];
         [tmp setObject:[itemData objectForKey:@"id"] forKey:@"diseaseid"];
-        [tmp setObject:@"1" forKey:@"page"];
         DoctorListViewController* dlvc = [[DoctorListViewController alloc]init];
         dlvc.params = tmp;
         dlvc.tableTitle = @"常见疾病";
         [self.navigationController pushViewController:dlvc animated:true];
     }else {
         [tmp setObject:[itemData objectForKey:@"id"] forKey:@"diseaseid"];
-        //[tmp setObject:[itemData objectForKey:@"name"] forKey:@"name"];
         FixListViewController* flvc = [[FixListViewController alloc]init];
         flvc.params = tmp;
         flvc.tableTitle = [[NSString alloc]initWithFormat:@"%@", [itemData objectForKey:@"name"]];

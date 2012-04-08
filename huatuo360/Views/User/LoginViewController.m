@@ -138,10 +138,10 @@
 
 -(IBAction)loginButtonPressed:(id)sender
 {
-    userId = userId = [[NSString alloc]initWithString:[nameTextfield text]];
+    userId = [[NSString alloc]initWithString:[nameTextfield text]];
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
     [params setObject:_login forKey:@"interfaceName"];
-    [params setObject:[nameTextfield text] forKey:@"userId"];
+    [params setObject:[nameTextfield text] forKey:@"userid"];
     [params setObject:[pwTextfield text] forKey:@"password"];
     manager = [AsiObjectManager alloc];
     [manager setDelegate:self];

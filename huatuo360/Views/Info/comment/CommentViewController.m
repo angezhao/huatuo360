@@ -44,8 +44,6 @@
     lbPlaceHolder.enabled = FALSE;
     lbPlaceHolder.text = @"输入评论";
     btnEndEdit.hidden = TRUE;
-    [params setObject:userId forKey:@"userId"];
-    [params setObject:_comment forKey:@"interfaceName"];
     if([params objectForKey:@"hospid"]){
         lbTitle.text = [NSString stringWithFormat:@"%@", [params objectForKey:@"_name"]];
         lbImpression.text = @"这个医院给你的印象：";
@@ -89,7 +87,8 @@
 
 - (IBAction)announce:(id)sender
 {
-    //impression=1(0推荐与否)&evaluation=评价&userId=用户id
+    [params setObject:_comment forKey:@"interfaceName"];
+    [params setObject:userId forKey:@"userid"];
     if(bRecommend)
         [params setObject:@"1" forKey:@"impression"];
     else 
@@ -107,7 +106,7 @@
 
 - (void) requestFailed:(NSError*)error
 {
-    
+    NSLog(@"%@", error); 
 }
 
 - (IBAction)recommend:(id)sender

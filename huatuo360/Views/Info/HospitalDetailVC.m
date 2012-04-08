@@ -142,8 +142,6 @@
     {
         //查看评论
         NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
-        [tmp setObject:_commentList forKey:@"interfaceName"];
-        [tmp setObject:@"1" forKey:@"page"];
         [tmp setObject:hospitalId forKey:@"hospid"];
         CommentListViewController* clvc = [[CommentListViewController alloc]init];
         clvc.params = tmp;

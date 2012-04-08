@@ -12,6 +12,5 @@
 {
     Boolean firstAppear;
 }
-@property (nonatomic, strong)NSMutableDictionary* params;
 
 @end

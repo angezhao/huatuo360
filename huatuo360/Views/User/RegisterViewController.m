@@ -128,7 +128,7 @@
     userId = [[NSString alloc]initWithString:[[textfields objectAtIndex:0] text]];
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
     [params setObject:_regist forKey:@"interfaceName"];
-    [params setObject:[[textfields objectAtIndex:0] text] forKey:@"userId"];
+    [params setObject:[[textfields objectAtIndex:0] text] forKey:@"userid"];
     [params setObject:[[textfields objectAtIndex:1] text] forKey:@"password"];
     [params setObject:[[textfields objectAtIndex:3] text] forKey:@"email"];
     manager = [AsiObjectManager alloc];

@@ -35,6 +35,8 @@
     if(firstAppear)
     {
         firstAppear = false;
+        [params setObject:_departmentList forKey:@"interfaceName"];
+        [params setObject:@"1" forKey:@"page"];
         manager = [AsiObjectManager alloc];
         [manager setDelegate:self];
         [manager requestData:params];    }
@@ -88,17 +90,14 @@
     //要判断入口事医院排行还是医生排行来决定请求那个接口
     NSMutableDictionary *itemData = [listData objectAtIndex:row];
     NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
-    [tmp setObject:@"1" forKey:@"page"];
     [tmp setObject:[itemData objectForKey:@"id"] forKey:@"deptid"];
     [tmp setObject:[itemData objectForKey:@"name"] forKey:@"_name"];//设置附加参数
     if([params objectForKey:@"_hospital"]){
-        [tmp setObject:_hospitalList forKey:@"interfaceName"];
         HospitalListViewController* hlvc = [[HospitalListViewController alloc] init];
         hlvc.params = tmp;
         hlvc.tableTitle = [[NSString alloc]initWithFormat:@"%@医院排行", [itemData objectForKey:@"name"]];
         [self.navigationController pushViewController:hlvc animated:true];
     }else if([params objectForKey:@"_doctor"]){
-        [tmp setObject:_doctorList forKey:@"interfaceName"];
         DoctorListViewController* dlvc = [[DoctorListViewController alloc] init];
         dlvc.params = tmp;
         dlvc.tableTitle = [[NSString alloc]initWithFormat:@"%@医生排行", [itemData objectForKey:@"name"]];
