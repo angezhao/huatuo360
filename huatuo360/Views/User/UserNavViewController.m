@@ -29,8 +29,8 @@
 
 - (void)viewDidLoad
 {
-    LoginViewController* loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-    self.viewControllers = [[NSArray alloc]initWithObjects:loginViewController, nil];
+    LoginViewController* lvc = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+    self.viewControllers = [[NSArray alloc]initWithObjects:lvc, nil];
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }

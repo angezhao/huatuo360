@@ -102,6 +102,8 @@
 - (void)loadData:(NSDictionary *)data
 {
     NSLog(@"%@", data);   
+    //评论成功返回上层页面并刷新数据
+    
 }
 
 - (void) requestFailed:(NSError*)error

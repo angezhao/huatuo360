@@ -140,6 +140,7 @@
 {
     //注册成功
     isLogin = true;
+    //要么显示个人中心页，要么显示评论页
 }
 
 - (void) requestFailed:(NSError*)error{

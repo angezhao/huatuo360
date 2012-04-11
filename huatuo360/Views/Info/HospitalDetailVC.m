@@ -9,6 +9,7 @@
 #import "HospitalDetailVC.h"
 #import "CommentListViewController.h"
 #import "CommentViewController.h"
+#import "LoginViewController.h"
 #import "Constants.h"
 
 @interface HospitalDetailVC ()
@@ -42,14 +43,19 @@
 
 - (void)showCommentView
 {
-    //NSLog(@"评论");
-    //要判断是否已经登陆
-    NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
-    [tmp setObject:hospitalName forKey:@"_name"];
-    [tmp setObject:hospitalId forKey:@"hospid"];
-    CommentViewController* cvc = [[CommentViewController alloc]init];
-    cvc.params = tmp;
+    if(isLogin){//判断是否已经登陆
+        NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
+        [tmp setObject:hospitalName forKey:@"_name"];
+        [tmp setObject:hospitalId forKey:@"hospid"];
+        CommentViewController* cvc = [[CommentViewController alloc]init];
+        cvc.params = tmp;
     [self.navigationController pushViewController:cvc animated:TRUE];
+    }else{
+        LoginViewController* lvc = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+        //加参数登陆成功后返回评论页
+        [self.tabBarController setSelectedIndex:2];
+    }
+
 }
 
 - (void)loadData:(NSDictionary *)data

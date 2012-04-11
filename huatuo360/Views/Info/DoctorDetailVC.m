@@ -10,6 +10,7 @@
 #import "CommentListViewController.h"
 #import "Constants.h"
 #import "CommentViewController.h"
+#import "LoginViewController.h"
 
 @interface DoctorDetailVC ()
 
@@ -43,14 +44,17 @@
 
 - (void)showCommentView
 {
-    //NSLog(@"评论");
-    //要判断是否已经登陆
-    NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
-    [tmp setObject:doctorName forKey:@"_name"];
-    [tmp setObject:doctorId forKey:@"doctorid"];
-    CommentViewController* cvc = [[CommentViewController alloc]init];
-    cvc.params = tmp;
-    [self.navigationController pushViewController:cvc animated:TRUE];
+    if(isLogin){//判断是否已经登陆
+        NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
+        [tmp setObject:doctorName forKey:@"_name"];
+        [tmp setObject:doctorId forKey:@"doctorid"];
+        CommentViewController* cvc = [[CommentViewController alloc]init];
+        cvc.params = tmp;
+        [self.navigationController pushViewController:cvc animated:TRUE];
+    }else{
+        LoginViewController* lvc = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+        [self.tabBarController setSelectedIndex:2];
+    }
 }
 
 - (void)loadData:(NSDictionary *)data

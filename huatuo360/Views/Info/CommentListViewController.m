@@ -8,6 +8,7 @@
 
 #import "CommentListViewController.h"
 #import "CommentViewController.h"
+#import "LoginViewController.h"
 #import "Constants.h"
 
 @interface CommentListViewController ()
@@ -36,17 +37,20 @@
 
 - (void)showCommentView
 {
-    //NSLog(@"评论");
-    //要判断是否已经登陆
-    NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
-    [tmp setObject:self.tableTitle forKey:@"_name"];
-    if([params objectForKey:@"hospid"])
-        [tmp setObject:[params objectForKey:@"hospid"] forKey:@"hospid"];
-    else
-        [tmp setObject:[params objectForKey:@"doctorid"] forKey:@"doctorid"];
-    CommentViewController* cvc = [[CommentViewController alloc]init];
-    cvc.params = tmp;
-    [self.navigationController pushViewController:cvc animated:TRUE];
+    if(isLogin){//判断是否已经登陆
+        NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
+        [tmp setObject:self.tableTitle forKey:@"_name"];
+        if([params objectForKey:@"hospid"])
+            [tmp setObject:[params objectForKey:@"hospid"] forKey:@"hospid"];
+        else
+            [tmp setObject:[params objectForKey:@"doctorid"] forKey:@"doctorid"];
+        CommentViewController* cvc = [[CommentViewController alloc]init];
+        cvc.params = tmp;
+        [self.navigationController pushViewController:cvc animated:TRUE];
+    }else {//转登陆页
+        LoginViewController* lvc = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+        [self.tabBarController setSelectedIndex:2];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
