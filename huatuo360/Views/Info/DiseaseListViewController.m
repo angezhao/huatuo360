@@ -8,7 +8,7 @@
 
 #import "DiseaseListViewController.h"
 #import "HospitalListViewController.h"
-#import "DoctorListViewController.h"
+#import "DoctorListVC.h"
 #import "FixListViewController.h"
 #import "Constants.h"
 
@@ -96,7 +96,8 @@
         [self.navigationController pushViewController:hlvc animated:true];
     }else if([params objectForKey:@"_doctor"]){
         [tmp setObject:[itemData objectForKey:@"id"] forKey:@"diseaseid"];
-        DoctorListViewController* dlvc = [[DoctorListViewController alloc]init];
+//        [tmp setObject:@"1" forKey:@"page"];
+        DoctorListVC* dlvc = [[DoctorListVC alloc]init];
         dlvc.params = tmp;
         dlvc.tableTitle = @"常见疾病";
         [self.navigationController pushViewController:dlvc animated:true];

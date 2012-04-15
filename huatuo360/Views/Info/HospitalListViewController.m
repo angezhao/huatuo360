@@ -7,7 +7,8 @@
 //
 
 #import "HospitalListViewController.h"
-#import "DoctorListViewController.h"
+//#import "DoctorListVC.h"
+#import "DoctorListVC.h"
 #import "Constants.h"
 #import "HUDManger.h"
 
@@ -96,7 +97,8 @@
         [tmp setObject:[params objectForKey:@"_diseaseid"] forKey:@"diseaseid"];
     if([params objectForKey:@"deptid"] && ![params objectForKey:@"_diseaseid"])//科室id
         [tmp setObject:[params objectForKey:@"deptid"] forKey:@"deptid"];
-    DoctorListViewController* dlvc = [[DoctorListViewController alloc]init];
+//    DoctorListVC* dlvc = [[DoctorListVC alloc]init];
+    DoctorListVC* dlvc = [[DoctorListVC alloc]init];
     dlvc.params = tmp;
     if([params objectForKey:@"_name"])
         dlvc.tableTitle = [[NSString alloc]initWithFormat:@"%@%@的医生", [itemData objectForKey:@"name"], [params objectForKey:@"_name"]];

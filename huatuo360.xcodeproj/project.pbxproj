@@ -11,6 +11,8 @@
 		0D06CABB152F3F5D00FA35FE /* CommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D06CAB9152F3F5D00FA35FE /* CommentViewController.xib */; };
 		0D4A7F3E152AFD56003BAC85 /* disease.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0D4A7F3D152AFD56003BAC85 /* disease.plist */; };
 		0D6DDCD7150FAE2F001BD397 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6DDCD6150FAE2F001BD397 /* QuartzCore.framework */; };
+		0D6ED6B91535BCC1008A7AC3 /* DoctorListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6ED6B71535BCC1008A7AC3 /* DoctorListVC.m */; };
+		0D6ED6BA1535BCC1008A7AC3 /* DoctorListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D6ED6B81535BCC1008A7AC3 /* DoctorListVC.xib */; };
 		0D6F25AA15276ED3001A3A92 /* ListViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6F25A815276ED3001A3A92 /* ListViewController1.m */; };
 		0D6F25AB15276ED3001A3A92 /* ListViewController1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D6F25A915276ED3001A3A92 /* ListViewController1.xib */; };
 		0D6F25AF15276EEC001A3A92 /* ListViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6F25AD15276EEB001A3A92 /* ListViewController2.m */; };
@@ -115,6 +117,9 @@
 		0D06CAB9152F3F5D00FA35FE /* CommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentViewController.xib; sourceTree = "<group>"; };
 		0D4A7F3D152AFD56003BAC85 /* disease.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = disease.plist; sourceTree = "<group>"; };
 		0D6DDCD6150FAE2F001BD397 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		0D6ED6B61535BCC1008A7AC3 /* DoctorListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorListVC.h; sourceTree = "<group>"; };
+		0D6ED6B71535BCC1008A7AC3 /* DoctorListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorListVC.m; sourceTree = "<group>"; };
+		0D6ED6B81535BCC1008A7AC3 /* DoctorListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoctorListVC.xib; sourceTree = "<group>"; };
 		0D6F25A715276ED3001A3A92 /* ListViewController1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController1.h; sourceTree = "<group>"; };
 		0D6F25A815276ED3001A3A92 /* ListViewController1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController1.m; sourceTree = "<group>"; };
 		0D6F25A915276ED3001A3A92 /* ListViewController1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListViewController1.xib; sourceTree = "<group>"; };
@@ -612,6 +617,9 @@
 				0DB6928815277BBD00FD7F98 /* DoctorDetailVC.h */,
 				0DB6928915277BBD00FD7F98 /* DoctorDetailVC.m */,
 				0DB6928A15277BBD00FD7F98 /* DoctorDetailVC.xib */,
+				0D6ED6B61535BCC1008A7AC3 /* DoctorListVC.h */,
+				0D6ED6B71535BCC1008A7AC3 /* DoctorListVC.m */,
+				0D6ED6B81535BCC1008A7AC3 /* DoctorListVC.xib */,
 			);
 			path = Info;
 			sourceTree = "<group>";
@@ -736,6 +744,7 @@
 				B783C60B152F39B000678CA9 /* data.plist in Resources */,
 				B72CCE851538A099000DA066 /* AlterPwdViewController.xib in Resources */,
 				B72CCE8B1538A0B3000DA066 /* UserInfoViewController.xib in Resources */,
+				0D6ED6BA1535BCC1008A7AC3 /* DoctorListVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -809,6 +818,7 @@
 				0DF27B4E15308CBF00D9103E /* HUDManger.m in Sources */,
 				B72CCE841538A099000DA066 /* AlterPwdViewController.m in Sources */,
 				B72CCE8A1538A0B3000DA066 /* UserInfoViewController.m in Sources */,
+				0D6ED6B91535BCC1008A7AC3 /* DoctorListVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -830,7 +840,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = (
+					armv6,
+					"$(ARCHS_STANDARD_32_BIT)",
+				);
 				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -842,12 +855,14 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = NO;
 			};
 			name = Debug;
 		};
@@ -855,11 +870,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = (
+					armv6,
+					"$(ARCHS_STANDARD_32_BIT)",
+				);
 				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
@@ -867,7 +886,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
-				VALIDATE_PRODUCT = YES;
+				VALIDATE_PRODUCT = NO;
 			};
 			name = Release;
 		};
@@ -878,6 +897,7 @@
 				CODE_SIGN_ENTITLEMENTS = Entitlement.plist;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "huatuo360/huatuo360-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				"HEADER_SEARCH_PATHS[arch=*]" = "${SDK_DIR}/usr/include/libxml2";
 				INFOPLIST_FILE = "huatuo360/huatuo360-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
@@ -894,6 +914,7 @@
 				CODE_SIGN_ENTITLEMENTS = Entitlement.plist;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "huatuo360/huatuo360-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				"HEADER_SEARCH_PATHS[arch=*]" = "${SDK_DIR}/usr/include/libxml2";
 				INFOPLIST_FILE = "huatuo360/huatuo360-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
