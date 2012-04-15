@@ -79,7 +79,10 @@
         if (total == 0 || row == 0) //预防数据有问题
             cell.textLabel.text = @"没有数据";
         else
-            cell.textLabel.text = [[NSString alloc]initWithFormat:@"显示下%i条", perpage];
+        {
+            int countToShow = MIN(perpage, total - [listData count]);
+            cell.textLabel.text = [[NSString alloc]initWithFormat:@"显示下%i条", countToShow];
+        }
         cell.textLabel.textAlignment = UITextAlignmentCenter;
         return cell;
     }
