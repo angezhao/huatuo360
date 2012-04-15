@@ -17,6 +17,9 @@
     AsiObjectManager* manager;
 }
 
+@property (nonatomic, strong)NSMutableDictionary* params;
+
 -(IBAction)loginButtonPressed:(id)sender;
 -(IBAction)registerButtonPressed:(id)sender;
+-(IBAction)forgetPswButtonPressed:(id)sender;
 @end

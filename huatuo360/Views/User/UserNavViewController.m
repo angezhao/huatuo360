@@ -8,6 +8,8 @@
 
 #import "UserNavViewController.h"
 #import "LoginViewController.h"
+#import "UserInfoViewController.h"
+#import "Constants.h"
 
 @interface UserNavViewController ()
 
@@ -27,10 +29,31 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if(nil == userViewToShow)
+    {
+        if(self.viewControllers == nil || [self.viewControllers count] == 0)
+        {               
+            if(!isLogin){
+                LoginViewController* lvc = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+                self.viewControllers = [[NSArray alloc]initWithObjects:lvc, nil];
+            }else {
+                UserInfoViewController* uivc = [[UserInfoViewController alloc] initWithNibName:@"UserInfoViewController" bundle:nil];
+                self.viewControllers = [[NSArray alloc]initWithObjects:uivc, nil];
+            }
+        }
+    }
+    else 
+    {
+       self.viewControllers = [[NSArray alloc]initWithObjects:userViewToShow, nil];   
+       userViewToShow = nil;
+    }
+}
+
 - (void)viewDidLoad
 {
-    LoginViewController* lvc = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-    self.viewControllers = [[NSArray alloc]initWithObjects:lvc, nil];
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }

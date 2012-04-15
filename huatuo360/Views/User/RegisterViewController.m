@@ -7,6 +7,8 @@
 //
 
 #import "RegisterViewController.h"
+#import "UserInfoViewController.h"
+#import "CommentViewController.h"
 #import "Constants.h"
 
 @interface RegisterViewController ()
@@ -14,6 +16,7 @@
 @end
 
 @implementation RegisterViewController
+@synthesize params;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -75,16 +78,16 @@
     UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(100, 12, 200, 25)];
     textField.clearsOnBeginEditing = NO;
     [textField setDelegate:self];
-    [textField addTarget:self 
-                  action:@selector(textFieldDone:) 
-        forControlEvents:UIControlEventEditingDidEndOnExit];
+    //[textField addTarget:self 
+    //              action:@selector(textFieldDone:) 
+    //    forControlEvents:UIControlEventEditingDidEndOnExit];
     [cell.contentView addSubview:textField];
     
     NSUInteger row = [indexPath row];
     textField.tag = row;
     switch (row) {
         case 0:
-            label.text = @"账号：";
+            label.text = @"用户名：";
             textField.returnKeyType = UIReturnKeyNext;
             break;
             
@@ -103,6 +106,7 @@
         case 3:
             label.text = @"邮箱：";
             textField.returnKeyType = UIReturnKeyDone;
+            textField.keyboardType = UIKeyboardTypeEmailAddress;
             break;
     }
     [textfields addObject:textField];
@@ -113,6 +117,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    NSLog(@"textFieldShouldReturn=%i",textField.tag);
     if (textField.tag < 3) {
         UITextField *nextTextfield = [textfields objectAtIndex:textField.tag + 1];
         [nextTextfield becomeFirstResponder];
@@ -123,24 +128,43 @@
     return YES;
 }
 
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+    //验证用户输入正确性
+    
+    return YES;
+}
+
+
 - (IBAction)registerButtonPressed:(id)sender
 {
+    //验证用户输入正确性
+    
     userId = [[NSString alloc]initWithString:[[textfields objectAtIndex:0] text]];
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
-    [params setObject:_regist forKey:@"interfaceName"];
-    [params setObject:[[textfields objectAtIndex:0] text] forKey:@"userid"];
-    [params setObject:[[textfields objectAtIndex:1] text] forKey:@"password"];
-    [params setObject:[[textfields objectAtIndex:3] text] forKey:@"email"];
+    NSMutableDictionary* rparams = [NSMutableDictionary dictionaryWithCapacity:0];
+    [rparams setObject:_regist forKey:@"interfaceName"];
+    [rparams setObject:userId forKey:@"userid"];
+    [rparams setObject:[[textfields objectAtIndex:1] text] forKey:@"password"];
+    [rparams setObject:[[textfields objectAtIndex:3] text] forKey:@"email"];
     manager = [AsiObjectManager alloc];
     [manager setDelegate:self];
-    [manager requestData:params];
+    [manager requestData:rparams];
 }
 
 - (void)loadData:(NSDictionary *)data
 {
     //注册成功
     isLogin = true;
-    //要么显示个人中心页，要么显示评论页
+    email = [data objectForKey:@"email"];
+    if(params != nil){//显示评论页
+        CommentViewController* cvc = [[CommentViewController alloc]init];
+        cvc.params = params;
+        infoViewToShow = cvc;
+        [self.tabBarController setSelectedIndex:1];
+    }else {//显示个人中心页
+        UserInfoViewController* uivc = [[UserInfoViewController alloc] initWithNibName:@"UserInfoViewController" bundle:nil];
+        [self.navigationController pushViewController:uivc animated:true];
+    }
 }
 
 - (void) requestFailed:(NSError*)error{

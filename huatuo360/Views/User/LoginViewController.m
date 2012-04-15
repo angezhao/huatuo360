@@ -8,6 +8,8 @@
 
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
+#import "CommentViewController.h"
+#import "UserInfoViewController.h"
 #import "Constants.h"
 
 @interface LoginViewController ()
@@ -15,6 +17,8 @@
 @end
 
 @implementation LoginViewController
+@synthesize params;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -81,14 +85,14 @@
     textField.tag = row;
     textField.clearsOnBeginEditing = NO;
     [textField setDelegate:self];
-    [textField addTarget:self 
-                  action:@selector(textFieldDone:) 
-        forControlEvents:UIControlEventEditingDidEndOnExit];
+    //[textField addTarget:self 
+    //              action:@selector(textFieldDone:) 
+    //    forControlEvents:UIControlEventEditingDidEndOnExit];
     
     [cell.contentView addSubview:textField];
     switch (row) {
         case 0:
-            label.text = @"账号：";
+            label.text = @"用户名：";
             nameTextfield = textField;
             textField.returnKeyType = UIReturnKeyNext;
             break;
@@ -110,19 +114,6 @@
     textFieldBeingEdited = textField;
 }
 
-//- (void)textFieldDidEndEditing:(UITextField *)textField
-//{
-//    switch (textField.tag) {
-//        case 0:
-//            name = textField.text;
-//            break;
-//            
-//        case 1:
-//            password = textField.text;
-//            break;
-//    }
-////    NSLog(textField.text);
-//}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
@@ -138,27 +129,43 @@
 
 -(IBAction)loginButtonPressed:(id)sender
 {
+    ////验证用户输入正确性
     userId = [[NSString alloc]initWithString:[nameTextfield text]];
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
-    [params setObject:_login forKey:@"interfaceName"];
-    [params setObject:[nameTextfield text] forKey:@"userid"];
-    [params setObject:[pwTextfield text] forKey:@"password"];
+    NSMutableDictionary* lparams = [NSMutableDictionary dictionaryWithCapacity:0];
+    [lparams setObject:_login forKey:@"interfaceName"];
+    [lparams setObject:userId forKey:@"userid"];
+    [lparams setObject:[pwTextfield text] forKey:@"password"];
     manager = [AsiObjectManager alloc];
     [manager setDelegate:self];
-    [manager requestData:params];
+    [manager requestData:lparams];
 }
 
 -(IBAction)registerButtonPressed:(id)sender
 {
-    RegisterViewController* regViewController = [[RegisterViewController alloc]initWithNibName:@"RegisterViewController" bundle:nil];
-    [self.navigationController pushViewController:regViewController animated:true];
+    RegisterViewController* rvc = [[RegisterViewController alloc]initWithNibName:@"RegisterViewController" bundle:nil];
+    [self.navigationController pushViewController:rvc animated:true];
 }
+
+-(IBAction)forgetPswButtonPressed:(id)sender
+{
+    NSLog(@"忘记密码");
+}
+
 
 - (void)loadData:(NSDictionary *)data
 {
     //登陆成功
     isLogin = true;
-    //要么显示个人中心页，要么显示评论页
+    email = [data objectForKey:@"email"];
+    //显示个人中心页
+    UserInfoViewController* uivc = [[UserInfoViewController alloc] initWithNibName:@"UserInfoViewController" bundle:nil];
+    [self.navigationController pushViewController:uivc animated:true];
+    if(params != nil){ //显示评论页
+        CommentViewController* cvc = [[CommentViewController alloc]init];
+        cvc.params = params;
+        [navc pushViewController:cvc animated:true];
+        [self.tabBarController setSelectedIndex:1];
+    }
 }
 
 - (void) requestFailed:(NSError*)error{

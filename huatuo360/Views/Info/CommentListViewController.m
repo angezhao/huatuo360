@@ -37,18 +37,21 @@
 
 - (void)showCommentView
 {
+    NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
+    [tmp setObject:self.tableTitle forKey:@"_name"];
+    if([params objectForKey:@"hospid"])
+        [tmp setObject:[params objectForKey:@"hospid"] forKey:@"hospid"];
+    else
+        [tmp setObject:[params objectForKey:@"doctorid"] forKey:@"doctorid"];
+    
     if(isLogin){//判断是否已经登陆
-        NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
-        [tmp setObject:self.tableTitle forKey:@"_name"];
-        if([params objectForKey:@"hospid"])
-            [tmp setObject:[params objectForKey:@"hospid"] forKey:@"hospid"];
-        else
-            [tmp setObject:[params objectForKey:@"doctorid"] forKey:@"doctorid"];
         CommentViewController* cvc = [[CommentViewController alloc]init];
         cvc.params = tmp;
         [self.navigationController pushViewController:cvc animated:TRUE];
     }else {//转登陆页
         LoginViewController* lvc = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+        lvc.params = tmp;
+        userViewToShow = lvc;
         [self.tabBarController setSelectedIndex:2];
     }
 }

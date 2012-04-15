@@ -95,6 +95,10 @@
 		0DECF669150C9F2300824D1C /* user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DECF665150C9F2300824D1C /* user@2x.png */; };
 		0DF27B35153089F700D9103E /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF27B34153089F700D9103E /* MBProgressHUD.m */; };
 		0DF27B4E15308CBF00D9103E /* HUDManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF27B4D15308CBF00D9103E /* HUDManger.m */; };
+		B72CCE841538A099000DA066 /* AlterPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B72CCE821538A099000DA066 /* AlterPwdViewController.m */; };
+		B72CCE851538A099000DA066 /* AlterPwdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B72CCE831538A099000DA066 /* AlterPwdViewController.xib */; };
+		B72CCE8A1538A0B3000DA066 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B72CCE881538A0B3000DA066 /* UserInfoViewController.m */; };
+		B72CCE8B1538A0B3000DA066 /* UserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B72CCE891538A0B3000DA066 /* UserInfoViewController.xib */; };
 		B77C554E151EF660009F0613 /* AsiObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B77C554D151EF660009F0613 /* AsiObjectManager.m */; };
 		B77CD72615260DFA00D238CD /* FixListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B77CD72515260DFA00D238CD /* FixListViewController.m */; };
 		B783B44B152373750089AAFD /* DepartmentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B783B44A152373750089AAFD /* DepartmentListViewController.m */; };
@@ -257,6 +261,12 @@
 		0DF27B34153089F700D9103E /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		0DF27B4C15308CBF00D9103E /* HUDManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDManger.h; sourceTree = "<group>"; };
 		0DF27B4D15308CBF00D9103E /* HUDManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUDManger.m; sourceTree = "<group>"; };
+		B72CCE811538A099000DA066 /* AlterPwdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlterPwdViewController.h; sourceTree = "<group>"; };
+		B72CCE821538A099000DA066 /* AlterPwdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlterPwdViewController.m; sourceTree = "<group>"; };
+		B72CCE831538A099000DA066 /* AlterPwdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlterPwdViewController.xib; sourceTree = "<group>"; };
+		B72CCE871538A0B3000DA066 /* UserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
+		B72CCE881538A0B3000DA066 /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
+		B72CCE891538A0B3000DA066 /* UserInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoViewController.xib; sourceTree = "<group>"; };
 		B77C554C151EF660009F0613 /* AsiObjectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsiObjectManager.h; sourceTree = "<group>"; };
 		B77C554D151EF660009F0613 /* AsiObjectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsiObjectManager.m; sourceTree = "<group>"; };
 		B77C554F151EF6CB009F0613 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -621,7 +631,13 @@
 			children = (
 				0DECF65D150C9E7000824D1C /* UserNavViewController.h */,
 				0DECF65E150C9E7000824D1C /* UserNavViewController.m */,
+				B72CCE871538A0B3000DA066 /* UserInfoViewController.h */,
+				B72CCE881538A0B3000DA066 /* UserInfoViewController.m */,
+				B72CCE891538A0B3000DA066 /* UserInfoViewController.xib */,
 				0D708A971515A77A007EA936 /* LoginViewController.h */,
+				B72CCE811538A099000DA066 /* AlterPwdViewController.h */,
+				B72CCE821538A099000DA066 /* AlterPwdViewController.m */,
+				B72CCE831538A099000DA066 /* AlterPwdViewController.xib */,
 				0D708A981515A77A007EA936 /* LoginViewController.m */,
 				0D708A991515A77A007EA936 /* LoginViewController.xib */,
 				0D708A9C1515A78B007EA936 /* RegisterViewController.h */,
@@ -718,6 +734,8 @@
 				0D9A9A1C152F367000D62421 /* rbNormal.png in Resources */,
 				0D06CABB152F3F5D00FA35FE /* CommentViewController.xib in Resources */,
 				B783C60B152F39B000678CA9 /* data.plist in Resources */,
+				B72CCE851538A099000DA066 /* AlterPwdViewController.xib in Resources */,
+				B72CCE8B1538A0B3000DA066 /* UserInfoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -789,6 +807,8 @@
 				0D06CABA152F3F5D00FA35FE /* CommentViewController.m in Sources */,
 				0DF27B35153089F700D9103E /* MBProgressHUD.m in Sources */,
 				0DF27B4E15308CBF00D9103E /* HUDManger.m in Sources */,
+				B72CCE841538A099000DA066 /* AlterPwdViewController.m in Sources */,
+				B72CCE8A1538A0B3000DA066 /* UserInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

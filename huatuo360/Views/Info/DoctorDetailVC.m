@@ -44,15 +44,18 @@
 
 - (void)showCommentView
 {
+    NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
+    [tmp setObject:doctorName forKey:@"_name"];
+    [tmp setObject:doctorId forKey:@"doctorid"];
+    
     if(isLogin){//判断是否已经登陆
-        NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
-        [tmp setObject:doctorName forKey:@"_name"];
-        [tmp setObject:doctorId forKey:@"doctorid"];
         CommentViewController* cvc = [[CommentViewController alloc]init];
         cvc.params = tmp;
         [self.navigationController pushViewController:cvc animated:TRUE];
     }else{
         LoginViewController* lvc = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+        lvc.params = tmp;
+        userViewToShow = lvc;
         [self.tabBarController setSelectedIndex:2];
     }
 }
@@ -156,7 +159,6 @@
         CommentListViewController* clvc = [[CommentListViewController alloc]init];
         clvc.params = tmp;
         clvc.tableTitle = [[NSString alloc]initWithFormat:@"%@医生", doctorName];
-        infoViewToShow = clvc;
         [self.navigationController pushViewController:clvc animated:true];
     }
     else if(section == 2 && !showAllThesis && row == INIT_SHOW_THESIS_COUNT)

@@ -101,7 +101,6 @@ extern NSString* const _departmentList;
                 DoctorListViewController* dlvc = [[DoctorListViewController alloc]init];
                 dlvc.params = tmp;
                 dlvc.tableTitle = @"医生排行";
-                infoViewToShow = dlvc;
                 [self.navigationController pushViewController:dlvc animated:true];
             }  
             break;
@@ -112,7 +111,6 @@ extern NSString* const _departmentList;
                 HospitalListViewController* hlvc = [[HospitalListViewController alloc]init];
                 hlvc.params = tmp;
                 hlvc.tableTitle = @"医院排行";
-                infoViewToShow = hlvc;
                 [self.navigationController pushViewController:hlvc animated:true];
 
             }  
