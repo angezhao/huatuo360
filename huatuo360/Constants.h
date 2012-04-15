@@ -21,7 +21,7 @@ extern NSString* const _diseaseList;
 //全局变量
 extern UIViewController *infoViewToShow;
 extern UIViewController *userViewToShow;
-extern UINavigationController *navc;
+extern UIViewController *lastInfoView;
 extern NSString* userId;
 extern NSString* email;
 extern Boolean isLogin;

@@ -44,7 +44,7 @@ NSString* const _diseaseList = @"getDiseaseList.php?";
 //全局变量
 UIViewController* infoViewToShow = nil;
 UIViewController* userViewToShow = nil;
-UINavigationController *navc = nil;
+UIViewController *lastInfoView = nil;
 NSString* userId;
 NSString* email;
 Boolean isLogin = false;

@@ -163,7 +163,7 @@
     if(params != nil){ //显示评论页
         CommentViewController* cvc = [[CommentViewController alloc]init];
         cvc.params = params;
-        [navc pushViewController:cvc animated:true];
+        [lastInfoView.navigationController pushViewController:cvc animated:true];
         [self.tabBarController setSelectedIndex:1];
     }
 }

@@ -55,7 +55,7 @@
         LoginViewController* lvc = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
         lvc.params = tmp;
         userViewToShow = lvc;
-        navc = self.navigationController;
+        lastInfoView = self;
         [self.tabBarController setSelectedIndex:2];
     }
 
