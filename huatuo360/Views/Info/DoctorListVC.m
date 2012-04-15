@@ -40,6 +40,8 @@
     if(firstAppear)
     {
         firstAppear = false;
+        [params setObject:_doctorList forKey:@"interfaceName"];
+        [params setObject:@"1" forKey:@"page"];
         manager = [AsiObjectManager alloc];
         [manager setDelegate:self];
         [manager requestData:params];
@@ -79,13 +81,7 @@
     [listData addObjectsFromArray:[data objectForKey:@"data"]];
     [self.listView reloadData]; 
     [btnDetail setEnabled:TRUE];
-    static int a = 0;
-    NSString* text;
-    if(++a % 1 == 0)
-        text = @"就看见啦；圣诞节感觉的萨拉戈空间啊了深刻经过了撒大家";
-    else {
-        text = @"就看见啦；深刻经过了撒大家";    }
-    [self updateControlLocationForTitle:text];
+    [self updateControlLocationForTitle:self.tableTitle];
 }
 
 - (void) updateControlLocationForTitle:(NSString*)title

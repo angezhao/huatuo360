@@ -30,7 +30,7 @@ extern Boolean isLogin;
 extern Boolean isComment;
 
 //UITableView常量
-#define INTRO_FONT_SIZE 14.0f
+#define INTRO_FONT_SIZE 16.0f
 #define INFO_FONT_SIZE 16.0f
 //整行宽度
 #define CELL_CONTENT_WIDTH 320.0f
