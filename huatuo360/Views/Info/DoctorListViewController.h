@@ -14,6 +14,5 @@
     Boolean firstAppear;
     UIBarButtonItem *btnDetail;
 }
-@property (nonatomic, strong)NSMutableDictionary* params;
 
 @end

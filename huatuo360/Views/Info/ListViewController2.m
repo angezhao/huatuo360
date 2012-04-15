@@ -16,6 +16,7 @@
 @implementation ListViewController2
 @synthesize listView;
 @synthesize tableTitle;
+@synthesize params;
 - (id)init
 {
     self = [super initWithNibName:@"ListViewController2" bundle:nil];
@@ -75,7 +76,7 @@
         //        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         //        btn.backgroundColor = [UIColor clearColor];
         //        [cell.contentView addSubview:btn];
-        if (total == 0) 
+        if (total == 0 || row == 0) //预防数据有问题
             cell.textLabel.text = @"没有数据";
         else
             cell.textLabel.text = [[NSString alloc]initWithFormat:@"显示下%i条", perpage];

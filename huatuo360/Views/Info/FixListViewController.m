@@ -97,27 +97,20 @@ extern NSString* const _departmentList;
         case 0:
             {
                 NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
-                [tmp setObject:_doctorList forKey:@"interfaceName"];
-                [tmp setObject:@"1" forKey:@"page"];
                 [tmp setObject:[params objectForKey:@"diseaseid"] forKey:@"diseaseid"];
                 DoctorListVC* dlvc = [[DoctorListVC alloc]init];
                 dlvc.params = tmp;
                 dlvc.tableTitle = @"医生排行";
-                infoViewToShow = dlvc;
                 [self.navigationController pushViewController:dlvc animated:true];
             }  
             break;
         case 1:
             {
                 NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
-                [tmp setObject:_hospitalList forKey:@"interfaceName"];
-                [tmp setObject:@"1" forKey:@"page"];
-                [tmp setObject:[params objectForKey:@"diseaseid"] forKey:@"deptid"];
-                [tmp setObject:[params objectForKey:@"diseaseid"] forKey:@"_diseaseid"];
+                [tmp setObject:[params objectForKey:@"diseaseid"] forKey:@"diseaseid"];
                 HospitalListViewController* hlvc = [[HospitalListViewController alloc]init];
                 hlvc.params = tmp;
                 hlvc.tableTitle = @"医院排行";
-                infoViewToShow = hlvc;
                 [self.navigationController pushViewController:hlvc animated:true];
 
             }  

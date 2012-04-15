@@ -19,4 +19,5 @@
 
 -(IBAction)loginButtonPressed:(id)sender;
 -(IBAction)registerButtonPressed:(id)sender;
+-(IBAction)forgetPswButtonPressed:(id)sender;
 @end

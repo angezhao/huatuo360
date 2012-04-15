@@ -40,6 +40,8 @@
     if(firstAppear)
     {
         firstAppear = false;
+        [params setObject:_hospitalList forKey:@"interfaceName"];
+        [params setObject:@"1" forKey:@"page"];
         manager = [AsiObjectManager alloc];
         [manager setDelegate:self];
         [manager requestData:params];
@@ -89,8 +91,6 @@
     }
     NSMutableDictionary *itemData = [listData objectAtIndex:row];
     NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
-    [tmp setObject:_doctorList forKey:@"interfaceName"];
-    [tmp setObject:@"1" forKey:@"page"];
     [tmp setObject:[itemData objectForKey:@"id"] forKey:@"hospid"];
     [tmp setObject:[itemData objectForKey:@"name"] forKey:@"_name"];//医院名字
     if([params objectForKey:@"_diseaseid"])//疾病id

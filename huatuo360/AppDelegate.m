@@ -37,6 +37,7 @@
     userId = [data objectForKey:@"userid"];
     if(![userId isEqualToString:@""])
         isLogin = true;
+    email = [data objectForKey:@"email"];
     
     //init departmentlist数据
 //    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
@@ -100,6 +101,7 @@
     [saveData setObject:gcityId forKey:@"cityid"];
     [saveData setObject:gcityName forKey:@"cityname"];
     [saveData setObject:userId forKey:@"userid"];
+    [saveData setObject:email forKey:@"email"];
     NSString* savePath = [[NSBundle mainBundle] pathForResource:@"data" ofType:@"plist"];
     [NSKeyedArchiver archiveRootObject:saveData toFile:savePath];
 }

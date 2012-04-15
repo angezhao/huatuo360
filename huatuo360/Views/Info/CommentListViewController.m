@@ -36,14 +36,12 @@
 
 - (void)showCommentView
 {
-    //NSLog(@"评论");
-    //要判断是否已经登陆
     NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
     [tmp setObject:self.tableTitle forKey:@"_name"];
     if([params objectForKey:@"hospid"])
         [tmp setObject:[params objectForKey:@"hospid"] forKey:@"hospid"];
     else
-        [tmp setObject:[params objectForKey:@"doctorid"] forKey:@"doctorId"];
+        [tmp setObject:[params objectForKey:@"doctorid"] forKey:@"doctorid"];
     CommentViewController* cvc = [[CommentViewController alloc]init];
     cvc.params = tmp;
     [self.navigationController pushViewController:cvc animated:TRUE];
@@ -55,6 +53,8 @@
     if(firstAppear)
     {
         firstAppear = false;
+        [params setObject:_commentList forKey:@"interfaceName"];
+        [params setObject:@"1" forKey:@"page"];
         manager = [AsiObjectManager alloc];
         [manager setDelegate:self];
         [manager requestData:params];

@@ -8,6 +8,7 @@
 
 #import "CommentViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "LoginViewController.h"
 #import "Constants.h"
 
 @interface CommentViewController ()
@@ -44,14 +45,18 @@
     lbPlaceHolder.enabled = FALSE;
     lbPlaceHolder.text = @"输入评论";
     btnEndEdit.hidden = TRUE;
-    [params setObject:userId forKey:@"userId"];
-    [params setObject:_comment forKey:@"interfaceName"];
     if([params objectForKey:@"hospid"]){
         lbTitle.text = [NSString stringWithFormat:@"%@", [params objectForKey:@"_name"]];
         lbImpression.text = @"这个医院给你的印象：";
     }else {
         lbTitle.text = [NSString stringWithFormat:@"%@ 医生", [params objectForKey:@"_name"]];
         lbImpression.text = @"这位医生给你的印象：";
+    }
+    if(!isLogin){
+        LoginViewController* lvc = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+        isComment = true;
+        userViewToShow = lvc;
+        [self.tabBarController setSelectedIndex:2];
     }
 }
 
@@ -89,7 +94,8 @@
 
 - (IBAction)announce:(id)sender
 {
-    //impression=1(0推荐与否)&evaluation=评价&userId=用户id
+    [params setObject:_comment forKey:@"interfaceName"];
+    [params setObject:userId forKey:@"userid"];
     if(bRecommend)
         [params setObject:@"1" forKey:@"impression"];
     else 
@@ -103,11 +109,13 @@
 - (void)loadData:(NSDictionary *)data
 {
     NSLog(@"%@", data);   
+    //评论成功返回上层页面并刷新数据
+    
 }
 
 - (void) requestFailed:(NSError*)error
 {
-    
+    NSLog(@"%@", error); 
 }
 
 - (IBAction)recommend:(id)sender

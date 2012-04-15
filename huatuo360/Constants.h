@@ -20,11 +20,14 @@ extern NSString* const _diseaseList;
 
 //全局变量
 extern UIViewController *infoViewToShow;
+extern UIViewController *userViewToShow;
 extern NSString* userId;
-extern Boolean isLogin;
+extern NSString* email;
 extern NSString* gcityId;
 extern NSString* gcityName;
 extern NSDictionary *departments;
+extern Boolean isLogin;
+extern Boolean isComment;
 
 //UITableView常量
 #define INTRO_FONT_SIZE 14.0f

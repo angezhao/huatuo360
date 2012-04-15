@@ -4,9 +4,11 @@
 <dict>
 	<key>cityid</key>
 	<string></string>
+	<key>cityname</key>
+	<string></string>
 	<key>userid</key>
 	<string></string>
-	<key>cityname</key>
+	<key>email</key>
 	<string></string>
 </dict>
 </plist>

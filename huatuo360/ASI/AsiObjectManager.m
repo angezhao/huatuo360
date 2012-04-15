@@ -21,6 +21,7 @@
     } 
     NSString *url = [self getUrl:urlParam];
     ASIHTTPRequest* request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+    [request addRequestHeader:@"Accepts-Encoding" value:@"gzip"];
     [request setDelegate:self];
     [request startAsynchronous];
     
@@ -39,8 +40,9 @@
     } 
     NSString *url = [self getUrl:urlParam];
     ASIHTTPRequest* request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+    [request addRequestHeader:@"Accepts-Encoding" value:@"gzip"];
     [request startSynchronous]; 
-    [request  setResponseEncoding:(NSUTF8StringEncoding)];
+    [request setResponseEncoding:(NSUTF8StringEncoding)];
     NSString *responseString = [request responseString];
     NSLog(@"%@", responseString);
     SBJsonParser *parser = [[SBJsonParser alloc] init];
@@ -88,6 +90,7 @@
     NSLog(@"%@",status); 
     //判断异常delegate是否为空
     if ([status intValue] != 1) {
+        //判断各种状态，要提示信息
         NSError *error = [[NSError alloc] initWithDomain:@"requestFailed" code:[status integerValue] userInfo:nil];
         [delegate requestFailed:error];
     }else {

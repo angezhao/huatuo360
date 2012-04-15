@@ -20,6 +20,7 @@
 
 @property (nonatomic, strong)IBOutlet UITableView* listView;
 @property (nonatomic, strong)NSString* tableTitle;
+@property (nonatomic, strong)NSMutableDictionary* params;
 - (NSString*)getTitleByIndex:(int)index;
 
 @end

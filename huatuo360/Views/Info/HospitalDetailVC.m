@@ -42,8 +42,6 @@
 
 - (void)showCommentView
 {
-    //NSLog(@"评论");
-    //要判断是否已经登陆
     NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
     [tmp setObject:hospitalName forKey:@"_name"];
     [tmp setObject:hospitalId forKey:@"hospid"];
@@ -142,13 +140,10 @@
     {
         //查看评论
         NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
-        [tmp setObject:_commentList forKey:@"interfaceName"];
-        [tmp setObject:@"1" forKey:@"page"];
         [tmp setObject:hospitalId forKey:@"hospid"];
         CommentListViewController* clvc = [[CommentListViewController alloc]init];
         clvc.params = tmp;
         clvc.tableTitle = [[NSString alloc]initWithFormat:@"%@医院", hospitalName];
-        infoViewToShow = clvc;
         [self.navigationController pushViewController:clvc animated:true];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
