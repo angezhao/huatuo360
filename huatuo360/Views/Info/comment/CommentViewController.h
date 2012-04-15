@@ -22,6 +22,8 @@
 @property (nonatomic, strong)IBOutlet UILabel *lbTitle;
 //子类赋值 这位医生（这个医院）给你的印象：
 @property (nonatomic, strong)IBOutlet UILabel *lbImpression;
+//发表按钮
+@property (nonatomic, strong)IBOutlet UIButton *btnComment;
 //子类重写，发表按钮响应
 - (IBAction)announce:(id)sender;
 

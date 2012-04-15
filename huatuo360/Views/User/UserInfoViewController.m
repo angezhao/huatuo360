@@ -25,6 +25,7 @@
         UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
         backItem.title = @"返回";
         [self.navigationItem setBackBarButtonItem:backItem];
+        [self.navigationItem setHidesBackButton:true];
     }
     return self;
 }
@@ -40,6 +41,7 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    [self.navigationItem setHidesBackButton:false];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

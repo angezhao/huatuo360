@@ -16,7 +16,7 @@
 @end
 
 @implementation CommentViewController
-@synthesize  btnRecommendSelected,btnNotRecommendSelected,btnRecommendNormal,btnNotRecommendNormal,tvComment,btnEndEdit,lbPlaceHolder,lbTitle,lbImpression;
+@synthesize  btnRecommendSelected,btnNotRecommendSelected,btnRecommendNormal,btnNotRecommendNormal,tvComment,btnEndEdit,lbPlaceHolder,lbTitle,lbImpression,btnComment;
 @synthesize params;
 
 - (id)init
@@ -58,6 +58,10 @@
         userViewToShow = lvc;
         [self.tabBarController setSelectedIndex:2];
     }
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    btnComment.enabled = isLogin;
 }
 
 
@@ -110,6 +114,7 @@
 {
     NSLog(@"%@", data);   
     //评论成功返回上层页面并刷新数据
+    UIViewController *lastvc = [self.navigationController popViewControllerAnimated:true];
     
 }
 
