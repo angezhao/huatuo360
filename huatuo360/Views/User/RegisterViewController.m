@@ -77,9 +77,9 @@
     UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(100, 12, 200, 25)];
     textField.clearsOnBeginEditing = NO;
     [textField setDelegate:self];
-//    [textField addTarget:self 
-//                  action:@selector(textFieldDone:) 
-//        forControlEvents:UIControlEventEditingDidEndOnExit];
+    //[textField addTarget:self 
+    //              action:@selector(textFieldDone:) 
+    //    forControlEvents:UIControlEventEditingDidEndOnExit];
     [cell.contentView addSubview:textField];
     
     NSUInteger row = [indexPath row];

@@ -742,6 +742,8 @@
 				0D9A9A1C152F367000D62421 /* rbNormal.png in Resources */,
 				0D06CABB152F3F5D00FA35FE /* CommentViewController.xib in Resources */,
 				B783C60B152F39B000678CA9 /* data.plist in Resources */,
+				B72CCE851538A099000DA066 /* AlterPwdViewController.xib in Resources */,
+				B72CCE8B1538A0B3000DA066 /* UserInfoViewController.xib in Resources */,
 				0D6ED6BA1535BCC1008A7AC3 /* DoctorListVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -814,6 +816,8 @@
 				0D06CABA152F3F5D00FA35FE /* CommentViewController.m in Sources */,
 				0DF27B35153089F700D9103E /* MBProgressHUD.m in Sources */,
 				0DF27B4E15308CBF00D9103E /* HUDManger.m in Sources */,
+				B72CCE841538A099000DA066 /* AlterPwdViewController.m in Sources */,
+				B72CCE8A1538A0B3000DA066 /* UserInfoViewController.m in Sources */,
 				0D6ED6B91535BCC1008A7AC3 /* DoctorListVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

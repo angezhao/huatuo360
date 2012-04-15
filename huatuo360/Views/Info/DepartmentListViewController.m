@@ -98,7 +98,7 @@
         hlvc.tableTitle = [[NSString alloc]initWithFormat:@"%@医院排行", [itemData objectForKey:@"name"]];
         [self.navigationController pushViewController:hlvc animated:true];
     }else if([params objectForKey:@"_doctor"]){
-        [tmp setObject:_doctorList forKey:@"interfaceName"];
+//        [tmp setObject:_doctorList forKey:@"interfaceName"];
         DoctorListVC* dlvc = [[DoctorListVC alloc] init];
         dlvc.params = tmp;
         dlvc.tableTitle = [[NSString alloc]initWithFormat:@"%@医生排行", [itemData objectForKey:@"name"]];

@@ -96,7 +96,7 @@
         [self.navigationController pushViewController:hlvc animated:true];
     }else if([params objectForKey:@"_doctor"]){
         [tmp setObject:[itemData objectForKey:@"id"] forKey:@"diseaseid"];
-        [tmp setObject:@"1" forKey:@"page"];
+//        [tmp setObject:@"1" forKey:@"page"];
         DoctorListVC* dlvc = [[DoctorListVC alloc]init];
         dlvc.params = tmp;
         dlvc.tableTitle = @"常见疾病";
