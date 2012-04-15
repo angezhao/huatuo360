@@ -9,7 +9,6 @@
 #import "HospitalDetailVC.h"
 #import "CommentListViewController.h"
 #import "CommentViewController.h"
-#import "LoginViewController.h"
 #import "Constants.h"
 
 @interface HospitalDetailVC ()
@@ -46,19 +45,9 @@
     NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
     [tmp setObject:hospitalName forKey:@"_name"];
     [tmp setObject:hospitalId forKey:@"hospid"];
-    
-    if(isLogin){//判断是否已经登陆
-        CommentViewController* cvc = [[CommentViewController alloc]init];
-        cvc.params = tmp;
-        [self.navigationController pushViewController:cvc animated:TRUE];
-    }else{
-        LoginViewController* lvc = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-        lvc.params = tmp;
-        userViewToShow = lvc;
-        lastInfoView = self;
-        [self.tabBarController setSelectedIndex:2];
-    }
-
+    CommentViewController* cvc = [[CommentViewController alloc]init];
+    cvc.params = tmp;
+    [self.navigationController pushViewController:cvc animated:TRUE];
 }
 
 - (void)loadData:(NSDictionary *)data

@@ -44,10 +44,10 @@ NSString* const _diseaseList = @"getDiseaseList.php?";
 //全局变量
 UIViewController* infoViewToShow = nil;
 UIViewController* userViewToShow = nil;
-UIViewController *lastInfoView = nil;
 NSString* userId;
 NSString* email;
-Boolean isLogin = false;
 NSString* gcityId;
 NSString* gcityName;
 NSDictionary *departments;
+Boolean isLogin = false;
+Boolean isComment = false;

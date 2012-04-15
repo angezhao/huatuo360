@@ -15,7 +15,5 @@
     AsiObjectManager* manager;
 }
 
-@property (nonatomic, strong)NSMutableDictionary* params;
-
 - (IBAction)registerButtonPressed:(id)sender;
 @end

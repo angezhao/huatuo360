@@ -17,7 +17,6 @@
 @end
 
 @implementation LoginViewController
-@synthesize params;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -157,14 +156,12 @@
     //登陆成功
     isLogin = true;
     email = [data objectForKey:@"email"];
-    //显示个人中心页
-    UserInfoViewController* uivc = [[UserInfoViewController alloc] initWithNibName:@"UserInfoViewController" bundle:nil];
-    [self.navigationController pushViewController:uivc animated:true];
-    if(params != nil){ //显示评论页
-        CommentViewController* cvc = [[CommentViewController alloc]init];
-        cvc.params = params;
-        [lastInfoView.navigationController pushViewController:cvc animated:true];
+    if(isComment){ //显示评论页
+        isComment = true;
         [self.tabBarController setSelectedIndex:1];
+    }else {//显示个人中心页
+        UserInfoViewController* uivc = [[UserInfoViewController alloc] initWithNibName:@"UserInfoViewController" bundle:nil];
+        [self.navigationController pushViewController:uivc animated:true];
     }
 }
 

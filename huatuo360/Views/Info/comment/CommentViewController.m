@@ -8,6 +8,7 @@
 
 #import "CommentViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "LoginViewController.h"
 #import "Constants.h"
 
 @interface CommentViewController ()
@@ -50,6 +51,12 @@
     }else {
         lbTitle.text = [NSString stringWithFormat:@"%@ 医生", [params objectForKey:@"_name"]];
         lbImpression.text = @"这位医生给你的印象：";
+    }
+    if(!isLogin){
+        LoginViewController* lvc = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+        isComment = true;
+        userViewToShow = lvc;
+        [self.tabBarController setSelectedIndex:2];
     }
 }
 

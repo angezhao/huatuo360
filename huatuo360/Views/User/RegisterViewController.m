@@ -16,7 +16,6 @@
 @end
 
 @implementation RegisterViewController
-@synthesize params;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -156,10 +155,8 @@
     //注册成功
     isLogin = true;
     email = [data objectForKey:@"email"];
-    if(params != nil){//显示评论页
-        CommentViewController* cvc = [[CommentViewController alloc]init];
-        cvc.params = params;
-        infoViewToShow = cvc;
+    if(isComment){ //显示评论页
+        isComment = true;
         [self.tabBarController setSelectedIndex:1];
     }else {//显示个人中心页
         UserInfoViewController* uivc = [[UserInfoViewController alloc] initWithNibName:@"UserInfoViewController" bundle:nil];
