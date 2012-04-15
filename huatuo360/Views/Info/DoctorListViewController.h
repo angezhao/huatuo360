@@ -1,5 +1,5 @@
 //
-//  DoctorListViewController.h
+//  DoctorListVC.h
 //  huatuo360
 //
 //  Created by Alpha Wong on 12-3-22.

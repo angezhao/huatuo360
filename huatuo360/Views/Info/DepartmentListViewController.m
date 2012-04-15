@@ -8,7 +8,7 @@
 
 #import "DepartmentListViewController.h"
 #import "HospitalListViewController.h"
-#import "DoctorListViewController.h"
+#import "DoctorListVC.h"
 #import "Constants.h"
 
 @implementation DepartmentListViewController
@@ -99,7 +99,7 @@
         [self.navigationController pushViewController:hlvc animated:true];
     }else if([params objectForKey:@"_doctor"]){
         [tmp setObject:_doctorList forKey:@"interfaceName"];
-        DoctorListViewController* dlvc = [[DoctorListViewController alloc] init];
+        DoctorListVC* dlvc = [[DoctorListVC alloc] init];
         dlvc.params = tmp;
         dlvc.tableTitle = [[NSString alloc]initWithFormat:@"%@医生排行", [itemData objectForKey:@"name"]];
         [self.navigationController pushViewController:dlvc animated:true];

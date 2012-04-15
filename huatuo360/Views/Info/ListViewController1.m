@@ -102,7 +102,7 @@
         
         introLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 20, 270, 25)];
         introLabel.tag = 100;
-        introLabel.font = [UIFont systemFontOfSize:12];
+        introLabel.font = [UIFont systemFontOfSize:14];
         introLabel.backgroundColor = [UIColor clearColor];
         [cell.contentView addSubview:introLabel];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -140,12 +140,4 @@
                                  userInfo:nil];
     return @"";
 }
-
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    DoctorListViewController* doctorListVC = [[DoctorListViewController alloc] init];
-//    [self.navigationController pushViewController:doctorListVC animated:true];
-//    [tableView deselectRowAtIndexPath:indexPath animated:NO]; 
-//}
-
-
 @end

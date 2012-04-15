@@ -10,7 +10,7 @@
 #import "HospitalListViewController.h"
 #import "DepartmentListViewController.h"
 #import "DiseaseListViewController.h"
-#import "DoctorListViewController.h"
+#import "DoctorListVC.h"
 #import "Constants.h"
 #import "DropDownList.h"
 #import "CityListVC.h"
@@ -136,7 +136,7 @@ const static int DOCTOR = 2;
                 [params setObject:_doctorList forKey:@"interfaceName"];
                 [params setObject:@"1" forKey:@"page"];
                 [params setObject:searchBar.text forKey:@"doctor"];
-                DoctorListViewController* dlvc = [[DoctorListViewController alloc]init];
+                DoctorListVC* dlvc = [[DoctorListVC alloc]init];
                 dlvc.params = params;
                 dlvc.tableTitle = [[NSString alloc]initWithFormat:@"搜索\"%@\"的医生结果", searchBar.text];                
                 infoViewToShow = dlvc;

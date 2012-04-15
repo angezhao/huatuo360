@@ -8,7 +8,7 @@
 
 #import "FixListViewController.h"
 #import "HospitalListViewController.h"
-#import "DoctorListViewController.h"
+#import "DoctorListVC.h"
 #import "Constants.h"
 
 @implementation FixListViewController
@@ -100,7 +100,7 @@ extern NSString* const _departmentList;
                 [tmp setObject:_doctorList forKey:@"interfaceName"];
                 [tmp setObject:@"1" forKey:@"page"];
                 [tmp setObject:[params objectForKey:@"diseaseid"] forKey:@"diseaseid"];
-                DoctorListViewController* dlvc = [[DoctorListViewController alloc]init];
+                DoctorListVC* dlvc = [[DoctorListVC alloc]init];
                 dlvc.params = tmp;
                 dlvc.tableTitle = @"医生排行";
                 infoViewToShow = dlvc;
