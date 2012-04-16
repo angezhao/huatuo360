@@ -133,7 +133,7 @@
 
 -(IBAction)loginButtonPressed:(id)sender
 {
-    ////验证用户输入正确性
+    //验证用户输入正确性
     userId = [[NSString alloc]initWithString:[nameTextfield text]];
     NSMutableDictionary* lparams = [NSMutableDictionary dictionaryWithCapacity:0];
     [lparams setObject:_login forKey:@"interfaceName"];

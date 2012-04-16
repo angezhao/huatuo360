@@ -16,6 +16,9 @@ NSString* const _login = @"login.php?";
 //regist.php?userId=username&password=passwd&email=email@e.com
 NSString* const _regist = @"regist.php?";
 
+//editPasswd.php?userid=用户名&password=密码&newpassword=新密码
+NSString* const _editPwd = @"editPasswd.php?";
+
 //comment.php?hospid=医院id&impression=1(0推荐与否)&evaluation=评价&userId=用户id
 NSString* const _comment = @"comment.php?";
 

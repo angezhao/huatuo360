@@ -7,6 +7,7 @@
 //
 
 #import "AlterPwdViewController.h"
+#import "Constants.h"
 
 @interface AlterPwdViewController ()
 
@@ -45,7 +46,129 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return @"修改密码";
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 3;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *LoginTableIdentifier = @"LoginTableIdentifier";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
+                             LoginTableIdentifier];
+    if (cell == nil)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                      reuseIdentifier: LoginTableIdentifier];
+    }
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 75, 25)];
+    label.textAlignment = UITextAlignmentRight;
+    label.font = [UIFont boldSystemFontOfSize:16];
+    //    label.font = [UIFont  fontWithName:@"黑体"  size:16];
+    label.backgroundColor = [UIColor clearColor];
+    [cell.contentView addSubview:label];
+    
+    
+    NSUInteger row = [indexPath row];
+    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(90, 12, 200, 25)];
+    textField.tag = row;
+    textField.clearsOnBeginEditing = NO;
+    [textField setDelegate:self];
+    //[textField addTarget:self 
+    //              action:@selector(textFieldDone:) 
+    //    forControlEvents:UIControlEventEditingDidEndOnExit];
+    
+    [cell.contentView addSubview:textField];
+    switch (row) {
+        case 0:
+            label.text = @"原密码：";
+            oldPwdTextfield = textField;
+            textField.returnKeyType = UIReturnKeyNext;
+            textField.secureTextEntry = YES;
+            break;
+            
+        case 1:
+            label.text = @"新密码：";
+            newPwdTextfield = textField;
+            textField.returnKeyType = UIReturnKeyNext;
+            textField.secureTextEntry = YES;
+            break;
+        case 2:
+            label.text = @"确认密码：";
+            newPwdTextfield1 = textField;
+            textField.returnKeyType = UIReturnKeyDone;
+            textField.secureTextEntry = YES;
+            break;
+    }
+    
+    return cell;
+    
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    textFieldBeingEdited = textField;
+}
+
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if(textField.tag == 0){
+        [newPwdTextfield becomeFirstResponder];
+    }
+    else if(textField.tag == 1){
+        [newPwdTextfield1 becomeFirstResponder];
+    }else {
+        [newPwdTextfield1 resignFirstResponder];
+    }
+    return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+    //验证用户输入正确性
+    if(textField.tag == 0 && ([oldPwdTextfield text] == nil || [[oldPwdTextfield text] length] < 6)){
+        return NO;
+    }else if(textField.tag == 1 && ([newPwdTextfield text] == nil || [[newPwdTextfield text] length] < 6)){
+        return NO;
+    } else if(textField.tag == 2 && ([newPwdTextfield1 text] == nil || [[newPwdTextfield1 text] length] < 6)){
+        return NO;
+    }   
+    return YES;
+}
+
 -(IBAction)alterPwdButtonPressed:(id)sender{
+    //验证用户输入正确性
+    if ([[newPwdTextfield text] length] < 6 || [[oldPwdTextfield text] isEqual:[newPwdTextfield text]] || ![[newPwdTextfield text] isEqual:[newPwdTextfield1 text]]) {
+        //弹框提示
+        return;
+    }
+    //userid=用户名&password=密码&newpassword=新密码
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
+    [params setObject:_editPwd forKey:@"interfaceName"];
+    [params setObject:userId forKey:@"userid"];
+    [params setObject:[oldPwdTextfield text] forKey:@"password"];
+    [params setObject:[newPwdTextfield text] forKey:@"newpassword"];
+    manager = [AsiObjectManager alloc];
+    [manager setDelegate:self];
+    [manager requestData:params];
+}
+
+- (void)loadData:(NSDictionary *)data
+{
+    //修改成功
+    //弹框提示成功后
+    [self.navigationController popViewControllerAnimated:true];
+}
+
+- (void) requestFailed:(NSError*)error{
+    //修改失败
     
 }
 

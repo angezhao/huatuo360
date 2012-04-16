@@ -92,7 +92,7 @@
 }
 
 -(IBAction)alterPwdButtonPressed:(id)sender{
-    AlterPwdViewController* alterPwdViewController = [[AlterPwdViewController alloc]initWithNibName:@"AlterPwdViewController" bundle:nil];
-    [self.navigationController pushViewController:alterPwdViewController animated:true];
+    AlterPwdViewController* apvc = [[AlterPwdViewController alloc]initWithNibName:@"AlterPwdViewController" bundle:nil];
+    [self.navigationController pushViewController:apvc animated:true];
 }
 @end
