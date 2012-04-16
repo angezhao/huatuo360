@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "AsiObjectManager.h"
+#import "DeptSelectVC.h"
 
-@interface DoctorListVC : UIViewController<AsiObjectDelegate,UITableViewDelegate, UITableViewDataSource>
+@interface DoctorListVC : UIViewController<AsiObjectDelegate,UITableViewDelegate, UITableViewDataSource, DeptSelectDelegate>
 {
     Boolean firstAppear;
     UIBarButtonItem *btnDetail;
@@ -26,4 +27,5 @@
 - (NSString*)getTitleByIndex:(int)index;
 - (NSString*)getIntroByIndex:(int)index;
 @property (nonatomic, strong)NSMutableDictionary* params;
+- (IBAction)showDeptList:(id)sender;
 @end

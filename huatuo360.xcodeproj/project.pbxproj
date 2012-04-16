@@ -10,6 +10,8 @@
 		0D06CABA152F3F5D00FA35FE /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D06CAB8152F3F5D00FA35FE /* CommentViewController.m */; };
 		0D06CABB152F3F5D00FA35FE /* CommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D06CAB9152F3F5D00FA35FE /* CommentViewController.xib */; };
 		0D4A7F3E152AFD56003BAC85 /* disease.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0D4A7F3D152AFD56003BAC85 /* disease.plist */; };
+		0D6C2199153B2C4A0081B044 /* DeptSelectVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6C2197153B2C490081B044 /* DeptSelectVC.m */; };
+		0D6C219A153B2C4A0081B044 /* DeptSelectVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D6C2198153B2C490081B044 /* DeptSelectVC.xib */; };
 		0D6DDCD7150FAE2F001BD397 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6DDCD6150FAE2F001BD397 /* QuartzCore.framework */; };
 		0D6ED6B91535BCC1008A7AC3 /* DoctorListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6ED6B71535BCC1008A7AC3 /* DoctorListVC.m */; };
 		0D6ED6BA1535BCC1008A7AC3 /* DoctorListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D6ED6B81535BCC1008A7AC3 /* DoctorListVC.xib */; };
@@ -116,6 +118,9 @@
 		0D06CAB8152F3F5D00FA35FE /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
 		0D06CAB9152F3F5D00FA35FE /* CommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentViewController.xib; sourceTree = "<group>"; };
 		0D4A7F3D152AFD56003BAC85 /* disease.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = disease.plist; sourceTree = "<group>"; };
+		0D6C2196153B2C490081B044 /* DeptSelectVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeptSelectVC.h; sourceTree = "<group>"; };
+		0D6C2197153B2C490081B044 /* DeptSelectVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeptSelectVC.m; sourceTree = "<group>"; };
+		0D6C2198153B2C490081B044 /* DeptSelectVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeptSelectVC.xib; sourceTree = "<group>"; };
 		0D6DDCD6150FAE2F001BD397 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0D6ED6B61535BCC1008A7AC3 /* DoctorListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorListVC.h; sourceTree = "<group>"; };
 		0D6ED6B71535BCC1008A7AC3 /* DoctorListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorListVC.m; sourceTree = "<group>"; };
@@ -620,6 +625,9 @@
 				0D6ED6B61535BCC1008A7AC3 /* DoctorListVC.h */,
 				0D6ED6B71535BCC1008A7AC3 /* DoctorListVC.m */,
 				0D6ED6B81535BCC1008A7AC3 /* DoctorListVC.xib */,
+				0D6C2196153B2C490081B044 /* DeptSelectVC.h */,
+				0D6C2197153B2C490081B044 /* DeptSelectVC.m */,
+				0D6C2198153B2C490081B044 /* DeptSelectVC.xib */,
 			);
 			path = Info;
 			sourceTree = "<group>";
@@ -745,6 +753,7 @@
 				B72CCE851538A099000DA066 /* AlterPwdViewController.xib in Resources */,
 				B72CCE8B1538A0B3000DA066 /* UserInfoViewController.xib in Resources */,
 				0D6ED6BA1535BCC1008A7AC3 /* DoctorListVC.xib in Resources */,
+				0D6C219A153B2C4A0081B044 /* DeptSelectVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -819,6 +828,7 @@
 				B72CCE841538A099000DA066 /* AlterPwdViewController.m in Sources */,
 				B72CCE8A1538A0B3000DA066 /* UserInfoViewController.m in Sources */,
 				0D6ED6B91535BCC1008A7AC3 /* DoctorListVC.m in Sources */,
+				0D6C2199153B2C4A0081B044 /* DeptSelectVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

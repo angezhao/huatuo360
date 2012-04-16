@@ -10,6 +10,7 @@
 #import "HospitalDetailVC.h"
 #import "DoctorDetailVC.h"
 #import "Constants.h"
+#import "DeptSelectVC.h"
 
 @interface DoctorListVC ()
 
@@ -249,4 +250,15 @@
     return indexPath;
 }
 
+- (void) selectDept:(NSString*)deptId deptName:(NSString*)deptName
+{
+    NSLog(@"%@--%@", deptId, deptName);
+}
+
+- (IBAction)showDeptList:(id)sender
+{
+    DeptSelectVC* dsvc = [[DeptSelectVC alloc]init];
+    [dsvc setDelegate:self];
+    [self.navigationController pushViewController:dsvc animated:TRUE];
+}
 @end
