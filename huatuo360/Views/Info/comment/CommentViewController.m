@@ -114,8 +114,8 @@
 {
     NSLog(@"%@", data);   
     //评论成功返回上层页面并刷新数据
-    UIViewController *lastvc = [self.navigationController popViewControllerAnimated:true];
-    
+    flashView = true;
+    [self.navigationController popViewControllerAnimated:true];
 }
 
 - (void) requestFailed:(NSError*)error

@@ -28,6 +28,7 @@ extern NSString* gcityName;
 extern NSDictionary *departments;
 extern Boolean isLogin;
 extern Boolean isComment;
+extern Boolean flashView;
 
 //UITableView常量
 #define INTRO_FONT_SIZE 16.0f

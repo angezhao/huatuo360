@@ -51,3 +51,4 @@ NSString* gcityName;
 NSDictionary *departments;
 Boolean isLogin = false;
 Boolean isComment = false;
+Boolean flashView = false;

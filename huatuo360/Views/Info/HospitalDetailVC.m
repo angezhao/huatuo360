@@ -71,7 +71,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if(needRequest)
+    if(needRequest || flashView)
     {
         NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:0];
         [params setObject:_hospital forKey:@"interfaceName"];
@@ -80,6 +80,7 @@
         [manager setDelegate:self];
         [manager requestData:params];
         needRequest = FALSE;
+        flashView = false;
     }
 }
 
@@ -279,11 +280,11 @@
                                           reuseIdentifier: SimpleTableIdentifier];
             
             cell.textLabel.font = [UIFont boldSystemFontOfSize:INFO_FONT_SIZE];
-            int count = [[hospitalData objectForKey:@"comment"] intValue];
-            cell.textLabel.text = [[NSString alloc]initWithFormat:@"评论(%i条)", count];
-            if(count > 0)
-                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
+        int count = [[hospitalData objectForKey:@"comment"] intValue];
+        cell.textLabel.text = [[NSString alloc]initWithFormat:@"评论(%i条)", count];
+        if(count > 0)
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     else 
     {
