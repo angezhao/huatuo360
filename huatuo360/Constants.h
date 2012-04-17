@@ -10,6 +10,7 @@ extern NSString* const _baseUrl;
 extern NSString* const _login;
 extern NSString* const _regist;
 extern NSString* const _editPwd;
+extern NSString* const _resetPwd;
 extern NSString* const _comment;
 extern NSString* const _departmentList;
 extern NSString* const _commentList;

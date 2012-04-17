@@ -58,17 +58,17 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *LoginTableIdentifier = @"LoginTableIdentifier";
+    static NSString *AlterPwdTableIdentifier = @"AlterPwdTableIdentifier";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
-                             LoginTableIdentifier];
+                             AlterPwdTableIdentifier];
     if (cell == nil)
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                      reuseIdentifier: LoginTableIdentifier];
+                                      reuseIdentifier: AlterPwdTableIdentifier];
     }
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 75, 25)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 90, 25)];
     label.textAlignment = UITextAlignmentRight;
     label.font = [UIFont boldSystemFontOfSize:16];
     //    label.font = [UIFont  fontWithName:@"黑体"  size:16];
@@ -77,7 +77,7 @@
     
     
     NSUInteger row = [indexPath row];
-    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(90, 12, 200, 25)];
+    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(100, 12, 200, 25)];
     textField.tag = row;
     textField.clearsOnBeginEditing = NO;
     [textField setDelegate:self];
@@ -149,7 +149,6 @@
         //弹框提示
         return;
     }
-    //userid=用户名&password=密码&newpassword=新密码
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
     [params setObject:_editPwd forKey:@"interfaceName"];
     [params setObject:userId forKey:@"userid"];

@@ -69,26 +69,40 @@
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier: UserInfoTableIdentifier];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 250, 25)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 90, 25)];
     label.textAlignment = UITextAlignmentRight;
     label.font = [UIFont boldSystemFontOfSize:16];
     //    label.font = [UIFont  fontWithName:@"黑体"  size:16];
     label.backgroundColor = [UIColor clearColor];
     [cell.contentView addSubview:label];
     
+    UILabel *labelText = [[UILabel alloc] initWithFrame:CGRectMake(100, 12, 200, 25)];
+    labelText.textAlignment = UITextAlignmentLeft;
+    labelText.font = [UIFont boldSystemFontOfSize:16];
+    //    label.font = [UIFont  fontWithName:@"黑体"  size:16];
+    labelText.backgroundColor = [UIColor clearColor];
+    [cell.contentView addSubview:labelText];
+    
     NSUInteger row = [indexPath row];
     switch (row) {
         case 0:
-            label.text = [NSString stringWithFormat:@"用户名：%@", userId];
+            label.text = @"用户名：";
+            labelText.text = userId;
             break;
             
         case 1:
-            label.text = [NSString stringWithFormat:@"邮箱：%@", email];
+            label.text = @"邮箱：";
+            labelText.text = email;
             break;
     }
     return cell;
+}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    return nil;
 }
 
 -(IBAction)alterPwdButtonPressed:(id)sender{

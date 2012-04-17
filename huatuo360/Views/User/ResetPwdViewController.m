@@ -1,22 +1,21 @@
 //
-//  LoginViewController.m
+//  ResetPwdViewController.m
 //  huatuo360
 //
-//  Created by Alpha Wong on 12-3-18.
+//  Created by Zhao Ange on 12-4-17.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
+#import "ResetPwdViewController.h"
 #import "LoginViewController.h"
-#import "RegisterViewController.h"
-#import "UserInfoViewController.h"
-#import "CheckCodeViewController.h"
 #import "Constants.h"
 
-@interface LoginViewController ()
+@interface ResetPwdViewController ()
 
 @end
 
-@implementation LoginViewController
+@implementation ResetPwdViewController
+@synthesize resetPwdUserId;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -51,36 +50,36 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return @"请输入帐号密码";
+    return @"重置密码";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *LoginTableIdentifier = @"LoginTableIdentifier";
+    static NSString *ResetPwdTableIdentifier = @"ResetPwdTableIdentifier";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
-                             LoginTableIdentifier];
+                             ResetPwdTableIdentifier];
     if (cell == nil)
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                      reuseIdentifier: LoginTableIdentifier];
+                                      reuseIdentifier: ResetPwdTableIdentifier];
     }
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 75, 25)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 90, 25)];
     label.textAlignment = UITextAlignmentRight;
     label.font = [UIFont boldSystemFontOfSize:16];
-//    label.font = [UIFont  fontWithName:@"黑体"  size:16];
+    //    label.font = [UIFont  fontWithName:@"黑体"  size:16];
     label.backgroundColor = [UIColor clearColor];
     [cell.contentView addSubview:label];
     
     
     NSUInteger row = [indexPath row];
-    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(90, 12, 200, 25)];
+    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(100, 12, 200, 25)];
     textField.tag = row;
     textField.clearsOnBeginEditing = NO;
     [textField setDelegate:self];
@@ -91,14 +90,20 @@
     [cell.contentView addSubview:textField];
     switch (row) {
         case 0:
-            label.text = @"用户名：";
-            nameTextfield = textField;
+            label.text = @"验证码：";
+            checkCodeTextfield = textField;
             textField.returnKeyType = UIReturnKeyNext;
             break;
             
         case 1:
-            label.text = @"密码：";
-            pwdTextfield = textField;
+            label.text = @"新密码：";
+            newPwdTextfield = textField;
+            textField.returnKeyType = UIReturnKeyNext;
+            textField.secureTextEntry = YES;
+            break;
+        case 2:
+            label.text = @"确认密码：";
+            newPwdTextfield1 = textField;
             textField.returnKeyType = UIReturnKeyDone;
             textField.secureTextEntry = YES;
             break;
@@ -116,63 +121,57 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    if(textField.tag == 0)
-    {
-        [pwdTextfield becomeFirstResponder];
+    if(textField.tag == 0){
+        [newPwdTextfield becomeFirstResponder];
     }
-    else {
-        [pwdTextfield resignFirstResponder];
+    else if(textField.tag == 1){
+        [newPwdTextfield1 becomeFirstResponder];
+    }else {
+        [newPwdTextfield1 resignFirstResponder];
     }
     return YES;
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
     //验证用户输入正确性
-    
+    if(textField.tag == 0 && ([checkCodeTextfield text] == nil || [[checkCodeTextfield text] length] < 6)){
+        return NO;
+    }else if(textField.tag == 1 && ([newPwdTextfield text] == nil || [[newPwdTextfield text] length] < 6)){
+        return NO;
+    } else if(textField.tag == 2 && ([newPwdTextfield1 text] == nil || [[newPwdTextfield1 text] length] < 6)){
+        return NO;
+    }   
     return YES;
 }
 
--(IBAction)loginButtonPressed:(id)sender
-{
+-(IBAction)resetPwdButtonPressed:(id)sender{
     //验证用户输入正确性
-    userId = [[NSString alloc]initWithString:[nameTextfield text]];
-    NSMutableDictionary* lparams = [NSMutableDictionary dictionaryWithCapacity:0];
-    [lparams setObject:_login forKey:@"interfaceName"];
-    [lparams setObject:userId forKey:@"userid"];
-    [lparams setObject:[pwdTextfield text] forKey:@"password"];
+    if ([[newPwdTextfield text] length] < 6 || ![[newPwdTextfield text] isEqual:[newPwdTextfield1 text]]) {
+        //弹框提示
+        return;
+    }
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
+    [params setObject:_resetPwd forKey:@"interfaceName"];
+    [params setObject:@"reset" forKey:@"step"];
+    [params setObject:resetPwdUserId forKey:@"userid"];
+    [params setObject:[checkCodeTextfield text] forKey:@"code"];
+    [params setObject:[newPwdTextfield text] forKey:@"password"];
     manager = [AsiObjectManager alloc];
     [manager setDelegate:self];
-    [manager requestData:lparams];
+    [manager requestData:params];
 }
-
--(IBAction)registerButtonPressed:(id)sender
-{
-    RegisterViewController* rvc = [[RegisterViewController alloc]initWithNibName:@"RegisterViewController" bundle:nil];
-    [self.navigationController pushViewController:rvc animated:true];
-}
-
--(IBAction)forgetPswButtonPressed:(id)sender
-{
-    CheckCodeViewController* ccvc = [[CheckCodeViewController alloc]initWithNibName:@"CheckCodeViewController" bundle:nil];
-    [self.navigationController pushViewController:ccvc animated:true];
-}
-
 
 - (void)loadData:(NSDictionary *)data
 {
-    //登陆成功
-    isLogin = true;
-    email = [data objectForKey:@"email"];
-    UserInfoViewController* uivc = [[UserInfoViewController alloc] initWithNibName:@"UserInfoViewController" bundle:nil];
-    [self.navigationController pushViewController:uivc animated:true];
-    if(isComment){ //显示评论页
-        isComment = true;
-        [self.tabBarController setSelectedIndex:1];
-    }
+    //修改成功转到用户登陆页
+    LoginViewController* lvc = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+    userViewToShow = lvc;
+    [self.navigationController pushViewController:lvc animated:true];
 }
 
 - (void) requestFailed:(NSError*)error{
-    //登陆失败
-    isLogin = false;
+    //修改失败
+    
 }
+
 @end
