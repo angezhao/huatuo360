@@ -76,6 +76,13 @@
 - (void) requestFailed:(NSError*)error
 {
 //    [HUDManger hideHUD:@"H"];
+    UIAlertView*alert = [[UIAlertView alloc]initWithTitle:@"提示"
+                                                  message:@"这是一个简单的警告框！"
+                                                 delegate:nil                                       
+                                        cancelButtonTitle:@"确定"
+                                        otherButtonTitles:nil];  
+    
+    [alert show]; 
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -97,7 +104,6 @@
         [tmp setObject:[params objectForKey:@"_diseaseid"] forKey:@"diseaseid"];
     if([params objectForKey:@"deptid"] && ![params objectForKey:@"_diseaseid"])//科室id
         [tmp setObject:[params objectForKey:@"deptid"] forKey:@"deptid"];
-//    DoctorListVC* dlvc = [[DoctorListVC alloc]init];
     DoctorListVC* dlvc = [[DoctorListVC alloc]init];
     dlvc.params = tmp;
     if([params objectForKey:@"_name"])

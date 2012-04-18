@@ -16,7 +16,7 @@
 - (void)requestData:(NSMutableDictionary*)urlParam { 
     //增加网络链接状态判断是否需要请求
     if (![self connectedToNetwork]) {
-        NSLog(@"conect fail");
+        [self alertNoInternet];
         return;
     } 
     NSString *url = [self getUrl:urlParam];
@@ -35,7 +35,7 @@
 - (NSDictionary*)syncRequestData:(NSMutableDictionary*)urlParam {
     //增加网络链接状态判断是否需要请求
     if (![self connectedToNetwork]) {
-        NSLog(@"conect fail");
+        [self alertNoInternet];
         return nil;
     } 
     NSString *url = [self getUrl:urlParam];
@@ -135,7 +135,6 @@
 	NSError *error = [request error]; 
     NSLog(@"%@", error);
     [delegate requestFailed:error];
-//    request.url.
 }
 
 
@@ -165,4 +164,36 @@
     return (isReachable && !needsConnection) ? YES : NO;
 }
 
+- (void)alertNoInternet
+{
+    UIAlertView *alert;
+    float version = [[[UIDevice currentDevice] systemVersion] floatValue];
+    if(version >= 5.0)
+    {
+        alert = [[UIAlertView alloc]initWithTitle:@"提示"
+                                          message:@"当前网络没有连接，请先设置网络！"
+                                         delegate:self                                       
+                                cancelButtonTitle:@"确定"
+                                otherButtonTitles:@"设置", nil];
+        [alert show];
+    }
+    else 
+    {
+        alert = [[UIAlertView alloc]initWithTitle:@"提示"
+                                          message:@"当前网络没有连接，请先设置网络！"
+                                         delegate:nil                                       
+                                cancelButtonTitle:@"确定"
+                                otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 1)
+    {
+        NSURL*url=[NSURL URLWithString:@"prefs:root=General&path=Network"];
+        [[UIApplication sharedApplication] openURL:url];
+    }
+}
 @end

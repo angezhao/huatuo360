@@ -7,7 +7,7 @@
 - (void) requestFailed:(NSError*)error;
 @end
 
-@interface AsiObjectManager: NSObject<NSObject> {
+@interface AsiObjectManager: NSObject<UIAlertViewDelegate> {
 }
 
 @property ( nonatomic) id<AsiObjectDelegate> delegate;

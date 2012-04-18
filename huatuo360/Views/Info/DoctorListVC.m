@@ -151,16 +151,6 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO]; 
 }
 
-- (NSString*)getTitleByIndex:(int)index
-{
-    return [[listData objectAtIndex:index] objectForKey:@"name"];
-}
-
-- (NSString*)getIntroByIndex:(int)index
-{
-    return [[listData objectAtIndex:index] objectForKey:@"info"];
-}
-
 - (void)nextPage
 {
     NSString *pageText = [[NSString alloc]initWithFormat:@"%i", ++page];
@@ -236,8 +226,10 @@
         titleLabel = (UILabel*)[cell viewWithTag:99];
         introLabel = (UILabel*)[cell viewWithTag:100];
     }
-    titleLabel.text = [self getTitleByIndex:row];
-    introLabel.text = [self getIntroByIndex:row];    
+    
+    NSDictionary* itemData = [listData objectAtIndex:row];
+    titleLabel.text = [itemData objectForKey:@"name"];
+    introLabel.text = [itemData objectForKey:@"info"];    
     return cell;
     
 }
@@ -253,10 +245,18 @@
 - (void) selectDept:(NSString*)deptId deptName:(NSString*)deptName
 {
     NSLog(@"%@--%@", deptId, deptName);
+//    NSString* title = hopitalName;
+//    lbTitle.text = 
 }
 
 - (IBAction)showDeptList:(id)sender
 {
+    if(departments == nil)
+    {
+        NSMutableDictionary* deptParams = [NSMutableDictionary dictionaryWithCapacity:0];
+        [deptParams setObject:_departmentList forKey:@"interfaceName"];
+        departments = [manager syncRequestData:deptParams];
+    }
     DeptSelectVC* dsvc = [[DeptSelectVC alloc]init];
     [dsvc setDelegate:self];
     [self.navigationController pushViewController:dsvc animated:TRUE];

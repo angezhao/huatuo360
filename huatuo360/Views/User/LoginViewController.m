@@ -150,7 +150,6 @@
     NSLog(@"忘记密码");
 }
 
-
 - (void)loadData:(NSDictionary *)data
 {
     //登陆成功

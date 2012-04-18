@@ -18,14 +18,16 @@
     int total;
     int page;
     AsiObjectManager* manager;
+    
+    NSString* hopitalName;
+    NSString* departmentId;
+    NSString* departmentName;
 }
 
 @property (nonatomic, strong)IBOutlet UITableView* listView;
 @property (nonatomic, strong)IBOutlet UILabel* lbTitle;
 @property (nonatomic, strong)IBOutlet UIButton* btnDept;
 @property (nonatomic, strong)NSString* tableTitle;
-- (NSString*)getTitleByIndex:(int)index;
-- (NSString*)getIntroByIndex:(int)index;
 @property (nonatomic, strong)NSMutableDictionary* params;
 - (IBAction)showDeptList:(id)sender;
 @end

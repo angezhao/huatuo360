@@ -44,10 +44,10 @@
 //    [params setObject:_departmentList forKey:@"interfaceName"];
 //    AsiObjectManager* manager = [AsiObjectManager alloc];
 //    NSDictionary* data = [manager syncRequestData:params];
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
-    [params setObject:_departmentList forKey:@"interfaceName"];
-    AsiObjectManager* manager = [AsiObjectManager alloc];
-    departments = [manager syncRequestData:params];
+//    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
+//    [params setObject:_departmentList forKey:@"interfaceName"];
+//    AsiObjectManager* manager = [AsiObjectManager alloc];
+//    departments = [manager syncRequestData:params];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
