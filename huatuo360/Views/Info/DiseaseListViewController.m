@@ -8,12 +8,12 @@
 
 #import "DiseaseListViewController.h"
 #import "HospitalListViewController.h"
-#import "DoctorListVC.h"
+#import "DoctorListViewController.h"
 #import "FixListViewController.h"
 #import "Constants.h"
 
 @implementation DiseaseListViewController
-@synthesize params;
+@synthesize params, diseaseName;
 
 - (id)init
 {
@@ -92,14 +92,14 @@
         [tmp setObject:[itemData objectForKey:@"id"] forKey:@"_diseaseid"];
         HospitalListViewController* hlvc = [[HospitalListViewController alloc]init];
         hlvc.params = tmp;
-        hlvc.tableTitle = @"常见疾病";
+        hlvc.tableTitle = [NSString stringWithFormat:@"治疗\"%@\"的医院排名", [itemData objectForKey:@"name"]];
         [self.navigationController pushViewController:hlvc animated:true];
     }else if([params objectForKey:@"_doctor"]){
         [tmp setObject:[itemData objectForKey:@"id"] forKey:@"diseaseid"];
 //        [tmp setObject:@"1" forKey:@"page"];
-        DoctorListVC* dlvc = [[DoctorListVC alloc]init];
+        DoctorListViewController* dlvc = [[DoctorListViewController alloc]init];
         dlvc.params = tmp;
-        dlvc.tableTitle = @"常见疾病";
+        dlvc.tableTitle = [NSString stringWithFormat:@"治疗\"%@\"的医生排名", [itemData objectForKey:@"name"]];    //@"常见疾病";
         [self.navigationController pushViewController:dlvc animated:true];
     }else {
         [tmp setObject:[itemData objectForKey:@"id"] forKey:@"diseaseid"];

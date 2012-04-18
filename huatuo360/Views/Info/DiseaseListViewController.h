@@ -12,5 +12,6 @@
 {
     Boolean firstAppear;
 }
+@property (nonatomic, strong) NSString* diseaseName;
 
 @end
