@@ -9,6 +9,8 @@
 extern NSString* const _baseUrl;
 extern NSString* const _login;
 extern NSString* const _regist;
+extern NSString* const _editPwd;
+extern NSString* const _resetPwd;
 extern NSString* const _comment;
 extern NSString* const _departmentList;
 extern NSString* const _commentList;
@@ -28,6 +30,7 @@ extern NSString* gcityName;
 extern NSDictionary *departments;
 extern Boolean isLogin;
 extern Boolean isComment;
+extern Boolean flashView;
 
 //UITableView常量
 #define INTRO_FONT_SIZE 16.0f

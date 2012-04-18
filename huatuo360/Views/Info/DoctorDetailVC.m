@@ -46,7 +46,6 @@
     NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
     [tmp setObject:doctorName forKey:@"_name"];
     [tmp setObject:doctorId forKey:@"doctorid"];
-    
     CommentViewController* cvc = [[CommentViewController alloc]init];
     cvc.params = tmp;
     [self.navigationController pushViewController:cvc animated:TRUE];
@@ -75,7 +74,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if(needRequest)
+    if(needRequest || flashView)
     {
         NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:0];
         [params setObject:_doctor forKey:@"interfaceName"];
@@ -84,6 +83,7 @@
         [manager setDelegate:self];
         [manager requestData:params];
         needRequest = FALSE;
+        flashView = false;
         //阻止数据为请求下来就点击评论按钮
         btnComment.enabled = FALSE;
     }
@@ -265,13 +265,12 @@
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                           reuseIdentifier: SimpleTableIdentifier];
-            
             cell.textLabel.font = [UIFont boldSystemFontOfSize:INFO_FONT_SIZE];
-            int count = [[doctorData objectForKey:@"comment"] intValue];
-            cell.textLabel.text = [[NSString alloc]initWithFormat:@"评论(%i条)", count];
-            if(count > 0)
-                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
+        int count = [[doctorData objectForKey:@"comment"] intValue];
+        cell.textLabel.text = [[NSString alloc]initWithFormat:@"评论(%i条)", count];
+        if(count > 0)
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     else 
     {

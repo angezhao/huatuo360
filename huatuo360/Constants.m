@@ -10,13 +10,20 @@
 
 NSString* const _baseUrl = @"http://www.huatuo360.com/m/";
 
-//login.php?userId=username&password=passwd
+//login.php?userid=username&password=passwd
 NSString* const _login = @"login.php?";
 
-//regist.php?userId=username&password=passwd&email=email@e.com
+//regist.php?userid=username&password=passwd&email=email@e.com
 NSString* const _regist = @"regist.php?";
 
-//comment.php?hospid=医院id&impression=1(0推荐与否)&evaluation=评价&userId=用户id
+//editPasswd.php?userid=用户名&password=密码&newpassword=新密码
+NSString* const _editPwd = @"editPasswd.php?";
+
+//resetPasswd.php?step=mail&userid=用户名&email=邮箱
+//resetPasswd.php?step=reset&code=验证码&userid=用户名&password=新密码
+NSString* const _resetPwd = @"resetPasswd.php?";
+
+//comment.php?hospid=医院id&impression=1(0推荐与否)&evaluation=评价&userid=用户id
 NSString* const _comment = @"comment.php?";
 
 //科室列表接口(分医院部分地区)getDepartmentList.php?hospid=医院id
@@ -31,7 +38,7 @@ NSString* const _doctor = @"getDoctor.php?";
 //医院介绍getHospital.php?id=220
 NSString* const _hospital = @"getHospital.php?";
 
-//医院排行getHospitalList.php?deptid=疾病/科室id&hospital=搜索的医院名&city=城市id&page=页数&perpage=分页数目
+//医院排行getHospitalList.php?deptid=疾病id&deptid=科室id&hospital=搜索的医院名&city=城市id&page=页数&perpage=分页数目
 NSString* const _hospitalList = @"getHospitalList.php?";
 
 //医生列表getDoctorList.php?deptid=疾病/科室id&hospid=医院id&doctor=医生名字&city=城市id&page=页数&perpage=分页数目
@@ -51,3 +58,4 @@ NSString* gcityName;
 NSDictionary *departments;
 Boolean isLogin = false;
 Boolean isComment = false;
+Boolean flashView = false;

@@ -12,7 +12,7 @@
 @interface LoginViewController : UIViewController<AsiObjectDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 {
     UITextField *nameTextfield;
-    UITextField *pwTextfield;
+    UITextField *pwdTextfield;
     UITextField *textFieldBeingEdited;
     AsiObjectManager* manager;
 }

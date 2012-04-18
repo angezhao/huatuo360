@@ -1,19 +1,20 @@
 //
-//  AlterPwdViewController.m
+//  CheckCodeViewController.m
 //  huatuo360
 //
-//  Created by Zhao Ange on 12-4-12.
+//  Created by Zhao Ange on 12-4-17.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
-#import "AlterPwdViewController.h"
-#import "Constants.h"
+#import "CheckCodeViewController.h"
+#import "ResetPwdViewController.h"
+#include "Constants.h"
 
-@interface AlterPwdViewController ()
+@interface CheckCodeViewController ()
 
 @end
 
-@implementation AlterPwdViewController
+@implementation CheckCodeViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -48,24 +49,24 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return @"修改密码";
+    return @"获取验证码";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *AlterPwdTableIdentifier = @"AlterPwdTableIdentifier";
+    static NSString *CheckCodeTableIdentifier = @"CheckCodeTableIdentifier";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
-                             AlterPwdTableIdentifier];
+                             CheckCodeTableIdentifier];
     if (cell == nil)
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                      reuseIdentifier: AlterPwdTableIdentifier];
+                                      reuseIdentifier: CheckCodeTableIdentifier];
     }
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 90, 25)];
@@ -88,23 +89,15 @@
     [cell.contentView addSubview:textField];
     switch (row) {
         case 0:
-            label.text = @"原密码：";
-            oldPwdTextfield = textField;
+            label.text = @"用户名：";
+            nameTextfield = textField;
             textField.returnKeyType = UIReturnKeyNext;
-            textField.secureTextEntry = YES;
             break;
             
         case 1:
-            label.text = @"新密码：";
-            newPwdTextfield = textField;
-            textField.returnKeyType = UIReturnKeyNext;
-            textField.secureTextEntry = YES;
-            break;
-        case 2:
-            label.text = @"确认密码：";
-            newPwdTextfield1 = textField;
+            label.text = @"邮箱：";
+            emailTextfield = textField;
             textField.returnKeyType = UIReturnKeyDone;
-            textField.secureTextEntry = YES;
             break;
     }
     
@@ -121,39 +114,28 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     if(textField.tag == 0){
-        [newPwdTextfield becomeFirstResponder];
+        [emailTextfield becomeFirstResponder];
     }
-    else if(textField.tag == 1){
-        [newPwdTextfield1 becomeFirstResponder];
-    }else {
-        [newPwdTextfield1 resignFirstResponder];
+    else {
+        [emailTextfield resignFirstResponder];
     }
     return YES;
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
     //验证用户输入正确性
-    if(textField.tag == 0 && ([oldPwdTextfield text] == nil || [[oldPwdTextfield text] length] < 6)){
-        return NO;
-    }else if(textField.tag == 1 && ([newPwdTextfield text] == nil || [[newPwdTextfield text] length] < 6)){
-        return NO;
-    } else if(textField.tag == 2 && ([newPwdTextfield1 text] == nil || [[newPwdTextfield1 text] length] < 6)){
-        return NO;
-    }   
+    
     return YES;
 }
 
--(IBAction)alterPwdButtonPressed:(id)sender{
+-(IBAction)getCheckCodeButtonPressed:(id)sender{
     //验证用户输入正确性
-    if ([[newPwdTextfield text] length] < 6 || [[oldPwdTextfield text] isEqual:[newPwdTextfield text]] || ![[newPwdTextfield text] isEqual:[newPwdTextfield1 text]]) {
-        //弹框提示
-        return;
-    }
+    
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
-    [params setObject:_editPwd forKey:@"interfaceName"];
-    [params setObject:userId forKey:@"userid"];
-    [params setObject:[oldPwdTextfield text] forKey:@"password"];
-    [params setObject:[newPwdTextfield text] forKey:@"newpassword"];
+    [params setObject:_resetPwd forKey:@"interfaceName"];
+    [params setObject:@"mail" forKey:@"step"];
+    [params setObject:[nameTextfield text] forKey:@"userid"];
+    [params setObject:[emailTextfield text] forKey:@"email"];
     manager = [AsiObjectManager alloc];
     [manager setDelegate:self];
     [manager requestData:params];
@@ -161,14 +143,16 @@
 
 - (void)loadData:(NSDictionary *)data
 {
-    //修改成功
-    //弹框提示成功后
-    [self.navigationController popViewControllerAnimated:true];
+    //获取成功转入重置页面
+    ResetPwdViewController* rpvc = [[ResetPwdViewController alloc]initWithNibName:@"ResetPwdViewController" bundle:nil];
+    rpvc.resetPwdUserId = [nameTextfield text];
+    [self.navigationController pushViewController:rpvc animated:true];
 }
 
 - (void) requestFailed:(NSError*)error{
     //修改失败
     
 }
+
 
 @end

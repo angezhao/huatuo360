@@ -1,19 +1,21 @@
 //
-//  AlterPwdViewController.m
+//  ResetPwdViewController.m
 //  huatuo360
 //
-//  Created by Zhao Ange on 12-4-12.
+//  Created by Zhao Ange on 12-4-17.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
-#import "AlterPwdViewController.h"
+#import "ResetPwdViewController.h"
+#import "LoginViewController.h"
 #import "Constants.h"
 
-@interface AlterPwdViewController ()
+@interface ResetPwdViewController ()
 
 @end
 
-@implementation AlterPwdViewController
+@implementation ResetPwdViewController
+@synthesize resetPwdUserId;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -48,7 +50,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return @"修改密码";
+    return @"重置密码";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -58,14 +60,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *AlterPwdTableIdentifier = @"AlterPwdTableIdentifier";
+    static NSString *ResetPwdTableIdentifier = @"ResetPwdTableIdentifier";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
-                             AlterPwdTableIdentifier];
+                             ResetPwdTableIdentifier];
     if (cell == nil)
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                      reuseIdentifier: AlterPwdTableIdentifier];
+                                      reuseIdentifier: ResetPwdTableIdentifier];
     }
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 90, 25)];
@@ -88,10 +90,9 @@
     [cell.contentView addSubview:textField];
     switch (row) {
         case 0:
-            label.text = @"原密码：";
-            oldPwdTextfield = textField;
+            label.text = @"验证码：";
+            checkCodeTextfield = textField;
             textField.returnKeyType = UIReturnKeyNext;
-            textField.secureTextEntry = YES;
             break;
             
         case 1:
@@ -133,7 +134,7 @@
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
     //验证用户输入正确性
-    if(textField.tag == 0 && ([oldPwdTextfield text] == nil || [[oldPwdTextfield text] length] < 6)){
+    if(textField.tag == 0 && ([checkCodeTextfield text] == nil || [[checkCodeTextfield text] length] < 6)){
         return NO;
     }else if(textField.tag == 1 && ([newPwdTextfield text] == nil || [[newPwdTextfield text] length] < 6)){
         return NO;
@@ -143,17 +144,18 @@
     return YES;
 }
 
--(IBAction)alterPwdButtonPressed:(id)sender{
+-(IBAction)resetPwdButtonPressed:(id)sender{
     //验证用户输入正确性
-    if ([[newPwdTextfield text] length] < 6 || [[oldPwdTextfield text] isEqual:[newPwdTextfield text]] || ![[newPwdTextfield text] isEqual:[newPwdTextfield1 text]]) {
+    if ([[newPwdTextfield text] length] < 6 || ![[newPwdTextfield text] isEqual:[newPwdTextfield1 text]]) {
         //弹框提示
         return;
     }
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
-    [params setObject:_editPwd forKey:@"interfaceName"];
-    [params setObject:userId forKey:@"userid"];
-    [params setObject:[oldPwdTextfield text] forKey:@"password"];
-    [params setObject:[newPwdTextfield text] forKey:@"newpassword"];
+    [params setObject:_resetPwd forKey:@"interfaceName"];
+    [params setObject:@"reset" forKey:@"step"];
+    [params setObject:resetPwdUserId forKey:@"userid"];
+    [params setObject:[checkCodeTextfield text] forKey:@"code"];
+    [params setObject:[newPwdTextfield text] forKey:@"password"];
     manager = [AsiObjectManager alloc];
     [manager setDelegate:self];
     [manager requestData:params];
@@ -161,9 +163,10 @@
 
 - (void)loadData:(NSDictionary *)data
 {
-    //修改成功
-    //弹框提示成功后
-    [self.navigationController popViewControllerAnimated:true];
+    //修改成功转到用户登陆页
+    LoginViewController* lvc = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+    userViewToShow = lvc;
+    [self.navigationController pushViewController:lvc animated:true];
 }
 
 - (void) requestFailed:(NSError*)error{

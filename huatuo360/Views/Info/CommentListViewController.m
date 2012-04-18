@@ -50,9 +50,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if(firstAppear)
+    if(firstAppear || flashView)
     {
         firstAppear = false;
+        flashView = false;
         [params setObject:_commentList forKey:@"interfaceName"];
         [params setObject:@"1" forKey:@"page"];
         manager = [AsiObjectManager alloc];

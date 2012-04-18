@@ -105,6 +105,10 @@
 		B72CCE8B1538A0B3000DA066 /* UserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B72CCE891538A0B3000DA066 /* UserInfoViewController.xib */; };
 		B77C554E151EF660009F0613 /* AsiObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B77C554D151EF660009F0613 /* AsiObjectManager.m */; };
 		B77CD72615260DFA00D238CD /* FixListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B77CD72515260DFA00D238CD /* FixListViewController.m */; };
+		B782F112153DBB19005A05BC /* CheckCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B782F110153DBB19005A05BC /* CheckCodeViewController.m */; };
+		B782F113153DBB19005A05BC /* CheckCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B782F111153DBB19005A05BC /* CheckCodeViewController.xib */; };
+		B782F118153DBB34005A05BC /* ResetPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B782F116153DBB34005A05BC /* ResetPwdViewController.m */; };
+		B782F119153DBB34005A05BC /* ResetPwdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B782F117153DBB34005A05BC /* ResetPwdViewController.xib */; };
 		B783B44B152373750089AAFD /* DepartmentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B783B44A152373750089AAFD /* DepartmentListViewController.m */; };
 		B783B459152375A40089AAFD /* CommentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B783B458152375A40089AAFD /* CommentListViewController.m */; };
 		B783B45C152375CE0089AAFD /* DiseaseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B783B45B152375CE0089AAFD /* DiseaseListViewController.m */; };
@@ -282,6 +286,12 @@
 		B77C554F151EF6CB009F0613 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		B77CD72415260DFA00D238CD /* FixListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FixListViewController.h; sourceTree = "<group>"; };
 		B77CD72515260DFA00D238CD /* FixListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FixListViewController.m; sourceTree = "<group>"; };
+		B782F10F153DBB19005A05BC /* CheckCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckCodeViewController.h; sourceTree = "<group>"; };
+		B782F110153DBB19005A05BC /* CheckCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckCodeViewController.m; sourceTree = "<group>"; };
+		B782F111153DBB19005A05BC /* CheckCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckCodeViewController.xib; sourceTree = "<group>"; };
+		B782F115153DBB34005A05BC /* ResetPwdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPwdViewController.h; sourceTree = "<group>"; };
+		B782F116153DBB34005A05BC /* ResetPwdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPwdViewController.m; sourceTree = "<group>"; };
+		B782F117153DBB34005A05BC /* ResetPwdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResetPwdViewController.xib; sourceTree = "<group>"; };
 		B783B449152373740089AAFD /* DepartmentListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartmentListViewController.h; sourceTree = "<group>"; };
 		B783B44A152373750089AAFD /* DepartmentListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartmentListViewController.m; sourceTree = "<group>"; };
 		B783B457152375A30089AAFD /* CommentListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentListViewController.h; sourceTree = "<group>"; };
@@ -653,6 +663,12 @@
 				0D708A971515A77A007EA936 /* LoginViewController.h */,
 				B72CCE811538A099000DA066 /* AlterPwdViewController.h */,
 				B72CCE821538A099000DA066 /* AlterPwdViewController.m */,
+				B782F10F153DBB19005A05BC /* CheckCodeViewController.h */,
+				B782F115153DBB34005A05BC /* ResetPwdViewController.h */,
+				B782F116153DBB34005A05BC /* ResetPwdViewController.m */,
+				B782F117153DBB34005A05BC /* ResetPwdViewController.xib */,
+				B782F110153DBB19005A05BC /* CheckCodeViewController.m */,
+				B782F111153DBB19005A05BC /* CheckCodeViewController.xib */,
 				B72CCE831538A099000DA066 /* AlterPwdViewController.xib */,
 				0D708A981515A77A007EA936 /* LoginViewController.m */,
 				0D708A991515A77A007EA936 /* LoginViewController.xib */,
@@ -754,6 +770,8 @@
 				B72CCE8B1538A0B3000DA066 /* UserInfoViewController.xib in Resources */,
 				0D6ED6BA1535BCC1008A7AC3 /* DoctorListVC.xib in Resources */,
 				0D6C219A153B2C4A0081B044 /* DeptSelectVC.xib in Resources */,
+				B782F113153DBB19005A05BC /* CheckCodeViewController.xib in Resources */,
+				B782F119153DBB34005A05BC /* ResetPwdViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -829,6 +847,8 @@
 				B72CCE8A1538A0B3000DA066 /* UserInfoViewController.m in Sources */,
 				0D6ED6B91535BCC1008A7AC3 /* DoctorListVC.m in Sources */,
 				0D6C2199153B2C4A0081B044 /* DeptSelectVC.m in Sources */,
+				B782F112153DBB19005A05BC /* CheckCodeViewController.m in Sources */,
+				B782F118153DBB34005A05BC /* ResetPwdViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

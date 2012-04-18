@@ -8,8 +8,8 @@
 
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
-#import "CommentViewController.h"
 #import "UserInfoViewController.h"
+#import "CheckCodeViewController.h"
 #import "Constants.h"
 
 @interface LoginViewController ()
@@ -98,7 +98,7 @@
             
         case 1:
             label.text = @"密码：";
-            pwTextfield = textField;
+            pwdTextfield = textField;
             textField.returnKeyType = UIReturnKeyDone;
             textField.secureTextEntry = YES;
             break;
@@ -118,22 +118,28 @@
 {
     if(textField.tag == 0)
     {
-        [pwTextfield becomeFirstResponder];
+        [pwdTextfield becomeFirstResponder];
     }
     else {
-        [pwTextfield resignFirstResponder];
+        [pwdTextfield resignFirstResponder];
     }
+    return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+    //验证用户输入正确性
+    
     return YES;
 }
 
 -(IBAction)loginButtonPressed:(id)sender
 {
-    ////验证用户输入正确性
+    //验证用户输入正确性
     userId = [[NSString alloc]initWithString:[nameTextfield text]];
     NSMutableDictionary* lparams = [NSMutableDictionary dictionaryWithCapacity:0];
     [lparams setObject:_login forKey:@"interfaceName"];
     [lparams setObject:userId forKey:@"userid"];
-    [lparams setObject:[pwTextfield text] forKey:@"password"];
+    [lparams setObject:[pwdTextfield text] forKey:@"password"];
     manager = [AsiObjectManager alloc];
     [manager setDelegate:self];
     [manager requestData:lparams];
@@ -147,7 +153,8 @@
 
 -(IBAction)forgetPswButtonPressed:(id)sender
 {
-    NSLog(@"忘记密码");
+    CheckCodeViewController* ccvc = [[CheckCodeViewController alloc]initWithNibName:@"CheckCodeViewController" bundle:nil];
+    [self.navigationController pushViewController:ccvc animated:true];
 }
 
 - (void)loadData:(NSDictionary *)data
@@ -155,12 +162,11 @@
     //登陆成功
     isLogin = true;
     email = [data objectForKey:@"email"];
+    UserInfoViewController* uivc = [[UserInfoViewController alloc] initWithNibName:@"UserInfoViewController" bundle:nil];
+    [self.navigationController pushViewController:uivc animated:true];
     if(isComment){ //显示评论页
         isComment = true;
         [self.tabBarController setSelectedIndex:1];
-    }else {//显示个人中心页
-        UserInfoViewController* uivc = [[UserInfoViewController alloc] initWithNibName:@"UserInfoViewController" bundle:nil];
-        [self.navigationController pushViewController:uivc animated:true];
     }
 }
 

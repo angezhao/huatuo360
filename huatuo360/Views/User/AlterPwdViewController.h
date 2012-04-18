@@ -14,6 +14,7 @@
     UITextField *oldPwdTextfield;
     UITextField *newPwdTextfield;
     UITextField *newPwdTextfield1;
+    UITextField *textFieldBeingEdited;
     AsiObjectManager* manager;
 }
 

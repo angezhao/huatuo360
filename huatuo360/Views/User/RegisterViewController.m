@@ -8,7 +8,6 @@
 
 #import "RegisterViewController.h"
 #import "UserInfoViewController.h"
-#import "CommentViewController.h"
 #import "Constants.h"
 
 @interface RegisterViewController ()
@@ -155,12 +154,11 @@
     //注册成功
     isLogin = true;
     email = [data objectForKey:@"email"];
+    UserInfoViewController* uivc = [[UserInfoViewController alloc] initWithNibName:@"UserInfoViewController" bundle:nil];
+    [self.navigationController pushViewController:uivc animated:true];
     if(isComment){ //显示评论页
         isComment = true;
         [self.tabBarController setSelectedIndex:1];
-    }else {//显示个人中心页
-        UserInfoViewController* uivc = [[UserInfoViewController alloc] initWithNibName:@"UserInfoViewController" bundle:nil];
-        [self.navigationController pushViewController:uivc animated:true];
     }
 }
 
