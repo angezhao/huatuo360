@@ -166,8 +166,5 @@
     //注册失败
     isLogin = false;
 }
-//- (void)textFieldDidEndEditing:(UITextField *)textField
-//{
-//    [inputTexts replaceObjectAtIndex:textField.tag withObject:textField.text];
-//}
+
 @end

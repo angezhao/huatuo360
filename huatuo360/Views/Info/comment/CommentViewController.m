@@ -120,7 +120,7 @@
 
 - (void) requestFailed:(NSError*)error
 {
-    NSLog(@"%@", error); 
+    //NSLog(@"%@", error); 
 }
 
 - (IBAction)recommend:(id)sender

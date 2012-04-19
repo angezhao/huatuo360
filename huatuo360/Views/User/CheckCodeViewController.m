@@ -150,7 +150,7 @@
 }
 
 - (void) requestFailed:(NSError*)error{
-    //修改失败
+    //获取验证码失败
     
 }
 

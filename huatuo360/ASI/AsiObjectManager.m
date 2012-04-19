@@ -25,7 +25,7 @@
     [request setDelegate:self];
     [request startAsynchronous];
     
-    if([[delegate class] isSubclassOfClass:[UIViewController class]]) 
+    if(delegate != nil && [[delegate class] isSubclassOfClass:[UIViewController class]]) 
     {
         UIViewController* vc = (UIViewController*)delegate;
         [HUDManger showHUD:vc.view token:url];
@@ -86,55 +86,34 @@
     SBJsonParser *parser = [[SBJsonParser alloc] init];
     NSDictionary *jsonDict = [parser objectWithData:[responseString dataUsingEncoding:NSUTF8StringEncoding]];  
     NSLog(@"%@", jsonDict);
+    [HUDManger hideHUD:request.originalURL.absoluteString];
     NSNumber *status = [jsonDict objectForKey:@"status"];
     NSLog(@"%@",status); 
     //判断异常delegate是否为空
-    if ([status intValue] != 1) {
-        //判断各种状态，要提示信息
-        NSError *error = [[NSError alloc] initWithDomain:@"requestFailed" code:[status integerValue] userInfo:nil];
-        [delegate requestFailed:error];
-    }else {
-        [delegate loadData:jsonDict];
+    if(delegate != nil){
+        if ([status intValue] != 1) {
+            NSString *msg = @"请求失败!";
+            if([jsonDict objectForKey:@"msg"])
+                msg = [NSString stringWithFormat:@"%@%@", msg, [jsonDict objectForKey:@"msg"]];
+            [self showAlter:msg success:NO];
+        }else {
+            if([request.originalURL.absoluteString rangeOfString:_comment].length > 0){
+                [self showAlter:@"评论成功" success:YES];
+            }else {
+                [delegate loadData:jsonDict];
+            }
+        }
     }
-    
-//    NSLog(@"%@", request.originalURL.absoluteString);
-    [HUDManger hideHUD:request.originalURL.absoluteString];
-
-    //NSString *test = @"{\"data\":{\"212\":\"你好\",\"213\":\"你好\"},\"total\":31}";
-    //NSString *test = @"{\"data\":[\"评论1\",\"评论2\",\"评论3\"]}";
-    //NSDictionary *jsonDic = [parser objectWithData:[test dataUsingEncoding:NSUTF8StringEncoding]];  
-    //NSLog(@"%@",jsonDic); 
-    
-    /*
-    //NSString *test = @"{\"data\":{\"212\":\"你好\",\"213\":\"你好\"},\"total\":31}";
-    NSDictionary *dict = [jsonDic objectForKey:@"data"];
-    NSLog(@"%@",dict); 
-    NSArray *keys;
-    id key, value;
-    keys = [dict allKeys];
-    for (int i = 0; i < [keys count]; i++)
-    {
-        key = [keys objectAtIndex: i];
-        value = [dict objectForKey: key];
-        NSLog (@"Key: %@ for value: %@", key, value);
-    }
-    */
-    
-    /*
-    //NSString *test = @"{\"data\":[\"评论1\",\"评论2\",\"评论3\"]}";
-    NSArray *myArray = [jsonDic objectForKey:@"data"];
-    NSLog(@"%@",myArray); 
-    for (NSString *dict in myArray) {
-        NSLog (@"dict: %@", dict);
-    }
-    */
 }
 
 - (void)requestFailed:(ASIHTTPRequest *)request {  
     [HUDManger hideHUD:request.originalURL.absoluteString];  
 	NSError *error = [request error]; 
     NSLog(@"%@", error);
-    [delegate requestFailed:error];
+    //弹框提示
+    NSString *msg = @"请求失败，服务器繁忙，请稍后再试！";
+    msg = [NSString stringWithFormat:@"%@ errcode=%i,errstr=%@", [error code], [error domain]];
+    [self showAlter:msg success:NO];
 }
 
 
@@ -166,7 +145,6 @@
 
 - (void)alertNoInternet
 {
-    UIAlertView *alert;
     float version = [[[UIDevice currentDevice] systemVersion] floatValue];
     if(version >= 5.0)
     {
@@ -195,5 +173,35 @@
         NSURL*url=[NSURL URLWithString:@"prefs:root=General&path=Network"];
         [[UIApplication sharedApplication] openURL:url];
     }
+    if(delegate != nil)
+        [delegate requestFailed:nil];
 }
+
+-(void)showAlter:(NSString*)msg success:(BOOL)success
+{
+    alert = [[UIAlertView alloc]initWithTitle:@"提示"
+                                               message:msg
+                                              delegate:nil                                       
+                                     cancelButtonTitle:nil
+                                     otherButtonTitles:nil, nil];
+    [alert show];
+    NSNumber *passedValue = [NSNumber numberWithBool:success];
+    [self performSelector:@selector(endAlertViewDismiss:) withObject:passedValue afterDelay:3];
+}
+
+- (void)endAlertViewDismiss:(NSNumber*)success
+{
+    NSLog(@"close alert");
+    NSLog(@"%@", success);
+    [alert dismissWithClickedButtonIndex:0 animated:NO];
+    if(delegate != nil){
+        BOOL value = [success boolValue];
+        if (value) {
+            [delegate loadData:nil];
+        }else {
+            [delegate requestFailed:nil];
+        }
+    }
+}
+
 @end

@@ -8,6 +8,7 @@
 @end
 
 @interface AsiObjectManager: NSObject<UIAlertViewDelegate> {
+    UIAlertView *alert;
 }
 
 @property ( nonatomic) id<AsiObjectDelegate> delegate;

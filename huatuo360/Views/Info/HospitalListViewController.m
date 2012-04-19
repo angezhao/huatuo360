@@ -75,14 +75,7 @@
 
 - (void) requestFailed:(NSError*)error
 {
-//    [HUDManger hideHUD:@"H"];
-    UIAlertView*alert = [[UIAlertView alloc]initWithTitle:@"提示"
-                                                  message:@"这是一个简单的警告框！"
-                                                 delegate:nil                                       
-                                        cancelButtonTitle:@"确定"
-                                        otherButtonTitles:nil];  
-    
-    [alert show]; 
+    //是否返回上层？
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
