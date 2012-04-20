@@ -109,6 +109,7 @@
 		B782F113153DBB19005A05BC /* CheckCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B782F111153DBB19005A05BC /* CheckCodeViewController.xib */; };
 		B782F118153DBB34005A05BC /* ResetPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B782F116153DBB34005A05BC /* ResetPwdViewController.m */; };
 		B782F119153DBB34005A05BC /* ResetPwdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B782F117153DBB34005A05BC /* ResetPwdViewController.xib */; };
+		B7832F341541999D007F0FDD /* AlertViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B7832F331541999D007F0FDD /* AlertViewManager.m */; };
 		B783B44B152373750089AAFD /* DepartmentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B783B44A152373750089AAFD /* DepartmentListViewController.m */; };
 		B783B459152375A40089AAFD /* CommentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B783B458152375A40089AAFD /* CommentListViewController.m */; };
 		B783B45C152375CE0089AAFD /* DiseaseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B783B45B152375CE0089AAFD /* DiseaseListViewController.m */; };
@@ -292,6 +293,8 @@
 		B782F115153DBB34005A05BC /* ResetPwdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPwdViewController.h; sourceTree = "<group>"; };
 		B782F116153DBB34005A05BC /* ResetPwdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPwdViewController.m; sourceTree = "<group>"; };
 		B782F117153DBB34005A05BC /* ResetPwdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResetPwdViewController.xib; sourceTree = "<group>"; };
+		B7832F321541999D007F0FDD /* AlertViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewManager.h; sourceTree = "<group>"; };
+		B7832F331541999D007F0FDD /* AlertViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewManager.m; sourceTree = "<group>"; };
 		B783B449152373740089AAFD /* DepartmentListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartmentListViewController.h; sourceTree = "<group>"; };
 		B783B44A152373750089AAFD /* DepartmentListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartmentListViewController.m; sourceTree = "<group>"; };
 		B783B457152375A30089AAFD /* CommentListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentListViewController.h; sourceTree = "<group>"; };
@@ -686,6 +689,8 @@
 				0DF27B34153089F700D9103E /* MBProgressHUD.m */,
 				0DF27B4C15308CBF00D9103E /* HUDManger.h */,
 				0DF27B4D15308CBF00D9103E /* HUDManger.m */,
+				B7832F321541999D007F0FDD /* AlertViewManager.h */,
+				B7832F331541999D007F0FDD /* AlertViewManager.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -849,6 +854,7 @@
 				0D6C2199153B2C4A0081B044 /* DeptSelectVC.m in Sources */,
 				B782F112153DBB19005A05BC /* CheckCodeViewController.m in Sources */,
 				B782F118153DBB34005A05BC /* ResetPwdViewController.m in Sources */,
+				B7832F341541999D007F0FDD /* AlertViewManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

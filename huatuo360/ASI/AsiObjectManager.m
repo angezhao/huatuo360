@@ -52,7 +52,9 @@
     NSLog(@"%@",status); 
     if ([status intValue] == 1 && [jsonDict objectForKey:@"data"]) {
         return [jsonDict objectForKey:@"data"];
-    }    
+    } else if([jsonDict objectForKey:@"msg"]){
+        [self showAlter:[jsonDict objectForKey:@"msg"] success:NO];
+    }   
     return nil;
 }
 
@@ -148,7 +150,7 @@
     float version = [[[UIDevice currentDevice] systemVersion] floatValue];
     if(version >= 5.0)
     {
-        alert = [[UIAlertView alloc]initWithTitle:@"提示"
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示"
                                           message:@"当前网络没有连接，请先设置网络！"
                                          delegate:self                                       
                                 cancelButtonTitle:@"确定"
@@ -157,7 +159,7 @@
     }
     else 
     {
-        alert = [[UIAlertView alloc]initWithTitle:@"提示"
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示"
                                           message:@"当前网络没有连接，请先设置网络！"
                                          delegate:nil                                       
                                 cancelButtonTitle:@"确定"
@@ -179,24 +181,15 @@
 
 -(void)showAlter:(NSString*)msg success:(BOOL)success
 {
-    alert = [[UIAlertView alloc]initWithTitle:@"提示"
-                                               message:msg
-                                              delegate:nil                                       
-                                     cancelButtonTitle:nil
-                                     otherButtonTitles:nil, nil];
-    [alert show];
-    NSNumber *passedValue = [NSNumber numberWithBool:success];
-    [self performSelector:@selector(endAlertViewDismiss:) withObject:passedValue afterDelay:3];
+    alertManager = [AlertViewManager alloc];
+    [alertManager setDelegate:self];
+    [alertManager showAlter:msg success:success];
 }
 
-- (void)endAlertViewDismiss:(NSNumber*)success
+- (void)finishAlert:(BOOL)success
 {
-    NSLog(@"close alert");
-    NSLog(@"%@", success);
-    [alert dismissWithClickedButtonIndex:0 animated:NO];
     if(delegate != nil){
-        BOOL value = [success boolValue];
-        if (value) {
+        if (success) {
             [delegate loadData:nil];
         }else {
             [delegate requestFailed:nil];

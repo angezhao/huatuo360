@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AsiObjectManager.h"
+#import "AlertViewManager.h"
 
 @interface LoginViewController : UIViewController<AsiObjectDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 {
@@ -15,6 +16,7 @@
     UITextField *pwdTextfield;
     UITextField *textFieldBeingEdited;
     AsiObjectManager* manager;
+    AlertViewManager* alertManager;
 }
 
 -(IBAction)loginButtonPressed:(id)sender;

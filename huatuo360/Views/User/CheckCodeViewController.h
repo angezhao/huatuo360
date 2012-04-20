@@ -15,6 +15,7 @@
     UITextField *emailTextfield;
     UITextField *textFieldBeingEdited;
     AsiObjectManager* manager;
+    AlertViewManager* alertManager;
 }
 
 -(IBAction)getCheckCodeButtonPressed:(id)sender;

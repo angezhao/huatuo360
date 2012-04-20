@@ -16,6 +16,7 @@
     UITextField *newPwdTextfield1;
     UITextField *textFieldBeingEdited;
     AsiObjectManager* manager;
+    AlertViewManager* alertManager;
 }
 
 @property (nonatomic, strong) NSString* resetPwdUserId;
