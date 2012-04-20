@@ -120,7 +120,8 @@
     {
         [pwdTextfield becomeFirstResponder];
     }
-    else {
+    else 
+    {
         [pwdTextfield resignFirstResponder];
     }
     return YES;
@@ -128,13 +129,22 @@
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
     //验证用户输入正确性
-    
     return YES;
 }
 
 -(IBAction)loginButtonPressed:(id)sender
 {
     //验证用户输入正确性
+    NSString *msg = nil;
+    if([nameTextfield text] == nil || [[nameTextfield text] length] < 3){
+        msg = @"请输入用户名最少长度为3！";
+    }else if([pwdTextfield text] == nil || [[pwdTextfield text] length] < 6){
+        msg = @"请输入密码最少长度为6！";
+    }
+    if(msg != nil){
+        [self showAlter:msg];
+        return;
+    }
     userId = [[NSString alloc]initWithString:[nameTextfield text]];
     NSMutableDictionary* lparams = [NSMutableDictionary dictionaryWithCapacity:0];
     [lparams setObject:_login forKey:@"interfaceName"];
@@ -173,5 +183,17 @@
 - (void) requestFailed:(NSError*)error{
     //登陆失败
     isLogin = false;
+}
+
+-(void)showAlter:(NSString*)msg
+{
+    alertManager = [AlertViewManager alloc];
+    [alertManager setDelegate:self];
+    [alertManager showAlter:msg success:FALSE];
+}
+
+- (void)finishAlert:(BOOL)success
+{
+    
 }
 @end

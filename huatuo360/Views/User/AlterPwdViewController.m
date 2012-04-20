@@ -133,22 +133,33 @@
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
     //验证用户输入正确性
-    if(textField.tag == 0 && ([oldPwdTextfield text] == nil || [[oldPwdTextfield text] length] < 6)){
-        return NO;
-    }else if(textField.tag == 1 && ([newPwdTextfield text] == nil || [[newPwdTextfield text] length] < 6)){
-        return NO;
-    } else if(textField.tag == 2 && ([newPwdTextfield1 text] == nil || [[newPwdTextfield1 text] length] < 6)){
-        return NO;
-    }   
+//    if(textField.tag == 0 && ([oldPwdTextfield text] == nil || [[oldPwdTextfield text] length] < 6)){
+//        return NO;
+//    }else if(textField.tag == 1 && ([newPwdTextfield text] == nil || [[newPwdTextfield text] length] < 6)){
+//        return NO;
+//    } else if(textField.tag == 2 && ([newPwdTextfield1 text] == nil || [[newPwdTextfield1 text] length] < 6)){
+//        return NO;
+//    }   
     return YES;
 }
 
 -(IBAction)alterPwdButtonPressed:(id)sender{
-    //验证用户输入正确性
-    if ([[newPwdTextfield text] length] < 6 || [[oldPwdTextfield text] isEqual:[newPwdTextfield text]] || ![[newPwdTextfield text] isEqual:[newPwdTextfield1 text]]) {
-        //弹框提示
+    //验证用户输入正确性，弹框提示
+    NSString *msg = nil;
+    if([oldPwdTextfield text] == nil || [[oldPwdTextfield text] length] < 6){
+        msg = @"请输入至少6位原密码！";
+    }else if([newPwdTextfield text] == nil || [[newPwdTextfield text] length] < 6){
+        msg = @"请输入至少6位新密码！";
+    }else if([newPwdTextfield1 text] == nil || [[newPwdTextfield1 text] length] < 6){
+        msg = @"请输入至少6位确认密码！";
+    }else if(![[newPwdTextfield text] isEqualToString:[newPwdTextfield1 text]]){
+        msg = @"新密码与确认密码不一致，请重输！";
+    }
+    if(msg != nil){
+        [self showAlter:msg];
         return;
     }
+    
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
     [params setObject:_editPwd forKey:@"interfaceName"];
     [params setObject:userId forKey:@"userid"];
@@ -171,4 +182,15 @@
     
 }
 
+-(void)showAlter:(NSString*)msg
+{
+    alertManager = [AlertViewManager alloc];
+    [alertManager setDelegate:self];
+    [alertManager showAlter:msg success:FALSE];
+}
+
+- (void)finishAlert:(BOOL)success
+{
+    
+}
 @end

@@ -1,5 +1,6 @@
 #import <UIKit/UIKit.h>
 #import "ASIHTTPRequest.h"
+#import "AlertViewManager.h"
 
 @protocol AsiObjectDelegate <NSObject> 
 @required
@@ -7,7 +8,8 @@
 - (void) requestFailed:(NSError*)error;
 @end
 
-@interface AsiObjectManager: NSObject<UIAlertViewDelegate> {
+@interface AsiObjectManager: NSObject<UIAlertViewDelegate,AlertViewDelegate> {
+    AlertViewManager* alertManager;
 }
 
 @property ( nonatomic) id<AsiObjectDelegate> delegate;

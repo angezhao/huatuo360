@@ -23,6 +23,9 @@ NSString* const _editPwd = @"editPasswd.php?";
 //resetPasswd.php?step=reset&code=验证码&userid=用户名&password=新密码
 NSString* const _resetPwd = @"resetPasswd.php?";
 
+//checkUser.php?userid=用户名
+NSString* const _checkUser = @"checkUser.php?";
+
 //comment.php?hospid=医院id&impression=1(0推荐与否)&evaluation=评价&userid=用户id
 NSString* const _comment = @"comment.php?";
 

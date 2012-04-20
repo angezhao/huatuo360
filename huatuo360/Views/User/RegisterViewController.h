@@ -13,6 +13,7 @@
 {
     NSMutableArray *textfields;
     AsiObjectManager* manager;
+    AlertViewManager* alertManager;
 }
 
 - (IBAction)registerButtonPressed:(id)sender;

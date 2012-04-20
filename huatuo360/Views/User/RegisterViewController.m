@@ -126,24 +126,62 @@
     return YES;
 }
 
-
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
     //验证用户输入正确性
-    
+    if(textField.tag == 0){
+        NSString *msg = nil;
+        NSString *name = [textField text];
+        if(name == nil || [name length] < 3)
+            msg = @"请输入用户名最少长度为3！";
+        else {
+            NSMutableDictionary* cparams = [NSMutableDictionary dictionaryWithCapacity:0];
+            [cparams setObject:_checkUser forKey:@"interfaceName"];
+            [cparams setObject:name forKey:@"userid"];
+            manager = [AsiObjectManager alloc];
+            NSDictionary *data = [manager syncRequestData:cparams];
+            if (data == nil) {
+                return NO;
+            }
+        }
+        if(msg != nil){
+            [self showAlter:msg];
+            return NO;
+        }
+    } 
     return YES;
 }
-
 
 - (IBAction)registerButtonPressed:(id)sender
 {
     //验证用户输入正确性
+    NSString *msg = nil;
+    NSString *name = [[textfields objectAtIndex:0] text];
+    NSString *pwd = [[textfields objectAtIndex:1] text];
+    NSString *pwd1 = [[textfields objectAtIndex:2] text];
+    NSString *email = [[textfields objectAtIndex:3] text];
     
-    userId = [[NSString alloc]initWithString:[[textfields objectAtIndex:0] text]];
+    if(name == nil || [name length] < 3){
+        msg = @"请输入用户名最少长度为3！";
+    }else if(pwd == nil || [pwd length] < 6){
+        msg = @"请输入至少6位密码！";
+    }else if(pwd1 == nil || [pwd1 length] < 6){
+        msg = @"请输入至少6位确认密码！";
+    }else if(![pwd isEqualToString:pwd1]){
+        msg = @"两次输入的密码不一致，请重输！";
+    }else if(email == nil){
+        msg = @"邮箱地址不能为空！";
+    }
+    if(msg != nil){
+        [self showAlter:msg];
+        return;
+    }
+    
+    userId = [[NSString alloc]initWithString:name];
     NSMutableDictionary* rparams = [NSMutableDictionary dictionaryWithCapacity:0];
     [rparams setObject:_regist forKey:@"interfaceName"];
     [rparams setObject:userId forKey:@"userid"];
-    [rparams setObject:[[textfields objectAtIndex:1] text] forKey:@"password"];
-    [rparams setObject:[[textfields objectAtIndex:3] text] forKey:@"email"];
+    [rparams setObject:pwd forKey:@"password"];
+    [rparams setObject:email forKey:@"email"];
     manager = [AsiObjectManager alloc];
     [manager setDelegate:self];
     [manager requestData:rparams];
@@ -166,8 +204,17 @@
     //注册失败
     isLogin = false;
 }
-//- (void)textFieldDidEndEditing:(UITextField *)textField
-//{
-//    [inputTexts replaceObjectAtIndex:textField.tag withObject:textField.text];
-//}
+
+-(void)showAlter:(NSString*)msg
+{
+    alertManager = [AlertViewManager alloc];
+    [alertManager setDelegate:self];
+    [alertManager showAlter:msg success:FALSE];
+}
+
+- (void)finishAlert:(BOOL)success
+{
+    
+}
+
 @end

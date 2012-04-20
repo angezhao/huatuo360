@@ -124,13 +124,21 @@
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
     //验证用户输入正确性
-    
     return YES;
 }
 
 -(IBAction)getCheckCodeButtonPressed:(id)sender{
     //验证用户输入正确性
-    
+    NSString *msg = nil;
+    if([nameTextfield text] == nil || [[nameTextfield text] length] < 3){
+        msg = @"请输入用户名最少长度为3！";
+    }else if([emailTextfield text] == nil){
+        msg = @"邮箱地址不能为空！";
+    }
+    if(msg != nil){
+        [self showAlter:msg];
+        return;
+    }
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
     [params setObject:_resetPwd forKey:@"interfaceName"];
     [params setObject:@"mail" forKey:@"step"];
@@ -150,9 +158,19 @@
 }
 
 - (void) requestFailed:(NSError*)error{
-    //修改失败
+    //获取验证码失败
     
 }
 
+-(void)showAlter:(NSString*)msg
+{
+    alertManager = [AlertViewManager alloc];
+    [alertManager setDelegate:self];
+    [alertManager showAlter:msg success:FALSE];
+}
 
+- (void)finishAlert:(BOOL)success
+{
+    
+}
 @end

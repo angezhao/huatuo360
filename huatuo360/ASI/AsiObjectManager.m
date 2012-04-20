@@ -25,7 +25,7 @@
     [request setDelegate:self];
     [request startAsynchronous];
     
-    if([[delegate class] isSubclassOfClass:[UIViewController class]]) 
+    if(delegate != nil && [[delegate class] isSubclassOfClass:[UIViewController class]]) 
     {
         UIViewController* vc = (UIViewController*)delegate;
         [HUDManger showHUD:vc.view token:url];
@@ -52,7 +52,9 @@
     NSLog(@"%@",status); 
     if ([status intValue] == 1 && [jsonDict objectForKey:@"data"]) {
         return [jsonDict objectForKey:@"data"];
-    }    
+    } else if([jsonDict objectForKey:@"msg"]){
+        [self showAlter:[jsonDict objectForKey:@"msg"] success:NO];
+    }   
     return nil;
 }
 
@@ -86,55 +88,34 @@
     SBJsonParser *parser = [[SBJsonParser alloc] init];
     NSDictionary *jsonDict = [parser objectWithData:[responseString dataUsingEncoding:NSUTF8StringEncoding]];  
     NSLog(@"%@", jsonDict);
+    [HUDManger hideHUD:request.originalURL.absoluteString];
     NSNumber *status = [jsonDict objectForKey:@"status"];
     NSLog(@"%@",status); 
     //判断异常delegate是否为空
-    if ([status intValue] != 1) {
-        //判断各种状态，要提示信息
-        NSError *error = [[NSError alloc] initWithDomain:@"requestFailed" code:[status integerValue] userInfo:nil];
-        [delegate requestFailed:error];
-    }else {
-        [delegate loadData:jsonDict];
+    if(delegate != nil){
+        if ([status intValue] != 1) {
+            NSString *msg = @"请求失败!";
+            if([jsonDict objectForKey:@"msg"])
+                msg = [NSString stringWithFormat:@"%@%@", msg, [jsonDict objectForKey:@"msg"]];
+            [self showAlter:msg success:NO];
+        }else {
+            if([request.originalURL.absoluteString rangeOfString:_comment].length > 0){
+                [self showAlter:@"评论成功" success:YES];
+            }else {
+                [delegate loadData:jsonDict];
+            }
+        }
     }
-    
-//    NSLog(@"%@", request.originalURL.absoluteString);
-    [HUDManger hideHUD:request.originalURL.absoluteString];
-
-    //NSString *test = @"{\"data\":{\"212\":\"你好\",\"213\":\"你好\"},\"total\":31}";
-    //NSString *test = @"{\"data\":[\"评论1\",\"评论2\",\"评论3\"]}";
-    //NSDictionary *jsonDic = [parser objectWithData:[test dataUsingEncoding:NSUTF8StringEncoding]];  
-    //NSLog(@"%@",jsonDic); 
-    
-    /*
-    //NSString *test = @"{\"data\":{\"212\":\"你好\",\"213\":\"你好\"},\"total\":31}";
-    NSDictionary *dict = [jsonDic objectForKey:@"data"];
-    NSLog(@"%@",dict); 
-    NSArray *keys;
-    id key, value;
-    keys = [dict allKeys];
-    for (int i = 0; i < [keys count]; i++)
-    {
-        key = [keys objectAtIndex: i];
-        value = [dict objectForKey: key];
-        NSLog (@"Key: %@ for value: %@", key, value);
-    }
-    */
-    
-    /*
-    //NSString *test = @"{\"data\":[\"评论1\",\"评论2\",\"评论3\"]}";
-    NSArray *myArray = [jsonDic objectForKey:@"data"];
-    NSLog(@"%@",myArray); 
-    for (NSString *dict in myArray) {
-        NSLog (@"dict: %@", dict);
-    }
-    */
 }
 
 - (void)requestFailed:(ASIHTTPRequest *)request {  
     [HUDManger hideHUD:request.originalURL.absoluteString];  
 	NSError *error = [request error]; 
     NSLog(@"%@", error);
-    [delegate requestFailed:error];
+    //弹框提示
+    NSString *msg = @"请求失败，服务器繁忙，请稍后再试！";
+    msg = [NSString stringWithFormat:@"%@ errcode=%i,errstr=%@", [error code], [error domain]];
+    [self showAlter:msg success:NO];
 }
 
 
@@ -166,11 +147,10 @@
 
 - (void)alertNoInternet
 {
-    UIAlertView *alert;
     float version = [[[UIDevice currentDevice] systemVersion] floatValue];
     if(version >= 5.0)
     {
-        alert = [[UIAlertView alloc]initWithTitle:@"提示"
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示"
                                           message:@"当前网络没有连接，请先设置网络！"
                                          delegate:self                                       
                                 cancelButtonTitle:@"确定"
@@ -179,7 +159,7 @@
     }
     else 
     {
-        alert = [[UIAlertView alloc]initWithTitle:@"提示"
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示"
                                           message:@"当前网络没有连接，请先设置网络！"
                                          delegate:nil                                       
                                 cancelButtonTitle:@"确定"
@@ -196,5 +176,26 @@
         NSURL*url=[NSURL URLWithString:@"prefs:root=General&path=Network"];
         [[UIApplication sharedApplication] openURL:url];
     }
+    if(delegate != nil)
+        [delegate requestFailed:nil];
 }
+
+-(void)showAlter:(NSString*)msg success:(BOOL)success
+{
+    alertManager = [AlertViewManager alloc];
+    [alertManager setDelegate:self];
+    [alertManager showAlter:msg success:success];
+}
+
+- (void)finishAlert:(BOOL)success
+{
+    if(delegate != nil){
+        if (success) {
+            [delegate loadData:nil];
+        }else {
+            [delegate requestFailed:nil];
+        }
+    }
+}
+
 @end
