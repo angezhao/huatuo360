@@ -92,6 +92,8 @@
         [tmp setObject:[itemData objectForKey:@"id"] forKey:@"_diseaseid"];
         HospitalListViewController* hlvc = [[HospitalListViewController alloc]init];
         hlvc.params = tmp;
+        hlvc.diseaseName = [[listData objectAtIndex:row]objectForKey:@"name"];
+        NSLog(@"%@", hlvc.diseaseName);
         hlvc.tableTitle = [NSString stringWithFormat:@"治疗\"%@\"的医院排名", [itemData objectForKey:@"name"]];
         [self.navigationController pushViewController:hlvc animated:true];
     }else if([params objectForKey:@"_doctor"]){
@@ -104,6 +106,7 @@
     }else {
         [tmp setObject:[itemData objectForKey:@"id"] forKey:@"diseaseid"];
         FixListViewController* flvc = [[FixListViewController alloc]init];
+        flvc.diseaseName = [itemData objectForKey:@"name"];
         flvc.params = tmp;
         flvc.tableTitle = [[NSString alloc]initWithFormat:@"%@", [itemData objectForKey:@"name"]];
         [self.navigationController pushViewController:flvc animated:true];

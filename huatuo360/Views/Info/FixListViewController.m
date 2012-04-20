@@ -8,11 +8,11 @@
 
 #import "FixListViewController.h"
 #import "HospitalListViewController.h"
-#import "DoctorListVC.h"
+#import "DoctorListViewController.h"
 #import "Constants.h"
 
 @implementation FixListViewController
-@synthesize params;
+@synthesize params, diseaseName;
 extern NSString* const _departmentList;
 
 - (id)init
@@ -98,7 +98,7 @@ extern NSString* const _departmentList;
             {
                 NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
                 [tmp setObject:[params objectForKey:@"diseaseid"] forKey:@"diseaseid"];
-                DoctorListVC* dlvc = [[DoctorListVC alloc]init];
+                DoctorListViewController* dlvc = [[DoctorListViewController alloc]init];
                 dlvc.params = tmp;
                 dlvc.tableTitle = @"医生排行";
                 [self.navigationController pushViewController:dlvc animated:true];
@@ -117,8 +117,8 @@ extern NSString* const _departmentList;
             break;
         default:
             break;
-        [tableView deselectRowAtIndexPath:indexPath animated:NO];
     }
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 @end

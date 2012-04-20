@@ -17,7 +17,7 @@
 @end
 
 @implementation HospitalListViewController
-@synthesize params;
+@synthesize params, diseaseName;
 
 - (id)init
 {
@@ -75,14 +75,6 @@
 
 - (void) requestFailed:(NSError*)error
 {
-//    [HUDManger hideHUD:@"H"];
-    UIAlertView*alert = [[UIAlertView alloc]initWithTitle:@"提示"
-                                                  message:@"这是一个简单的警告框！"
-                                                 delegate:nil                                       
-                                        cancelButtonTitle:@"确定"
-                                        otherButtonTitles:nil];  
-    
-    [alert show]; 
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -98,18 +90,26 @@
     }
     NSMutableDictionary *itemData = [listData objectAtIndex:row];
     NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
+    DoctorListVC* dlvc = [[DoctorListVC alloc]init];
     [tmp setObject:[itemData objectForKey:@"id"] forKey:@"hospid"];
     [tmp setObject:[itemData objectForKey:@"name"] forKey:@"_name"];//医院名字
+    //常见疾病排名，搜索疾病
     if([params objectForKey:@"_diseaseid"])//疾病id
+    {
         [tmp setObject:[params objectForKey:@"_diseaseid"] forKey:@"diseaseid"];
+    }
+    //各科室医院排名
     if([params objectForKey:@"deptid"] && ![params objectForKey:@"_diseaseid"])//科室id
         [tmp setObject:[params objectForKey:@"deptid"] forKey:@"deptid"];
-    DoctorListVC* dlvc = [[DoctorListVC alloc]init];
     dlvc.params = tmp;
     if([params objectForKey:@"_name"])
+    {
         dlvc.tableTitle = [[NSString alloc]initWithFormat:@"%@%@的医生", [itemData objectForKey:@"name"], [params objectForKey:@"_name"]];
+    }
     else
         dlvc.tableTitle = [[NSString alloc]initWithFormat:@"%@的医生", [itemData objectForKey:@"name"]];
+    dlvc.hospitalName = [itemData objectForKey:@"name"];
+    dlvc.diseaseName = diseaseName;
     [self.navigationController pushViewController:dlvc animated:true];
     [tableView deselectRowAtIndexPath:indexPath animated:NO]; 
 }

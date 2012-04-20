@@ -30,4 +30,8 @@
 @property (nonatomic, strong)NSString* tableTitle;
 @property (nonatomic, strong)NSMutableDictionary* params;
 - (IBAction)showDeptList:(id)sender;
+
+@property (nonatomic, strong)NSString* hospitalName;
+@property (nonatomic, strong)NSString* departmentName;
+@property (nonatomic, strong)NSString* diseaseName;
 @end
