@@ -41,10 +41,10 @@ NSString* const _doctor = @"getDoctor.php?";
 //医院介绍getHospital.php?id=220
 NSString* const _hospital = @"getHospital.php?";
 
-//医院排行getHospitalList.php?deptid=疾病id&deptid=科室id&hospital=搜索的医院名&city=城市id&page=页数&perpage=分页数目
+//医院排行getHospitalList.php?deptid=疾病id/科室id&hospital=搜索的医院名&city=城市id&page=页数&perpage=分页数目
 NSString* const _hospitalList = @"getHospitalList.php?";
 
-//医生列表getDoctorList.php?deptid=疾病/科室id&hospid=医院id&doctor=医生名字&city=城市id&page=页数&perpage=分页数目
+//医生列表getDoctorList.php?deptid=科室id&diseaseid=疾病id&hospid=医院id&doctor=医生名字&city=城市id&page=页数&perpage=分页数目
 NSString* const _doctorList = @"getDoctorList.php?";
 
 //疾病排行getDiseaseList.php?disease=搜索的疾病名&page=第几页&perpage=分页数目
