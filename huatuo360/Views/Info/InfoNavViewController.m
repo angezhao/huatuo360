@@ -45,7 +45,7 @@
             HospitalListViewController* hlvc = [[HospitalListViewController alloc]init];
             hlvc.params = params;
             hlvc.tableTitle = @"医院排行";
-            NSLog(@"count = %i", [self.viewControllers count]);
+            self.viewControllers = [[NSArray alloc]initWithObjects:hlvc, nil];
         }
     }
     else 
