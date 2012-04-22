@@ -10,6 +10,7 @@
 #import "RegisterViewController.h"
 #import "UserInfoViewController.h"
 #import "CheckCodeViewController.h"
+#import "StringUtils.h"
 #import "Constants.h"
 
 @interface LoginViewController ()
@@ -136,9 +137,11 @@
 {
     //验证用户输入正确性
     NSString *msg = nil;
-    if([nameTextfield text] == nil || [[nameTextfield text] length] < 3){
+    NSUInteger nameLength = [StringUtils getStringLength:[nameTextfield text]];
+    if(nameLength < 3){
         msg = @"请输入用户名最少长度为3！";
-    }else if([pwdTextfield text] == nil || [[pwdTextfield text] length] < 6){
+    }
+    else if([pwdTextfield text] == nil || [[pwdTextfield text] length] < 6){
         msg = @"请输入密码最少长度为6！";
     }
     if(msg != nil){

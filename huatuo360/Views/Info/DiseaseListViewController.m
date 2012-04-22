@@ -92,7 +92,7 @@
         [tmp setObject:[itemData objectForKey:@"id"] forKey:@"_diseaseid"];
         HospitalListViewController* hlvc = [[HospitalListViewController alloc]init];
         hlvc.params = tmp;
-        hlvc.diseaseName = [[listData objectAtIndex:row]objectForKey:@"name"];
+        hlvc.diseaseName = [itemData objectForKey:@"name"];
         NSLog(@"%@", hlvc.diseaseName);
         hlvc.tableTitle = [NSString stringWithFormat:@"治疗\"%@\"的医院排名", [itemData objectForKey:@"name"]];
         [self.navigationController pushViewController:hlvc animated:true];

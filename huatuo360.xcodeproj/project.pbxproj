@@ -116,6 +116,7 @@
 		B783C60B152F39B000678CA9 /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = B783C60A152F39B000678CA9 /* data.plist */; };
 		B78500EA152C2F4600FDB045 /* HospitalDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B78500E8152C2F4500FDB045 /* HospitalDetailVC.m */; };
 		B78500EB152C2F4600FDB045 /* HospitalDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B78500E9152C2F4500FDB045 /* HospitalDetailVC.xib */; };
+		B7971E871544138200430BD1 /* StringUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B7971E861544138200430BD1 /* StringUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -305,6 +306,8 @@
 		B78500E7152C2F4500FDB045 /* HospitalDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HospitalDetailVC.h; sourceTree = "<group>"; };
 		B78500E8152C2F4500FDB045 /* HospitalDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HospitalDetailVC.m; sourceTree = "<group>"; };
 		B78500E9152C2F4500FDB045 /* HospitalDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HospitalDetailVC.xib; sourceTree = "<group>"; };
+		B7971E851544138200430BD1 /* StringUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringUtils.h; sourceTree = "<group>"; };
+		B7971E861544138200430BD1 /* StringUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringUtils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -688,6 +691,8 @@
 				0DF27B33153089F700D9103E /* MBProgressHUD.h */,
 				0DF27B34153089F700D9103E /* MBProgressHUD.m */,
 				0DF27B4C15308CBF00D9103E /* HUDManger.h */,
+				B7971E851544138200430BD1 /* StringUtils.h */,
+				B7971E861544138200430BD1 /* StringUtils.m */,
 				0DF27B4D15308CBF00D9103E /* HUDManger.m */,
 				B7832F321541999D007F0FDD /* AlertViewManager.h */,
 				B7832F331541999D007F0FDD /* AlertViewManager.m */,
@@ -855,6 +860,7 @@
 				B782F112153DBB19005A05BC /* CheckCodeViewController.m in Sources */,
 				B782F118153DBB34005A05BC /* ResetPwdViewController.m in Sources */,
 				B7832F341541999D007F0FDD /* AlertViewManager.m in Sources */,
+				B7971E871544138200430BD1 /* StringUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

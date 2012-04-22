@@ -8,6 +8,7 @@
 
 #import "RegisterViewController.h"
 #import "UserInfoViewController.h"
+#import "StringUtils.h"
 #import "Constants.h"
 
 @interface RegisterViewController ()
@@ -131,7 +132,8 @@
     if(textField.tag == 0){
         NSString *msg = nil;
         NSString *name = [textField text];
-        if(name == nil || [name length] < 3)
+        NSUInteger nameLength = [StringUtils getStringLength:name];
+        if(nameLength < 3)
             msg = @"请输入用户名最少长度为3！";
         else {
             NSMutableDictionary* cparams = [NSMutableDictionary dictionaryWithCapacity:0];
@@ -160,7 +162,8 @@
     NSString *pwd1 = [[textfields objectAtIndex:2] text];
     NSString *email = [[textfields objectAtIndex:3] text];
     
-    if(name == nil || [name length] < 3){
+    NSUInteger nameLength = [StringUtils getStringLength:name];
+    if(nameLength < 3){
         msg = @"请输入用户名最少长度为3！";
     }else if(pwd == nil || [pwd length] < 6){
         msg = @"请输入至少6位密码！";

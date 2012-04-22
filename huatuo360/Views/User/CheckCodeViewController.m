@@ -8,6 +8,7 @@
 
 #import "CheckCodeViewController.h"
 #import "ResetPwdViewController.h"
+#import "StringUtils.h"
 #include "Constants.h"
 
 @interface CheckCodeViewController ()
@@ -130,7 +131,8 @@
 -(IBAction)getCheckCodeButtonPressed:(id)sender{
     //验证用户输入正确性
     NSString *msg = nil;
-    if([nameTextfield text] == nil || [[nameTextfield text] length] < 3){
+    NSUInteger nameLength = [StringUtils getStringLength:[nameTextfield text]];
+    if(nameLength < 3){
         msg = @"请输入用户名最少长度为3！";
     }else if([emailTextfield text] == nil){
         msg = @"邮箱地址不能为空！";
