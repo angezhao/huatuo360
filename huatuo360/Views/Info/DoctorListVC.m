@@ -20,6 +20,7 @@
 @synthesize params;
 @synthesize listView, lbTitle, btnDept;
 @synthesize tableTitle;
+@synthesize hospitalName, departmentName, diseaseName;
 
 - (id)init
 {
@@ -44,6 +45,8 @@
         [params setObject:_doctorList forKey:@"interfaceName"];
         [params setObject:@"1" forKey:@"page"];
         manager = [AsiObjectManager alloc];
+        if(departmentId != nil)
+            [params setObject:departmentId forKey:@"deptid"];
         [manager setDelegate:self];
         [manager requestData:params];
         NSLog(@"params=%@",params); 
@@ -61,7 +64,7 @@
 {
     //NSLog(@"医院详情");
     NSString* hospitalId = [params objectForKey:@"hospid"];
-    NSString* hospitalName = [params objectForKey:@"_name"];
+//    NSString* hospitalName = [params objectForKey:@"_name"];
     HospitalDetailVC* hdvc = [[HospitalDetailVC alloc]initWithHospId:hospitalId hname:hospitalName];
     [self.navigationController pushViewController:hdvc animated:true];; 
 }
@@ -82,7 +85,16 @@
     [listData addObjectsFromArray:[data objectForKey:@"data"]];
     [self.listView reloadData]; 
     [btnDetail setEnabled:TRUE];
+    
+    if(hospitalName != nil && diseaseName != nil && departmentName != nil)
+        self.tableTitle = [NSString stringWithFormat:@"%@ %@ 治疗\"%@\"的医生", hospitalName, departmentName, diseaseName];
+    else if(hospitalName != nil && diseaseName != nil)
+        self.tableTitle = [NSString stringWithFormat:@"%@ 治疗\"%@\"的医生", hospitalName, diseaseName];
+    else if(hospitalName != nil && departmentName != nil)
+        self.tableTitle = [NSString stringWithFormat:@"%@ %@ 的医生", hospitalName, departmentName];
     [self updateControlLocationForTitle:self.tableTitle];
+    
+    
 }
 
 - (void) updateControlLocationForTitle:(NSString*)title
@@ -123,11 +135,6 @@
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-//{
-//    return self.tableTitle;
-//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {    
@@ -193,7 +200,10 @@
         if (total == 0) 
             cell.textLabel.text = @"没有数据";
         else
-            cell.textLabel.text = [[NSString alloc]initWithFormat:@"显示下%i条", perpage];
+        {
+            int countToShow = MIN(perpage, total - [listData count]);
+            cell.textLabel.text = [[NSString alloc]initWithFormat:@"显示下%i条", countToShow];
+        }
         cell.textLabel.textAlignment = UITextAlignmentCenter;
         return cell;
     }
@@ -244,9 +254,11 @@
 
 - (void) selectDept:(NSString*)deptId deptName:(NSString*)deptName
 {
-    NSLog(@"%@--%@", deptId, deptName);
-//    NSString* title = hopitalName;
-//    lbTitle.text = 
+    departmentId = deptId;
+    departmentName = deptName;
+    [btnDept setTitle:deptName forState:UIControlStateNormal];
+    listData = nil;
+    firstAppear = true;
 }
 
 - (IBAction)showDeptList:(id)sender
