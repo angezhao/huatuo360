@@ -51,7 +51,7 @@ const static int DOCTOR = 2;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     //读取持久化的数据赋值城市按钮的名字
-    btnCity.title = @"全国";
+    btnCity.title = gcityName;//@"全国";
     ddList = [[DropDownList alloc] initWithStyle:UITableViewStylePlain];
     ddList.delegate = searchBarRef;
     [ddList setParent:self.view];
