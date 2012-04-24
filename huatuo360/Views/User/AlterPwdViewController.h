@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AsiObjectManager.h"
 
-@interface AlterPwdViewController : UIViewController<AsiObjectDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
+@interface AlterPwdViewController : UIViewController<AsiObjectDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, AlertViewDelegate>
 {
     UITextField *oldPwdTextfield;
     UITextField *newPwdTextfield;
