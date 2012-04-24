@@ -14,4 +14,5 @@
 }
 
 -(IBAction)alterPwdButtonPressed:(id)sender;
+-(IBAction)logoutButtonPressed:(id)sender;
 @end

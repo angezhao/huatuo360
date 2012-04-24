@@ -132,8 +132,8 @@
     //验证用户输入正确性
     NSString *msg = nil;
     NSUInteger nameLength = [StringUtils getStringLength:[nameTextfield text]];
-    if(nameLength < 3){
-        msg = @"请输入用户名最少长度为3！";
+    if(nameLength < 3 || nameLength > 15){
+        msg = @"请输入用户名长度为3-15！";
     }else if([emailTextfield text] == nil){
         msg = @"邮箱地址不能为空！";
     }

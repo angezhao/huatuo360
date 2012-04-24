@@ -163,8 +163,8 @@
     NSString *email = [[textfields objectAtIndex:3] text];
     
     NSUInteger nameLength = [StringUtils getStringLength:name];
-    if(nameLength < 3){
-        msg = @"请输入用户名最少长度为3！";
+    if(nameLength < 3 || nameLength > 15){
+        msg = @"请输入用户名长度为3-15！";
     }else if(pwd == nil || [pwd length] < 6){
         msg = @"请输入至少6位密码！";
     }else if(pwd1 == nil || [pwd1 length] < 6){
