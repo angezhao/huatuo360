@@ -8,6 +8,7 @@
 
 #import "UserInfoViewController.h"
 #import "AlterPwdViewController.h"
+#import "LoginViewController.h"
 #import "Constants.h"
 
 @interface UserInfoViewController ()
@@ -108,5 +109,12 @@
 -(IBAction)alterPwdButtonPressed:(id)sender{
     AlterPwdViewController* apvc = [[AlterPwdViewController alloc]initWithNibName:@"AlterPwdViewController" bundle:nil];
     [self.navigationController pushViewController:apvc animated:true];
+}
+
+-(IBAction)logoutButtonPressed:(id)sender{
+    isLogin = false;
+    LoginViewController* lvc = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+    userViewToShow = lvc;
+    [self.navigationController pushViewController:lvc animated:true];
 }
 @end
