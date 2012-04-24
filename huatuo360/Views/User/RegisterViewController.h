@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AsiObjectManager.h"
 
-@interface RegisterViewController : UIViewController<AsiObjectDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
+@interface RegisterViewController : UIViewController<AsiObjectDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, AlertViewDelegate>
 {
     NSMutableArray *textfields;
     AsiObjectManager* manager;

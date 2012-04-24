@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AsiObjectManager.h"
 
-@interface CheckCodeViewController : UIViewController<AsiObjectDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
+@interface CheckCodeViewController : UIViewController<AsiObjectDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, AlertViewDelegate>
 {
     UITextField *nameTextfield;
     UITextField *emailTextfield;

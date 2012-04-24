@@ -10,7 +10,7 @@
 #import "AsiObjectManager.h"
 #import "AlertViewManager.h"
 
-@interface LoginViewController : UIViewController<AsiObjectDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
+@interface LoginViewController : UIViewController<AsiObjectDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, AlertViewDelegate>
 {
     UITextField *nameTextfield;
     UITextField *pwdTextfield;

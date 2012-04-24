@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AsiObjectManager.h"
 
-@interface ResetPwdViewController : UIViewController<AsiObjectDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
+@interface ResetPwdViewController : UIViewController<AsiObjectDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, AlertViewDelegate>
 {
     UITextField *checkCodeTextfield;
     UITextField *newPwdTextfield;
