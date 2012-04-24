@@ -38,7 +38,10 @@
     if(![userId isEqualToString:@""])
         isLogin = true;
     email = [data objectForKey:@"email"];
-    
+    NSLog(@"%@",userId);
+    //NSLog(@"%@",isLogin);
+    NSLog(@"%@",gcityId);
+    NSLog(@"%@",gcityName);
     //init departmentlist数据
 //    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
 //    [params setObject:_departmentList forKey:@"interfaceName"];
@@ -74,6 +77,8 @@
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    //保存数据
+    [self saveData];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -95,17 +100,21 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    //保存数据
+    [self saveData];
+}
+
+- (void)saveData
+{
     //保存变量数据cityid,cityname,userid
+    NSString* savePath = [[NSBundle mainBundle] pathForResource:@"data" ofType:@"plist"];
     NSMutableDictionary* saveData = [NSMutableDictionary dictionaryWithCapacity:0];
-    [saveData setObject:_diseaseList forKey:@"interfaceName"];
     [saveData setObject:gcityId forKey:@"cityid"];
     [saveData setObject:gcityName forKey:@"cityname"];
     [saveData setObject:userId forKey:@"userid"];
     [saveData setObject:email forKey:@"email"];
-    NSString* savePath = [[NSBundle mainBundle] pathForResource:@"data" ofType:@"plist"];
-    [NSKeyedArchiver archiveRootObject:saveData toFile:savePath];
+    [saveData writeToFile:savePath atomically:YES];
 }
-
 
 /*
 // Optional UITabBarControllerDelegate method.
