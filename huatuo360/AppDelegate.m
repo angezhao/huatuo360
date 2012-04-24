@@ -38,10 +38,6 @@
     if(![userId isEqualToString:@""])
         isLogin = true;
     email = [data objectForKey:@"email"];
-    NSLog(@"%@",userId);
-    //NSLog(@"%@",isLogin);
-    NSLog(@"%@",gcityId);
-    NSLog(@"%@",gcityName);
     //init departmentlist数据
 //    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:0];
 //    [params setObject:_departmentList forKey:@"interfaceName"];
