@@ -183,7 +183,7 @@
     UserInfoViewController* uivc = [[UserInfoViewController alloc] initWithNibName:@"UserInfoViewController" bundle:nil];
     [self.navigationController pushViewController:uivc animated:true];
     if(isComment){ //显示评论页
-        isComment = true;
+        isComment = false;
         [self.tabBarController setSelectedIndex:1];
     }
 }
