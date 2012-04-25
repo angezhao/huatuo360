@@ -191,6 +191,7 @@
 - (void) requestFailed:(NSError*)error{
     //登陆失败
     isLogin = false;
+    userId = @"";
 }
 
 -(void)showAlter:(NSString*)msg

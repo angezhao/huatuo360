@@ -113,6 +113,7 @@
 
 -(IBAction)logoutButtonPressed:(id)sender{
     isLogin = false;
+    userId = @"";
     LoginViewController* lvc = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
     userViewToShow = lvc;
     [self.navigationController setViewControllers:[[NSArray alloc]initWithObjects:lvc, nil] animated:TRUE];

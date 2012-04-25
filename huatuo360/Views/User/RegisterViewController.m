@@ -206,6 +206,7 @@
 - (void) requestFailed:(NSError*)error{
     //注册失败
     isLogin = false;
+    userId = @"";
 }
 
 -(void)showAlter:(NSString*)msg
