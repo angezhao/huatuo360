@@ -170,7 +170,7 @@
     //修改成功转到用户登陆页
     LoginViewController* lvc = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
     userViewToShow = lvc;
-    [self.navigationController pushViewController:lvc animated:true];
+    [self.navigationController setViewControllers:[[NSArray alloc]initWithObjects:lvc, nil] animated:TRUE];
 }
 
 - (void) requestFailed:(NSError*)error{
