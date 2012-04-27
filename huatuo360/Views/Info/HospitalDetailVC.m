@@ -35,7 +35,8 @@
         btnComment  = [[UIBarButtonItem alloc] initWithTitle:@"评论" style:UITabBarSystemItemContacts target:self action:@selector(showCommentView)];
         [self.navigationItem setRightBarButtonItem:btnComment];
         
-        needRequest = TRUE;        
+        needRequest = TRUE;
+        showAllInfo = FALSE;
     }
     return self;
 }
@@ -130,6 +131,11 @@
     {
         return indexPath;
     }
+    else if(section == 2 && row == 1)
+    {
+        return indexPath;
+    }
+        
     return nil;
 }
 
@@ -146,6 +152,11 @@
         clvc.params = tmp;
         clvc.tableTitle = [[NSString alloc]initWithFormat:@"%@医院", hospitalName];
         [self.navigationController pushViewController:clvc animated:true];
+    }
+    else if(section == 2 && row == 1)
+    {
+        showAllInfo = TRUE;
+        [tableView reloadData];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
@@ -175,7 +186,7 @@
             break;
             
         case 2:
-            count = 1;
+            count = showAllInfo ? 1 : 2;
             break;
             
         case 3:
@@ -198,12 +209,64 @@
             cell = [self introCellForSection:section];
             break;
         case 2:
-            cell = [self introCellForSection:section];
+            cell = [self introCellForRow:row];
             break;
         case 3:
             cell = [self introCellForSection:section];
             break;
     }
+    return cell;
+}
+
+- (UITableViewCell *)introCellForRow:(int)row
+{
+    UITableViewCell *cell;
+    if(row == 0)
+    {
+        static NSString *HospictalIntroIdentifier = @"HospictalIntroIdentifier";    
+        UILabel* label;
+        cell = [detailView dequeueReusableCellWithIdentifier:HospictalIntroIdentifier];
+        if (cell == nil)
+        {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                          reuseIdentifier: HospictalIntroIdentifier];
+            label = cell.textLabel;
+            [label setLineBreakMode:UILineBreakModeWordWrap];
+            [label setMinimumFontSize:INTRO_FONT_SIZE];
+            [label setNumberOfLines:0];
+            [label setFont:[UIFont systemFontOfSize:INTRO_FONT_SIZE]];
+            //        [label setTag:1];
+        }
+        
+        NSString *text = [hospitalData objectForKey:@"info"];
+        if(!showAllInfo)
+            text = [NSString stringWithFormat:@"%@...", [text substringToIndex:64]];
+        
+        CGSize constraint = CGSizeMake(CELL_CONTENT_WIDTH, 20000.0f);
+        
+        CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:INTRO_FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+        
+        //    if (!label)
+        //        label = (UILabel*)[cell viewWithTag:1];
+        label = cell.textLabel;
+        
+        [label setText:text];
+        [label setFrame:CGRectMake(0, 0, CELL_CONTENT_WIDTH, MAX(size.height, 44.0f))];
+    }
+    else if(row == 1)
+    {
+        static NSString *IntroMoreTableIdentifier = @"IntroMoreTableIdentifier";
+        cell = [detailView dequeueReusableCellWithIdentifier:IntroMoreTableIdentifier];        
+        if (cell == nil)
+        {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                          reuseIdentifier: IntroMoreTableIdentifier];
+            cell.textLabel.font = [UIFont systemFontOfSize:16];
+        }
+        [cell.textLabel setTextAlignment:UITextAlignmentCenter];
+        cell.textLabel.text = @"查看全部信息";
+    }
+    
     return cell;
 }
 
@@ -249,10 +312,18 @@
             break;
              
         case 2://医院介绍
-            height = [self cellHeightForText:[hospitalData objectForKey:@"info"]
-                                      margin:12 
-                                       width:CELL_CONTENT_WIDTH 
-                                    fontsize:INTRO_FONT_SIZE];
+            if(row == 0)
+            {
+                NSString *text = [hospitalData objectForKey:@"info"];
+                if(!showAllInfo)
+                    text = [NSString stringWithFormat:@"%@...", [text substringToIndex:64]];
+                height = [self cellHeightForText:text
+                                          margin:12 
+                                           width:CELL_CONTENT_WIDTH 
+                                        fontsize:INTRO_FONT_SIZE];
+            }
+            else
+                height = 44;
             break;
         
         case 3://特色专科

@@ -21,6 +21,8 @@
     
     Boolean needRequest;
     UIBarButtonItem *btnComment;
+    
+    Boolean showAllInfo;
 }
 
 @property (nonatomic, strong)IBOutlet UITableView* detailView;

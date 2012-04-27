@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "huatuo360/Views/Info/DoctorDetailVC.m"
-         timestampString = "356198550.772667"
+         timestampString = "357241597.320781"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "211"
-         endingLineNumber = "211"
+         startingLineNumber = "221"
+         endingLineNumber = "221"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -34,24 +34,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "huatuo360/Views/Info/DoctorDetailVC.m"
-         timestampString = "356198550.772667"
+         timestampString = "357241597.320781"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "310"
-         endingLineNumber = "310"
-         landmarkName = "-infoCellForRow:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "huatuo360/Views/Info/DoctorDetailVC.m"
-         timestampString = "356198550.772667"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "218"
-         endingLineNumber = "218"
+         startingLineNumber = "228"
+         endingLineNumber = "228"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -125,11 +112,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "huatuo360/Views/Info/DoctorDetailVC.m"
-         timestampString = "356198550.772667"
+         timestampString = "357240884.629835"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "127"
-         endingLineNumber = "127"
+         startingLineNumber = "128"
+         endingLineNumber = "128"
          landmarkName = "-tableView:willSelectRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -190,7 +177,7 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "huatuo360/Views/Info/HospitalListViewController.m"
-         timestampString = "356631812.745535"
+         timestampString = "357240884.629835"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "91"
@@ -203,11 +190,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "huatuo360/Views/Info/DoctorDetailVC.m"
-         timestampString = "356633097.859601"
+         timestampString = "357240884.629835"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "56"
-         endingLineNumber = "56"
+         startingLineNumber = "57"
+         endingLineNumber = "57"
          landmarkName = "-loadData:"
          landmarkType = "5">
       </FileBreakpoint>

@@ -37,6 +37,7 @@
         btnComment = [[UIBarButtonItem alloc] initWithTitle:@"评论" style:UITabBarSystemItemContacts target:self action:@selector(showCommentView)];
         [self.navigationItem setRightBarButtonItem:btnComment];
         needRequest = TRUE;
+        showAllIntro = FALSE;
     }
     return self;
 }
@@ -130,6 +131,10 @@
        && [[doctorData objectForKey:@"comment"] intValue] > 0 )
     {
         return indexPath;
+    }    
+    else if(section == 1 && row == 1)
+    {
+        return indexPath;
     }
     //显示全部论文
     else if(section == 2 && !showAllThesis && row == INIT_SHOW_THESIS_COUNT)
@@ -152,6 +157,11 @@
         clvc.params = tmp;
         clvc.tableTitle = [[NSString alloc]initWithFormat:@"%@医生", doctorName];
         [self.navigationController pushViewController:clvc animated:true];
+    }
+    else if(section == 1 && row == 1)
+    {
+        showAllIntro = TRUE;
+        [tableView reloadData];
     }
     else if(section == 2 && !showAllThesis && row == INIT_SHOW_THESIS_COUNT)
     {
@@ -180,7 +190,7 @@
             break;
             
         case 1:
-            count = 1;
+            count = showAllIntro ? 1 : 2;
             break;
             
         case 2:
@@ -233,10 +243,18 @@
             break;
             
         case 1://介绍
-            height = [self cellHeightForText:[doctorData objectForKey:@"info"]
-                                    margin:12 
-                                    width:CELL_CONTENT_WIDTH 
-                                    fontsize:INTRO_FONT_SIZE];
+            if(row == 0)
+            {
+                NSString *text = [doctorData objectForKey:@"info"];
+                if(!showAllIntro)
+                    text = [NSString stringWithFormat:@"%@...", [text substringToIndex:64]];
+                height = [self cellHeightForText:text
+                                        margin:12 
+                                        width:CELL_CONTENT_WIDTH 
+                                        fontsize:INTRO_FONT_SIZE];
+            }
+            else 
+                height = 44;
             break;
             
         case 2://论文
@@ -322,33 +340,53 @@
 
 - (UITableViewCell *)introCellForRow:(int)row
 {
-    static NSString *IntroIdentifier = @"IntroIdentifier";    
-    UILabel* label;
-    UITableViewCell *cell = [detailView dequeueReusableCellWithIdentifier:IntroIdentifier];
-    if (cell == nil)
+    UITableViewCell *cell;
+    if(row == 0)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                      reuseIdentifier: IntroIdentifier];
+        static NSString *IntroIdentifier = @"IntroIdentifier";    
+        UILabel* label;
+        cell = [detailView dequeueReusableCellWithIdentifier:IntroIdentifier];
+        if (cell == nil)
+        {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                          reuseIdentifier: IntroIdentifier];
+            label = cell.textLabel;
+            [label setLineBreakMode:UILineBreakModeWordWrap];
+            [label setMinimumFontSize:INTRO_FONT_SIZE];
+            [label setNumberOfLines:0];
+            [label setFont:[UIFont systemFontOfSize:INTRO_FONT_SIZE]];
+    //        [label setTag:1];
+        }
+        
+        NSString *text = [doctorData objectForKey:@"info"];
+        if(!showAllIntro)
+            text = [NSString stringWithFormat:@"%@...", [text substringToIndex:64]];
+        
+        CGSize constraint = CGSizeMake(CELL_CONTENT_WIDTH, 20000.0f);
+        
+        CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:INTRO_FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+        
+    //    if (!label)
+    //        label = (UILabel*)[cell viewWithTag:1];
         label = cell.textLabel;
-        [label setLineBreakMode:UILineBreakModeWordWrap];
-        [label setMinimumFontSize:INTRO_FONT_SIZE];
-        [label setNumberOfLines:0];
-        [label setFont:[UIFont systemFontOfSize:INTRO_FONT_SIZE]];
-//        [label setTag:1];
+        
+        [label setText:text];
+        [label setFrame:CGRectMake(0, 0, CELL_CONTENT_WIDTH, MAX(size.height, 44.0f))];
+    }
+    else if(row == 1)
+    {
+        static NSString *SimpleTableIdentifier = @"SimpleTableIdentifier";
+        cell = [detailView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];        
+        if (cell == nil)
+        {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                          reuseIdentifier: SimpleTableIdentifier];
+            cell.textLabel.font = [UIFont systemFontOfSize:16];
+        }
+        [cell.textLabel setTextAlignment:UITextAlignmentCenter];
+        cell.textLabel.text = @"查看全部信息";
     }
     
-    NSString *text = [doctorData objectForKey:@"info"];
-    
-    CGSize constraint = CGSizeMake(CELL_CONTENT_WIDTH, 20000.0f);
-    
-    CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:INTRO_FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
-    
-//    if (!label)
-//        label = (UILabel*)[cell viewWithTag:1];
-    label = cell.textLabel;
-    
-    [label setText:text];
-    [label setFrame:CGRectMake(0, 0, CELL_CONTENT_WIDTH, MAX(size.height, 44.0f))];
     return cell;
 }
 
