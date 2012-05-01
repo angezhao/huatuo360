@@ -127,4 +127,13 @@
     [manager requestData:params];
 }
 
+- (void)update
+{
+    listData = nil;
+    [params setObject:@"1" forKey:@"page"];
+    page = 1;
+    if (nil != manager) 
+        [manager requestData:params];
+    [self.listView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+}
 @end

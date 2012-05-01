@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface InfoNavViewController : UINavigationController
+{
+    UIViewController* showingVC;
+    UIBarButtonItem *btnCity;
+}
 
 @end

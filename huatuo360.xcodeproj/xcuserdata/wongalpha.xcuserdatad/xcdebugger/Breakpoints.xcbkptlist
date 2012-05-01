@@ -177,11 +177,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "huatuo360/Views/Info/HospitalListViewController.m"
-         timestampString = "357240884.629835"
+         timestampString = "357582834.289101"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "91"
-         endingLineNumber = "91"
+         startingLineNumber = "89"
+         endingLineNumber = "89"
          landmarkName = "-tableView:didSelectRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -208,7 +208,20 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "83"
          endingLineNumber = "83"
-         landmarkName = "-requestFinished:"
+         landmarkName = "@implementation AsiObjectManager"
+         landmarkType = "3">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "huatuo360/Views/Info/DoctorListViewController.m"
+         timestampString = "357582834.289101"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "132"
+         endingLineNumber = "132"
+         landmarkName = "-update"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

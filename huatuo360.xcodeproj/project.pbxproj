@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		0D06CABA152F3F5D00FA35FE /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D06CAB8152F3F5D00FA35FE /* CommentViewController.m */; };
 		0D06CABB152F3F5D00FA35FE /* CommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D06CAB9152F3F5D00FA35FE /* CommentViewController.xib */; };
+		0D2BB03C1550442C00C11936 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D2BB0391550442C00C11936 /* Default.png */; };
+		0D2BB03D1550442C00C11936 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D2BB03A1550442C00C11936 /* Default@2x.png */; };
+		0D2BB03E1550442C00C11936 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D2BB03B1550442C00C11936 /* icon.png */; };
 		0D4A7F3E152AFD56003BAC85 /* disease.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0D4A7F3D152AFD56003BAC85 /* disease.plist */; };
 		0D6C2199153B2C4A0081B044 /* DeptSelectVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6C2197153B2C490081B044 /* DeptSelectVC.m */; };
 		0D6C219A153B2C4A0081B044 /* DeptSelectVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D6C2198153B2C490081B044 /* DeptSelectVC.xib */; };
@@ -123,6 +126,9 @@
 		0D06CAB7152F3F5D00FA35FE /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
 		0D06CAB8152F3F5D00FA35FE /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
 		0D06CAB9152F3F5D00FA35FE /* CommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentViewController.xib; sourceTree = "<group>"; };
+		0D2BB0391550442C00C11936 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		0D2BB03A1550442C00C11936 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		0D2BB03B1550442C00C11936 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		0D4A7F3D152AFD56003BAC85 /* disease.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = disease.plist; sourceTree = "<group>"; };
 		0D6C2196153B2C490081B044 /* DeptSelectVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeptSelectVC.h; sourceTree = "<group>"; };
 		0D6C2197153B2C490081B044 /* DeptSelectVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeptSelectVC.m; sourceTree = "<group>"; };
@@ -563,6 +569,9 @@
 		0DECF630150C9CAB00824D1C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0D2BB0391550442C00C11936 /* Default.png */,
+				0D2BB03A1550442C00C11936 /* Default@2x.png */,
+				0D2BB03B1550442C00C11936 /* icon.png */,
 				0D9A9A17152F367000D62421 /* rbDown.png */,
 				0D9A9A19152F367000D62421 /* rbNormal.png */,
 				0D74B991152DEE510063E9B0 /* cities.plist */,
@@ -782,6 +791,9 @@
 				0D6C219A153B2C4A0081B044 /* DeptSelectVC.xib in Resources */,
 				B782F113153DBB19005A05BC /* CheckCodeViewController.xib in Resources */,
 				B782F119153DBB34005A05BC /* ResetPwdViewController.xib in Resources */,
+				0D2BB03C1550442C00C11936 /* Default.png in Resources */,
+				0D2BB03D1550442C00C11936 /* Default@2x.png in Resources */,
+				0D2BB03E1550442C00C11936 /* icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

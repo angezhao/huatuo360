@@ -68,7 +68,7 @@ const static int DOCTOR = 2;
 
 - (void)viewWillAppear:(BOOL)animated
 {
-//    [ddList setHidden:YES];
+    btnCity.title = gcityName;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
