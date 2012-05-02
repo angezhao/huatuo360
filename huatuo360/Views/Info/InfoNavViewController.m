@@ -9,6 +9,8 @@
 #import "InfoNavViewController.h"
 #import "Constants.h"
 #import "HospitalListViewController.h"
+#import "CityListVC.h"
+
 @interface InfoNavViewController ()
 
 @end
@@ -45,12 +47,15 @@
             HospitalListViewController* hlvc = [[HospitalListViewController alloc]init];
             [self setupBackToHomepageButton:hlvc];
             hlvc.params = params;
-            hlvc.tableTitle = @"医院排行";            
+            hlvc.tableTitle = @"医院排行";
+            
+            showingVC = hlvc;
             self.viewControllers = [[NSArray alloc]initWithObjects:hlvc, nil];
         }
     }
     else 
     {
+        showingVC = infoViewToShow;
         [self setupBackToHomepageButton:infoViewToShow];
         self.viewControllers = [[NSArray alloc]initWithObjects:infoViewToShow, nil]; 
         infoViewToShow = nil;
@@ -69,11 +74,34 @@
     
     UIBarButtonItem *back = [[UIBarButtonItem alloc] initWithTitle:@"首页" style:UIBarButtonItemStylePlain target:self action:@selector(backToHomepage)];
     showView.navigationItem.leftBarButtonItem = back;
+    
+    btnCity = [[UIBarButtonItem alloc] initWithTitle:gcityName style:UIBarButtonItemStylePlain target:self action:@selector(showCityList)];
+    showView.navigationItem.rightBarButtonItem = btnCity;
 }
 
 - (void)backToHomepage
 {
     [self.tabBarController setSelectedIndex:0];
+}
+
+- (void)showCityList
+{
+    CityListVC* cityListVC = [[CityListVC alloc]init];
+    [cityListVC setDelegate:self];
+    [showingVC.navigationController pushViewController:cityListVC animated:YES];
+}
+
+- (void) selectCity:(NSString*)cityId cityName:(NSString*)cityName
+{
+    if (cityName != nil) 
+    {
+        btnCity.title = cityName;
+        gcityId = cityId;
+        gcityName = cityName;
+        
+        if([showingVC respondsToSelector:@selector(update)])
+            [showingVC performSelector:@selector(update)];
+    }
 }
 
 - (void)viewDidUnload

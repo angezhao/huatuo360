@@ -45,7 +45,6 @@
         manager = [AsiObjectManager alloc];
         [manager setDelegate:self];
         [manager requestData:params];
-//        [HUDManger showHUD:self.view token:@"H"];
     }
 }
 
@@ -63,14 +62,13 @@
 
 - (void)loadData:(NSDictionary *)data
 {
-//    [HUDManger hideHUD:@"H"];
     NSLog(@"%@", data);
     total = [[data objectForKey:@"total"]integerValue];
     NSLog(@"%i", total);
     if(nil == listData)
         listData = [NSMutableArray arrayWithCapacity:0];
     [listData addObjectsFromArray:[data objectForKey:@"data"]];
-    [self.listView reloadData];    
+    [self.listView reloadData];
 }
 
 - (void) requestFailed:(NSError*)error
@@ -132,5 +130,15 @@
     NSString *pageText = [[NSString alloc]initWithFormat:@"%i", ++page];
     [params setObject:pageText forKey:@"page"];
     [manager requestData:params];
+}
+
+- (void)update
+{
+    listData = nil;
+    [params setObject:@"1" forKey:@"page"];
+    page = 1;
+    if (nil != manager) 
+        [manager requestData:params];
+    [self.listView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
 }
 @end
