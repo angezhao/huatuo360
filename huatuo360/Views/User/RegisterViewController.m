@@ -22,7 +22,10 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.navigationItem.title = @"华佗360";
+        self.title = @"华佗360";
+        UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
+        backItem.title = @"返回";
+        [self.navigationItem setBackBarButtonItem:backItem];
         textfields = [NSMutableArray arrayWithCapacity:4];
     }
     return self;
@@ -40,6 +43,11 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
+
+- (void)viewWillDisappear:(BOOL)animated{
+    willDisappear = true;
+}
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -116,7 +124,6 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    NSLog(@"textFieldShouldReturn=%i",textField.tag);
     if (textField.tag < 3) {
         UITextField *nextTextfield = [textfields objectAtIndex:textField.tag + 1];
         [nextTextfield becomeFirstResponder];
@@ -129,7 +136,7 @@
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
     //验证用户输入正确性
-    if(textField.tag == 0){
+    if(!willDisappear && textField.tag == 0){
         NSString *msg = nil;
         NSString *name = [textField text];
         NSUInteger nameLength = [StringUtils getStringLength:name];

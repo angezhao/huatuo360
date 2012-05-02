@@ -17,10 +17,16 @@
     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示"
                                           message:msg
                                          delegate:nil                                       
-                                cancelButtonTitle:nil
+                                 cancelButtonTitle:@"确定"
                                 otherButtonTitles:nil, nil];
     [alert show];
     [self performSelector:@selector(closeAlert:) withObject:alert afterDelay:3];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+   if(delegate != nil)
+        [delegate finishAlert:issuccess];
 }
 
 - (void)closeAlert:(UIAlertView*)alert
