@@ -181,7 +181,7 @@
     isLogin = true;
     email = [data objectForKey:@"email"];
     UserInfoViewController* uivc = [[UserInfoViewController alloc] initWithNibName:@"UserInfoViewController" bundle:nil];
-    [self.navigationController setViewControllers:[[NSArray alloc]initWithObjects:uivc, nil] animated:TRUE];
+    [self.navigationController pushViewController:uivc animated:true];
     if(isComment){ //显示评论页
         isComment = false;
         [self.tabBarController setSelectedIndex:1];

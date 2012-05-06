@@ -20,7 +20,7 @@
                                  cancelButtonTitle:@"确定"
                                 otherButtonTitles:nil, nil];
     [alert show];
-    [self performSelector:@selector(closeAlert:) withObject:alert afterDelay:3];
+    [self performSelector:@selector(closeAlert:) withObject:alert afterDelay:2];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex

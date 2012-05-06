@@ -35,6 +35,9 @@ NSString* const _departmentList = @"getDepartmentList.php?";
 //评论列表getCommentList.php?hospid=医院id&doctorid=医生id&page=页数&perpage=分页数目
 NSString* const _commentList = @"getCommentList.php?";
 
+//评论详细getComment.php?id=8935
+NSString* const _commentDetail = @"getComment.php?";
+
 //医生介绍getDoctor.php?id=医生id
 NSString* const _doctor = @"getDoctor.php?";
 
