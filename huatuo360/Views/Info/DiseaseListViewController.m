@@ -41,6 +41,8 @@
         [manager setDelegate:self];
         [manager requestData:params];
     }
+    if(self.navigationItem.rightBarButtonItem != nil)
+        self.navigationItem.rightBarButtonItem.title = gcityName;
 }
 
 - (void)viewDidLoad

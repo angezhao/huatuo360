@@ -12,7 +12,7 @@
 
 @interface DoctorListVC : UIViewController<AsiObjectDelegate,UITableViewDelegate, UITableViewDataSource, DeptSelectDelegate>
 {
-    Boolean firstAppear;
+    Boolean needRequest;
     UIBarButtonItem *btnDetail;
     NSMutableArray* listData;
     int total;

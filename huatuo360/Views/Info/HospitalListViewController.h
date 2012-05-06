@@ -12,6 +12,7 @@
 @interface HospitalListViewController : ListViewController1<AsiObjectDelegate>
 {
     Boolean firstAppear;
+    UIBarButtonItem *btnCity;
 }
 @property (nonatomic, strong)NSString* diseaseName;
 

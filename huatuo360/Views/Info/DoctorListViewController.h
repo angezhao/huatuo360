@@ -13,6 +13,7 @@
 {
     Boolean firstAppear;
     UIBarButtonItem *btnDetail;
+    UIBarButtonItem *btnCity;
 }
 
 @end

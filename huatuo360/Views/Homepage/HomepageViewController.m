@@ -271,7 +271,7 @@ const static int DOCTOR = 2;
 
 - (void) selectCity:(NSString*)cityId cityName:(NSString*)cityName
 {
-    if (cityName != nil) 
+    if (![gcityId isEqualToString:cityId] && cityName != nil)
     {
         btnCity.title = cityName;
         gcityId = cityId;

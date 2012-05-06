@@ -57,6 +57,11 @@
     doctorData = data;
     thesis = [doctorData objectForKey:@"thesis"];
     showAllThesis = [thesis count] <= INIT_SHOW_THESIS_COUNT;
+    
+    //是否全显示介绍
+    NSString *introText = [doctorData objectForKey:@"info"];
+    showAllIntro = introText.length <= 64;
+    
     [detailView reloadData];
     btnComment.enabled = TRUE;
 }

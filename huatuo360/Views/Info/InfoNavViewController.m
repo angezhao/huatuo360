@@ -60,6 +60,8 @@
         self.viewControllers = [[NSArray alloc]initWithObjects:infoViewToShow, nil]; 
         infoViewToShow = nil;
     }
+    if(btnCity != nil)
+        btnCity.title = gcityName;
 }
 
 - (void)setupBackToHomepageButton:(UIViewController*)showView
@@ -93,7 +95,7 @@
 
 - (void) selectCity:(NSString*)cityId cityName:(NSString*)cityName
 {
-    if (cityName != nil) 
+    if (![gcityId isEqualToString:cityId] && cityName != nil)
     {
         btnCity.title = cityName;
         gcityId = cityId;

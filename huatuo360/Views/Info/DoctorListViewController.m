@@ -11,6 +11,8 @@
 #import "DoctorDetailVC.h"
 #import "HospitalDetailVC.h"
 
+#import "CityListVC.h"
+
 @implementation DoctorListViewController
 @synthesize params;
 
@@ -45,7 +47,33 @@
             btnDetail  = [[UIBarButtonItem alloc] initWithTitle:@"医院详情" style:UITabBarSystemItemContacts target:self action:@selector(showCommentView)];
             [self.navigationItem setRightBarButtonItem:btnDetail];
         }
+        else {
+            //city select
+            btnCity = [[UIBarButtonItem alloc] initWithTitle:gcityName style:UIBarButtonItemStylePlain target:self action:@selector(showCityList)];
+            self.navigationItem.rightBarButtonItem = btnCity;
+        }
         [btnDetail setEnabled:FALSE];
+    }
+    if(btnCity != nil)
+        btnCity.title = gcityName;
+}
+
+- (void)showCityList
+{
+    CityListVC* cityListVC = [[CityListVC alloc]init];
+    [cityListVC setDelegate:self];
+    [self.navigationController pushViewController:cityListVC animated:YES];
+}
+
+- (void) selectCity:(NSString*)cityId cityName:(NSString*)cityName
+{
+    if (![gcityId isEqualToString:cityId] && cityName != nil)
+    {
+        btnCity.title = cityName;
+        gcityId = cityId;
+        gcityName = cityName;
+        
+        [self update];
     }
 }
 

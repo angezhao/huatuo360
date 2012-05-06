@@ -31,7 +31,8 @@
         UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
         backItem.title = @"返回";
         [self.navigationItem setBackBarButtonItem:backItem];
-        firstAppear = true;
+        needRequest = true;
+        page = 1;
     }
     return self;
 }
@@ -39,11 +40,12 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if(firstAppear)
+    if(needRequest)
     {
-        firstAppear = false;
+        needRequest = false;
         [params setObject:_doctorList forKey:@"interfaceName"];
         [params setObject:@"1" forKey:@"page"];
+        page = 1;
         manager = [AsiObjectManager alloc];
         if(departmentId != nil)
             [params setObject:departmentId forKey:@"deptid"];
@@ -254,11 +256,14 @@
 
 - (void) selectDept:(NSString*)deptId deptName:(NSString*)deptName
 {
-    departmentId = deptId;
-    departmentName = deptName;
-    [btnDept setTitle:deptName forState:UIControlStateNormal];
-    listData = nil;
-    firstAppear = true;
+    if(![deptId isEqualToString:departmentId])
+    {
+        departmentId = deptId;
+        departmentName = deptName;
+        [btnDept setTitle:deptName forState:UIControlStateNormal];
+        listData = nil;
+        needRequest = true;
+    }
 }
 
 - (IBAction)showDeptList:(id)sender

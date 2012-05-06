@@ -12,6 +12,8 @@
 #import "Constants.h"
 #import "HUDManger.h"
 
+#import "CityListVC.h"
+
 @interface HospitalListViewController ()
 
 @end
@@ -30,8 +32,35 @@
         [self.navigationItem setBackBarButtonItem:backItem];
         firstAppear = true;
         total = 0;
+        
+        //city select
+        btnCity = [[UIBarButtonItem alloc] initWithTitle:gcityName style:UIBarButtonItemStylePlain target:self action:@selector(showCityList)];
+        self.navigationItem.rightBarButtonItem = btnCity;
+        
+//        UIBarButtonItem *btnCity = [[UIBarButtonItem alloc] init];
+//        btnCity.title = gcityName;
+//        [self.navigationItem setRightBarButtonItem:btnCity];
     }
     return self;
+}
+
+- (void)showCityList
+{
+    CityListVC* cityListVC = [[CityListVC alloc]init];
+    [cityListVC setDelegate:self];
+    [self.navigationController pushViewController:cityListVC animated:YES];
+}
+
+- (void) selectCity:(NSString*)cityId cityName:(NSString*)cityName
+{
+    if (![gcityId isEqualToString:cityId] && cityName != nil)
+    {
+        btnCity.title = cityName;
+        gcityId = cityId;
+        gcityName = cityName;
+        
+        [self update];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -46,6 +75,8 @@
         [manager setDelegate:self];
         [manager requestData:params];
     }
+    if(btnCity != nil)
+        btnCity.title = gcityName;
 }
 
 - (void)viewDidLoad
