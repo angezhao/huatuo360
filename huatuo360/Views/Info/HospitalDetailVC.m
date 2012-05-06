@@ -54,6 +54,11 @@
 - (void)loadData:(NSDictionary *)data
 {
     hospitalData = data;
+    
+    //是否全显示介绍
+    NSString *introText = [hospitalData objectForKey:@"info"];
+    showAllInfo = introText.length <= 64;
+    
     [detailView reloadData];
     btnComment.enabled = TRUE;
 }
