@@ -50,8 +50,8 @@
     //NSLog(@"%@", jsonDict);
     NSNumber *status = [jsonDict objectForKey:@"status"];
     NSLog(@"status=%@",status); 
-    if ([status intValue] == 1 && [jsonDict objectForKey:@"data"]) {
-        return [jsonDict objectForKey:@"data"];
+    if ([status intValue] == 1) {
+        return jsonDict;
     } else if([jsonDict objectForKey:@"msg"]){
         [self showAlter:[jsonDict objectForKey:@"msg"] success:NO];
     }   
