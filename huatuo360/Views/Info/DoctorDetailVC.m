@@ -56,6 +56,7 @@
 {
     doctorData = data;
     thesis = [doctorData objectForKey:@"thesis"];
+    showAllIntro = [[doctorData objectForKey:@"info"] length] < 64;
     showAllThesis = [thesis count] <= INIT_SHOW_THESIS_COUNT;
     
     //是否全显示介绍

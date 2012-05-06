@@ -133,13 +133,6 @@
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
     //验证用户输入正确性
-//    if(textField.tag == 0 && ([oldPwdTextfield text] == nil || [[oldPwdTextfield text] length] < 6)){
-//        return NO;
-//    }else if(textField.tag == 1 && ([newPwdTextfield text] == nil || [[newPwdTextfield text] length] < 6)){
-//        return NO;
-//    } else if(textField.tag == 2 && ([newPwdTextfield1 text] == nil || [[newPwdTextfield1 text] length] < 6)){
-//        return NO;
-//    }   
     return YES;
 }
 

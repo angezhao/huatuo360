@@ -59,9 +59,7 @@
 
 - (void)loadData:(NSDictionary *)data
 {
-    NSLog(@"%@", data);
     total = [[data objectForKey:@"total"]integerValue];
-    NSLog(@"%i", total);
     if(nil == listData)
         listData = [NSMutableArray arrayWithCapacity:0];
     NSDictionary *dict = [data objectForKey:@"data"];

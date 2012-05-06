@@ -15,6 +15,7 @@ extern NSString* const _checkUser;
 extern NSString* const _comment;
 extern NSString* const _departmentList;
 extern NSString* const _commentList;
+extern NSString* const _commentDetail;
 extern NSString* const _doctor;
 extern NSString* const _hospital;
 extern NSString* const _hospitalList;

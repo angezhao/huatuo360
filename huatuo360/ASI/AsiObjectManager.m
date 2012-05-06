@@ -44,14 +44,14 @@
     [request startSynchronous]; 
     [request setResponseEncoding:(NSUTF8StringEncoding)];
     NSString *responseString = [request responseString];
-    NSLog(@"%@", responseString);
+    //NSLog(@"%@", responseString);
     SBJsonParser *parser = [[SBJsonParser alloc] init];
     NSDictionary *jsonDict = [parser objectWithData:[responseString dataUsingEncoding:NSUTF8StringEncoding]];  
-    NSLog(@"%@", jsonDict);
+    //NSLog(@"%@", jsonDict);
     NSNumber *status = [jsonDict objectForKey:@"status"];
-    NSLog(@"%@",status); 
-    if ([status intValue] == 1 && [jsonDict objectForKey:@"data"]) {
-        return [jsonDict objectForKey:@"data"];
+    NSLog(@"status=%@",status); 
+    if ([status intValue] == 1) {
+        return jsonDict;
     } else if([jsonDict objectForKey:@"msg"]){
         [self showAlter:[jsonDict objectForKey:@"msg"] success:NO];
     }   
@@ -63,8 +63,8 @@
     NSString *param = [NSString stringWithFormat:@"%@=%i",@"perpage", perpage];
     if(![gcityId isEqualToString:@""])
         param = [NSString stringWithFormat:@"%@&%@=%@", param, @"city", gcityId]; 
-    NSLog(@"param=%@",param); 
-    NSLog(@"urlParam=%@",urlParam); 
+    //NSLog(@"param=%@",param); 
+    //NSLog(@"urlParam=%@",urlParam); 
     for (NSString *key in urlParam)
     {
         if([key hasPrefix:@"_"])//过滤附加参数
@@ -75,7 +75,7 @@
             param = [NSString stringWithFormat:@"%@&%@=%@", param, key, [urlParam objectForKey: key]]; 
     }
     url = [NSString stringWithFormat:@"%@%@", url, param]; 
-    NSLog(@"url=%@",url); 
+    //NSLog(@"url=%@",url); 
     url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];  
     NSLog(@"url=%@",url); 
     return url;
@@ -84,16 +84,16 @@
 - (void)requestFinished:(ASIHTTPRequest *)request {   
     [request  setResponseEncoding:(NSUTF8StringEncoding)];
     NSString* responseString=[request responseString];
-    NSLog(@"%@", responseString);
+    //NSLog(@"%@", responseString);
     SBJsonParser *parser = [[SBJsonParser alloc] init];
     NSDictionary *jsonDict = [parser objectWithData:[responseString dataUsingEncoding:NSUTF8StringEncoding]];  
     NSLog(@"%@", jsonDict);
     [HUDManger hideHUD:request.originalURL.absoluteString];
     NSNumber *status = [jsonDict objectForKey:@"status"];
-    NSLog(@"%@",status); 
+    NSLog(@"status=%@",status); 
     //判断异常delegate是否为空
     if(delegate != nil){
-        if ([status intValue] != 1) {
+        if (status == nil || [status intValue] != 1) {
             NSString *msg = @"请求失败!";
             if([jsonDict objectForKey:@"msg"])
                 msg = [NSString stringWithFormat:@"%@%@", msg, [jsonDict objectForKey:@"msg"]];
@@ -111,10 +111,10 @@
 - (void)requestFailed:(ASIHTTPRequest *)request {  
     [HUDManger hideHUD:request.originalURL.absoluteString];  
 	NSError *error = [request error]; 
-    NSLog(@"%@", error);
+    NSLog(@"error=%@", error);
     //弹框提示
     NSString *msg = @"请求失败，服务器繁忙，请稍后再试！";
-    msg = [NSString stringWithFormat:@"%@ errcode=%i,errstr=%@", [error code], [error domain]];
+    msg = [NSString stringWithFormat:@"%@ errcode=%i,errstr=%@", msg, [error code], [error domain]];
     [self showAlter:msg success:NO];
 }
 

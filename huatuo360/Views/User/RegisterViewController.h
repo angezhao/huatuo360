@@ -14,6 +14,7 @@
     NSMutableArray *textfields;
     AsiObjectManager* manager;
     AlertViewManager* alertManager;
+    Boolean willDisappear;
 }
 
 - (IBAction)registerButtonPressed:(id)sender;

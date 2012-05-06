@@ -8,6 +8,7 @@
 
 #import "CommentListViewController.h"
 #import "CommentViewController.h"
+#import "CommentDetailVC.h"
 #import "Constants.h"
 
 @interface CommentListViewController ()
@@ -72,7 +73,14 @@
     total = [[data objectForKey:@"total"]integerValue];
     if(nil == listData)
         listData = [[NSMutableArray alloc]initWithCapacity:0];
-    [listData addObjectsFromArray:[data objectForKey:@"data"]];
+    NSDictionary *dict = [data objectForKey:@"data"];
+    for (NSString *key in dict)
+    {
+        NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
+        [tmp setObject:key forKey:@"id"];
+        [tmp setObject:[dict objectForKey: key] forKey:@"name"];
+        [listData addObject:tmp];
+    }
     [self.listView reloadData]; 
 }
 
@@ -98,12 +106,30 @@
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return nil;
+    if(total == 0)
+        return nil;
+    return indexPath;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{    
+    int row = [indexPath row];
+    if (row == [listData count]) {
+        [self nextPage];
+        return;
+    }
+    NSMutableDictionary *itemData = [listData objectAtIndex:row];
+    NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
+    [tmp setObject:[itemData objectForKey:@"id"] forKey:@"id"];
+    CommentDetailVC* cdvc = [[CommentDetailVC alloc]init];
+    cdvc.params = tmp;
+    [self.navigationController pushViewController:cdvc animated:true];
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 - (NSString*)getTitleByIndex:(int)index
 {
-   return [listData objectAtIndex:index];
+   return [[listData objectAtIndex:index] objectForKey:@"name"];
 }
 
 - (void)nextPage

@@ -13,7 +13,7 @@
 - (void) finishAlert:(BOOL)success;
 @end
 
-@interface AlertViewManager : NSObject
+@interface AlertViewManager : NSObject<UIAlertViewDelegate>
 {
     BOOL issuccess;
 }

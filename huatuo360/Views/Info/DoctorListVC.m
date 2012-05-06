@@ -272,7 +272,9 @@
     {
         NSMutableDictionary* deptParams = [NSMutableDictionary dictionaryWithCapacity:0];
         [deptParams setObject:_departmentList forKey:@"interfaceName"];
-        departments = [manager syncRequestData:deptParams];
+        NSDictionary *data = [manager syncRequestData:deptParams];
+        if(data != nil)
+            departments = [data objectForKey:@"data"];
     }
     DeptSelectVC* dsvc = [[DeptSelectVC alloc]init];
     [dsvc setDelegate:self];
