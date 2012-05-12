@@ -150,5 +150,31 @@
     return nil;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    float height = 44;
+    int row = [indexPath row];
+    if(row == 1)
+    {
+        NSString *text = [commentData objectForKey:@"message"];
+        height = [self cellHeightForText:text
+                                  margin:12 
+                                   width:CELL_CONTENT_WIDTH 
+                                fontsize:INTRO_FONT_SIZE];
+    }
+    return height;
+}
+
+- (float)cellHeightForText:(NSString*)text margin:(float)margin width:(float)width fontsize:(int)fontsize
+{    
+    CGSize constraint = CGSizeMake(width - (margin * 2), 20000.0f);
+    
+    CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:fontsize] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+    
+    CGFloat height = MAX(size.height, 44.0f);
+    
+    return height + (margin * 2);
+}
+
 
 @end
