@@ -245,7 +245,7 @@
             height = [self cellHeightForText:[doctorData objectForKey:[infoKeys objectAtIndex:row]]
                                       margin:0 
                                        width:CELL_RIGHT_CONTENT_WIDTH 
-                                    fontsize:INFO_FONT_SIZE];
+                        uiFont:[UIFont systemFontOfSize:INFO_FONT_SIZE]];
             break;
             
         case 1://介绍
@@ -257,7 +257,7 @@
                 height = [self cellHeightForText:text
                                         margin:12 
                                         width:CELL_CONTENT_WIDTH 
-                                        fontsize:INTRO_FONT_SIZE];
+                                        uiFont:DEFAULTFONT];
             }
             else 
                 height = 44;
@@ -269,7 +269,7 @@
                 height = [self cellHeightForText:[thesis objectAtIndex:row]
                                     margin:0 
                                     width:CELL_CONTENT_WIDTH 
-                                    fontsize:INTRO_FONT_SIZE];
+                                    uiFont:DEFAULTFONT];
             }
             break;
     }
@@ -358,9 +358,9 @@
                                           reuseIdentifier: IntroIdentifier];
             label = cell.textLabel;
             [label setLineBreakMode:UILineBreakModeWordWrap];
-            [label setMinimumFontSize:INTRO_FONT_SIZE];
+            [label setMinimumFontSize:DEFALUT_FONT_SIZE];
             [label setNumberOfLines:0];
-            [label setFont:[UIFont systemFontOfSize:INTRO_FONT_SIZE]];
+            [label setFont:DEFAULTFONT];
     //        [label setTag:1];
         }
         
@@ -370,7 +370,7 @@
         
         CGSize constraint = CGSizeMake(CELL_CONTENT_WIDTH, 20000.0f);
         
-        CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:INTRO_FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+        CGSize size = [text sizeWithFont:DEFAULTFONT constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
         
     //    if (!label)
     //        label = (UILabel*)[cell viewWithTag:1];
@@ -396,11 +396,11 @@
     return cell;
 }
 
-- (float)cellHeightForText:(NSString*)text margin:(float)margin width:(float)width fontsize:(int)fontsize
+- (float)cellHeightForText:(NSString*)text margin:(float)margin width:(float)width uiFont:(UIFont*)uiFont
 {    
     CGSize constraint = CGSizeMake(width - (margin * 2), 20000.0f);
     
-    CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:fontsize] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+    CGSize size = [text sizeWithFont:uiFont constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
     
     CGFloat height = MAX(size.height, 44.0f);
     
@@ -418,9 +418,9 @@
                                       reuseIdentifier: ThesisIdentifier];
         label = cell.textLabel;
         [label setLineBreakMode:UILineBreakModeWordWrap];
-        [label setMinimumFontSize:INTRO_FONT_SIZE];
+        [label setMinimumFontSize:DEFALUT_FONT_SIZE];
         [label setNumberOfLines:0];
-        [label setFont:[UIFont systemFontOfSize:INTRO_FONT_SIZE]];
+        [label setFont:DEFAULTFONT];
         //        [label setTag:1];
     }
     label = cell.textLabel;
@@ -440,7 +440,7 @@
     
     CGSize constraint = CGSizeMake(CELL_CONTENT_WIDTH, 20000.0f);
     
-    CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:INTRO_FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+    CGSize size = [text sizeWithFont:DEFAULTFONT constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
     [label setText:text];
     [label setFrame:CGRectMake(0, 0, CELL_CONTENT_WIDTH, MAX(size.height, 44.0f))];
     return cell;

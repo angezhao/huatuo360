@@ -237,9 +237,9 @@
                                           reuseIdentifier: HospictalIntroIdentifier];
             label = cell.textLabel;
             [label setLineBreakMode:UILineBreakModeWordWrap];
-            [label setMinimumFontSize:INTRO_FONT_SIZE];
+            [label setMinimumFontSize:DEFALUT_FONT_SIZE];
             [label setNumberOfLines:0];
-            [label setFont:[UIFont systemFontOfSize:INTRO_FONT_SIZE]];
+            [label setFont:DEFAULTFONT];
             //        [label setTag:1];
         }
         
@@ -249,7 +249,7 @@
         
         CGSize constraint = CGSizeMake(CELL_CONTENT_WIDTH, 20000.0f);
         
-        CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:INTRO_FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+        CGSize size = [text sizeWithFont:DEFAULTFONT constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
         
         //    if (!label)
         //        label = (UILabel*)[cell viewWithTag:1];
@@ -290,12 +290,12 @@
                     height = [self cellHeightForText:[[hospitalData objectForKey:[infoKeys objectAtIndex:row]] stringByReplacingOccurrencesOfString:@"," withString:@"\n"]
                                               margin:0 
                                                width:CELL_RIGHT_CONTENT_WIDTH 
-                                                          fontsize:INFO_FONT_SIZE];
+                                              uiFont:[UIFont systemFontOfSize:INFO_FONT_SIZE]];
                 else
                     height = [self cellHeightForText:[hospitalData objectForKey:[infoKeys objectAtIndex:row]]
                                           margin:0 
                                            width:CELL_RIGHT_CONTENT_WIDTH 
-                                        fontsize:INFO_FONT_SIZE];
+                                          uiFont:[UIFont systemFontOfSize:INFO_FONT_SIZE]];
             }
             break;
             
@@ -307,12 +307,12 @@
                     if(departments == nil)
                         departments = department;
                     else
-                        departments = [NSString stringWithFormat:@"%@ %@", departments, department]; 
+                        departments = [NSString stringWithFormat:@"%@、%@", departments, department]; 
                 }
                 height = [self cellHeightForText:departments
                                           margin:12 
                                            width:CELL_CONTENT_WIDTH 
-                                        fontsize:INTRO_FONT_SIZE];
+                                          uiFont:[UIFont systemFontOfSize:INTRO_FONT_SIZE]];
             }
             break;
              
@@ -325,7 +325,7 @@
                 height = [self cellHeightForText:text
                                           margin:12 
                                            width:CELL_CONTENT_WIDTH 
-                                        fontsize:INTRO_FONT_SIZE];
+                                          uiFont:DEFAULTFONT];
             }
             else
                 height = 44;
@@ -335,7 +335,7 @@
             height = [self cellHeightForText:[hospitalData objectForKey:@"specialty"]
                                         margin:12 
                                         width:CELL_CONTENT_WIDTH 
-                                    fontsize:INTRO_FONT_SIZE];
+                                       uiFont:[UIFont systemFontOfSize:INTRO_FONT_SIZE]];
             break;
     }
     return height;
@@ -442,7 +442,7 @@
                     if(departments == nil)
                         departments = department;
                     else
-                        departments = [NSString stringWithFormat:@"%@ %@", departments, department]; 
+                        departments = [NSString stringWithFormat:@"%@、%@", departments, department]; 
                 }
                 text = departments;
             }
@@ -469,11 +469,11 @@
     return cell;
 }
 
-- (float)cellHeightForText:(NSString*)text margin:(float)margin width:(float)width fontsize:(int)fontsize
+- (float)cellHeightForText:(NSString*)text margin:(float)margin width:(float)width uiFont:(UIFont*)uiFont
 {    
     CGSize constraint = CGSizeMake(width - (margin * 2), 20000.0f);
     
-    CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:fontsize] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+    CGSize size = [text sizeWithFont:uiFont constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
     
     CGFloat height = MAX(size.height, 44.0f);
     
