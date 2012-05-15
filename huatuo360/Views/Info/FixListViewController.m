@@ -28,7 +28,8 @@ extern NSString* const _departmentList;
         listData = [[NSMutableArray alloc]initWithObjects: 
                     @"专治医生排行",
                     @"医院排行",
-                    @"相关日志排行", nil];
+//                    @"相关日志排行", 
+                    nil];
     }
     return self;
 }

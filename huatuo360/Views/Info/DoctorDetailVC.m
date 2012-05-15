@@ -121,7 +121,7 @@
         break;
         
     case 2:
-        title = @"发表论文";
+        title = @"该医生的医学临床研究方向";
         break;
     }
     
@@ -429,7 +429,7 @@
     NSString *text;
     if(!showAllThesis && row == INIT_SHOW_THESIS_COUNT)
     {
-        text = @"显示全部论文";
+        text = @"显示全部";
         label.textAlignment = UITextAlignmentCenter;
     }
     else 

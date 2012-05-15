@@ -93,7 +93,7 @@
     else if(hospitalName != nil && diseaseName != nil)
         self.tableTitle = [NSString stringWithFormat:@"%@ 治疗\"%@\"的医生", hospitalName, diseaseName];
     else if(hospitalName != nil && departmentName != nil)
-        self.tableTitle = [NSString stringWithFormat:@"%@ %@ 的医生", hospitalName, departmentName];
+        self.tableTitle = [NSString stringWithFormat:@"%@ (%@) 的医生排名", hospitalName, departmentName];
     [self updateControlLocationForTitle:self.tableTitle];
     
     
