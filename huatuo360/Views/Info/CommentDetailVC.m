@@ -125,16 +125,16 @@
                                           reuseIdentifier:DetailIdentifier];
             label = cell.textLabel;
             [label setLineBreakMode:UILineBreakModeWordWrap];
-            [label setMinimumFontSize:INTRO_FONT_SIZE];
+            [label setMinimumFontSize:DEFALUT_FONT_SIZE];
             [label setNumberOfLines:0];
-            [label setFont:[UIFont systemFontOfSize:INTRO_FONT_SIZE]];
+            [label setFont:DEFAULTFONT];
         }
         
         NSString *text = [commentData objectForKey:@"message"];
         
         CGSize constraint = CGSizeMake(CELL_CONTENT_WIDTH, 20000.0f);
         
-        CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:INTRO_FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+        CGSize size = [text sizeWithFont:DEFAULTFONT constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
 
         label = cell.textLabel;
         
@@ -148,6 +148,32 @@
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return nil;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    float height = 44;
+    int row = [indexPath row];
+    if(row == 1)
+    {
+        NSString *text = [commentData objectForKey:@"message"];
+        height = [self cellHeightForText:text
+                                  margin:12 
+                                   width:CELL_CONTENT_WIDTH 
+                                uiFont:DEFAULTFONT];
+    }
+    return height;
+}
+
+- (float)cellHeightForText:(NSString*)text margin:(float)margin width:(float)width uiFont:(UIFont*)uiFont
+{    
+    CGSize constraint = CGSizeMake(width - (margin * 2), 20000.0f);
+    
+    CGSize size = [text sizeWithFont:uiFont constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+    
+    CGFloat height = MAX(size.height, 44.0f);
+    
+    return height + (margin * 2);
 }
 
 

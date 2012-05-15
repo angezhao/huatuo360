@@ -34,11 +34,16 @@ extern Boolean isLogin;
 extern Boolean isComment;
 extern Boolean flashView;
 
+extern UIFont         *DEFAULTFONT;
+
 //UITableView常量
-#define INTRO_FONT_SIZE 16.0f
-#define INFO_FONT_SIZE 16.0f
+#define INTRO_FONT_SIZE 15.0f
+#define INFO_FONT_SIZE 15.0f
 //整行宽度
 #define CELL_CONTENT_WIDTH 320.0f
 //#define CELL_CONTENT_MARGIN 0.0f
 //两个UILabel在一个cell里面，正文宽度（右边的label）
 #define CELL_RIGHT_CONTENT_WIDTH 200.0f
+
+#define DEFALUT_FONT_SIZE 15.0f
+#define FONTNAME @"Kailasa"

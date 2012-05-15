@@ -53,6 +53,8 @@
 {
     [self initConfigData];
     
+    DEFAULTFONT = [UIFont fontWithName:FONTNAME size:DEFALUT_FONT_SIZE];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.    
     HomePageNavVC *viewController1 = [[HomePageNavVC alloc] init];
