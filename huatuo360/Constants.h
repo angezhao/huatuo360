@@ -37,8 +37,8 @@ extern Boolean flashView;
 extern UIFont         *DEFAULTFONT;
 
 //UITableView常量
-#define INTRO_FONT_SIZE 15.0f
-#define INFO_FONT_SIZE 15.0f
+#define INTRO_FONT_SIZE 16.0f
+#define INFO_FONT_SIZE 16.0f
 //整行宽度 
 #define CELL_CONTENT_WIDTH 286.0f
 #define CELL_HORIZON_MARGIN 10.0f
@@ -48,5 +48,6 @@ extern UIFont         *DEFAULTFONT;
 //两个UILabel在一个cell里面，正文宽度（右边的label）
 #define CELL_RIGHT_CONTENT_WIDTH 200.0f
 
-#define DEFALUT_FONT_SIZE 15.0f
-#define FONTNAME @"Kailasa"
+#define DEFALUT_FONT_SIZE 16.0f
+#define FONTNAME @"Kannada Sangam MN"
+
