@@ -255,7 +255,7 @@
                 if(!showAllIntro)
                     text = [NSString stringWithFormat:@"%@...", [text substringToIndex:64]];
                 height = [self cellHeightForText:text
-                                        margin:12 
+                                        margin:CELL_VERTICAL_MARGIN 
                                         width:CELL_CONTENT_WIDTH 
                                         uiFont:DEFAULTFONT];
             }
@@ -264,7 +264,9 @@
             break;
             
         case 2://论文
-            if(showAllThesis || row != (INIT_SHOW_THESIS_COUNT + 1))//不是显示全部
+            if(!showAllThesis && row == INIT_SHOW_THESIS_COUNT)//显示全部
+                height = 44;
+            else
             {
                 height = [self cellHeightForText:[thesis objectAtIndex:row]
                                     margin:0 
@@ -356,12 +358,20 @@
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                           reuseIdentifier: IntroIdentifier];
-            label = cell.textLabel;
-            [label setLineBreakMode:UILineBreakModeWordWrap];
+//            label = cell.textLabel;
+//            [label setLineBreakMode:UILineBreakModeWordWrap];
+//            [label setMinimumFontSize:DEFALUT_FONT_SIZE];
+//            [label setNumberOfLines:0];
+//            [label setFont:DEFAULTFONT];
+            //        [label setTag:1];
+            label = [[UILabel alloc] initWithFrame:CGRectMake(CELL_HORIZON_MARGIN, CELL_VERTICAL_MARGIN, CELL_CONTENT_WIDTH, 44)];
+            label.tag = 1;
+            label.font = DEFAULTFONT;
             [label setMinimumFontSize:DEFALUT_FONT_SIZE];
+            [label setLineBreakMode:UILineBreakModeWordWrap];
+            label.backgroundColor = [UIColor clearColor];
             [label setNumberOfLines:0];
-            [label setFont:DEFAULTFONT];
-    //        [label setTag:1];
+            [cell.contentView addSubview:label];
         }
         
         NSString *text = [doctorData objectForKey:@"info"];
@@ -372,12 +382,12 @@
         
         CGSize size = [text sizeWithFont:DEFAULTFONT constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
         
-    //    if (!label)
-    //        label = (UILabel*)[cell viewWithTag:1];
-        label = cell.textLabel;
+        if (!label)
+            label = (UILabel*)[cell viewWithTag:1];
+//        label = cell.textLabel;
         
         [label setText:text];
-        [label setFrame:CGRectMake(0, 0, CELL_CONTENT_WIDTH, MAX(size.height, 44.0f))];
+        [label setFrame:CGRectMake(CELL_HORIZON_MARGIN, CELL_VERTICAL_MARGIN, CELL_CONTENT_WIDTH, MAX(size.height, 44.0f))];
     }
     else if(row == 1)
     {
@@ -398,7 +408,7 @@
 
 - (float)cellHeightForText:(NSString*)text margin:(float)margin width:(float)width uiFont:(UIFont*)uiFont
 {    
-    CGSize constraint = CGSizeMake(width - (margin * 2), 20000.0f);
+    CGSize constraint = CGSizeMake(width, 20000.0f);
     
     CGSize size = [text sizeWithFont:uiFont constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
     

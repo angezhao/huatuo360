@@ -54,6 +54,7 @@
     [self initConfigData];
     
     DEFAULTFONT = [UIFont fontWithName:FONTNAME size:DEFALUT_FONT_SIZE];
+//    DEFAULTFONT = [UIFont systemFontOfSize:15.0];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.    

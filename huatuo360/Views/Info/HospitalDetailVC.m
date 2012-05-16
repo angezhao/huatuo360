@@ -213,10 +213,10 @@
         case 1:
             cell = [self introCellForSection:section];
             break;
-        case 2:
+        case 2://医院介绍
             cell = [self introCellForRow:row];
             break;
-        case 3:
+        case 3://特色专科
             cell = [self introCellForSection:section];
             break;
     }
@@ -235,11 +235,20 @@
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                           reuseIdentifier: HospictalIntroIdentifier];
-            label = cell.textLabel;
-            [label setLineBreakMode:UILineBreakModeWordWrap];
+//            label = cell.textLabel;
+//            [label setLineBreakMode:UILineBreakModeWordWrap];
+//            [label setMinimumFontSize:DEFALUT_FONT_SIZE];
+//            [label setNumberOfLines:0];
+//            [label setFont:DEFAULTFONT];
+            
+            label = [[UILabel alloc] initWithFrame:CGRectMake(CELL_HORIZON_MARGIN, CELL_VERTICAL_MARGIN, CELL_CONTENT_WIDTH, 44)];
+            label.tag = 1;
+            label.font = DEFAULTFONT;
             [label setMinimumFontSize:DEFALUT_FONT_SIZE];
+            [label setLineBreakMode:UILineBreakModeWordWrap];
+            label.backgroundColor = [UIColor clearColor];
             [label setNumberOfLines:0];
-            [label setFont:DEFAULTFONT];
+            [cell.contentView addSubview:label];
             //        [label setTag:1];
         }
         
@@ -251,12 +260,11 @@
         
         CGSize size = [text sizeWithFont:DEFAULTFONT constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
         
-        //    if (!label)
-        //        label = (UILabel*)[cell viewWithTag:1];
-        label = cell.textLabel;
+        if (!label)
+            label = (UILabel*)[cell viewWithTag:1];
         
         [label setText:text];
-        [label setFrame:CGRectMake(0, 0, CELL_CONTENT_WIDTH, MAX(size.height, 44.0f))];
+        [label setFrame:CGRectMake(CELL_HORIZON_MARGIN, CELL_VERTICAL_MARGIN, CELL_CONTENT_WIDTH, MAX(size.height, 44.0f))];
     }
     else if(row == 1)
     {
@@ -310,7 +318,7 @@
                         departments = [NSString stringWithFormat:@"%@、%@", departments, department]; 
                 }
                 height = [self cellHeightForText:departments
-                                          margin:12 
+                                          margin:CELL_VERTICAL_MARGIN 
                                            width:CELL_CONTENT_WIDTH 
                                           uiFont:[UIFont systemFontOfSize:INTRO_FONT_SIZE]];
             }
@@ -323,8 +331,8 @@
                 if(!showAllInfo)
                     text = [NSString stringWithFormat:@"%@...", [text substringToIndex:64]];
                 height = [self cellHeightForText:text
-                                          margin:12 
-                                           width:CELL_CONTENT_WIDTH 
+                                          margin:CELL_VERTICAL_MARGIN 
+                                           width:CELL_CONTENT_WIDTH
                                           uiFont:DEFAULTFONT];
             }
             else
@@ -333,7 +341,7 @@
         
         case 3://特色专科
             height = [self cellHeightForText:[hospitalData objectForKey:@"specialty"]
-                                        margin:12 
+                                        margin:CELL_VERTICAL_MARGIN 
                                         width:CELL_CONTENT_WIDTH 
                                        uiFont:[UIFont systemFontOfSize:INTRO_FONT_SIZE]];
             break;
@@ -424,11 +432,21 @@
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier: IntroIdentifier];
-        label = cell.textLabel;
-        [label setLineBreakMode:UILineBreakModeWordWrap];
-        [label setMinimumFontSize:INTRO_FONT_SIZE];
-        [label setNumberOfLines:0];
+//        label = cell.textLabel;
+//        [label setLineBreakMode:UILineBreakModeWordWrap];
+//        [label setMinimumFontSize:INTRO_FONT_SIZE];
+//        [label setNumberOfLines:0];
+//        [label setFont:[UIFont systemFontOfSize:INTRO_FONT_SIZE]];
+        
+        
+        label = [[UILabel alloc] initWithFrame:CGRectMake(CELL_HORIZON_MARGIN, CELL_VERTICAL_MARGIN, CELL_CONTENT_WIDTH, 44)];
+        label.tag = 1;
         [label setFont:[UIFont systemFontOfSize:INTRO_FONT_SIZE]];
+        [label setMinimumFontSize:INTRO_FONT_SIZE];
+        [label setLineBreakMode:UILineBreakModeWordWrap];
+        label.backgroundColor = [UIColor clearColor];
+        [label setNumberOfLines:0];
+        [cell.contentView addSubview:label];
         //        [label setTag:1];
     }
     
@@ -460,18 +478,18 @@
     
     CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:INTRO_FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
     
-    //    if (!label)
-    //        label = (UILabel*)[cell viewWithTag:1];
-    label = cell.textLabel;
+    if (!label)
+        label = (UILabel*)[cell viewWithTag:1];
+//    label = cell.textLabel;
     
     [label setText:text];
-    [label setFrame:CGRectMake(0, 0, CELL_CONTENT_WIDTH, MAX(size.height, 44.0f))];
+    [label setFrame:CGRectMake(CELL_HORIZON_MARGIN, CELL_VERTICAL_MARGIN, CELL_CONTENT_WIDTH, MAX(size.height, 44.0f))];
     return cell;
 }
 
 - (float)cellHeightForText:(NSString*)text margin:(float)margin width:(float)width uiFont:(UIFont*)uiFont
 {    
-    CGSize constraint = CGSizeMake(width - (margin * 2), 20000.0f);
+    CGSize constraint = CGSizeMake(width, 20000.0f);
     
     CGSize size = [text sizeWithFont:uiFont constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
     
