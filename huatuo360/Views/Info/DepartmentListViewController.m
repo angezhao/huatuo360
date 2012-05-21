@@ -62,14 +62,7 @@
     total = [[data objectForKey:@"total"]integerValue];
     if(nil == listData)
         listData = [NSMutableArray arrayWithCapacity:0];
-    NSDictionary *dict = [data objectForKey:@"data"];
-    for (NSString *key in dict)
-    {
-        NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
-        [tmp setObject:key forKey:@"id"];
-        [tmp setObject:[dict objectForKey: key] forKey:@"name"];
-        [listData addObject:tmp];
-    }
+    [listData addObjectsFromArray:[data objectForKey:@"data"]];
     [self.listView reloadData];    
 }
 

@@ -29,7 +29,7 @@ extern NSString* userId;
 extern NSString* email;
 extern NSString* gcityId;
 extern NSString* gcityName;
-extern NSDictionary *departments;
+extern NSMutableArray *departments;
 extern Boolean isLogin;
 extern Boolean isComment;
 extern Boolean flashView;

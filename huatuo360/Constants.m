@@ -61,7 +61,7 @@ NSString* userId;
 NSString* email;
 NSString* gcityId;
 NSString* gcityName;
-NSDictionary *departments;
+NSMutableArray *departments;
 Boolean isLogin = false;
 Boolean isComment = false;
 Boolean flashView = false;

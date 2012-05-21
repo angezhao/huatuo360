@@ -16,8 +16,6 @@
 @interface DeptSelectVC : UIViewController<UITableViewDataSource, UITableViewDelegate>
 {
     id<DeptSelectDelegate> delegate;
-    NSMutableArray* deptIds;
-    NSMutableArray* deptNames;
 }
 - (void) setDelegate:(id)del;
 @end

@@ -22,13 +22,6 @@
         // Custom initialization
         self.title = @"华佗360";
         self.hidesBottomBarWhenPushed = YES;
-        deptIds = [NSMutableArray arrayWithCapacity:0];
-        deptNames = [NSMutableArray arrayWithCapacity:0];
-        for(NSString* deptId in departments) 
-        {
-            [deptIds addObject:deptId];
-            [deptNames addObject:[departments objectForKey:deptId]];
-        }
     }
     return self;
 }
@@ -58,13 +51,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [deptIds count];
+    return [departments count];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
 {
     int row = [indexPath row];
-    [delegate selectDept:[deptIds objectAtIndex:row] deptName:[deptNames objectAtIndex:row]];
+    [delegate selectDept:[[departments objectAtIndex:row] objectForKey:@"id"] deptName:[[departments objectAtIndex:row] objectForKey:@"name"]];
     [self.navigationController popViewControllerAnimated:TRUE];
 }
 
@@ -84,7 +77,7 @@
         cell.textLabel.font = [UIFont boldSystemFontOfSize:16];
         cell.textLabel.textAlignment = UITextAlignmentLeft;
     }
-    cell.textLabel.text = [deptNames objectAtIndex:row]; 
+    cell.textLabel.text = [[departments objectAtIndex:row] objectForKey:@"name"]; 
     
     return cell;    
 }

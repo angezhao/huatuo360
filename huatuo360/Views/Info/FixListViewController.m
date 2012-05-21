@@ -13,7 +13,6 @@
 
 @implementation FixListViewController
 @synthesize params, diseaseName;
-extern NSString* const _departmentList;
 
 - (id)init
 {

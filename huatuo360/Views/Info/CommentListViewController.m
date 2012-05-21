@@ -53,7 +53,6 @@
     if(firstAppear || flashView)
     {
         firstAppear = false;
-        flashView = false;
         [params setObject:_commentList forKey:@"interfaceName"];
         [params setObject:@"1" forKey:@"page"];
         manager = [AsiObjectManager alloc];
@@ -70,21 +69,21 @@
 - (void)loadData:(NSDictionary *)data
 {
     total = [[data objectForKey:@"total"]integerValue];
-    if(nil == listData)
+    if(nil == listData || flashView)
         listData = [[NSMutableArray alloc]initWithCapacity:0];
-    NSDictionary *dict = [data objectForKey:@"data"];
-    for (NSString *key in dict)
-    {
-        NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
-        [tmp setObject:key forKey:@"id"];
-        [tmp setObject:[dict objectForKey: key] forKey:@"name"];
-        [listData addObject:tmp];
-    }
+    [listData addObjectsFromArray:[data objectForKey:@"data"]];
+//    listData = [data objectForKey:@"data"];
+//    for (NSString *key in dict)
+//    {
+//        NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
+//        [tmp setObject:key forKey:@"id"];
+//        [tmp setObject:[dict objectForKey: key] forKey:@"name"];
+//        [listData addObject:tmp];
+//    }
     [self.listView reloadData]; 
 }
 
 - (void) requestFailed:(NSError*)error{
-    
 }
 
 - (void)viewDidUnload
