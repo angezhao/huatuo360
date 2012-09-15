@@ -22,7 +22,6 @@
 		0D6F25AB15276ED3001A3A92 /* ListViewController1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D6F25A915276ED3001A3A92 /* ListViewController1.xib */; };
 		0D6F25AF15276EEC001A3A92 /* ListViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6F25AD15276EEB001A3A92 /* ListViewController2.m */; };
 		0D6F25B015276EEC001A3A92 /* ListViewController2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D6F25AE15276EEC001A3A92 /* ListViewController2.xib */; };
-		0D6F25B2152773B5001A3A92 /* Entitlement.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0D6F25B1152773B5001A3A92 /* Entitlement.plist */; };
 		0D6FA66D151F5EE800DC57B5 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6FA655151F5EE800DC57B5 /* NSObject+SBJson.m */; };
 		0D6FA66E151F5EE800DC57B5 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6FA658151F5EE800DC57B5 /* SBJsonParser.m */; };
 		0D6FA66F151F5EE800DC57B5 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6FA65A151F5EE800DC57B5 /* SBJsonStreamParser.m */; };
@@ -46,6 +45,11 @@
 		0D7136DE152F1E5800AC115E /* HomePageNavVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7136DD152F1E5800AC115E /* HomePageNavVC.m */; };
 		0D73A630152C3AE70077666D /* CityListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D73A62E152C3AE70077666D /* CityListVC.m */; };
 		0D73A631152C3AE70077666D /* CityListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D73A62F152C3AE70077666D /* CityListVC.xib */; };
+		0D73B34A159CC25600C8E431 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D73B345159CC25600C8E431 /* Icon-72.png */; };
+		0D73B34B159CC25600C8E431 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D73B346159CC25600C8E431 /* Icon-Small-50.png */; };
+		0D73B34C159CC25600C8E431 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D73B347159CC25600C8E431 /* Icon-Small.png */; };
+		0D73B34D159CC25600C8E431 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D73B348159CC25600C8E431 /* Icon-Small@2x.png */; };
+		0D73B34E159CC25600C8E431 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D73B349159CC25600C8E431 /* Icon@2x.png */; };
 		0D7433E8151E5BAE009119A9 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D743391151E5BAE009119A9 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0D7433E9151E5BAE009119A9 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D743394151E5BAE009119A9 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0D7433EA151E5BAE009119A9 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D743396151E5BAE009119A9 /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -76,6 +80,8 @@
 		0D743444151E5CB6009119A9 /* ASIS3ServiceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D743436151E5CB6009119A9 /* ASIS3ServiceRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0D743446151E5DA3009119A9 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D743445151E5DA3009119A9 /* CFNetwork.framework */; };
 		0D74B992152DEE510063E9B0 /* cities.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0D74B991152DEE510063E9B0 /* cities.plist */; };
+		0D8A08A415A9E7CA004A9AAB /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D8A08A315A9E7CA004A9AAB /* Icon@2x.png */; };
+		0D8A08A615A9E7D6004A9AAB /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D8A08A515A9E7D6004A9AAB /* icon.png */; };
 		0D9A9A1A152F367000D62421 /* rbDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9A9A17152F367000D62421 /* rbDown.png */; };
 		0D9A9A1C152F367000D62421 /* rbNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9A9A19152F367000D62421 /* rbNormal.png */; };
 		0DB6928B15277BBD00FD7F98 /* DoctorDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB6928915277BBD00FD7F98 /* DoctorDetailVC.m */; };
@@ -145,7 +151,6 @@
 		0D6F25AC15276EEB001A3A92 /* ListViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController2.h; sourceTree = "<group>"; };
 		0D6F25AD15276EEB001A3A92 /* ListViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController2.m; sourceTree = "<group>"; };
 		0D6F25AE15276EEC001A3A92 /* ListViewController2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListViewController2.xib; sourceTree = "<group>"; };
-		0D6F25B1152773B5001A3A92 /* Entitlement.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlement.plist; sourceTree = SOURCE_ROOT; };
 		0D6FA653151F5EE800DC57B5 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		0D6FA654151F5EE800DC57B5 /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
 		0D6FA655151F5EE800DC57B5 /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJson.m"; sourceTree = "<group>"; };
@@ -190,6 +195,11 @@
 		0D73A62D152C3AE70077666D /* CityListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityListVC.h; sourceTree = "<group>"; };
 		0D73A62E152C3AE70077666D /* CityListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityListVC.m; sourceTree = "<group>"; };
 		0D73A62F152C3AE70077666D /* CityListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CityListVC.xib; sourceTree = "<group>"; };
+		0D73B345159CC25600C8E431 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		0D73B346159CC25600C8E431 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
+		0D73B347159CC25600C8E431 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
+		0D73B348159CC25600C8E431 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
+		0D73B349159CC25600C8E431 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		0D743390151E5BAE009119A9 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		0D743391151E5BAE009119A9 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		0D743392151E5BAE009119A9 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -248,12 +258,15 @@
 		0D743436151E5CB6009119A9 /* ASIS3ServiceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIS3ServiceRequest.m; sourceTree = "<group>"; };
 		0D743445151E5DA3009119A9 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		0D74B991152DEE510063E9B0 /* cities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = cities.plist; sourceTree = "<group>"; };
+		0D8A08A215A9E1E0004A9AAB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "/Users/wongalpha/Documents/Develop/huatuo360/huatuo360/zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<absolute>"; };
+		0D8A08A315A9E7CA004A9AAB /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		0D8A08A515A9E7D6004A9AAB /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		0D9A9A17152F367000D62421 /* rbDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rbDown.png; sourceTree = "<group>"; };
 		0D9A9A19152F367000D62421 /* rbNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rbNormal.png; sourceTree = "<group>"; };
 		0DB6928815277BBD00FD7F98 /* DoctorDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorDetailVC.h; sourceTree = "<group>"; };
 		0DB6928915277BBD00FD7F98 /* DoctorDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorDetailVC.m; sourceTree = "<group>"; };
 		0DB6928A15277BBD00FD7F98 /* DoctorDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoctorDetailVC.xib; sourceTree = "<group>"; };
-		0DECF5CF150C94EB00824D1C /* huatuo360.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = huatuo360.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0DECF5CF150C94EB00824D1C /* 华佗360.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "华佗360.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DECF5D3150C94EB00824D1C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0DECF5D5150C94EB00824D1C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0DECF5D7150C94EB00824D1C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -512,6 +525,8 @@
 		0DECF5C4150C94EB00824D1C = {
 			isa = PBXGroup;
 			children = (
+				0D8A08A515A9E7D6004A9AAB /* icon.png */,
+				0D8A08A315A9E7CA004A9AAB /* Icon@2x.png */,
 				0D743445151E5DA3009119A9 /* CFNetwork.framework */,
 				0DECF5D9150C94EB00824D1C /* huatuo360 */,
 				0DECF5D2150C94EB00824D1C /* Frameworks */,
@@ -522,7 +537,7 @@
 		0DECF5D0150C94EB00824D1C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0DECF5CF150C94EB00824D1C /* huatuo360.app */,
+				0DECF5CF150C94EB00824D1C /* 华佗360.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -546,7 +561,6 @@
 			isa = PBXGroup;
 			children = (
 				0DF27B32153089F700D9103E /* Utility */,
-				0D6F25B1152773B5001A3A92 /* Entitlement.plist */,
 				0D6FA651151F5EE800DC57B5 /* SBJson */,
 				B77C554F151EF6CB009F0613 /* Constants.h */,
 				0D71235F1520C3E5006420C2 /* Constants.m */,
@@ -574,6 +588,11 @@
 		0DECF630150C9CAB00824D1C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0D73B345159CC25600C8E431 /* Icon-72.png */,
+				0D73B346159CC25600C8E431 /* Icon-Small-50.png */,
+				0D73B347159CC25600C8E431 /* Icon-Small.png */,
+				0D73B348159CC25600C8E431 /* Icon-Small@2x.png */,
+				0D73B349159CC25600C8E431 /* Icon@2x.png */,
 				0D2BB0391550442C00C11936 /* Default.png */,
 				0D2BB03A1550442C00C11936 /* Default@2x.png */,
 				0D2BB03B1550442C00C11936 /* icon.png */,
@@ -734,7 +753,7 @@
 			);
 			name = huatuo360;
 			productName = huatuo360;
-			productReference = 0DECF5CF150C94EB00824D1C /* huatuo360.app */;
+			productReference = 0DECF5CF150C94EB00824D1C /* 华佗360.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -783,7 +802,6 @@
 				0D74340D151E5BAE009119A9 /* README-GHUnit in Resources */,
 				0D6F25AB15276ED3001A3A92 /* ListViewController1.xib in Resources */,
 				0D6F25B015276EEC001A3A92 /* ListViewController2.xib in Resources */,
-				0D6F25B2152773B5001A3A92 /* Entitlement.plist in Resources */,
 				0DB6928C15277BBD00FD7F98 /* DoctorDetailVC.xib in Resources */,
 				0D4A7F3E152AFD56003BAC85 /* disease.plist in Resources */,
 				0D73A631152C3AE70077666D /* CityListVC.xib in Resources */,
@@ -803,6 +821,13 @@
 				0D2BB03D1550442C00C11936 /* Default@2x.png in Resources */,
 				0D2BB03E1550442C00C11936 /* icon.png in Resources */,
 				B784FF201556602C00A5B066 /* CommentDetailVC.xib in Resources */,
+				0D73B34A159CC25600C8E431 /* Icon-72.png in Resources */,
+				0D73B34B159CC25600C8E431 /* Icon-Small-50.png in Resources */,
+				0D73B34C159CC25600C8E431 /* Icon-Small.png in Resources */,
+				0D73B34D159CC25600C8E431 /* Icon-Small@2x.png in Resources */,
+				0D73B34E159CC25600C8E431 /* Icon@2x.png in Resources */,
+				0D8A08A415A9E7CA004A9AAB /* Icon@2x.png in Resources */,
+				0D8A08A615A9E7D6004A9AAB /* icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -893,6 +918,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				0DECF5DD150C94EB00824D1C /* en */,
+				0D8A08A215A9E1E0004A9AAB /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -900,6 +926,54 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		0D755E2F15A9CC4600A20A4F /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					armv6,
+					"$(ARCHS_STANDARD_32_BIT)",
+				);
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: wei qin (V2D6PQFBTZ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: wei qin";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_THUMB_SUPPORT = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A3138A1C-ACD2-4625-8709-1FA4FCCD226D";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = NO;
+			};
+			name = Distribution;
+		};
+		0D755E3015A9CC4600A20A4F /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "huatuo360/huatuo360-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
+				"HEADER_SEARCH_PATHS[arch=*]" = "${SDK_DIR}/usr/include/libxml2";
+				INFOPLIST_FILE = "huatuo360/huatuo360-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				PRODUCT_NAME = "华佗360";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Distribution;
+		};
 		0DECF5F9150C94EB00824D1C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -909,7 +983,8 @@
 					"$(ARCHS_STANDARD_32_BIT)",
 				);
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: wei qin (V2D6PQFBTZ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: wei qin";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -925,6 +1000,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A3138A1C-ACD2-4625-8709-1FA4FCCD226D";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = NO;
 			};
@@ -939,7 +1016,8 @@
 					"$(ARCHS_STANDARD_32_BIT)",
 				);
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: wei qin (V2D6PQFBTZ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: wei qin";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_THUMB_SUPPORT = NO;
@@ -949,6 +1027,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A3138A1C-ACD2-4625-8709-1FA4FCCD226D";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = NO;
 			};
@@ -958,14 +1038,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = Entitlement.plist;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "huatuo360/huatuo360-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				"HEADER_SEARCH_PATHS[arch=*]" = "${SDK_DIR}/usr/include/libxml2";
 				INFOPLIST_FILE = "huatuo360/huatuo360-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "华佗360";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -975,14 +1059,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = Entitlement.plist;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "huatuo360/huatuo360-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				"HEADER_SEARCH_PATHS[arch=*]" = "${SDK_DIR}/usr/include/libxml2";
 				INFOPLIST_FILE = "huatuo360/huatuo360-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "华佗360";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -996,6 +1084,7 @@
 			buildConfigurations = (
 				0DECF5F9150C94EB00824D1C /* Debug */,
 				0DECF5FA150C94EB00824D1C /* Release */,
+				0D755E2F15A9CC4600A20A4F /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1005,6 +1094,7 @@
 			buildConfigurations = (
 				0DECF5FC150C94EB00824D1C /* Debug */,
 				0DECF5FD150C94EB00824D1C /* Release */,
+				0D755E3015A9CC4600A20A4F /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
