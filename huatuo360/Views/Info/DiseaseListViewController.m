@@ -90,7 +90,7 @@
     NSMutableDictionary *itemData = [listData objectAtIndex:row];
     NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
     if([params objectForKey:@"_hospital"]){
-        [tmp setObject:[itemData objectForKey:@"id"] forKey:@"deptid"];
+        [tmp setObject:[itemData objectForKey:@"id"] forKey:@"diseaseid"];
         [tmp setObject:[itemData objectForKey:@"id"] forKey:@"_diseaseid"];
         HospitalListViewController* hlvc = [[HospitalListViewController alloc]init];
         hlvc.params = tmp;

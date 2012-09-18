@@ -127,6 +127,7 @@
     {
         [tmp setObject:[params objectForKey:@"_diseaseid"] forKey:@"diseaseid"];
     }
+    
     //各科室医院排名
     if([params objectForKey:@"deptid"] && ![params objectForKey:@"_diseaseid"])//科室id
         [tmp setObject:[params objectForKey:@"deptid"] forKey:@"deptid"];

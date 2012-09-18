@@ -100,17 +100,19 @@
                 [tmp setObject:[params objectForKey:@"diseaseid"] forKey:@"diseaseid"];
                 DoctorListViewController* dlvc = [[DoctorListViewController alloc]init];
                 dlvc.params = tmp;
-                dlvc.tableTitle = @"医生排行";
+                dlvc.tableTitle = [NSString stringWithFormat:@"治疗\"%@\"的医生排名", diseaseName];
                 [self.navigationController pushViewController:dlvc animated:true];
             }  
             break;
         case 1:
             {
                 NSMutableDictionary* tmp = [NSMutableDictionary dictionaryWithCapacity:0];
+                [tmp setObject:[params objectForKey:@"diseaseid"] forKey:@"diseaseid"];
                 [tmp setObject:[params objectForKey:@"diseaseid"] forKey:@"_diseaseid"];
                 HospitalListViewController* hlvc = [[HospitalListViewController alloc]init];
                 hlvc.params = tmp;
-                hlvc.tableTitle = @"医院排行";
+                hlvc.diseaseName = diseaseName;
+                hlvc.tableTitle = [NSString stringWithFormat:@"治疗\"%@\"的医院排名", diseaseName];
                 [self.navigationController pushViewController:hlvc animated:true];
 
             }  
